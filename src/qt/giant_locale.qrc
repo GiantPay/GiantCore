@@ -1,0 +1,20 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/giant_bg.qm</file>
+        <file alias="de">locale/giant_de.qm</file>
+        <file alias="en">locale/giant_en.qm</file>
+        <file alias="es">locale/giant_es.qm</file>
+        <file alias="fi">locale/giant_fi.qm</file>
+        <file alias="fr">locale/giant_fr.qm</file>
+        <file alias="it">locale/giant_it.qm</file>
+        <file alias="ja">locale/giant_ja.qm</file>
+        <file alias="pl">locale/giant_pl.qm</file>
+        <file alias="pt">locale/giant_pt.qm</file>
+        <file alias="ru">locale/giant_ru.qm</file>
+        <file alias="sk">locale/giant_sk.qm</file>
+        <file alias="sv">locale/giant_sv.qm</file>
+        <file alias="vi">locale/giant_vi.qm</file>
+        <file alias="zh_CN">locale/giant_zh_CN.qm</file>
+        <file alias="zh_TW">locale/giant_zh_TW.qm</file>
+    </qresource>
+</RCC>
