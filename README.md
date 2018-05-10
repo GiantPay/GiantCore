@@ -13,7 +13,7 @@ For further information visit us at [giantpay.network](https://giantpay.network/
 • PoW Blocks: 2 - 262800  
 • PoS Blocks: Starting from 262801  
 • Block Time: 120 Seconds  
-• PoW Max Coin Output/Supply: 4,456,000
+• PoW Max Coin Output/Supply: 5,151,000
 • PoW Ending: ~ ca. 335 Days (Estimated: May 2019)  
 • Masternode Requirements: 1,000 GIC
 • Maturity: 101 Confirmations  
