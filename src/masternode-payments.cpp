@@ -537,65 +537,27 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransaction& txNew)
     LOCK(cs_vecPayments);
 
     int nMaxSignatures = 0;
-    int nMasternode_Drift_Count = 0;
     std::string strPayeesPossible = "";
 
     CAmount nReward = GetBlockValue(nBlockHeight);
-
-	
-    if (IsSporkActive(SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT)) {
-        // Get a stable number of masternodes by ignoring newly activated (< 8000 sec old) masternodes
-        nMasternode_Drift_Count = mnodeman.stable_size() + Params().MasternodeCountDrift();
-    }
-    else {
-        //account for the fact that all peers do not see the same masternode count. A allowance of being off our masternode count is given
-        //we only need to look at an increased masternode count because as count increases, the reward decreases. This code only checks
-        //for mnPayment >= required, so it only makes sense to check the max node count allowed.
-        nMasternode_Drift_Count = mnodeman.size() + Params().MasternodeCountDrift();
-    }
-
-	
-    CBitcoinAddress developerfeeaddress("GN7fZCAid5wTg1H67uz7bWv8pa5g7pNqDX");
-    CScript developerfeescriptpubkey = GetScriptForDestination(developerfeeaddress.Get());
-	
-    CAmount requiredMasternodePayment = GetMasternodePayment(nBlockHeight, nReward, nMasternode_Drift_Count);
-    CAmount requiredDeveloperPayment = nReward * 0.05;
+    CAmount requiredMasternodePayment = GetMasternodePayment(nBlockHeight, nReward, 0);
 	
     //require at least 6 signatures
     BOOST_FOREACH (CMasternodePayee& payee, vecPayments)
         if (payee.nVotes >= nMaxSignatures && payee.nVotes >= MNPAYMENTS_SIGNATURES_REQUIRED)
             nMaxSignatures = payee.nVotes;
-
-		
-	bool foundDevFee = false;
-	BOOST_FOREACH (CMasternodePayee& payee, vecPayments) {
-		BOOST_FOREACH (CTxOut out, txNew.vout) {
-			if(payee.scriptPubKey == developerfeescriptpubkey) {
-					if(out.nValue >= requiredDeveloperPayment) {
-						foundDevFee = true;
-						LogPrintf("Developer-Fee Payment found! Thanks for supporting GIANT!");
-					}
-			}
-		}
-	}
-	
 	
     // if we don't have at least 6 signatures on a payee, approve whichever is the longest chain
     if (nMaxSignatures < MNPAYMENTS_SIGNATURES_REQUIRED) return true;
 	
     BOOST_FOREACH (CMasternodePayee& payee, vecPayments) {
-        bool found = false;
-        BOOST_FOREACH (CTxOut out, txNew.vout) {
-            if (payee.scriptPubKey == out.scriptPubKey) {
-                if(out.nValue >= requiredMasternodePayment)
-                    found = true;
-                else
-                    LogPrintf("Masternode payment is out of drift range. Paid=%s Min=%s\n", FormatMoney(out.nValue).c_str(), FormatMoney(requiredMasternodePayment).c_str());
-            }
-        }
-
         if (payee.nVotes >= MNPAYMENTS_SIGNATURES_REQUIRED) {
-            if (found) return true;
+            BOOST_FOREACH (CTxOut out, txNew.vout) {
+                if (payee.scriptPubKey == out.scriptPubKey && out.nValue == requiredMasternodePayment) {
+                    LogPrintf("CMasternodePayments::IsTransactionValid -- Found required payment\n");
+                    return true;
+                }
+            }
 
             CTxDestination address1;
             ExtractDestination(payee.scriptPubKey, address1);
