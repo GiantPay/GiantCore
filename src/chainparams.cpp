@@ -68,7 +68,7 @@ static const Checkpoints::CCheckpointData data = {
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
-    boost::assign::map_list_of(0, uint256("0x0000061a8dd4eb2dd70370956f41e88ec876efc0afe091962a4cd94f147e0dd5"));
+    boost::assign::map_list_of(0, uint256("0x0000017654caad0d5ebb3bd3293b9824ea931b562fe14c6053660158988adf91"));
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
     1454124731,
@@ -213,26 +213,31 @@ public:
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
         nMaxMoneyOut = 100000000 * COIN;
 
-        //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1525748356;
-        genesis.nNonce = 1455709;
-
+        genesis.nTime = 1530822773;
+        genesis.nNonce = 3105010;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000061a8dd4eb2dd70370956f41e88ec876efc0afe091962a4cd94f147e0dd5"));
+        assert(hashGenesisBlock == uint256("0x0000017654caad0d5ebb3bd3293b9824ea931b562fe14c6053660158988adf91"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
+        vSeeds.push_back(CDNSSeedData("159.69.26.215", "159.69.26.215"));
+        vSeeds.push_back(CDNSSeedData("138.201.247.157", "138.201.247.157"));
+        vSeeds.push_back(CDNSSeedData("138.201.247.148", "138.201.247.148"));
+        vSeeds.push_back(CDNSSeedData("138.201.247.175", "138.201.247.175"));
+        vSeeds.push_back(CDNSSeedData("138.201.247.67", "138.201.247.67"));
+        vSeeds.push_back(CDNSSeedData("138.201.247.25", "138.201.247.25"));
+        vSeeds.push_back(CDNSSeedData("95.216.149.227", "95.216.149.227"));
+        vSeeds.push_back(CDNSSeedData("95.216.149.232", "95.216.149.232"));
+        vSeeds.push_back(CDNSSeedData("95.216.149.238", "95.216.149.238"));
+        vSeeds.push_back(CDNSSeedData("95.216.149.233", "95.216.149.233"));
 		
-	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 83);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 18);
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 193);
-        // Testnet giant BIP32 pubkeys start with 'DRKV'
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x80)(0x61)(0xa0).convert_to_container<std::vector<unsigned char> >();
-        // Testnet giant BIP32 prvkeys start with 'DRKP'
-        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x80)(0x58)(0x37).convert_to_container<std::vector<unsigned char> >();
-        // Testnet giant BIP44 coin type is '1' (All coin's testnet default)
-        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
+	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 84);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 195);
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x81)(0x62)(0xa1).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x81)(0x59)(0x38).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x01)(0x01)(0x02).convert_to_container<std::vector<unsigned char> >();
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
@@ -248,7 +253,7 @@ public:
         nPoolMaxTransactions = 2;
         strSporkKey = "049e53e687fdafd78fd42d730fad0e7ea1819396176a2cb85d7a76fa4559cdbd2c2f05330a6f5cbadb44a6c1d324f167e679e9f3e95d9d5649761a3e7f59bf4500";
         strDarksendPoolDummyAddress = "";
-        nStartMasternodePayments = 1510272000;
+        nStartMasternodePayments = 1562531573;
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
