@@ -12,6 +12,7 @@
 #include "rpcserver.h"
 #include "sync.h"
 #include "util.h"
+#include "chainparams.h"
 
 #include <stdint.h>
 
@@ -146,6 +147,33 @@ Value getdifficulty(const Array& params, bool fHelp)
     return GetDifficulty();
 }
 
+Value getblocktime(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 0)
+        throw runtime_error(
+            "getblocktime\n"
+            "\nReturns block time in seconds.\n"
+            "\nResult:\n"
+            "n      .\n"
+            "\nExamples:\n" +
+            HelpExampleCli("getblocktime", "") + HelpExampleRpc("getblocktime", ""));
+
+    return Params().TargetSpacing();
+}
+
+Value getlastreward(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 0)
+        throw runtime_error(
+            "getlastreward\n"
+            "\nAward for the last block.\n"
+            "\nResult:\n"
+            "n      .\n"
+            "\nExamples:\n" +
+            HelpExampleCli("getlastreward", "") + HelpExampleRpc("getlastreward", ""));
+
+    return GetBlockValue(chainActive.Height()) / COIN;
+}
 
 Value getrawmempool(const Array& params, bool fHelp)
 {
