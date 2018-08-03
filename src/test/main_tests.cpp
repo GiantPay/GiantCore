@@ -21,41 +21,50 @@ BOOST_AUTO_TEST_CASE(subsidy_limit_test)
     for (int nHeight = 0; nHeight < 1; nHeight += 1) {
         /* premine in block 1 */
         CAmount nSubsidy = GetBlockValue(nHeight);
-        BOOST_CHECK(nSubsidy <= 100001 * COIN);
+        BOOST_CHECK(nSubsidy <= 200000 * COIN);
         nSum += nSubsidy;
     }
 
-    for (int nHeight = 1; nHeight < 86400; nHeight += 1) {
+    for (int nHeight = 1; nHeight < 501; nHeight += 1) {
         CAmount nSubsidy = GetBlockValue(nHeight);
-        BOOST_CHECK(nSubsidy <= 200 * COIN);
+        BOOST_CHECK(nSubsidy <= 0 * COIN);
         nSum += nSubsidy;
     }
-    for (int nHeight = 86400; nHeight < 151200; nHeight += 1) {
+    for (int nHeight = 501; nHeight < 20001; nHeight += 1) {
         CAmount nSubsidy = GetBlockValue(nHeight);
-        BOOST_CHECK(nSubsidy <= 150 * COIN);
+        BOOST_CHECK(nSubsidy <= 10 * COIN);
         nSum += nSubsidy;
     }
-    for (int nHeight = 151200; nHeight < 302400; nHeight += 1) {
+    for (int nHeight = 20001; nHeight < 40001; nHeight += 1) {
         CAmount nSubsidy = GetBlockValue(nHeight);
-        BOOST_CHECK(nSubsidy <= 125 * COIN);
+        BOOST_CHECK(nSubsidy <= 15 * COIN);
         nSum += nSubsidy;
     }
-    for (int nHeight = 302400; nHeight < 345600; nHeight += 1) {
+    for (int nHeight = 40001; nHeight < 262801; nHeight += 1) {
         CAmount nSubsidy = GetBlockValue(nHeight);
-        BOOST_CHECK(nSubsidy <= 100 * COIN);
+        BOOST_CHECK(nSubsidy <= 20 * COIN);
         nSum += nSubsidy;
     }
-    for (int nHeight = 345600; nHeight < 388800; nHeight += 1) {
+    for (int nHeight = 262801; nHeight < 525601; nHeight += 1) {
         CAmount nSubsidy = GetBlockValue(nHeight);
-        BOOST_CHECK(nSubsidy <= 75 * COIN);
+        BOOST_CHECK(nSubsidy <= 10 * COIN);
         nSum += nSubsidy;
     }
-    for (int nHeight = 388800; nHeight < 475200; nHeight += 1) {
+    for (int nHeight = 525601; nHeight < 788401; nHeight += 1) {
         CAmount nSubsidy = GetBlockValue(nHeight);
-        BOOST_CHECK(nSubsidy <= 50 * COIN);
+        BOOST_CHECK(nSubsidy <= 8 * COIN);
         nSum += nSubsidy;
     }
-
+    for (int nHeight = 788401; nHeight < 1051201; nHeight += 1) {
+        CAmount nSubsidy = GetBlockValue(nHeight);
+        BOOST_CHECK(nSubsidy <= 6 * COIN);
+        nSum += nSubsidy;
+    }
+    for (int nHeight = 1051201; nHeight < 1314001; nHeight += 1) {
+        CAmount nSubsidy = GetBlockValue(nHeight);
+        BOOST_CHECK(nSubsidy <= 4 * COIN);
+        nSum += nSubsidy;
+    }
 	BOOST_CHECK(nSum > 0 && nSum <= nMoneySupplyPoWEnd);
 }
 
