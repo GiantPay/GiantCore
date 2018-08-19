@@ -1,0 +1,62 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+src/giant-cli
+src/giant-tx
+src/giantd
+src/qt/giant-qt
+src/test/test_giant
+src/qt/test/test_giant-qt
+
+# Logs
+*.log
+
+# Installators
+*.nsi
+
+# IDE
+nbproject
+
+# Generated files
+.deps
+.dirstamp
+.libs
+autom4te.cache
+src/qt/forms/*.h
+src/qt/locale/*.qm
+src/qt/moc_*.cpp
+src/qt/test/moc_*.cpp
+*.moc
+src/config/*
+
+# Test generated files
+src/test/data/*.h
