@@ -315,18 +315,15 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
              * An additional output is appended as the masternode payment
              */
             unsigned int i = txNew.vout.size();
-            txNew.vout.resize(i + 2);
+            txNew.vout.resize(i + 1);
             txNew.vout[i].scriptPubKey = payee;
             txNew.vout[i].nValue = masternodePayment;
-			
-			txNew.vout[i+1].scriptPubKey = developerfeescriptpubkey;
-            txNew.vout[i+1].nValue = developerfeePayment;
-			
+            LogPrintf("CreateNewBlock (POS): masternode to pay value %u\n", masternodePayment);
+
             //subtract mn payment from the stake reward
-            txNew.vout[i - 1].nValue -= masternodePayment;
-			txNew.vout[i - 1].nValue -= developerfeePayment;
-			LogPrintf("fProofOfStake: masternode to pay value %u\n", masternodePayment);
-        } else {
+            txNew.vout[i - 1].nValue = blockValue - masternodePayment;
+            LogPrintf("CreateNewBlock (POS): blockvalue to pay value %u\n", blockValue);
+	} else {
             txNew.vout.resize(3);
             txNew.vout[1].scriptPubKey = payee;
             txNew.vout[1].nValue = masternodePayment;

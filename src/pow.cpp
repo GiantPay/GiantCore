@@ -33,7 +33,7 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     }
 
 	// Proof of Stake
-    if (pindexLast->nHeight > Params().LAST_POW_BLOCK()) {
+    if (pindexLast->nHeight >= Params().LAST_POW_BLOCK()) {
         uint256 bnTargetLimit = (~uint256(0) >> 20);
 		
         int64_t nTargetSpacing = Params().TargetSpacing();
