@@ -321,9 +321,9 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
             LogPrintf("CreateNewBlock (POS): masternode to pay value %u\n", masternodePayment);
 
             //subtract mn payment from the stake reward
-            txNew.vout[i - 1].nValue = blockValue - masternodePayment;
-            LogPrintf("CreateNewBlock (POS): blockvalue to pay value %u\n", blockValue);
-	} else {
+            txNew.vout[i - 1].nValue -= masternodePayment;
+            LogPrintf("CreateNewBlock (POS): stakevalue to pay value %u\n", txNew.vout[i - 1].nValue);
+        } else {
             txNew.vout.resize(3);
             txNew.vout[1].scriptPubKey = payee;
             txNew.vout[1].nValue = masternodePayment;

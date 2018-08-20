@@ -114,16 +114,18 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
     txNew.vin[0].prevout.SetNull();
     txNew.vout.resize(1);
     txNew.vout[0].scriptPubKey = scriptPubKeyIn;
-	
+
+    if (!fProofOfStake) {
 	CBlockIndex* prev = chainActive.Tip(); 
 	txNew.vout[0].nValue = GetBlockValue(prev->nHeight);
-	
+    }
+
     pblock->vtx.push_back(txNew);
     pblocktemplate->vTxFees.push_back(-1);   // updated at end
     pblocktemplate->vTxSigOps.push_back(-1); // updated at end
 
     // ppcoin: if coinstake available add coinstake tx
-    static int64_t nLastCoinStakeSearchTime = GetAdjustedTime(); // only initialized at startup
+    static int64_t nLastCoinStakeSearchTime = GetAdjustedTime(); // only initialized at startups
 
     if (fProofOfStake) {
         boost::this_thread::interruption_point();
