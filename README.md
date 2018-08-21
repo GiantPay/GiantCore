@@ -9,42 +9,38 @@ The project [roadmap](https://giantpay.network/roadmap) and [White Paper](https:
 # Coin Specs
 
 • PoW Algorithm: Quark  
-• Premine: (#1 Block) 200,000 GIC (3,88% of PoW)*  
-• PoW Blocks: 2 - 262800  
-• PoS Blocks: Starting from 262801  
+• Premine: 200,000 GIC
+• PoW Blocks: 2 - 71400  
+• PoS Blocks: Starting from 71401  
 • Block Time: 120 Seconds  
-• PoW Max Coin Output/Supply: 5,151,000
-• PoW Ending: ~ ca. 335 Days (Estimated: May 2019)  
-• Masternode Requirements: 1,000 GIC
-• Maturity: 101 Confirmations  
-• Prefix: GIC adresses start with the capital letter "G"   
+• PoW Max Coin Output/Supply: 1,323,000  
+• PoW Ending: 20th Aug 2018 09:35:08 UTC  
+• Masternode Requirements: 1,000 GIC  
+• Maturity: 201 Confirmations  
+• Prefix: GIC adresses start with the capital letter "G"  
+• Ports: 40444 (p2p) / 41444 (rpc)  
 
 # PoW Reward Distribution
 
 _Proof of Work block rewards, masternode reward allocation starting at the 9th May 2018_
 <table>
   <tr><th>Block Height</th><th>Reward Amount</th><th>Masternodes</th><th>Miners</th></tr>
-  <tr><td>Block 2 - 500</td><td>0 GIC</td><td>   0</td><td>0</td></tr>
-  <tr><td>Block 501 - 20000</td><td>10 GIC</td><td>  8 GIC</td><td>2 GIC</td></tr>
-  <tr><td>Block 20001 - 40000</td><td>15 GIC</td><td>  12 GIC</td><td>3 GIC</td></tr>
-  <tr><td>Block 40001 - 262800</td><td>20 GIC</td><td>  16 GIC</td><td>4 GIC</td></tr>
+  <tr><td>Block 2 - 500 (ended)</td><td>0 GIC</td><td>   0</td><td>0</td></tr>
+  <tr><td>Block 501 - 20000 (ended)</td><td>10 GIC</td><td>  8 GIC</td><td>2 GIC</td></tr>
+  <tr><td>Block 20001 - 40000 (ended)</td><td>15 GIC</td><td>  12 GIC</td><td>3 GIC</td></tr>
+  <tr><td>Block 40001 - 71400 (ended)</td><td>20 GIC</td><td>  16 GIC</td><td>4 GIC</td></tr>
 </table>
-
-Masternode and staker rewards with PoS:
-Masternodes and stakers will receive split reward allocation when PoS sets in.
-This means the more masternodes are in the system, the more staking gets attractive and vice versa.
 
 # PoS Block Rewards
 
-_Proof of Stake will automatically be enabled at block 262801._
+_Proof of Stake will automatically be enabled at block 71401._
 <table>
-  <tr><th>Block Height</th><th>Reward Amount</th>                  
-  <tr><td>Block 262801 - 525600</td><td>10 GIC</td></tr>
-  <tr><td>Block 525601 - 788400</td><td>8 GIC</td></tr>
-  <tr><td>Block 788401 - 1051200</td><td>6 GIC</td></tr>
-  <tr><td>Block 1051201 - 1314000</td><td>4 GIC</td></tr>
-  <tr><td>Block 1314001 - infinite</td><td>2 GIC</td></tr>
+  <tr><th>Block Height</th><th>Reward Amount</th><th>Masternodes</th><th>Stakers</th></tr>                  
+  <tr><td>Block 71401 - 262800 (current)</td><td>20 GIC</td><td>  16 GIC</td><td>4 GIC</td></tr>
+  <tr><td>Block 262801 - 525600</td><td>10 GIC</td><td>  8 GIC</td><td>2 GIC</td></tr>
+  <tr><td>Block 525601 - 788400</td><td>8 GIC</td><td>  6.4 GIC</td><td>1.6 GIC</td></tr>
+  <tr><td>Block 788401 - 1051200</td><td>6 GIC</td><td>  4.8 GIC</td><td>1.2 GIC</td></tr>
+  <tr><td>Block 1051201 - 1314000</td><td>4 GIC</td><td>  3.2 GIC</td><td>0.8 GIC</td></tr>
+  <tr><td>Block 1314001 - infinite</td><td>2 GIC</td><td>  1.6 GIC</td><td>0.4 GIC</td></tr>
 </table>
-
-
 
