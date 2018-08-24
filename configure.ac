@@ -536,6 +536,8 @@ if test x$enable_wallet != xno; then
     BITCOIN_FIND_BDB48
 fi
 
+BITCOIN_FIND_V8
+
 dnl Check for libminiupnpc (optional)
 if test x$use_upnp != xno; then
   AC_CHECK_HEADERS(
