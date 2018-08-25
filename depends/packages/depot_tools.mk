@@ -1,8 +1,8 @@
 PACKAGE=depot_tools
 $(package)_version_version=1.0
-$(package)_download_path=https://chromium.googlesource.com/chromium/tools/depot_tools.git/+/1e82867e3d0f8f3f96672c0172ff4adad1777ce3#
-$(package)_file_name=1e82867e3d0f8f3f96672c0172ff4adad1777ce3.tar.gz
-$(package)_sha256_hash=73b61d74f63ccba6e4972bd4b52b1acb463c4bac9cfc5a5b52b2a1999520b266
+$(package)_download_path=https://github.com/GiantPay/depot_tools/archive
+$(package)_file_name=1.0.0.tar.gz
+$(package)_sha256_hash=fa3a646f764d3605d19af5c001039cf820976cef962ccca59951fde95ff2556f
 
 define $(package)_set_vars
   $(package)_config_opts=--disable-static
