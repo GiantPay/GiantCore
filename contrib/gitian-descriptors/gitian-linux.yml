@@ -1,8 +1,9 @@
 ---
-name: "giant-linux-1.0"
+name: "giant-linux-1.2.2.0"
 enable_cache: true
 suites:
 - "trusty"
+- "xenial"
 architectures:
 - "amd64"
 packages: 
