@@ -54,16 +54,21 @@ me=`echo "$0" | sed -e 's,.*/,,'`
 
 usage="\
 Usage: $0 [OPTION] CPU-MFR-OPSYS or ALIAS
+
 Canonicalize a configuration name.
+
 Operation modes:
   -h, --help         print this help, then exit
   -t, --time-stamp   print date of last modification, then exit
   -v, --version      print version number, then exit
+
 Report bugs and patches to <config-patches@gnu.org>."
 
 version="\
 GNU config.sub ($timestamp)
+
 Copyright 1992-2017 Free Software Foundation, Inc.
+
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
@@ -1821,16 +1826,4 @@ exit
 # time-stamp-format: "%:y-%02m-%02d"
 # time-stamp-end: "'"
 # End:
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
 

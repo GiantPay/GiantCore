@@ -36,17 +36,22 @@ me=`echo "$0" | sed -e 's,.*/,,'`
 
 usage="\
 Usage: $0 [OPTION]
+
 Output the configuration name of the system \`$me' is run on.
+
 Operation modes:
   -h, --help         print this help, then exit
   -t, --time-stamp   print date of last modification, then exit
   -v, --version      print version number, then exit
+
 Report bugs and patches to <config-patches@gnu.org>."
 
 version="\
 GNU config.guess ($timestamp)
+
 Originally written by Per Bothner.
 Copyright 1992-2017 Free Software Foundation, Inc.
+
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
@@ -570,6 +575,7 @@ EOF
 		eval $set_cc_for_build
 		sed 's/^		//' << EOF >$dummy.c
 		#include <sys/systemcfg.h>
+
 		main()
 			{
 			if (!__power_pc())
@@ -649,15 +655,18 @@ EOF
 		if [ "${HP_ARCH}" = "" ]; then
 		    eval $set_cc_for_build
 		    sed 's/^		//' << EOF >$dummy.c
+
 		#define _HPUX_SOURCE
 		#include <stdlib.h>
 		#include <unistd.h>
+
 		int main ()
 		{
 		#if defined(_SC_KERNEL_BITS)
 		    long bits = sysconf(_SC_KERNEL_BITS);
 		#endif
 		    long cpu  = sysconf (_SC_CPU_VERSION);
+
 		    switch (cpu)
 			{
 			case CPU_PA_RISC1_0: puts ("hppa1.0"); break;
@@ -1407,28 +1416,36 @@ esac
 
 cat >&2 <<EOF
 $0: unable to guess system type
+
 This script (version $timestamp), has failed to recognize the
 operating system you are using. If your script is old, overwrite
 config.guess and config.sub with the latest versions from:
+
   http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess
 and
   http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub
+
 If $0 has already been updated, send the following data and any
 information you think might be pertinent to config-patches@gnu.org to
 provide the necessary information to handle your system.
+
 config.guess timestamp = $timestamp
+
 uname -m = `(uname -m) 2>/dev/null || echo unknown`
 uname -r = `(uname -r) 2>/dev/null || echo unknown`
 uname -s = `(uname -s) 2>/dev/null || echo unknown`
 uname -v = `(uname -v) 2>/dev/null || echo unknown`
+
 /usr/bin/uname -p = `(/usr/bin/uname -p) 2>/dev/null`
 /bin/uname -X     = `(/bin/uname -X) 2>/dev/null`
+
 hostinfo               = `(hostinfo) 2>/dev/null`
 /bin/universe          = `(/bin/universe) 2>/dev/null`
 /usr/bin/arch -k       = `(/usr/bin/arch -k) 2>/dev/null`
 /bin/arch              = `(/bin/arch) 2>/dev/null`
 /usr/bin/oslevel       = `(/usr/bin/oslevel) 2>/dev/null`
 /usr/convex/getsysinfo = `(/usr/convex/getsysinfo) 2>/dev/null`
+
 UNAME_MACHINE = ${UNAME_MACHINE}
 UNAME_RELEASE = ${UNAME_RELEASE}
 UNAME_SYSTEM  = ${UNAME_SYSTEM}
