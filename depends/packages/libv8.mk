@@ -1,5 +1,5 @@
 PACKAGE=libv8
-$(package)_version_version=1.0.0
+$(package)_version_version=6.9.427.19
 $(package)_download_path=https://github.com/GiantPay/depot_tools/archive
 $(package)_file_name=1.0.0.tar.gz
 $(package)_sha256_hash=fa3a646f764d3605d19af5c001039cf820976cef962ccca59951fde95ff2556f
