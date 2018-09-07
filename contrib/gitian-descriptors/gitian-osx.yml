@@ -1,11 +1,11 @@
 ---
-name: "giant-osx-1.0"
+name: "giant-osx-1.2.2.0"
 enable_cache: true
 suites:
 - "trusty"
 architectures:
 - "amd64"
-packages: 
+packages:
 - "ca-certificates"
 - "curl"
 - "g++"
