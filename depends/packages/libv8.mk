@@ -18,7 +18,12 @@ endef
 
 define $(package)_config_cmds
   cd $($(package)_build_dir)/v8/v8 && \
-  $($(package)_build_dir)/v8/v8/tools/dev/v8gen.py x64.release -- v8_monolithic=true v8_use_external_startup_data=false
+  $($(package)_build_dir)/v8/v8/tools/dev/v8gen.py x64.release -- \
+    v8_monolithic=true \
+    v8_use_external_startup_data=false \
+    v8_enable_i18n_support=false \
+    use_custom_libcxx=false \
+    use_custom_libcxx_for_host=false
 endef
 
 define $(package)_build_cmds
@@ -27,11 +32,8 @@ define $(package)_build_cmds
 endef
 
 define $(package)_stage_cmds
-  mkdir -p $($(package)_staging_prefix_dir)/lib && \
+  mkdir -p $($(package)_staging_prefix_dir)/lib/v8 && \
   mkdir -p $($(package)_staging_prefix_dir)/include && \
   cp -R $($(package)_build_dir)/v8/v8/include/* $($(package)_staging_prefix_dir)/include && \
-  cp $($(package)_build_dir)/v8/v8/out.gn/x64.release/obj/libv8_libbase.a $($(package)_staging_prefix_dir)/lib && \
-  cp $($(package)_build_dir)/v8/v8/out.gn/x64.release/obj/libv8_libplatform.a $($(package)_staging_prefix_dir)/lib && \
-  cp $($(package)_build_dir)/v8/v8/out.gn/x64.release/obj/libv8_monolith.a $($(package)_staging_prefix_dir)/lib && \
-  cp $($(package)_build_dir)/v8/v8/out.gn/x64.release/icudtl.dat $($(package)_staging_prefix_dir)/lib
+  cp -R $($(package)_build_dir)/v8/v8/out.gn/x64.release/obj/* $($(package)_staging_prefix_dir)/lib/v8
 endef
