@@ -13,7 +13,7 @@
  * for both giantd and giant-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("GIANT Core");
+const std::string CLIENT_NAME("Giant Coin");
 
 /**
  * Client version number

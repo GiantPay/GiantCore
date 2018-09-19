@@ -28,15 +28,15 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) 
 {
     // set reference point, paddings
     int paddingLeft = 9;
-    int paddingTop = 526;
+    int paddingTop = 450;
     int titleVersionVSpace = 17;
     int titleCopyrightVSpace = 32;
 
     float fontFactor = 1.0;
 
     // define text to place
-    QString titleText = tr("GIANT Core");
-    QString versionText = tr("v1.0 PINK GECKO");
+    QString titleText = QStringLiteral("Giant Coin");
+    QString versionText = QString(tr("Version %1")).arg(QString::fromStdString(FormatFullVersion()));
     QString copyrightTextBtc = QChar(0xA9) + QString(" 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core developers"));
     QString copyrightTextDash = QChar(0xA9) + QString(" 2014-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Dash Core and PIVX developers"));
     QString copyrightTextALQO = QChar(0xA9) + QString(" 2017-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The ALQO developers"));
@@ -48,7 +48,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) 
     pixmap = networkStyle->getSplashImage();
 
     QPainter pixPaint(&pixmap);
-    pixPaint.setPen(QColor(100, 100, 100));
+    pixPaint.setPen(QColor(255, 255, 255));
 
     // check font size and drawing with
     pixPaint.setFont(QFont(font, 28 * fontFactor)); //28
@@ -115,7 +115,7 @@ static void InitMessage(SplashScreen* splash, const std::string& message)
         Qt::QueuedConnection,
         Q_ARG(QString, QString::fromStdString(message)),
         Q_ARG(int, Qt::AlignBottom | Qt::AlignHCenter),
-        Q_ARG(QColor, QColor(55, 55, 55)));
+        Q_ARG(QColor, QColor(255, 255, 255)));
 }
 
 static void ShowProgress(SplashScreen* splash, const std::string& title, int nProgress)
