@@ -1,62 +1,132 @@
-# Prerequisites
-*.d
+.gitignore
+*.sublime-project
+*.sublime-workspace
+todo.txt
+reset-files.bash
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+*.tar.gz
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
 *.exe
-*.out
-*.app
+src/giantd
 src/giant-cli
 src/giant-tx
-src/giantd
-src/qt/giant-qt
 src/test/test_giant
 src/qt/test/test_giant-qt
 
-# Logs
-*.log
+# autoreconf
+Makefile.in
+aclocal.m4
+autom4te.cache/
+build-aux/config.guess
+build-aux/config.sub
+build-aux/depcomp
+build-aux/install-sh
+build-aux/ltmain.sh
+build-aux/m4/libtool.m4
+build-aux/m4/lt~obsolete.m4
+build-aux/m4/ltoptions.m4
+build-aux/m4/ltsugar.m4
+build-aux/m4/ltversion.m4
+build-aux/missing
+build-aux/compile
+build-aux/test-driver
+config.log
+config.status
+configure
+confdefs.h
+conftest.cpp
+conftest.err
+libtool
+src/config/giant-config.h
+src/config/giant-config.h.in
+src/config/stamp-h1
+share/setup.nsi
+share/qt/Info.plist
+contrib/devtools/split-debug.sh
+depends/built
+depends/sources
+depends/x86_64-pc-linux-gnu
 
-# Installators
-*.nsi
+src/univalue/gen
 
-# IDE
-nbproject
+src/qt/*.moc
+src/qt/moc_*.cpp
+src/qt/forms/ui_*.h
 
-# Generated files
+src/qt/test/moc*.cpp
+
 .deps
 .dirstamp
 .libs
-autom4te.cache
-src/qt/forms/*.h
-src/qt/locale/*.qm
-src/qt/moc_*.cpp
-src/qt/test/moc_*.cpp
-*.moc
-src/config/*
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.pyc
+*.o
+*.o-*
+*.patch
+.giant
+*.a
+*.pb.cc
+*.pb.h
 
-# Test generated files
-src/test/data/*.h
+*.log
+*.trs
+*.dmg
+
+*.json.h
+*.raw.h
+
+#libtool object files
+*.lo
+*.la
+
+# Compilation and Qt preprocessor part
+*.qm
+Makefile
+giant-qt
+GIANT-Qt.app
+
+# Unit-tests
+Makefile.test
+giant-qt_test
+src/test/buildenv.py
+
+# Resources cpp
+qrc_*.cpp
+
+# Qt creator
+*.pro.user
+
+# Mac specific
+.DS_Store
+build
+
+#lcov
+*.gcno
+/*.info
+test_giant.coverage/
+total.coverage/
+coverage_percent.txt
+
+#build tests
+linux-coverage-build
+linux-build
+win32-build
+qa/pull-tester/run-bitcoind-for-test.sh
+qa/pull-tester/tests-config.sh
+qa/pull-tester/cache/*
+qa/pull-tester/test.*/*
+
+!src/leveldb*/Makefile
+
+.cproject
+.project
+/doc/doxygen/
+/nbproject/
+
+.idea
+CMakeLists.txt
+cmake-build-debug
