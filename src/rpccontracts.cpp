@@ -3,17 +3,18 @@
 #include "base58.h"
 #include "rpcserver.h"
 #include "net.h"
+#include "util.h"
 
-#include <boost/assign/list_of.hpp>
+#include "json/json_spirit_utils.h"
+#include "json/json_spirit_value.h"
 
 using namespace boost;
-using namespace boost::assign;
 using namespace json_spirit;
 using namespace std;
 
 Value ContractDeploy(const CBitcoinAddress& addressObject, string jscode, const double prioritet)
 {
-  return 0;
+    return 0;
 }
 
 Value ContractCall(bool readonly, const double& prioritet,const CBitcoinAddress& addressObject, const string& methodName, const Array& args)
@@ -65,7 +66,7 @@ Value contractdeploy(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-                "contractdeploy \"address\" \"jscode\" \"prioritet:\"\n"
+                "contractdeploy '{\"address\":\"address\",\"jscode\":\"code\",\"prioritet\":123}'\n"
                 "\nCreates transaction which deploit the smart contract and sends it to mempool\n"
                 "\nArguments:\n"
                 "       {\n"
@@ -78,8 +79,6 @@ Value contractdeploy(const Array& params, bool fHelp)
                 "       }\n"
                 "    ]\n"
                 );
-
-    RPCTypeCheck(params, list_of(obj_type));
 
     Object deployInfo = params[0].get_obj();
     string address;
@@ -119,7 +118,7 @@ Value contractcall(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "contractcall \"readonly\" \"prioritet:\" \"address\" \"methodName\" \"args\" \n"
+            "contractcall '{\"readonly\":true/false,\"prioritet\":123,\"address\":\"address\",\"methodName\":\"methodName\",\"args\":[\"args\"]}' \n"
             "\nArguments:\n"
             "       {\n"
             "         \"readonly\": true/false,- (bool: true|false) if readonly=true and in a call of a method goes\n"
@@ -136,8 +135,6 @@ Value contractcall(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractcall", "") + HelpExampleRpc("contractcall", ""));
 
-    RPCTypeCheck(params, list_of(obj_type));
-
     Object callInfo = params[0].get_obj();
     bool readonly;
     double prioritet = 1;
@@ -152,8 +149,6 @@ Value contractcall(const Array& params, bool fHelp)
             prioritet = c.value_.get_real();
         } else if (c.name_ == "address") {
             address = c.value_.get_str();
-        } else if (c.name_ == "prioritet") {
-            prioritet = c.value_.get_real();
         } else if (c.name_ == "methodName") {
             methodName = c.value_.get_str();
         } else if (c.name_ == "args") {
@@ -188,7 +183,7 @@ Value contractaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "contractaddress \"txid\"\n"
+            "contractaddress '{\"txid\":\"txid\"}'\n"
             "\nArguments:\n"
             "\ntxid - (string) transaction hash, line 64 symbols long\n"
             "\nReturns the smart contract address on a transaction hash\n"
@@ -197,9 +192,14 @@ Value contractaddress(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractaddress", "") + HelpExampleRpc("contractaddress", ""));
 
-    RPCTypeCheck(params, list_of(str_type));
+    Object addressInfo = params[0].get_obj();
+    string strHex;
 
-    string strHex = params[0].get_str();
+    BOOST_FOREACH(const Pair& d, addressInfo) {
+        if (d.name_ == "txid") {
+            strHex = d.value_.get_str();
+        }
+    };
 
     return ContractAddress(strHex);
 }
@@ -208,20 +208,18 @@ Value contractinfo(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "contractinfo \"address\" \"calculateProperties\" \"callReadonlyMethods\" \n"
+            "contractinfo '{\"address\":\"address\",\"calculateProperties\":true/false,\"callReadonlyMethods\":true/false}' \n"
             "\nArguments:\n"
             "       {\n"
-            "         \"address\": \"address\", - (string) public key through which indication the private key for the signature of transaction will be chosen\n"
-            "         \"calculateProperties\": true, - (bool) if true that are calculated values of all fields. If that false isn't specified\n"
-            "         \"callReadonlyMethods\": true - (bool) if true that are calculated values of all readonly of methods. If that false isn't specified\n"
+            "         \"address\":\"address\", - (string) public key through which indication the private key for the signature of transaction will be chosen\n"
+            "         \"calculateProperties\":true, - (bool) if true that are calculated values of all fields. If that false isn't specified\n"
+            "         \"callReadonlyMethods\":true - (bool) if true that are calculated values of all readonly of methods. If that false isn't specified\n"
             "       }\n"
             "\nReturns information on the smart contract on his address\n"
             "\nResult:\n"
             "\ndata on the smart contract\n"
             "\nExamples:\n" +
             HelpExampleCli("contractinfo", "") + HelpExampleRpc("contractinfo", ""));
-
-    RPCTypeCheck(params, list_of(obj_type));
 
     Object contInfo = params[0].get_obj();
     string address;
@@ -253,7 +251,7 @@ Value contractcode(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "contractcode \"address\"\n"
+            "contractcode '{\"address\":\"address\"}'\n"
             "\nArguments:\n"
             "\naddress - (string) the contract address, the line containing the valid address of the smart contract\n"
             "\nReturn a smart contract code to his address\n"
@@ -262,11 +260,22 @@ Value contractcode(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractcode", "") + HelpExampleRpc("contractcode", ""));
 
-    RPCTypeCheck(params, list_of(str_type));
+    Object codeInfo = params[0].get_obj();
+    string address;
 
-    CBitcoinAddress address(params[0].get_str());
-    if (bool isValid = !(address.IsValid()))
+    BOOST_FOREACH(const Pair& cc, codeInfo) {
+        if (cc.name_ == "address") {
+            address = cc.value_.get_str();
+        }
+    };
+
+    if (address.empty()) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    }
+    CBitcoinAddress addressObject(address);
+    if (!addressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    }
 
     return ContractCode(address);
 }
@@ -275,7 +284,7 @@ Value contractbalance(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "contractbalance \"address\"\n"
+            "contractbalance '{\"address\":\"address\"}'\n"
             "\nArguments:\n"
             "\naddress - (string) the contract address, the line containing the valid address of the smart contract\n"
             "\nReturn balance of the smart contract to his address\n"
@@ -284,11 +293,22 @@ Value contractbalance(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractbalance", "") + HelpExampleRpc("contractbalance", ""));
 
-    RPCTypeCheck(params, list_of(str_type));
+    Object balanceInfo = params[0].get_obj();
+    string address;
 
-    CBitcoinAddress address(params[0].get_str());
-    if (bool isValid = !(address.IsValid()))
+    BOOST_FOREACH(const Pair& cb, balanceInfo) {
+        if (cb.name_ == "address") {
+            address = cb.value_.get_str();
+        }
+    };
+
+    if (address.empty()) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    }
+    CBitcoinAddress addressObject(address);
+    if (!addressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    }
 
     return ContractBalance(address);
 }
@@ -297,7 +317,7 @@ Value contractstatus(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "contractstatus \"address\"\n"
+            "contractstatus '{\"address\":\"address\"}'\n"
             "\nArguments:\n"
             "\naddress - (string) the contract address, the line containing the valid address of the smart contract\n"
             "\nReturn a state it (is active, removed, suspended) the smart contract to his address\n"
@@ -306,11 +326,22 @@ Value contractstatus(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractstatus", "") + HelpExampleRpc("contractstatus", ""));
 
-    RPCTypeCheck(params, list_of(str_type));
+    Object statusInfo = params[0].get_obj();
+    string address;
 
-    CBitcoinAddress address(params[0].get_str());
-    if (bool isValid = !(address.IsValid()))
+    BOOST_FOREACH(const Pair& g, statusInfo) {
+        if (g.name_ == "address") {
+            address = g.value_.get_str();
+        }
+    };
+
+    if (address.empty()) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    }
+    CBitcoinAddress addressObject(address);
+    if (!addressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    }
 
     return ContractStatus(address);
 }
@@ -319,7 +350,7 @@ Value contractdeployestimate(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "contractdeployestimate \"code\" \"prioritet:\" \"loopCount\"\n"
+            "contractdeployestimate '{\"jscode\":\"code\",\"prioritet\":123,\"loopCount\":1}'\n"
             "\nArguments:\n"
             "       {\n"
             "         \"jscode\": \"jscode\", - (string) smart contract code\n"
@@ -331,8 +362,6 @@ Value contractdeployestimate(const Array& params, bool fHelp)
             "\nvalue of the commission and plan of implementation of the smart contract\n"
             "\nExamples:\n" +
             HelpExampleCli("contractdeployestimate", "") + HelpExampleRpc("contractdeployestimate", ""));
-
-    RPCTypeCheck(params, list_of(obj_type));
 
     Object deployestimateInfo = params[0].get_obj();
     string jscode;
@@ -368,7 +397,7 @@ Value contractcallestimate(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "contractcallestimate \"address\" \"methodName\" \"prioritet:\" \"loopCount\"\n"
+            "contractcallestimate '{\"address\":\"address\",\"methodName\":\"methodName\",\"prioritet\":123,\"loopCount\":1}'\n"
             "\nArguments:\n"
             "       {\n"
             "         \"address\": \"address\", - (string) the contract address, the line containing the valid address of the smart contract\n"
@@ -381,8 +410,6 @@ Value contractcallestimate(const Array& params, bool fHelp)
             "\nvalue of the commission and plan of performance of a method of the smart contract\n"
             "\nExamples:\n" +
             HelpExampleCli("contractcallestimate", "") + HelpExampleRpc("contractcallestimate", ""));
-
-    RPCTypeCheck(params, list_of(obj_type));
 
     Object callestimateInfo = params[0].get_obj();
     string address;
