@@ -33,95 +33,95 @@ Value CallContRPC(string args)
     }
 }
 
-string adv = "\"address\":\"GeKm65nBdbZs9MRKd858u3SrFR3yNGNV5q\"";      // valid giant address
-string adiv = "\"address\":\"1eKm65nBdbZs9MRKd858u3SrFR3yNGNV5q\"";     // invalid giant address
-string jscv = "\"jscode\":\"codejs1\"";                                 // valid js code
-string jsciv = "";                                                      // invalid parametr js code
-string prv = "\"prioritet\":1";                                         // valid parametr prioritet 1<
-string priv = "\"prioritet\":0.1";                                      // invalid parametr prioritet <1
-string mNv = "\"methodName\":\"methodName1\"";
-string mNiv = "";
-string argsv = "\"args\":[\"args\"]";
-string argsiv = "";
-string rov = "\"readonly\":true";
-string calProv = "\"calculateProperties\":true";
-string calRoMetv = "\"callReadonlyMethods\":true";
-string lCv = "\"loopCount\":1";                                         // valid parametr loopCount 1<
-string lCiv = "\"loopCount\":0.1";                                      // invalid parametr loopCount <1
+string sAddressValid = "\"address\":\"GeKm65nBdbZs9MRKd858u3SrFR3yNGNV5q\"";
+string sAddressInvalid = "\"address\":\"1eKm65nBdbZs9MRKd858u3SrFR3yNGNV5q\"";
+string sPrioritetValid = "\"prioritet\":1";
+string sPrioritetInvalid = "\"prioritet\":0.1";
+string sMethodNameValid = "\"methodName\":\"methodName1\"";
+string sMethodNameInvalid = "";
+string sArgsValid = "\"args\":[\"args\"]";
+string sArgsInvalid = "";
+string sReadOnlyValid = "\"readonly\":true";
+string sCalculateProperties = "\"calculateProperties\":true";
+string sCallReadOnlyMethodsValid = "\"callReadonlyMethods\":true";
+string sLoopCountValid = "\"loopCount\":1";
+string sLoopCountInvalid = "\"loopCount\":0.1";
+string sJsCode = "\"jscode\":\"Hello+,World!\"";
+string sTxidInvalid = "\"txid\":\"a3b807410df0b60fcb9736768df5823938b2f838694939ba45f3c0a1bff150ed1\"";
 
 BOOST_AUTO_TEST_SUITE(rpccontracts_tests)
 
 BOOST_AUTO_TEST_CASE(rpc_contractdeploy)
 {
     BOOST_CHECK_THROW(CallContRPC("contractdeploy"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractdeploy ") + "{" + adiv + "," + jscv + "," + prv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractdeploy ") + "{" + adv + "," + jsciv + "," + prv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractdeploy ") + "{" + adv + "," + jscv + "," + priv + "}"), runtime_error);
-    BOOST_CHECK(CallContRPC(string("contractdeploy ") + "{" + adv + "," + jscv + "," + prv + "}") == 0);
+    BOOST_CHECK_THROW(CallContRPC(string("contractdeploy ") + "{" + sAddressInvalid + "," + sJsCode + "," + sPrioritetValid + "}"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractdeploy ") + "{" + sAddressValid + "," + sJsCode + "," + sPrioritetInvalid + "}"), runtime_error);
+    BOOST_CHECK(CallContRPC(string("contractdeploy ") + "{" + sAddressValid + "," + sJsCode + "," + sPrioritetValid + "}") == 0);
 }
 
 BOOST_AUTO_TEST_CASE(rpc_contractcall)
 {
     BOOST_CHECK_THROW(CallContRPC("contractcall"), runtime_error);
-    BOOST_CHECK(CallContRPC(string("contractcall ") + "{" + rov + "," + prv + "," + adv + "," + mNv + "," + argsv + "}") == 0);
-    BOOST_CHECK_THROW(CallContRPC(string("contractcall ") + "{" + priv + "," + adv + "," + mNv + "," + argsv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractcall ") + "{" + rov + "," + prv + "," + adiv + "," + mNv + "," + argsv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractcall ") + "{" + rov + "," + prv + "," + adv + "," + mNiv + "," + argsv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractcall ") + "{" + rov + "," + prv + "," + adv + "," + mNv + "," + argsiv + "}"), runtime_error);
+    BOOST_CHECK(CallContRPC(string("contractcall ") + "{" + sReadOnlyValid + "," + sPrioritetValid + "," + sAddressValid + "," + sMethodNameValid + "," + sArgsValid + "}") == 0);
+    BOOST_CHECK_THROW(CallContRPC(string("contractcall ") + "{" + sPrioritetInvalid + "," + sAddressValid + "," + sMethodNameValid + "," + sArgsValid + "}"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractcall ") + "{" + sReadOnlyValid + "," + sPrioritetValid + "," + sAddressInvalid + "," + sMethodNameValid + "," + sArgsValid + "}"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractcall ") + "{" + sReadOnlyValid + "," + sPrioritetValid + "," + sAddressValid + "," + sMethodNameInvalid + "," + sArgsValid + "}"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractcall ") + "{" + sReadOnlyValid + "," + sPrioritetValid + "," + sAddressValid + "," + sMethodNameValid + "," + sArgsInvalid + "}"), runtime_error);
 }
 
 BOOST_AUTO_TEST_CASE(rpc_contractaddress)
 {
     BOOST_CHECK_THROW(CallContRPC("contractaddress"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractaddress ") + "{" + sTxidInvalid + "}"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractaddress ") + "{" + "}"), runtime_error);
 }
 
 BOOST_AUTO_TEST_CASE(rpc_contractinfo)
 {
     BOOST_CHECK_THROW(CallContRPC("contractinfo"), runtime_error);
-    BOOST_CHECK(CallContRPC(string("contractinfo ") + "{" + adv + "," + calProv + "," + calRoMetv + "}") == 0);
-    BOOST_CHECK(CallContRPC(string("contractinfo ") + "{" + adv + "}") == 0);
-    BOOST_CHECK_THROW(CallContRPC(string("contractinfo ") + "{" + adiv + "," + calProv + "," + calRoMetv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractinfo ") + "{" + adiv + "}"), runtime_error);
+    BOOST_CHECK(CallContRPC(string("contractinfo ") + "{" + sAddressValid + "," + sCalculateProperties + "," + sCallReadOnlyMethodsValid + "}") == 0);
+    BOOST_CHECK(CallContRPC(string("contractinfo ") + "{" + sAddressValid + "}") == 0);
+    BOOST_CHECK_THROW(CallContRPC(string("contractinfo ") + "{" + sAddressInvalid + "," + sCalculateProperties + "," + sCallReadOnlyMethodsValid + "}"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractinfo ") + "{" + sAddressInvalid + "}"), runtime_error);
 }
 
 BOOST_AUTO_TEST_CASE(rpc_contractcode)
 {
     BOOST_CHECK_THROW(CallContRPC("contractcode"), runtime_error);
-    BOOST_CHECK(CallContRPC(string("contractcode ") + "{" + adv + "}") == 0);
-    BOOST_CHECK_THROW(CallContRPC(string("contractcode ") + "{" + adiv + "}"), runtime_error);
+    BOOST_CHECK(CallContRPC(string("contractcode ") + "{" + sAddressValid + "}") == 0);
+    BOOST_CHECK_THROW(CallContRPC(string("contractcode ") + "{" + sAddressInvalid + "}"), runtime_error);
 }
 
 BOOST_AUTO_TEST_CASE(rpc_contractbalance)
 {
     BOOST_CHECK_THROW(CallContRPC("contractbalance"), runtime_error);
-    BOOST_CHECK(CallContRPC(string("contractbalance ") + "{" + adv + "}") == 0);
-    BOOST_CHECK_THROW(CallContRPC(string("contractbalance ") + "{" + adiv + "}"), runtime_error);
+    BOOST_CHECK(CallContRPC(string("contractbalance ") + "{" + sAddressValid + "}") == 0);
+    BOOST_CHECK_THROW(CallContRPC(string("contractbalance ") + "{" + sAddressInvalid + "}"), runtime_error);
 }
 
 BOOST_AUTO_TEST_CASE(rpc_contractstatus)
 {
     BOOST_CHECK_THROW(CallContRPC("contractstatus"), runtime_error);
-    BOOST_CHECK(CallContRPC(string("contractstatus ") + "{" + adv + "}") == 0);
-    BOOST_CHECK_THROW(CallContRPC(string("contractstatus ") + "{" + adiv + "}"), runtime_error);
+    BOOST_CHECK(CallContRPC(string("contractstatus ") + "{" + sAddressValid + "}") == 0);
+    BOOST_CHECK_THROW(CallContRPC(string("contractstatus ") + "{" + sAddressInvalid + "}"), runtime_error);
 }
 
 BOOST_AUTO_TEST_CASE(rpc_contractdeployestimate)
 {
     BOOST_CHECK_THROW(CallContRPC("contractdeployestimate"), runtime_error);
-    BOOST_CHECK(CallContRPC(string("contractdeployestimate ") + "{" + jscv + "," + prv + "," + lCv + "}") == 0);
-    BOOST_CHECK_THROW(CallContRPC(string("contractdeployestimate ") + "{" + jsciv + "," + prv + "," + lCv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractdeployestimate ") + "{" + jscv + "," + priv + "," + lCv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractdeployestimate ") + "{" + jscv + "," + prv + "," + lCiv + "}"), runtime_error);
+    BOOST_CHECK(CallContRPC(string("contractdeployestimate ") + "{" + sJsCode + "," + sPrioritetValid + "," + sLoopCountValid + "}") == 0);
+    BOOST_CHECK_THROW(CallContRPC(string("contractdeployestimate ") + "{" + sJsCode + "," + sPrioritetInvalid + "," + sLoopCountValid + "}"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractdeployestimate ") + "{" + sJsCode + "," + sPrioritetValid + "," + sLoopCountInvalid + "}"), runtime_error);
 }
 
 BOOST_AUTO_TEST_CASE(rpc_contractcallestimate)
 {
     BOOST_CHECK_THROW(CallContRPC("contractcallestimate"), runtime_error);
-    BOOST_CHECK(CallContRPC(string("contractcallestimate ") + "{" + adv + "," + mNv + "," + prv + "," + lCv + "}") == 0);
-    BOOST_CHECK_THROW(CallContRPC(string("contractcallestimate ") + "{" + adiv + "," + mNv + "," + prv + "," + lCv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractcallestimate ") + "{" + adv + "," + mNiv + "," + prv + "," + lCv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractcallestimate ") + "{" + adv + "," + mNv + "," + priv + "," + lCv + "}"), runtime_error);
-    BOOST_CHECK_THROW(CallContRPC(string("contractcallestimate ") + "{" + adv + "," + mNv + "," + prv + "," + lCiv + "}"), runtime_error);
+    BOOST_CHECK(CallContRPC(string("contractcallestimate ") + "{" + sAddressValid + "," + sMethodNameValid + "," + sPrioritetValid + "," + sLoopCountValid + "}") == 0);
+    BOOST_CHECK_THROW(CallContRPC(string("contractcallestimate ") + "{" + sAddressInvalid + "," + sMethodNameValid + "," + sPrioritetValid + "," + sLoopCountValid + "}"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractcallestimate ") + "{" + sAddressValid + "," + sMethodNameInvalid + "," + sPrioritetValid + "," + sLoopCountValid + "}"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractcallestimate ") + "{" + sAddressValid + "," + sMethodNameValid + "," + sPrioritetInvalid + "," + sLoopCountValid + "}"), runtime_error);
+    BOOST_CHECK_THROW(CallContRPC(string("contractcallestimate ") + "{" + sAddressValid + "," + sMethodNameValid + "," + sPrioritetValid + "," + sLoopCountInvalid + "}"), runtime_error);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

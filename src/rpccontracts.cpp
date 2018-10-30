@@ -95,20 +95,20 @@ Value contractdeploy(const Array& params, bool fHelp)
         }
     };
 
-    if (address.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
-    }
-    CBitcoinAddress addressObject(address);
-    if (!addressObject.IsValid()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
-    }
-
     if (jscode.empty()) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid JScode");
     }
 
     if (prioritet < 1) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parametr prioritet");
+    }
+
+    if (address.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    }
+    CBitcoinAddress addressObject(address);
+    if (!addressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
     }
 
     return ContractDeploy(addressObject, jscode, prioritet);
@@ -160,20 +160,20 @@ Value contractcall(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parametr prioritet");
     }
 
-    if (address.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
-    }
-    CBitcoinAddress addressObject(address);
-    if (!addressObject.IsValid()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
-    }
-
     if (methodName.empty()) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong methodName parametr");
     }
 
     if (args.empty()) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong args parametr");
+    }
+
+    if (address.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    }
+    CBitcoinAddress addressObject(address);
+    if (!addressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
     }
 
     return ContractCall(readonly, prioritet, addressObject, methodName, args);
@@ -200,6 +200,10 @@ Value contractaddress(const Array& params, bool fHelp)
             strHex = d.value_.get_str();
         }
     };
+
+    if (strHex.size() != 64) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid txid transaction");
+    }
 
     return ContractAddress(strHex);
 }
@@ -429,14 +433,6 @@ Value contractcallestimate(const Array& params, bool fHelp)
         }
     };
 
-    if (address.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
-    }
-    CBitcoinAddress addressObject(address);
-    if (!addressObject.IsValid()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
-    }
-
     if (methodName.empty()) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong methodName parametr");
     }
@@ -447,6 +443,14 @@ Value contractcallestimate(const Array& params, bool fHelp)
 
     if (loopCount < 1) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parametr loopCount");
+    }
+
+    if (address.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    }
+    CBitcoinAddress addressObject(address);
+    if (!addressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
     }
 
     return ContractCallEstimate(addressObject, methodName, prioritet, loopCount);
