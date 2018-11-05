@@ -12,47 +12,47 @@ using namespace boost;
 using namespace json_spirit;
 using namespace std;
 
-Value ContractDeploy(const CBitcoinAddress& addressObject, string jscode, const double prioritet)
+Value ContractDeploy(const CBitcoinAddress& oAddressObject, const string &sJsCode, const double dPrioritet)
 {
     return 0;
 }
 
-Value ContractCall(bool readonly, const double& prioritet,const CBitcoinAddress& addressObject, const string& methodName, const Array& args)
+Value ContractCall(bool bReadOnly, const double dPrioritet,const CBitcoinAddress& oAddressObject, const string& sMethodName, const Array& aArgs)
 {
   return 0;
 }
 
-Value ContractAddress(const string& strHex)
+Value ContractAddress(const string& sStrHex)
 {
     return 0;
 }
 
-Value ContractInfo(const CBitcoinAddress& addressObject, bool calculateProperties, bool callReadonlyMethods)
+Value ContractInfo(const CBitcoinAddress& oAddressObject, bool bCalculateProperties, bool bCallReadonlyMethods)
 {
     return 0;
 }
 
-Value ContractCode(const CBitcoinAddress& address)
+Value ContractCode(const CBitcoinAddress& oAddressObject)
 {
     return 0;
 }
 
-Value ContractBalance(const CBitcoinAddress& address)
+Value ContractBalance(const CBitcoinAddress& oAddressObject)
 {
     return 0;
 }
 
-Value ContractStatus(const CBitcoinAddress& address)
+Value ContractStatus(const CBitcoinAddress& oAddressObject)
 {
     return 0;
 }
 
-Value ContractDeployEstimate(string jscode, const double& prioritet, uint64_t loopCount)
+Value ContractDeployEstimate(const string &sJsCode, const double dPrioritet, uint64_t uiLoopCount)
 {
     return 0;
 }
 
-Value ContractCallEstimate(const CBitcoinAddress& addressObject, const string& methodName, const double& prioritet, uint64_t loopCount)
+Value ContractCallEstimate(const CBitcoinAddress& oAddressObject, const string& sMethodName, const double dPrioritet, uint64_t uiLoopCount)
 {
     return 0;
 }
@@ -80,38 +80,38 @@ Value contractdeploy(const Array& params, bool fHelp)
                 "    ]\n"
                 );
 
-    Object deployInfo = params[0].get_obj();
-    string address;
-    string jscode;
-    double prioritet = 1;
+    Object oDeployInfo = params[0].get_obj();
+    string sAddress;
+    string sJsCode;
+    double dPrioritet = 1;
 
-    BOOST_FOREACH(const Pair& s, deployInfo) {
+    BOOST_FOREACH(const Pair& s, oDeployInfo) {
         if (s.name_ == "address") {
-            address = s.value_.get_str();
+            sAddress = s.value_.get_str();
         } else if (s.name_ == "jscode") {
-            jscode = s.value_.get_str();
+            sJsCode = s.value_.get_str();
         } else if (s.name_ == "prioritet") {
-            prioritet = s.value_.get_real();
+            dPrioritet = s.value_.get_real();
         }
     };
 
-    if (jscode.empty()) {
+    if (sJsCode.empty()) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid JScode");
     }
 
-    if (prioritet < 1) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parametr prioritet");
+    if (dPrioritet < 1) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong prioritet");
     }
 
-    if (address.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    if (sAddress.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
-    CBitcoinAddress addressObject(address);
-    if (!addressObject.IsValid()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    CBitcoinAddress oAddressObject(sAddress);
+    if (!oAddressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
 
-    return ContractDeploy(addressObject, jscode, prioritet);
+    return ContractDeploy(oAddressObject, sJsCode, dPrioritet);
 }
 
 Value contractcall(const Array& params, bool fHelp)
@@ -135,48 +135,48 @@ Value contractcall(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractcall", "") + HelpExampleRpc("contractcall", ""));
 
-    Object callInfo = params[0].get_obj();
-    bool readonly;
-    double prioritet = 1;
-    string address;
-    string methodName;
-    Array args;
+    Object oCallInfo = params[0].get_obj();
+    bool bReadOnly;
+    double dPrioritet = 1;
+    string sAddress;
+    string sMethodName;
+    Array aArgs;
 
-    BOOST_FOREACH(const Pair& c, callInfo) {
+    BOOST_FOREACH(const Pair& c, oCallInfo) {
         if (c.name_ == "readonly") {
-            readonly = c.value_.get_bool();
+            bReadOnly = c.value_.get_bool();
         } else if (c.name_ == "prioritet") {
-            prioritet = c.value_.get_real();
+            dPrioritet = c.value_.get_real();
         } else if (c.name_ == "address") {
-            address = c.value_.get_str();
+            sAddress = c.value_.get_str();
         } else if (c.name_ == "methodName") {
-            methodName = c.value_.get_str();
+            sMethodName = c.value_.get_str();
         } else if (c.name_ == "args") {
-            args = c.value_.get_array();
+            aArgs = c.value_.get_array();
         }
     };
 
-    if (prioritet < 1) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parametr prioritet");
+    if (dPrioritet < 1) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong prioritet");
     }
 
-    if (methodName.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong methodName parametr");
+    if (sMethodName.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong methodName parameter");
     }
 
-    if (args.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong args parametr");
+    if (aArgs.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong args parameter");
     }
 
-    if (address.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    if (sAddress.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
-    CBitcoinAddress addressObject(address);
-    if (!addressObject.IsValid()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    CBitcoinAddress oAddressObject(sAddress);
+    if (!oAddressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
 
-    return ContractCall(readonly, prioritet, addressObject, methodName, args);
+    return ContractCall(bReadOnly, dPrioritet, oAddressObject, sMethodName, aArgs);
 }
 
 Value contractaddress(const Array& params, bool fHelp)
@@ -192,20 +192,20 @@ Value contractaddress(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractaddress", "") + HelpExampleRpc("contractaddress", ""));
 
-    Object addressInfo = params[0].get_obj();
-    string strHex;
+    Object oAddressInfo = params[0].get_obj();
+    string sStrHex;
 
-    BOOST_FOREACH(const Pair& d, addressInfo) {
+    BOOST_FOREACH(const Pair& d, oAddressInfo) {
         if (d.name_ == "txid") {
-            strHex = d.value_.get_str();
+            sStrHex = d.value_.get_str();
         }
     };
 
-    if (strHex.size() != 64) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid txid transaction");
+    if (sStrHex.size() != 64) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid txid");
     }
 
-    return ContractAddress(strHex);
+    return ContractAddress(sStrHex);
 }
 
 Value contractinfo(const Array& params, bool fHelp)
@@ -225,30 +225,30 @@ Value contractinfo(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractinfo", "") + HelpExampleRpc("contractinfo", ""));
 
-    Object contInfo = params[0].get_obj();
-    string address;
-    bool calculateProperties = false;
-    bool callReadonlyMethods = false;
+    Object oContInfo = params[0].get_obj();
+    string sAddress;
+    bool bCalculateProperties = false;
+    bool bCallReadonlyMethods = false;
 
-    BOOST_FOREACH(const Pair& a, contInfo) {
+    BOOST_FOREACH(const Pair& a, oContInfo) {
         if (a.name_ == "address") {
-            address = a.value_.get_str();
+            sAddress = a.value_.get_str();
         } else if (a.name_ == "calculateProperties") {
-            calculateProperties = a.value_.get_bool();
+            bCalculateProperties = a.value_.get_bool();
         } else if (a.name_ == "callReadonlyMethods") {
-            callReadonlyMethods = a.value_.get_bool();
+            bCallReadonlyMethods = a.value_.get_bool();
         }
     };
 
-    if (address.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    if (sAddress.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
-    CBitcoinAddress addressObject(address);
-    if (!addressObject.IsValid()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    CBitcoinAddress oAddressObject(sAddress);
+    if (!oAddressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
 
-    return ContractInfo( addressObject, calculateProperties, callReadonlyMethods);
+    return ContractInfo( oAddressObject, bCalculateProperties, bCallReadonlyMethods);
 }
 
 Value contractcode(const Array& params, bool fHelp)
@@ -264,24 +264,24 @@ Value contractcode(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractcode", "") + HelpExampleRpc("contractcode", ""));
 
-    Object codeInfo = params[0].get_obj();
-    string address;
+    Object oCodeInfo = params[0].get_obj();
+    string sAddress;
 
-    BOOST_FOREACH(const Pair& cc, codeInfo) {
+    BOOST_FOREACH(const Pair& cc, oCodeInfo) {
         if (cc.name_ == "address") {
-            address = cc.value_.get_str();
+            sAddress = cc.value_.get_str();
         }
     };
 
-    if (address.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    if (sAddress.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
-    CBitcoinAddress addressObject(address);
-    if (!addressObject.IsValid()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    CBitcoinAddress oAddressObject(sAddress);
+    if (!oAddressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
 
-    return ContractCode(address);
+    return ContractCode(oAddressObject);
 }
 
 Value contractbalance(const Array& params, bool fHelp)
@@ -297,24 +297,24 @@ Value contractbalance(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractbalance", "") + HelpExampleRpc("contractbalance", ""));
 
-    Object balanceInfo = params[0].get_obj();
-    string address;
+    Object oBalanceInfo = params[0].get_obj();
+    string sAddress;
 
-    BOOST_FOREACH(const Pair& cb, balanceInfo) {
+    BOOST_FOREACH(const Pair& cb, oBalanceInfo) {
         if (cb.name_ == "address") {
-            address = cb.value_.get_str();
+            sAddress = cb.value_.get_str();
         }
     };
 
-    if (address.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    if (sAddress.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
-    CBitcoinAddress addressObject(address);
-    if (!addressObject.IsValid()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    CBitcoinAddress oAddressObject(sAddress);
+    if (!oAddressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
 
-    return ContractBalance(address);
+    return ContractBalance(oAddressObject);
 }
 
 Value contractstatus(const Array& params, bool fHelp)
@@ -330,24 +330,24 @@ Value contractstatus(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractstatus", "") + HelpExampleRpc("contractstatus", ""));
 
-    Object statusInfo = params[0].get_obj();
-    string address;
+    Object oStatusInfo = params[0].get_obj();
+    string sAddress;
 
-    BOOST_FOREACH(const Pair& g, statusInfo) {
+    BOOST_FOREACH(const Pair& g, oStatusInfo) {
         if (g.name_ == "address") {
-            address = g.value_.get_str();
+            sAddress = g.value_.get_str();
         }
     };
 
-    if (address.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    if (sAddress.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
-    CBitcoinAddress addressObject(address);
-    if (!addressObject.IsValid()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    CBitcoinAddress oAddressObject(sAddress);
+    if (!oAddressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
 
-    return ContractStatus(address);
+    return ContractStatus(oAddressObject);
 }
 
 Value contractdeployestimate(const Array& params, bool fHelp)
@@ -367,34 +367,34 @@ Value contractdeployestimate(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractdeployestimate", "") + HelpExampleRpc("contractdeployestimate", ""));
 
-    Object deployestimateInfo = params[0].get_obj();
-    string jscode;
-    double prioritet = 1;
-    uint64_t loopCount =1;
+    Object oDeployEstimateInfo = params[0].get_obj();
+    string sJsCode;
+    double dPrioritet = 1;
+    uint64_t uiLoopCount =1;
 
-    BOOST_FOREACH(const Pair& b, deployestimateInfo) {
+    BOOST_FOREACH(const Pair& b, oDeployEstimateInfo) {
         if (b.name_ == "jscode") {
-            jscode = b.value_.get_str();
+            sJsCode = b.value_.get_str();
         } else if (b.name_ == "prioritet") {
-            prioritet = b.value_.get_real();
+            dPrioritet = b.value_.get_real();
         } else if (b.name_ == "loopCount") {
-            loopCount = b.value_.get_uint64();
+            uiLoopCount = b.value_.get_uint64();
         }
     };
 
-    if (jscode.empty()) {
+    if (sJsCode.empty()) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid JScode");
     }
 
-    if (prioritet < 1) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parametr prioritet");
+    if (dPrioritet < 1) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong prioritet");
     }
 
-    if (loopCount < 1) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parametr loopCount");
+    if (uiLoopCount < 1) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parameter LoopCount");
     }
 
-    return ContractDeployEstimate(jscode, prioritet, loopCount);
+    return ContractDeployEstimate(sJsCode, dPrioritet, uiLoopCount);
 }
 
 Value contractcallestimate(const Array& params, bool fHelp)
@@ -415,45 +415,45 @@ Value contractcallestimate(const Array& params, bool fHelp)
             "\nExamples:\n" +
             HelpExampleCli("contractcallestimate", "") + HelpExampleRpc("contractcallestimate", ""));
 
-    Object callestimateInfo = params[0].get_obj();
-    string address;
-    string methodName;
-    double prioritet = 1;
-    uint64_t loopCount =1;
+    Object oCallEstimateInfo = params[0].get_obj();
+    string sAddress;
+    string sMethodName;
+    double dPrioritet = 1;
+    uint64_t uiLoopCount =1;
 
-    BOOST_FOREACH(const Pair& d, callestimateInfo) {
+    BOOST_FOREACH(const Pair& d, oCallEstimateInfo) {
         if (d.name_ == "address") {
-            address = d.value_.get_str();
+            sAddress = d.value_.get_str();
         } else if (d.name_ == "methodName") {
-            methodName = d.value_.get_str();
+            sMethodName = d.value_.get_str();
         } else if (d.name_ == "prioritet") {
-            prioritet = d.value_.get_real();
+            dPrioritet = d.value_.get_real();
         } else if (d.name_ == "loopCount") {
-            loopCount = d.value_.get_uint64();
+            uiLoopCount = d.value_.get_uint64();
         }
     };
 
-    if (methodName.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong methodName parametr");
+    if (sMethodName.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong MethodName parameter");
     }
 
-    if (prioritet < 1) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parametr prioritet");
+    if (dPrioritet < 1) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong prioritet");
     }
 
-    if (loopCount < 1) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parametr loopCount");
+    if (uiLoopCount < 1) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Wrong parameter LoopCount");
     }
 
-    if (address.empty()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    if (sAddress.empty()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
-    CBitcoinAddress addressObject(address);
-    if (!addressObject.IsValid()) {
-        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address transaction");
+    CBitcoinAddress oAddressObject(sAddress);
+    if (!oAddressObject.IsValid()) {
+        throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Invalid address");
     }
 
-    return ContractCallEstimate(addressObject, methodName, prioritet, loopCount);
+    return ContractCallEstimate(oAddressObject, sMethodName, dPrioritet, uiLoopCount);
 }
 
 Value contractcount(const Array& params, bool fHelp)
