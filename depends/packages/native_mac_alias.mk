@@ -7,7 +7,7 @@ $(package)_install_libdir=$(build_prefix)/lib/python/dist-packages
 $(package)_patches=python3.patch
 
 define $(package)_preprocess_cmds
-  patch -p1 < $($(package)_patch_dir)/python3.patch
+    patch -p1 < $($(package)_patch_dir)/python3.patch
 endef
 
 define $(package)_build_cmds
