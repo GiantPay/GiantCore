@@ -101,6 +101,7 @@ $(package)_config_opts_arm_linux  = -platform linux-g++ -xplatform $(host)
 $(package)_config_opts_aarch64_linux = -platform linux-g++ -xplatform $(host)
 $(package)_config_opts_i686_linux  = -xplatform linux-g++-32
 $(package)_config_opts_mingw32  = -no-opengl -xplatform win32-g++ -device-option CROSS_COMPILE="$(host)-"
+$(package)_config_opts_darwin  = -xplatform macx-clang-linux-g++ -std=c++0x -device-option CROSS_COMPILE="$(host)-"
 $(package)_build_env  = QT_RCC_TEST=1
 endef
 
