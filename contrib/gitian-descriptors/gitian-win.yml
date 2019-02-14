@@ -6,7 +6,7 @@ suites:
 architectures:
 - "amd64"
 docker_image_digests:
-- "e547ecaba7d078800c358082088e6cc710c3affd1b975601792ec701c80cdd39"
+- "xenial"
 packages: 
 - "curl"
 - "g++"
