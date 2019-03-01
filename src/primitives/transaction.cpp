@@ -86,7 +86,7 @@ std::string CTxOut::ToString() const
 }
 
 CMutableTransaction::CMutableTransaction() : nVersion(CTransaction::CURRENT_VERSION), nLockTime(0) {}
-CMutableTransaction::CMutableTransaction(const CTransaction& tx) : nVersion(tx.nVersion), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime) {}
+CMutableTransaction::CMutableTransaction(const CTransaction& tx) : nVersion(tx.nVersion), nType(tx.nType), vin(tx.vin), vout(tx.vout), data(tx.data), nPriority(tx.nPriority), nLockTime(tx.nLockTime) {}
 
 uint256 CMutableTransaction::GetHash() const
 {
@@ -96,11 +96,21 @@ uint256 CMutableTransaction::GetHash() const
 std::string CMutableTransaction::ToString() const
 {
     std::string str;
-    str += strprintf("CMutableTransaction(ver=%d, vin.size=%u, vout.size=%u, nLockTime=%u)\n",
-        nVersion,
-        vin.size(),
-        vout.size(),
-        nLockTime);
+    if (nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
+        str += strprintf("CMutableTransaction(ver=%d, type=%d, vin.size=%u, vout.size=%u, data.size=%u, priority=%f, nLockTime=%u)\n",
+            nVersion,
+            nType,
+            vin.size(),
+            vout.size(),
+            data.size(),
+            nLockTime);
+    } else {
+        str += strprintf("CMutableTransaction(ver=%d, vin.size=%u, vout.size=%u, nLockTime=%u)\n",
+            nVersion,
+            vin.size(),
+            vout.size(),
+            nLockTime);
+    }
     for (unsigned int i = 0; i < vin.size(); i++)
         str += "    " + vin[i].ToString() + "\n";
     for (unsigned int i = 0; i < vout.size(); i++)
@@ -113,9 +123,9 @@ void CTransaction::UpdateHash() const
     *const_cast<uint256*>(&hash) = SerializeHash(*this);
 }
 
-CTransaction::CTransaction() : hash(), nVersion(CTransaction::CURRENT_VERSION), vin(), vout(), nLockTime(0) { }
+CTransaction::CTransaction() : hash(), nVersion(CTransaction::CURRENT_VERSION), vin(), vout(), nLockTime(0), nType(CTransaction::TRANSFER_TYPE), data(), nPriority(0) {}
 
-CTransaction::CTransaction(const CMutableTransaction &tx) : nVersion(tx.nVersion), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime) {
+CTransaction::CTransaction(const CMutableTransaction &tx) : nVersion(tx.nVersion), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime), nType(tx.nType), data(tx.data), nPriority(tx.nPriority) {
     UpdateHash();
 }
 
@@ -125,6 +135,13 @@ CTransaction& CTransaction::operator=(const CTransaction &tx) {
     *const_cast<std::vector<CTxOut>*>(&vout) = tx.vout;
     *const_cast<unsigned int*>(&nLockTime) = tx.nLockTime;
     *const_cast<uint256*>(&hash) = tx.hash;
+    if (tx.nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
+        *const_cast<unsigned int*>(&nType) = tx.nType;
+        if (tx.nType > CTransaction::TRANSFER_TYPE) {
+            *const_cast<std::string*>(&data) = tx.data;
+            *const_cast<float*>(&nPriority) = tx.nPriority;
+        }
+    }
     return *this;
 }
 
@@ -174,12 +191,23 @@ unsigned int CTransaction::CalculateModifiedSize(unsigned int nTxSize) const
 std::string CTransaction::ToString() const
 {
     std::string str;
-    str += strprintf("CTransaction(hash=%s, ver=%d, vin.size=%u, vout.size=%u, nLockTime=%u)\n",
-        GetHash().ToString().substr(0,10),
-        nVersion,
-        vin.size(),
-        vout.size(),
-        nLockTime);
+    if (nVersion > CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
+        str += strprintf("CTransaction(ver=%d, type=%d, vin.size=%u, vout.size=%u, data.size=%u, priority=%f, nLockTime=%u)\n",
+            GetHash().ToString().substr(0,10),
+            nVersion,
+            nType,
+            vin.size(),
+            vout.size(),
+            data.size(),
+            nLockTime);
+    } else {
+        str += strprintf("CTransaction(hash=%s, ver=%d, vin.size=%u, vout.size=%u, nLockTime=%u)\n",
+            GetHash().ToString().substr(0,10),
+            nVersion,
+            vin.size(),
+            vout.size(),
+            nLockTime);
+    }
     for (unsigned int i = 0; i < vin.size(); i++)
         str += "    " + vin[i].ToString() + "\n";
     for (unsigned int i = 0; i < vout.size(); i++)

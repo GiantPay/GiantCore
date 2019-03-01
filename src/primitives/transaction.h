@@ -185,6 +185,12 @@ public:
 
 struct CMutableTransaction;
 
+enum TransactionType {
+    TRANSFER,
+    DEPLOY_CONTRACT,
+    CALL_CONTRACT
+};
+
 /** The basic transaction that is broadcasted on the network and contained in
  * blocks.  A transaction can contain multiple inputs and outputs.
  */
@@ -196,7 +202,15 @@ private:
     void UpdateHash() const;
 
 public:
-    static const int32_t CURRENT_VERSION=1;
+    static const int32_t NOT_SUPPORTING_CONTRACT_VERSION = 1;
+    static const int32_t CURRENT_VERSION = 1;
+    static const int32_t SUPPORT_OF_CONTRACT_MIN_VERSION = 2;
+    // maximum size of field data
+    static const uint32_t MAX_DATA_SIZE = 512 * 1024;
+    // transaction types: Transfer, ContractDeploy, ContractCall
+    static const uint32_t TRANSFER_TYPE = 0;
+    static const uint32_t CONTRACT_DEPLOY_TYPE = 1;
+    static const uint32_t CONTRACT_CALL_TYPE = 2;
 
     // The local variables are made const to prevent unintended modification
     // without updating the cached hash value. However, CTransaction is not
@@ -208,6 +222,9 @@ public:
     std::vector<CTxOut> vout;
     const uint32_t nLockTime;
     //const unsigned int nTime;
+    const uint32_t nType;
+    const std::string data;
+    const float nPriority;
 
     /** Construct a CTransaction that qualifies as IsNull() */
     CTransaction();
@@ -226,6 +243,13 @@ public:
         READWRITE(*const_cast<std::vector<CTxIn>*>(&vin));
         READWRITE(*const_cast<std::vector<CTxOut>*>(&vout));
         READWRITE(*const_cast<uint32_t*>(&nLockTime));
+        if (nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
+            READWRITE(*const_cast<uint32_t*>(&this->nType));
+            if (this->nType > TRANSFER_TYPE) {
+                READWRITE(LIMITED_STRING(data, MAX_DATA_SIZE));
+                READWRITE(*const_cast<float*> (&nPriority));
+            }
+        }
         if (ser_action.ForRead())
             UpdateHash();
     }
@@ -282,6 +306,9 @@ struct CMutableTransaction
     std::vector<CTxIn> vin;
     std::vector<CTxOut> vout;
     uint32_t nLockTime;
+    uint32_t nType;
+    std::string data;
+    float nPriority;
 
     CMutableTransaction();
     CMutableTransaction(const CTransaction& tx);
@@ -295,6 +322,14 @@ struct CMutableTransaction
         READWRITE(vin);
         READWRITE(vout);
         READWRITE(nLockTime);
+
+        if (nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
+            READWRITE(this->nType);
+            if (this->nType > CTransaction::TRANSFER_TYPE) {
+                READWRITE(data);
+                READWRITE(nPriority);
+            }
+        }
     }
 
     /** Compute the hash of this CMutableTransaction. This is computed on the
