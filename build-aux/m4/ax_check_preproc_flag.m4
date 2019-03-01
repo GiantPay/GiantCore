@@ -4,7 +4,7 @@
 #
 # SYNOPSIS
 #
-#   AX_CHECK_PREPROC_FLAG(FLAG, [ACTION-SUCCESS], [ACTION-FAILURE], [EXTRA-FLAGS])
+#   AX_CHECK_PREPROC_FLAG(FLAG, [ACTION-SUCCESS], [ACTION-FAILURE], [EXTRA-FLAGS], [INPUT])
 #
 # DESCRIPTION
 #
@@ -18,6 +18,8 @@
 #   flags when the check is done.  The check is thus made with the flags:
 #   "CPPFLAGS EXTRA-FLAGS FLAG".  This can for example be used to force the
 #   preprocessor to issue an error when a bad flag is given.
+#
+#   INPUT gives an alternative input source to AC_PREPROC_IFELSE.
 #
 #   NOTE: Implementation based on AX_CFLAGS_GCC_OPTION. Please keep this
 #   macro in sync with AX_CHECK_{COMPILE,LINK}_FLAG.
@@ -53,7 +55,7 @@
 #   modified version of the Autoconf Macro, you may extend this special
 #   exception to the GPL to apply to your modified version as well.
 
-#serial 2
+#serial 4
 
 AC_DEFUN([AX_CHECK_PREPROC_FLAG],
 [AC_PREREQ(2.64)dnl for _AC_LANG_PREFIX and AS_VAR_IF
