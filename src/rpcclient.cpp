@@ -106,6 +106,15 @@ static const CRPCConvertParam vRPCConvertParams[] =
         {"setstakesplitthreshold", 0},
         {"autocombinerewards", 0},
         {"autocombinerewards", 1},
+        {"contractdeploy", 0},
+        {"contractcall", 0},
+        {"contractaddress", 0},
+        {"contractinfo", 0},
+        {"contractcode", 0},
+        {"contractbalance", 0},
+        {"contractstatus", 0},
+        {"contractdeployestimate", 0},
+        {"contractcallestimate", 0},
 		{"autocombinerewards", 2}};
 
 class CRPCConvertTable

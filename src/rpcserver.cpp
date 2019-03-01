@@ -276,6 +276,18 @@ static const CRPCCommand vRPCCommands[] =
         {"mining", "submitblock", &submitblock, true, true, false},
         {"mining", "reservebalance", &reservebalance, true, true, false},
 
+        /* Giant Contracts*/
+        {"rpccontracts", "contractdeploy", &contractdeploy, true, true, false},
+        {"rpccontracts", "contractcall", &contractcall, true, true, false},
+        {"rpccontracts", "contractaddress", &contractaddress, true, true, false},
+        {"rpccontracts", "contractinfo", &contractinfo, true, true, false},
+        {"rpccontracts", "contractcode", &contractcode, true, true, false},
+        {"rpccontracts", "contractbalance", &contractbalance, true, true, false},
+        {"rpccontracts", "contractstatus", &contractstatus, true, true, false},
+        {"rpccontracts", "contractdeployestimate", &contractdeployestimate, true, true, false},
+        {"rpccontracts", "contractcallestimate", &contractcallestimate, true, true, false},
+        {"rpccontracts", "contractcount", &contractcount, true, true, false},
+
 #ifdef ENABLE_WALLET
         /* Coin generation */
         {"generating", "getgenerate", &getgenerate, true, false, false},

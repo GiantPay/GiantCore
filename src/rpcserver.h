@@ -223,6 +223,17 @@ extern json_spirit::Value decodescript(const json_spirit::Array& params, bool fH
 extern json_spirit::Value signrawtransaction(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value sendrawtransaction(const json_spirit::Array& params, bool fHelp);
 
+extern json_spirit::Value contractdeploy(const json_spirit::Array& params, bool fHelp); // in rpccontracts.cpp
+extern json_spirit::Value contractcall(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value contractaddress(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value contractinfo(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value contractcode(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value contractbalance(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value contractstatus(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value contractdeployestimate(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value contractcallestimate(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value contractcount(const json_spirit::Array& params, bool fHelp);
+
 extern json_spirit::Value getblockcount(const json_spirit::Array& params, bool fHelp); // in rpcblockchain.cpp
 extern json_spirit::Value getbestblockhash(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value getdifficulty(const json_spirit::Array& params, bool fHelp);
