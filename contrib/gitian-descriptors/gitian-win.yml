@@ -2,9 +2,11 @@
 name: "giant-win-1.0"
 enable_cache: true
 suites:
-- "trusty"
+- "xenial"
 architectures:
 - "amd64"
+docker_image_digests:
+- "xenial"
 packages: 
 - "curl"
 - "g++"

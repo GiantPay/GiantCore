@@ -2,9 +2,11 @@
 name: "giant-osx-1.0"
 enable_cache: true
 suites:
-- "trusty"
+- "xenial"
 architectures:
 - "amd64"
+docker_image_digests:
+- "xenial"
 packages: 
 - "ca-certificates"
 - "curl"
@@ -27,6 +29,7 @@ packages:
 - "python-dev"
 - "python-setuptools"
 - "fonts-tuffy"
+- "clang"
 remotes:
 - "url": "https://github.com/GiantPay/GiantCore.git"
   "dir": "giant"
@@ -34,12 +37,13 @@ files:
 - "MacOSX10.11.sdk.tar.gz"
 script: |
   WRAP_DIR=$HOME/wrapped
-  HOSTS="x86_64-apple-darwin11"
+  HOSTS="x86_64-apple-darwin14"
   CONFIGFLAGS="--enable-reduce-exports --disable-bench --disable-gui-tests GENISOIMAGE=$WRAP_DIR/genisoimage"
   FAKETIME_HOST_PROGS=""
   FAKETIME_PROGS="ar ranlib date dmg genisoimage"
 
   export QT_RCC_TEST=1
+  export QT_RCC_SOURCE_DATE_OVERRIDE=1
   export GZIP="-9n"
   export TAR_OPTIONS="--mtime="$REFERENCE_DATE\\\ $REFERENCE_TIME""
   export TZ="UTC"

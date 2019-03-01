@@ -66,7 +66,6 @@ src/qt/test/moc*.cpp
 *.pyc
 *.o
 *.o-*
-*.patch
 .giant
 *.a
 *.pb.cc
@@ -85,7 +84,6 @@ src/qt/test/moc*.cpp
 
 # Compilation and Qt preprocessor part
 *.qm
-Makefile
 giant-qt
 GIANT-Qt.app
 
