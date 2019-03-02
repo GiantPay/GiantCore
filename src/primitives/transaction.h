@@ -185,12 +185,6 @@ public:
 
 struct CMutableTransaction;
 
-enum TransactionType {
-    TRANSFER,
-    DEPLOY_CONTRACT,
-    CALL_CONTRACT
-};
-
 /** The basic transaction that is broadcasted on the network and contained in
  * blocks.  A transaction can contain multiple inputs and outputs.
  */
