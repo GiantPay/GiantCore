@@ -1028,6 +1028,13 @@ public:
              SerializeOutput(s, nOutput, nType, nVersion);
         // Serialize nLockTime
         ::Serialize(s, txTo.nLockTime, nType, nVersion);
+        if (nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
+            ::Serialize(s, txTo.nType, nType, nVersion);
+            if (txTo.nType > CTransaction::TRANSFER_TYPE) {
+                ::Serialize(s, txTo.nType, nType, nVersion);
+                ::Serialize(s, txTo.nPriority, nType, nVersion);
+            }
+        }
     }
 };
 
