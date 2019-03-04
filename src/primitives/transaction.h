@@ -198,7 +198,7 @@ private:
 public:
     static const int32_t NOT_SUPPORTING_CONTRACT_VERSION = 1;
     static const int32_t CURRENT_VERSION = 1;
-    static const int32_t SUPPORT_OF_CONTRACT_MIN_VERSION = 2;
+    static const int32_t SUPPORT_OF_CONTRACT_MIN_VERSION = 3;
     // maximum size of field data
     static const uint32_t MAX_DATA_SIZE = 512 * 1024;
     // transaction types: Transfer, ContractDeploy, ContractCall
@@ -237,7 +237,7 @@ public:
         READWRITE(*const_cast<std::vector<CTxIn>*>(&vin));
         READWRITE(*const_cast<std::vector<CTxOut>*>(&vout));
         READWRITE(*const_cast<uint32_t*>(&nLockTime));
-        if (nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
+        if (this->nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
             READWRITE(*const_cast<uint32_t*>(&this->nType));
             if (this->nType > TRANSFER_TYPE) {
                 READWRITE(LIMITED_STRING(data, MAX_DATA_SIZE));
@@ -317,7 +317,7 @@ struct CMutableTransaction
         READWRITE(vout);
         READWRITE(nLockTime);
 
-        if (nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
+        if (this->nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
             READWRITE(this->nType);
             if (this->nType > CTransaction::TRANSFER_TYPE) {
                 READWRITE(data);
