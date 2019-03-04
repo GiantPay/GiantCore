@@ -233,15 +233,15 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(*const_cast<int32_t*>(&this->nVersion));
-        nVersion = this->nVersion;
         READWRITE(*const_cast<std::vector<CTxIn>*>(&vin));
         READWRITE(*const_cast<std::vector<CTxOut>*>(&vout));
         READWRITE(*const_cast<uint32_t*>(&nLockTime));
-        if (this->nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
+
+        if (this->nVersion >= SUPPORT_OF_CONTRACT_MIN_VERSION) {
             READWRITE(*const_cast<uint32_t*>(&this->nType));
             if (this->nType > TRANSFER_TYPE) {
-                READWRITE(LIMITED_STRING(data, MAX_DATA_SIZE));
-                READWRITE(*const_cast<float*> (&nPriority));
+                READWRITE(LIMITED_STRING(this->data, MAX_DATA_SIZE));
+                READWRITE(*const_cast<float*> (&this->nPriority));
             }
         }
         if (ser_action.ForRead())
@@ -312,7 +312,6 @@ struct CMutableTransaction
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(this->nVersion);
-        nVersion = this->nVersion;
         READWRITE(vin);
         READWRITE(vout);
         READWRITE(nLockTime);
@@ -320,8 +319,8 @@ struct CMutableTransaction
         if (this->nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
             READWRITE(this->nType);
             if (this->nType > CTransaction::TRANSFER_TYPE) {
-                READWRITE(data);
-                READWRITE(nPriority);
+                READWRITE(LIMITED_STRING(this->data, CTransaction::MAX_DATA_SIZE));
+                READWRITE(this->nPriority);
             }
         }
     }
