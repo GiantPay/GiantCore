@@ -6,7 +6,8 @@
 #include <vector>
 #include <string>
 #include <map>
-#include "univalue/include/univalue.h"
+#include "univalue.h"
+
 #include <boost/test/unit_test.hpp>
 
 using namespace std;

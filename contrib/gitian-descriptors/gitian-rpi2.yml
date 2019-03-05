@@ -1,11 +1,14 @@
 ---
-name: "giant-raspberry-1.2.2.0"
+name: "giant-rpi2-1.0"
 enable_cache: true
 suites:
-- "precise"
+- "xenial"
 architectures:
 - "amd64"
+docker_image_digests:
+- "e547ecaba7d078800c358082088e6cc710c3affd1b975601792ec701c80cdd39"
 packages:
+- "curl"
 - "g++-multilib"
 - "git-core"
 - "pkg-config"
@@ -15,7 +18,9 @@ packages:
 - "faketime"
 - "bsdmainutils"
 - "binutils-gold"
-reference_datetime: "2017-01-01 00:00:00"
+- "ca-certificates"
+- "python"
+reference_datetime: "2015-06-01 00:00:00"
 remotes:
 - "url": "https://github.com/GiantPay/GiantCore.git"
   "dir": "giant"
@@ -98,8 +103,8 @@ script: |
     tar --strip-components=1 -xf ../$SOURCEDIST
 
     ./configure --prefix=${BASEPREFIX}/${i} --bindir=${INSTALLPATH}/bin --includedir=${INSTALLPATH}/include --libdir=${INSTALLPATH}/lib --disable-ccache --disable-maintainer-mode --disable-dependency-tracking ${CONFIGFLAGS}
-    make ${MAKEOPTS} NO_QT=1
-    make NO_QT=1 install-strip
+    make ${MAKEOPTS}
+    make install-strip
     cd installed
     find . -name "lib*.la" -delete
     find . -name "lib*.a" -delete
