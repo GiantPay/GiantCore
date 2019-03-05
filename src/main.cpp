@@ -1272,11 +1272,10 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState& state, const CTransact
 
     // Rather not work on nonstandard transactions (unless -testnet/-regtest)
     string reason;
-    // for any real tx this will be checked on AcceptToMemoryPool anyway
-    //    if (Params().RequireStandard() && !IsStandardTx(tx, reason))
-    //        return state.DoS(0,
-    //                         error("AcceptableInputs : nonstandard transaction: %s", reason),
-    //                         REJECT_NONSTANDARD, reason);
+    if (Params().RequireStandard() && !IsStandardTx(tx, reason))
+        return state.DoS(0,
+            error("AcceptableInputs : nonstandard transaction: %s", reason),
+            REJECT_NONSTANDARD, reason);
 
     // is it already in the memory pool?
     uint256 hash = tx.GetHash();

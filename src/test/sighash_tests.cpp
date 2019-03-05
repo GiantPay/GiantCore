@@ -91,8 +91,8 @@ void static RandomScript(CScript &script) {
         script << oplist[insecure_rand() % (sizeof(oplist)/sizeof(oplist[0]))];
 }
 
-void static RandomTransaction(CMutableTransaction &tx, bool fSingle) {
-    tx.nVersion = insecure_rand();
+void static RandomTransaction(CMutableTransaction &tx, int32_t &nVersion, bool fSingle) {
+    tx.nVersion = nVersion;
     tx.vin.clear();
     tx.vout.clear();
     tx.nLockTime = (insecure_rand() % 2) ? insecure_rand() : 0;
@@ -112,6 +112,11 @@ void static RandomTransaction(CMutableTransaction &tx, bool fSingle) {
         txout.nValue = insecure_rand() % 100000000;
         RandomScript(txout.scriptPubKey);
     }
+    if (tx.nVersion >= CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION) {
+        tx.data = GetRandHash().GetHex();
+        tx.nType = (insecure_rand() % 2) ? CTransaction::TRANSFER_TYPE : CTransaction::CONTRACT_DEPLOY_TYPE;
+        tx.nPriority = 1.0 + GetRand(100) / 100.0;
+    }
 }
 
 BOOST_AUTO_TEST_SUITE(sighash_tests)
@@ -124,15 +129,16 @@ BOOST_AUTO_TEST_CASE(sighash_test)
     std::cout << "[\n";
     std::cout << "\t[\"raw_transaction, script, input_index, hashType, signature_hash (result)\"],\n";
     #endif
-    int nRandomTests = 50000;
+    int nRandomTests = 100000;
 
     #if defined(PRINT_SIGHASH_JSON)
     nRandomTests = 500;
     #endif
     for (int i=0; i<nRandomTests; i++) {
         int nHashType = insecure_rand();
+        int nVersion = (insecure_rand() % 2) ? CTransaction::NOT_SUPPORTING_CONTRACT_VERSION : CTransaction::SUPPORT_OF_CONTRACT_MIN_VERSION;
         CMutableTransaction txTo;
-        RandomTransaction(txTo, (nHashType & 0x1f) == SIGHASH_SINGLE);
+        RandomTransaction(txTo, nVersion, (nHashType & 0x1f) == SIGHASH_SINGLE);
         CScript scriptCode;
         RandomScript(scriptCode);
         int nIn = insecure_rand() % txTo.vin.size();
