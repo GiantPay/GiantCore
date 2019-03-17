@@ -101,14 +101,12 @@ case "$TARGET_OS" in
         COMMON_FLAGS="$MEMCMP_FLAG -D_REENTRANT -DOS_SOLARIS"
         PLATFORM_LIBS="-lpthread -lrt"
         PORT_FILE=port/port_posix.cc
-        PORT_SSE_FILE=port/port_posix_sse.cc
         ;;
     FreeBSD)
         PLATFORM=OS_FREEBSD
         COMMON_FLAGS="$MEMCMP_FLAG -D_REENTRANT -DOS_FREEBSD"
         PLATFORM_LIBS="-lpthread"
         PORT_FILE=port/port_posix.cc
-        PORT_SSE_FILE=port/port_posix_sse.cc
         ;;
     GNU/kFreeBSD)
         PLATFORM=OS_KFREEBSD
@@ -121,28 +119,24 @@ case "$TARGET_OS" in
         COMMON_FLAGS="$MEMCMP_FLAG -D_REENTRANT -DOS_NETBSD"
         PLATFORM_LIBS="-lpthread -lgcc_s"
         PORT_FILE=port/port_posix.cc
-        PORT_SSE_FILE=port/port_posix_sse.cc
         ;;
     OpenBSD)
         PLATFORM=OS_OPENBSD
         COMMON_FLAGS="$MEMCMP_FLAG -D_REENTRANT -DOS_OPENBSD"
         PLATFORM_LDFLAGS="-pthread"
         PORT_FILE=port/port_posix.cc
-        PORT_SSE_FILE=port/port_posix_sse.cc
         ;;
     DragonFly)
         PLATFORM=OS_DRAGONFLYBSD
         COMMON_FLAGS="$MEMCMP_FLAG -D_REENTRANT -DOS_DRAGONFLYBSD"
         PLATFORM_LIBS="-lpthread"
         PORT_FILE=port/port_posix.cc
-        PORT_SSE_FILE=port/port_posix_sse.cc
         ;;
     OS_ANDROID_CROSSCOMPILE)
         PLATFORM=OS_ANDROID
         COMMON_FLAGS="$MEMCMP_FLAG -D_REENTRANT -DOS_ANDROID -DLEVELDB_PLATFORM_POSIX"
         PLATFORM_LDFLAGS=""  # All pthread features are in the Android C library
         PORT_FILE=port/port_posix.cc
-        PORT_SSE_FILE=port/port_posix_sse.cc
         CROSS_COMPILE=true
         ;;
     HP-UX)
@@ -150,7 +144,6 @@ case "$TARGET_OS" in
         COMMON_FLAGS="$MEMCMP_FLAG -D_REENTRANT -DOS_HPUX"
         PLATFORM_LDFLAGS="-pthread"
         PORT_FILE=port/port_posix.cc
-        PORT_SSE_FILE=port/port_posix_sse.cc
         # man ld: +h internal_name
         PLATFORM_SHARED_LDFLAGS="-shared -Wl,+h -Wl,"
         ;;
@@ -187,14 +180,14 @@ DIRS="$PREFIX/db $PREFIX/util $PREFIX/table"
 set -f # temporarily disable globbing so that our patterns aren't expanded
 PRUNE_TEST="-name *test*.cc -prune"
 PRUNE_BENCH="-name *_bench.cc -prune"
-PRUNE_TOOL="-name leveldbutil.cc -prune"
+PRUNE_TOOL="-name leveldb_main.cc -prune"
 PORTABLE_FILES=`find $DIRS $PRUNE_TEST -o $PRUNE_BENCH -o $PRUNE_TOOL -o -name '*.cc' -print | sort | sed "s,^$PREFIX/,," | tr "\n" " "`
 
 set +f # re-enable globbing
 
 # The sources consist of the portable files, plus the platform-specific port
 # file.
-echo "SOURCES=$PORTABLE_FILES $PORT_FILE $PORT_SSE_FILE" >> $OUTPUT
+echo "SOURCES=$PORTABLE_FILES $PORT_FILE" >> $OUTPUT
 echo "MEMENV_SOURCES=helpers/memenv/memenv.cc" >> $OUTPUT
 
 if [ "$CROSS_COMPILE" = "true" ]; then
