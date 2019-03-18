@@ -947,6 +947,12 @@ bool MoneyRange(CAmount nValueOut) {
     return nValueOut >= 0 && nValueOut <= Params().MaxMoneyOut();
 }
 
+void DeployContract(const CTransaction& tx, CValidationState& state) {
+    }
+
+void CallContract(const CTransaction& tx, CValidationState& state) {
+    }
+
 bool CheckTransaction(const CTransaction& tx, CValidationState& state) {
     // Basic checks that don't depend on any context
     if (tx.vin.empty())
@@ -1000,6 +1006,16 @@ bool CheckTransaction(const CTransaction& tx, CValidationState& state) {
                 REJECT_INVALID, "bad-txns-prevout-null");
     }
 
+    if (IsSporkActive(SPORK_17_SMART_CONTRACTS_ACTIVATION)) {
+        if (tx.nType == CTransaction::CONTRACT_DEPLOY_TYPE) {
+            DeployContract(tx, state);
+        } else if (tx.nType == CTransaction::CONTRACT_CALL_TYPE) {
+            CallContract(tx, state);
+        } 
+    } else {
+        LogPrintf("smart-contract not active\n");
+    }
+    
     return true;
 }
 

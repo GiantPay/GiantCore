@@ -174,6 +174,11 @@ void RegisterNodeSignals(CNodeSignals& nodeSignals);
 /** Unregister a network node */
 void UnregisterNodeSignals(CNodeSignals& nodeSignals);
 
+/** Deploy smart-contract*/
+void DeployContract(const CTransaction& tx, CValidationState& state);
+/** Call smart-contract*/
+void CallCantract(const CTransaction& tx, CValidationState& state);
+
 /** 
  * Process an incoming block. This only returns after the best known valid
  * block is made active. Note that it does not, however, guarantee that the
