@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers 
 // Copyright (c) 2015-2017 The ALQO developers
-// Copyright (c) 2018 The GIANT developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -490,6 +490,8 @@ Value getstakingstatus(const Array& params, bool fHelp)
         obj.push_back(Pair("enoughcoins", nReserveBalance <= pwalletMain->GetBalance()));
     }
     obj.push_back(Pair("mnsync", masternodeSync.IsSynced()));
+    obj.push_back(Pair("minamount", Params().StakeMinAmount()));
+    obj.push_back(Pair("minamountactived", IsSporkActive(SPORK_17_STAKE_MIN_AMOUNT)));
     return obj;
 }
 #endif // ENABLE_WALLET

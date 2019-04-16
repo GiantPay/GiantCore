@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2015-2017 The ALQO developers
-// Copyright (c) 2018 The GIANT developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 ////
@@ -1567,9 +1567,18 @@ bool CWallet::SelectStakeCoins(std::set<std::pair<const CWalletTx*, unsigned int
     AvailableCoins(vCoins, true);
     int64_t nAmountSelected = 0;
 
+    CAmount nStakeAmount = 0;
+    if (IsSporkActive(SPORK_17_STAKE_MIN_AMOUNT)) {
+        nStakeAmount = Params().StakeMinAmount();
+    }
+
     BOOST_FOREACH (const COutput& out, vCoins) {
         //make sure not to outrun target amount
         if (nAmountSelected + out.tx->vout[out.i].nValue > nTargetAmount)
+            continue;
+
+        // check for min amount
+        if (out.tx->vout[out.i].nValue < nStakeAmount)
             continue;
 
         //check for min age
@@ -1598,9 +1607,19 @@ bool CWallet::MintableCoins()
     vector<COutput> vCoins;
     AvailableCoins(vCoins, true);
 
+    CAmount nStakeAmount = 0;
+    if (IsSporkActive(SPORK_17_STAKE_MIN_AMOUNT)) {
+        nStakeAmount = Params().StakeMinAmount();
+    }
+
     BOOST_FOREACH (const COutput& out, vCoins) {
-        if (GetTime() - out.tx->GetTxTime() > nStakeMinAge)
+        if (out.Value() < nStakeAmount) {
+           continue;
+        }
+
+        if (GetTime() - out.tx->GetTxTime() > nStakeMinAge) {
             return true;
+        }
     }
 
     return false;

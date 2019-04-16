@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2015-2017 The ALQO developers
-// Copyright (c) 2018 The GIANT developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -58,12 +58,20 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-	(0, uint256("0x000007b556429edd30fc5a0736451513896ac7b5df3570f1b903d812b8d1f01f"))
-        (40300, uint256("0x0000000000003b6e75d462fba032e235c76b20b4fe3854294ace55df08f2c7e3"))
-        (71005, uint256("0x0000000000008e907c7a9501673757a638d694f10762b169f588351e0a5584c8"));
+	(     0, uint256("0x000007b556429edd30fc5a0736451513896ac7b5df3570f1b903d812b8d1f01f"))
+        ( 40300, uint256("0x0000000000003b6e75d462fba032e235c76b20b4fe3854294ace55df08f2c7e3"))
+        ( 71005, uint256("0x0000000000008e907c7a9501673757a638d694f10762b169f588351e0a5584c8"))
+        ( 90001, uint256("0x6c971ab3bc3b43771c0a28047c32b82e50244c780c58ffad6ee41dfce52972cd"))
+        (110001, uint256("0x34446b0eda747c8780deb1064c35d312cfde10b7a80c0e32c594020d5c7e2694"))
+        (130001, uint256("0xa9809fcdbca926b3fc33112c0813119ef06a83940b2c51962885f3ebbd259f0b"))
+        (150001, uint256("0x4c0516ac931b3444968cebeff9694253e6afc1fe2f41d5a1d261c5bcf16b571d"))
+        (170000, uint256("0x9144cbb966ae2207e9737a1457eb5e91dabf9089e116e246cbf36f24417f1ee5"))
+        (190000, uint256("0x1da21460b75c0253842f846f58f42f1da47f060603df30e67584e7d609488ce7"))
+        (210002, uint256("0x8533aa929236537e8d8bad1a8305f207abcd313b0ed18ba0ae90fdfb5780717f"))
+        (230000, uint256("0x296cfeb18fe09c1a8211c419689b881fa534e7e1b8e0daed77b459438c0a02af"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1524781746, // * UNIX timestamp of last checkpoint block
+    1554603273, // * UNIX timestamp of last checkpoint block
     0,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
@@ -154,6 +162,21 @@ public:
         vSeeds.push_back(CDNSSeedData("95.216.137.189", "95.216.137.189"));
         vSeeds.push_back(CDNSSeedData("95.216.137.190", "95.216.137.190"));
         vSeeds.push_back(CDNSSeedData("95.216.137.191", "95.216.137.191"));
+        vSeeds.push_back(CDNSSeedData("159.69.26.214", "159.69.26.214"));
+        vSeeds.push_back(CDNSSeedData("159.69.26.213", "159.69.26.213"));
+        vSeeds.push_back(CDNSSeedData("159.69.26.216", "159.69.26.216"));
+        vSeeds.push_back(CDNSSeedData("159.69.26.212", "159.69.26.212"));
+        vSeeds.push_back(CDNSSeedData("159.69.26.215", "159.69.26.215"));
+        vSeeds.push_back(CDNSSeedData("138.201.247.157", "138.201.247.157"));
+        vSeeds.push_back(CDNSSeedData("138.201.247.148", "138.201.247.148"));
+        vSeeds.push_back(CDNSSeedData("138.201.247.175", "138.201.247.175"));
+        vSeeds.push_back(CDNSSeedData("138.201.247.67", "138.201.247.67"));
+        vSeeds.push_back(CDNSSeedData("138.201.247.25", "138.201.247.25"));
+        vSeeds.push_back(CDNSSeedData("95.216.149.227", "95.216.149.227"));
+        vSeeds.push_back(CDNSSeedData("95.216.149.232", "95.216.149.232"));
+        vSeeds.push_back(CDNSSeedData("95.216.149.238", "95.216.149.238"));
+        vSeeds.push_back(CDNSSeedData("95.216.149.233", "95.216.149.233"));
+        vSeeds.push_back(CDNSSeedData("95.216.149.234", "95.216.149.234"));
         
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 38);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
@@ -179,6 +202,7 @@ public:
         strSporkKey = "04cd66b21f8273bf8c6ddd2b97fe5f830271637ceb82bc6269b010fef7090aa05657b78178f3605c11abd8567dbca949012e864a5132b355dcfa4d33346eaeee1f";
         strDarksendPoolDummyAddress = "GNEZjVTQHjff8BoWvUhGMSg9KZA7QNEwUm";
         nStartMasternodePayments = 1524781746; //11/10/2017 @ 12:00am (UTC)
+        nStakeMinAmount = 10 * COIN;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -256,6 +280,7 @@ public:
         strSporkKey = "049e53e687fdafd78fd42d730fad0e7ea1819396176a2cb85d7a76fa4559cdbd2c2f05330a6f5cbadb44a6c1d324f167e679e9f3e95d9d5649761a3e7f59bf4500";
         strDarksendPoolDummyAddress = "";
         nStartMasternodePayments = 1562531573;
+        nStakeMinAmount = 1 * COIN;
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {

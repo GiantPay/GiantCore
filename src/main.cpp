@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers 
 // Copyright (c) 2015-2017 The ALQO developers
-// Copyright (c) 2018 The GIANT developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -3112,6 +3112,12 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         return state.DoS(100, error("CheckBlock() : out-of-bounds SigOpCount"),
             REJECT_INVALID, "bad-blk-sigops", true);
 
+    if (IsSporkActive(SPORK_17_STAKE_MIN_AMOUNT) && block.GetBlockTime() >= GetSporkValue(SPORK_17_STAKE_MIN_AMOUNT)) {
+        // Check for minimum value.
+        if (block.vtx[1].vout[1].nValue < Params().StakeMinAmount())
+            return state.DoS(100, error("CheckBlock() : stake under min. stake value"));
+    }
+
     return true;
 }
 
@@ -5275,23 +5281,9 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
 int ActiveProtocol() {
 
-    // SPORK_14 was used for 70710. Leave it 'ON' so they don't see < 70710 nodes. They won't react to SPORK_15
-    // messages because it's not in their code
-    /*
-        if (IsSporkActive(SPORK_14_NEW_PROTOCOL_ENFORCEMENT)) {
-            if (chainActive.Tip()->nHeight >= Params().ModifierUpgradeBlock())
-                return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-        }
-
-        return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
-     */
-
-
-    // SPORK_15 is used for 70910. Nodes < 70910 don't see it and still get their protocol version via SPORK_14 and their 
-    // own ModifierUpgradeBlock()
-
-    if (IsSporkActive(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2))
+    if (IsSporkActive(SPORK_17_STAKE_MIN_AMOUNT)) {
         return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+    }
 
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
