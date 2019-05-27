@@ -43,4 +43,3 @@ _Proof of Stake will automatically be enabled at block 71401._
   <tr><td>Block 1051201 - 1314000</td><td>4 GIC</td><td>  3.2 GIC</td><td>0.8 GIC</td></tr>
   <tr><td>Block 1314001 - infinite</td><td>2 GIC</td><td>  1.6 GIC</td><td>0.4 GIC</td></tr>
 </table>
-

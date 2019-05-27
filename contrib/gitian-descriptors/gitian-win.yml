@@ -1,13 +1,11 @@
 ---
-name: "giant-win-1.3"
+name: "giant-win-1.4"
 enable_cache: true
 suites:
 - "bionic"
 architectures:
 - "amd64"
-docker_image_digests:
-- "bionic"
-packages: 
+packages:
 - "curl"
 - "g++"
 - "git"
@@ -155,14 +153,15 @@ script: |
 
     CONFIG_SITE=${BASEPREFIX}/${i}/share/config.site ./configure --prefix=/ --disable-ccache --disable-maintainer-mode --disable-dependency-tracking ${CONFIGFLAGS} CFLAGS="${HOST_CFLAGS}" CXXFLAGS="${HOST_CXXFLAGS}"
     make ${MAKEOPTS}
+    make ${MAKEOPTS} -C src check-security
     make deploy
     make install DESTDIR=${INSTALLPATH}
     rename 's/-setup\.exe$/-setup-unsigned.exe/' *-setup.exe
     cp -f giant-*setup*.exe $OUTDIR/
     cd installed
-    # mv ${DISTNAME}/bin/*.dll ${DISTNAME}/lib/
-    # find . -name "lib*.la" -delete
-    # find . -name "lib*.a" -delete
+    # mv ${DISTNAME}/bin/*.dll ${DISTNAME}/lib/ # temporarily disabled for Zerocoin
+    # find . -name "lib*.la" -delete            # temporarily disabled for Zerocoin
+    # find . -name "lib*.a" -delete             # temporarily disabled for Zerocoin
     rm -rf ${DISTNAME}/lib/pkgconfig
     find ${DISTNAME}/bin -type f -executable -exec ${i}-objcopy --only-keep-debug {} {}.dbg \; -exec ${i}-strip -s {} \; -exec ${i}-objcopy --add-gnu-debuglink={}.dbg {} \;
     # find ${DISTNAME}/lib -type f -exec ${i}-objcopy --only-keep-debug {} {}.dbg \; -exec ${i}-strip -s {} \; -exec ${i}-objcopy --add-gnu-debuglink={}.dbg {} \;
@@ -171,9 +170,11 @@ script: |
     cd ../../
     rm -rf distsrc-${i}
   done
-  cd $OUTDIR
-  rename 's/-setup\.exe$/-setup-unsigned.exe/' *-setup.exe
-  find . -name "*-setup-unsigned.exe" | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ${OUTDIR}/${DISTNAME}-win-unsigned.tar.gz
+  cp -rf contrib/windeploy $BUILD_DIR
+  cd $BUILD_DIR/windeploy
+  mkdir unsigned
+  cp $OUTDIR/giant-*setup-unsigned.exe unsigned/
+  find . | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ${OUTDIR}/${DISTNAME}-win-unsigned.tar.gz
   mv ${OUTDIR}/${DISTNAME}-x86_64-*-debug.zip ${OUTDIR}/${DISTNAME}-win64-debug.zip
   mv ${OUTDIR}/${DISTNAME}-i686-*-debug.zip ${OUTDIR}/${DISTNAME}-win32-debug.zip
   mv ${OUTDIR}/${DISTNAME}-x86_64-*.zip ${OUTDIR}/${DISTNAME}-win64.zip

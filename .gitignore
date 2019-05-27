@@ -7,6 +7,7 @@ reset-files.bash
 *.tar.gz
 
 *.exe
+src/giant
 src/giantd
 src/giant-cli
 src/giant-tx
@@ -43,9 +44,8 @@ src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
 contrib/devtools/split-debug.sh
-depends/built
-depends/sources
-depends/x86_64-pc-linux-gnu
+
+src/univalue/gen
 
 src/qt/*.moc
 src/qt/moc_*.cpp
@@ -64,6 +64,7 @@ src/qt/test/moc*.cpp
 *.pyc
 *.o
 *.o-*
+*.patch
 .giant
 *.a
 *.pb.cc
@@ -82,8 +83,10 @@ src/qt/test/moc*.cpp
 
 # Compilation and Qt preprocessor part
 *.qm
+Makefile
 giant-qt
 GIANT-Qt.app
+background.tiff*
 
 # Unit-tests
 Makefile.test
@@ -111,10 +114,13 @@ coverage_percent.txt
 linux-coverage-build
 linux-build
 win32-build
+test/config.ini
+test/cache/*
 qa/pull-tester/run-bitcoind-for-test.sh
 qa/pull-tester/tests-config.sh
 qa/pull-tester/cache/*
 qa/pull-tester/test.*/*
+cache/*
 
 !src/leveldb*/Makefile
 
@@ -122,7 +128,7 @@ qa/pull-tester/test.*/*
 .project
 /doc/doxygen/
 /nbproject/
-
+libbitcoinconsensus.pc
 .idea
 CMakeLists.txt
 cmake-build-debug

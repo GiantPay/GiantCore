@@ -1,4 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin Core developers
+// Copyright (c) 2016 The PIVX developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -258,7 +260,7 @@ BOOST_AUTO_TEST_CASE(CreateNewBlock_validity)
     SetMockTime(0);
     mempool.clear();
 
-    BOOST_FOREACH(CTransaction *tx, txFirst)
+    for (CTransaction *tx : txFirst)
         delete tx;
 
     Checkpoints::fEnabled = true;

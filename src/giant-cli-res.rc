@@ -16,14 +16,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "GIANT"
-            VALUE "FileDescription",    "GIANT-cli (OSS RPC client for GIANT)"
+            VALUE "CompanyName",        "Giant"
+            VALUE "FileDescription",    "Giant-cli (OSS RPC client for Giant)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "giant-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
             VALUE "OriginalFilename",   "giant-cli.exe"
-            VALUE "ProductName",        "GIANT-cli"
+            VALUE "ProductName",        "Giant-cli"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

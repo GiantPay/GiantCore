@@ -1,4 +1,6 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -45,6 +47,7 @@ public:
 
     static const QString Send;    /**< Specifies send address */
     static const QString Receive; /**< Specifies receive address */
+    static const QString Zerocoin; /**< Specifies stealth address */
 
     /** @name Methods overridden from QAbstractTableModel
         @{*/
@@ -88,7 +91,7 @@ public slots:
     /* Update address list from core.
      */
     void updateEntry(const QString& address, const QString& label, bool isMine, const QString& purpose, int status);
-
+    void updateEntry(const QString &pubCoin, const QString &isUsed, int status);
     friend class AddressTablePriv;
 };
 

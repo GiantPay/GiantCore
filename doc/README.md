@@ -3,7 +3,7 @@ GIANT Core
 
 Setup
 ---------------------
-[GIANT Core]https://giantpay.network/ is the original GIANT client and it builds the backbone of the network. However, it downloads and stores the entire history of GIANT transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
+[GIANT Core](https://giantpay.network/wallet) is the original GIANT client and it builds the backbone of the network. However, it downloads and stores the entire history of GIANT transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
 
 Running
 ---------------------
@@ -28,8 +28,8 @@ Drag GIANT-Qt to your applications folder, and then run GIANT-Qt.
 
 * See the documentation at the [GIANT Wiki](https://en.bitcoin.it/wiki/Main_Page) ***TODO***
 for help and more information.
-* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1604893.0) or on the [GIANT Forum](https://google.forum.com/).
-* Join one of our Slack groups [GIANT Slack Groups](https://google.slack.com/).
+* Ask for help on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1262920.0) or on the [GIANT Forum](https://forum.giantpay.network/).
+* Join our Discord server [Discord Server](https://discordapp.com/invite/7NRqsAN)
 
 Building
 ---------------------
@@ -41,7 +41,7 @@ The following are developer notes on how to build GIANT on your native platform.
 
 Development
 ---------------------
-The GIANT repo's [root README](https://github.com/GiantPay/GiantCore/blob/master/README.md) contains relevant information on the development process and automated testing.
+The Giant repo's [root README](https://github.com/GiantPay/GiantCore/blob/master/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
@@ -55,8 +55,7 @@ The GIANT repo's [root README](https://github.com/GiantPay/GiantCore/blob/master
 
 ### Resources
 
-* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=1604893.0) or the [GIANT](https://google.forum.com/) forum.
-* Join the [GIANT-Dev](https://google.slack.com/) 
+* Discuss on the [BitcoinTalk](https://bitcointalk.org/index.php?topic=5046673.0) or the [GIANT](https://forum.giantpay.network/) forum.
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

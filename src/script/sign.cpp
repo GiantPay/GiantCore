@@ -1,5 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2016-2017 The PIVX developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,7 +14,6 @@
 #include "uint256.h"
 #include "util.h"
 
-#include <boost/foreach.hpp>
 
 using namespace std;
 
@@ -74,6 +75,8 @@ bool Solver(const CKeyStore& keystore, const CScript& scriptPubKey, uint256 hash
         LogPrintf("*** null data \n");
         return false;
     }
+    case TX_ZEROCOINMINT:
+        return false;
     case TX_PUBKEY:
         keyID = CPubKey(vSolutions[0]).GetID();
         if(!Sign1(keyID, keystore, hash, nHashType, scriptSigRet))
@@ -155,7 +158,7 @@ bool SignSignature(const CKeyStore &keystore, const CTransaction& txFrom, CMutab
 static CScript PushAll(const vector<valtype>& values)
 {
     CScript result;
-    BOOST_FOREACH(const valtype& v, values)
+    for (const valtype& v : values)
         result << v;
     return result;
 }
@@ -166,12 +169,12 @@ static CScript CombineMultisig(const CScript& scriptPubKey, const CTransaction& 
 {
     // Combine all the signatures we've got:
     set<valtype> allsigs;
-    BOOST_FOREACH(const valtype& v, sigs1)
+    for (const valtype& v : sigs1)
     {
         if (!v.empty())
             allsigs.insert(v);
     }
-    BOOST_FOREACH(const valtype& v, sigs2)
+    for (const valtype& v : sigs2)
     {
         if (!v.empty())
             allsigs.insert(v);
@@ -182,7 +185,7 @@ static CScript CombineMultisig(const CScript& scriptPubKey, const CTransaction& 
     unsigned int nSigsRequired = vSolutions.front()[0];
     unsigned int nPubKeys = vSolutions.size()-2;
     map<valtype, valtype> sigs;
-    BOOST_FOREACH(const valtype& sig, allsigs)
+    for (const valtype& sig : allsigs)
     {
         for (unsigned int i = 0; i < nPubKeys; i++)
         {
@@ -223,6 +226,7 @@ static CScript CombineSignatures(const CScript& scriptPubKey, const CTransaction
     {
     case TX_NONSTANDARD:
     case TX_NULL_DATA:
+    case TX_ZEROCOINMINT:
         // Don't know anything about this, assume bigger one is correct:
         if (sigs1.size() >= sigs2.size())
             return PushAll(sigs1);

@@ -1,4 +1,6 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2017-2018 The PIVX developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -21,7 +23,7 @@ class AskPassphraseDialog : public QDialog
     Q_OBJECT
 
 public:
-    enum Mode {
+    enum class Mode {
         Encrypt,         /**< Ask passphrase twice and encrypt */
         UnlockAnonymize, /**< Ask passphrase and unlock only for anonymization */
         Unlock,          /**< Ask passphrase and unlock */
@@ -29,17 +31,33 @@ public:
         Decrypt          /**< Ask passphrase and decrypt wallet */
     };
 
-    explicit AskPassphraseDialog(Mode mode, QWidget* parent);
+    // Context from where / for what the passphrase dialog was called to set the status of the checkbox
+    // Partly redundant to Mode above, but offers more flexibility for future enhancements
+    enum class Context {
+        Unlock_Menu,    /** Unlock wallet from menu     */
+        Unlock_Full,    /** Wallet needs to be fully unlocked */
+        Encrypt,        /** Encrypt unencrypted wallet */
+        ToggleLock,     /** Toggle wallet lock state */
+        ChangePass,     /** Change passphrase */
+        Send_GIC,       /** Send GIC */
+        Send_zGIC,      /** Send zGIC */
+        Mint_zGIC,      /** Mint zGIC */
+        BIP_38,         /** BIP38 menu */
+        Multi_Sig,      /** Multi-Signature dialog */
+        Sign_Message,   /** Sign/verify message dialog */
+        UI_Vote,        /** Governance Tab UI Voting */
+    };
+
+    explicit AskPassphraseDialog(Mode mode, QWidget* parent, WalletModel* model, Context context);
     ~AskPassphraseDialog();
 
     void accept();
-
-    void setModel(WalletModel* model);
 
 private:
     Ui::AskPassphraseDialog* ui;
     Mode mode;
     WalletModel* model;
+    Context context;
     bool fCapsLock;
 
 private slots:

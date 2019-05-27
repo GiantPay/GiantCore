@@ -1,4 +1,5 @@
 dnl Copyright (c) 2018 The PIVX Core developers
+dnl Copyright (c) 2018 The GIANT Core developers
 dnl Distributed under the MIT software license, see the accompanying
 dnl file COPYING or http://www.opensource.org/licenses/mit-license.php.
 

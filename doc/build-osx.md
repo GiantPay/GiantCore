@@ -38,26 +38,31 @@ Instructions: Homebrew
 
 #### Install dependencies using Homebrew
 
-        brew install autoconf automake berkeley-db4 libtool boost miniupnpc openssl pkg-config protobuf qt5
+        brew install autoconf automake berkeley-db4 libtool boost miniupnpc openssl pkg-config protobuf qt5 zmq libevent
 
 ### Building `giantd`
 
 1. Clone the github tree to get the source code and go into the directory.
 
-        git clone https://github.com/GiantPay/GiantCore
+        git clone https://github.com/GiantPay/GiantCore.git
         cd GiantCore
 
-2.  Build giantd:
+2.  Make the Homebrew OpenSSL headers visible to the configure script  (do ```brew info openssl``` to find out why this is necessary, or if you use Homebrew with installation folders different from the default).
+
+        export LDFLAGS+=-L/usr/local/opt/openssl/lib
+        export CPPFLAGS+=-I/usr/local/opt/openssl/include
+
+3.  Build giantd:
 
         ./autogen.sh
         ./configure --with-gui=qt5
         make
 
-3.  It is also a good idea to build and run the unit tests:
+4.  It is also a good idea to build and run the unit tests:
 
         make check
 
-4.  (Optional) You can also install giantd to your path:
+5.  (Optional) You can also install giantd to your path:
 
         make install
 
@@ -81,7 +86,7 @@ Creating a release build
 ------------------------
 You can ignore this section if you are building `giantd` for your own use.
 
-giantd/giant-cli binaries are not included in the giant-Qt.app bundle.
+giantd/giant-cli binaries are not included in the GIANT-Qt.app bundle.
 
 If you are building `giantd` or `giant-qt` for others, your build machine should be set up
 as follows for maximum compatibility:
@@ -92,7 +97,7 @@ All dependencies should be compiled with these flags:
  -arch x86_64
  -isysroot $(xcode-select --print-path)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
 
-Once dependencies are compiled, see release-process.md for how the ALQO-Qt.app
+Once dependencies are compiled, see release-process.md for how the GIANT-Qt.app
 bundle is packaged and signed to create the .dmg disk image that is distributed.
 
 Running
@@ -104,18 +109,18 @@ directory. We have to first create the RPC configuration file, though.
 Run `./giantd` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=giantrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/ALQO/giant.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/ALQO/giant.conf"
+    echo -e "rpcuser=giantrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/GIANT/giant.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/GIANT/giant.conf"
 
 The next time you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours;
 you can monitor its process by looking at the debug.log file, like this:
 
-    tail -f $HOME/Library/Application\ Support/ALQO/debug.log
+    tail -f $HOME/Library/Application\ Support/GIANT/debug.log
 
 Other commands:
 -------
 
-    ./giantd -daemon # to start the giant daemon.
+    ./giantd -daemon    # to start the giant daemon.
     ./giant-cli --help  # for a list of command-line options.
     ./giant-cli help    # When the daemon is running, to get a list of RPC commands

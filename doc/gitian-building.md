@@ -26,7 +26,7 @@ Table of Contents
 - [Installing gitian](#installing-gitian)
 - [Setting up gitian images](#setting-up-gitian-images)
 - [Getting and building the inputs](#getting-and-building-the-inputs)
-- [Building ALQO](#building-giant)
+- [Building GIANT](#building-giant)
 - [Building an alternative repository](#building-an-alternative-repository)
 - [Signing externally](#signing-externally)
 - [Uploading signatures](#uploading-signatures)
@@ -281,8 +281,8 @@ Clone the git repositories for giant and gitian and then checkout the giant vers
 
 ```bash
 git clone https://github.com/devrandom/gitian-builder.git
-git clone https://github.com/ALQOCRYPTO/ALQO.git
-cd giant
+git clone https://github.com/GiantPay/GiantCore.git
+cd GiantCore
 git checkout v${VERSION}
 cd ..
 ```
@@ -326,10 +326,10 @@ under 'Fetch and build inputs' to install sources which require manual intervent
 the next step: 'Seed the Gitian sources cache', which will fetch all necessary source files allowing
 for gitian to work offline.
 
-Building ALQO
+Building GIANT
 ----------------
 
-To build ALQO (for Linux, OSX and Windows) just follow the steps under 'perform
+To build GIANT (for Linux, OSX and Windows) just follow the steps under 'perform
 gitian builds' in [doc/release-process.md](release-process.md) in the giant repository.
 
 This may take a long time as it also builds the dependencies needed for each descriptor.
@@ -350,7 +350,7 @@ Output from `gbuild` will look something like
     remote: Total 35606 (delta 0), reused 0 (delta 0)
     Receiving objects: 100% (35606/35606), 26.52 MiB | 4.28 MiB/s, done.
     Resolving deltas: 100% (25724/25724), done.
-    From https://github.com/ALQOCRYPTO/ALQO
+    From https://github.com/GiantPay/GiantCore
     ... (new tags, new branch etc)
     --- Building for precise x86_64 ---
     Stopping target if it is up
@@ -377,11 +377,11 @@ and inputs.
 
 For example:
 ```bash
-URL=https://github.com/ALQOCRYPTO/ALQO
+URL=https://github.com/GiantPay/GiantCore.git
 COMMIT=b616fb8ef0d49a919b72b0388b091aaec5849b96
-./bin/gbuild --commit giant=${COMMIT} --url giant=${URL} ../giant/contrib/gitian-descriptors/gitian-linux.yml
-./bin/gbuild --commit giant=${COMMIT} --url giant=${URL} ../giant/contrib/gitian-descriptors/gitian-win.yml
-./bin/gbuild --commit giant=${COMMIT} --url giant=${URL} ../giant/contrib/gitian-descriptors/gitian-osx.yml
+./bin/gbuild --commit giant=${COMMIT} --url giant=${URL} ../GiantCore/contrib/gitian-descriptors/gitian-linux.yml
+./bin/gbuild --commit giant=${COMMIT} --url giant=${URL} ../GiantCore/contrib/gitian-descriptors/gitian-win.yml
+./bin/gbuild --commit giant=${COMMIT} --url giant=${URL} ../GiantCore/contrib/gitian-descriptors/gitian-osx.yml
 ```
 
 Signing externally
@@ -408,6 +408,6 @@ Uploading signatures (not yet implemented)
 ---------------------
 
 In the future it will be possible to push your signatures (both the `.assert` and `.assert.sig` files) to the
-[giant/gitian.sigs](https://github.com/giant-crypto/gitian.sigs/) repository, or if that's not possible to create a pull
+[GiantPay/gitian.sigs](https://github.com/GiantPay/gitian.sigs/) repository, or if that's not possible to create a pull
 request.
 There will be an official announcement when this repository is online.

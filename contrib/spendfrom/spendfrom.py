@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Use the raw transactions API to spend GIANTs received on particular addresses,
+# Use the raw transactions API to spend GICs received on particular addresses,
 # and send any change back to that same address.
 #
 # Example usage:
@@ -35,9 +35,9 @@ def check_json_precision():
 def determine_db_dir():
     """Return the default location of the giant data directory"""
     if platform.system() == "Darwin":
-        return os.path.expanduser("~/Library/Application Support/ALQO/")
+        return os.path.expanduser("~/Library/Application Support/GIANT/")
     elif platform.system() == "Windows":
-        return os.path.join(os.environ['APPDATA'], "ALQO")
+        return os.path.join(os.environ['APPDATA'], "GIANT")
     return os.path.expanduser("~/.giant")
 
 def read_bitcoin_config(dbdir):
@@ -67,7 +67,7 @@ def connect_JSON(config):
     testnet = config.get('testnet', '0')
     testnet = (int(testnet) > 0)  # 0/1 in config file, convert to True/False
     if not 'rpcport' in config:
-        config['rpcport'] = 55000 if testnet else 55000
+        config['rpcport'] = 51475 if testnet else 51473
     connect = "http://%s:%s@127.0.0.1:%s"%(config['rpcuser'], config['rpcpassword'], config['rpcport'])
     try:
         result = ServiceProxy(connect)
@@ -221,9 +221,9 @@ def main():
 
     parser = optparse.OptionParser(usage="%prog [options]")
     parser.add_option("--from", dest="fromaddresses", default=None,
-                      help="addresses to get ALQOs from")
+                      help="addresses to get GICs from")
     parser.add_option("--to", dest="to", default=None,
-                      help="address to get send ALQOs to")
+                      help="address to get send GICs to")
     parser.add_option("--amount", dest="amount", default=None,
                       help="amount to send")
     parser.add_option("--fee", dest="fee", default="0.0",

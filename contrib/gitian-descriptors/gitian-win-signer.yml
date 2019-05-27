@@ -1,16 +1,15 @@
 ---
 name: "giant-win-signer"
 suites:
-- "xenial"
+- "bionic"
 architectures:
 - "amd64"
-docker_image_digests:
-- "xenial"
 packages:
-- "libssl-dev"
+# Once osslsigncode supports openssl 1.1, we can change this back to libssl-dev
+- "libssl1.0-dev"
 - "autoconf"
 remotes:
-- "url": "https://github.com/GiantPay/GiantCore.git"
+- "url": "https://github.com/GiantPay/giant-detached-sigs.git"
   "dir": "signature"
 files:
 - "osslsigncode-1.7.1.tar.gz"

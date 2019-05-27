@@ -1,4 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin Core developers
+// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -29,14 +31,11 @@
 #include <boost/algorithm/string/split.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
-#include <boost/foreach.hpp>
 #include <boost/test/unit_test.hpp>
-#include "json/json_spirit_reader_template.h"
-#include "json/json_spirit_utils.h"
-#include "json/json_spirit_writer_template.h"
+
+#include <univalue.h>
 
 using namespace std;
-using namespace json_spirit;
 using namespace boost::algorithm;
 
 // Uncomment if you want to output updated JSON tests.
@@ -47,15 +46,15 @@ static const unsigned int flags = SCRIPT_VERIFY_P2SH | SCRIPT_VERIFY_STRICTENC;
 unsigned int ParseScriptFlags(string strFlags);
 string FormatScriptFlags(unsigned int flags);
 
-Array
+UniValue
 read_json(const std::string& jsondata)
 {
-    Value v;
+    UniValue v;
 
-    if (!read_string(jsondata, v) || v.type() != array_type)
+    if (!v.read(jsondata) || !v.isArray())
     {
         BOOST_ERROR("Parse error.");
-        return Array();
+        return UniValue(UniValue::VARR);
     }
     return v.get_array();
 }
@@ -303,10 +302,10 @@ public:
         return *this;
     }
 
-    Array GetJSON()
+    UniValue GetJSON()
     {
         DoPush();
-        Array array;
+        UniValue array(UniValue::VARR);
         array.push_back(FormatScript(spendTx.vin[0].scriptSig));
         array.push_back(FormatScript(creditTx.vout[0].scriptPubKey));
         array.push_back(FormatScriptFlags(flags));
@@ -568,23 +567,25 @@ BOOST_AUTO_TEST_CASE(script_build)
     std::set<std::string> tests_bad;
 
     {
-        Array json_good = read_json(std::string(json_tests::script_valid, json_tests::script_valid + sizeof(json_tests::script_valid)));
-        Array json_bad = read_json(std::string(json_tests::script_invalid, json_tests::script_invalid + sizeof(json_tests::script_invalid)));
+        UniValue json_good = read_json(std::string(json_tests::script_valid, json_tests::script_valid + sizeof(json_tests::script_valid)));
+        UniValue json_bad = read_json(std::string(json_tests::script_invalid, json_tests::script_invalid + sizeof(json_tests::script_invalid)));
 
-        BOOST_FOREACH(Value& tv, json_good) {
-            tests_good.insert(write_string(Value(tv.get_array()), true));
+        for (unsigned int idx = 0; idx < json_good.size(); idx++) {
+            const UniValue& tv = json_good[idx];
+            tests_good.insert(tv.get_array().write());
         }
-        BOOST_FOREACH(Value& tv, json_bad) {
-            tests_bad.insert(write_string(Value(tv.get_array()), true));
+        for (unsigned int idx = 0; idx < json_bad.size(); idx++) {
+            const UniValue& tv = json_bad[idx];
+            tests_bad.insert(tv.get_array().write());
         }
     }
 
     std::string strGood;
     std::string strBad;
 
-    BOOST_FOREACH(TestBuilder& test, good) {
+    for (TestBuilder& test : good) {
         test.Test(true);
-        std::string str = write_string(Value(test.GetJSON()), true);
+        std::string str = test.GetJSON().write();
 #ifndef UPDATE_JSON_TESTS
         if (tests_good.count(str) == 0) {
             BOOST_CHECK_MESSAGE(false, "Missing auto script_valid test: " + test.GetComment());
@@ -592,9 +593,9 @@ BOOST_AUTO_TEST_CASE(script_build)
 #endif
         strGood += str + ",\n";
     }
-    BOOST_FOREACH(TestBuilder& test, bad) {
+    for (TestBuilder& test : bad) {
         test.Test(false);
-        std::string str = write_string(Value(test.GetJSON()), true);
+        std::string str = test.GetJSON().write();
 #ifndef UPDATE_JSON_TESTS
         if (tests_bad.count(str) == 0) {
             BOOST_CHECK_MESSAGE(false, "Missing auto script_invalid test: " + test.GetComment());
@@ -620,12 +621,11 @@ BOOST_AUTO_TEST_CASE(script_valid)
     // Inner arrays are [ "scriptSig", "scriptPubKey", "flags" ]
     // ... where scriptSig and scriptPubKey are stringified
     // scripts.
-    Array tests = read_json(std::string(json_tests::script_valid, json_tests::script_valid + sizeof(json_tests::script_valid)));
+    UniValue tests = read_json(std::string(json_tests::script_valid, json_tests::script_valid + sizeof(json_tests::script_valid)));
 
-    BOOST_FOREACH(Value& tv, tests)
-    {
-        Array test = tv.get_array();
-        string strTest = write_string(tv, false);
+    for (unsigned int idx = 0; idx < tests.size(); idx++) {
+        UniValue test = tests[idx];
+        string strTest = test.write();
         if (test.size() < 3) // Allow size > 3; extra stuff ignored (useful for comments)
         {
             if (test.size() != 1) {
@@ -646,12 +646,11 @@ BOOST_AUTO_TEST_CASE(script_valid)
 BOOST_AUTO_TEST_CASE(script_invalid)
 {
     // Scripts that should evaluate as invalid
-    Array tests = read_json(std::string(json_tests::script_invalid, json_tests::script_invalid + sizeof(json_tests::script_invalid)));
+    UniValue tests = read_json(std::string(json_tests::script_invalid, json_tests::script_invalid + sizeof(json_tests::script_invalid)));
 
-    BOOST_FOREACH(Value& tv, tests)
-    {
-        Array test = tv.get_array();
-        string strTest = write_string(tv, false);
+    for (unsigned int idx = 0; idx < tests.size(); idx++) {
+        UniValue test = tests[idx];
+        string strTest = test.write();
         if (test.size() < 3) // Allow size > 3; extra stuff ignored (useful for comments)
         {
             if (test.size() != 1) {
@@ -714,7 +713,7 @@ sign_multisig(CScript scriptPubKey, std::vector<CKey> keys, CTransaction transac
     // and vice-versa)
     //
     result << OP_0;
-    BOOST_FOREACH(const CKey &key, keys)
+    for (const CKey &key : keys)
     {
         vector<unsigned char> vchSig;
         BOOST_CHECK(key.Sign(hash, vchSig));

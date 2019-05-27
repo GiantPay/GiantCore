@@ -1,7 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2017 The PIVX developers 
-// Copyright (c) 2015-2017 The ALQO developers
+// Copyright (c) 2015-2018 The PIVX developers
 // Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -12,26 +11,31 @@
 #include "walletmodel.h"
 
 #include "base58.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
+#include "askpassphrasedialog.h"
 
 #include <QDebug>
 #include <QFont>
 
 const QString AddressTableModel::Send = "S";
 const QString AddressTableModel::Receive = "R";
+const QString AddressTableModel::Zerocoin = "X";
 
 struct AddressTableEntry {
     enum Type {
         Sending,
         Receiving,
+        Zerocoin,
         Hidden /* QSortFilterProxyModel will filter these out */
     };
 
     Type type;
     QString label;
     QString address;
+    QString pubcoin;
 
     AddressTableEntry() {}
+    AddressTableEntry(Type type, const QString &pubcoin):    type(type), pubcoin(pubcoin) {}
     AddressTableEntry(Type type, const QString& label, const QString& address) : type(type), label(label), address(address) {}
 };
 
@@ -79,7 +83,7 @@ public:
         cachedAddressTable.clear();
         {
             LOCK(wallet->cs_wallet);
-            BOOST_FOREACH (const PAIRTYPE(CTxDestination, CAddressBookData) & item, wallet->mapAddressBook) {
+            for (const PAIRTYPE(CTxDestination, CAddressBookData) & item : wallet->mapAddressBook) {
                 const CBitcoinAddress& address = item.first;
                 bool fMine = IsMine(*wallet, address.Get());
                 AddressTableEntry::Type addressType = translateTransactionType(
@@ -138,6 +142,43 @@ public:
             break;
         }
     }
+
+    void updateEntry(const QString &pubCoin, const QString &isUsed, int status)
+    {
+        // Find address / label in model
+        QList<AddressTableEntry>::iterator lower = qLowerBound(
+                                                               cachedAddressTable.begin(), cachedAddressTable.end(), pubCoin, AddressTableEntryLessThan());
+        QList<AddressTableEntry>::iterator upper = qUpperBound(
+                                                               cachedAddressTable.begin(), cachedAddressTable.end(), pubCoin, AddressTableEntryLessThan());
+        int lowerIndex = (lower - cachedAddressTable.begin());
+        bool inModel = (lower != upper);
+        AddressTableEntry::Type newEntryType = AddressTableEntry::Zerocoin;
+
+        switch(status)
+        {
+            case CT_NEW:
+                if(inModel)
+                {
+                    qWarning() << "AddressTablePriv_ZC::updateEntry : Warning: Got CT_NEW, but entry is already in model";
+                }
+                parent->beginInsertRows(QModelIndex(), lowerIndex, lowerIndex);
+                cachedAddressTable.insert(lowerIndex, AddressTableEntry(newEntryType, isUsed, pubCoin));
+                parent->endInsertRows();
+                break;
+            case CT_UPDATED:
+                if(!inModel)
+                {
+                    qWarning() << "AddressTablePriv_ZC::updateEntry : Warning: Got CT_UPDATED, but entry is not in model";
+                    break;
+                }
+                lower->type = newEntryType;
+                lower->label = isUsed;
+                parent->emitDataChanged(lowerIndex);
+                break;
+        }
+
+    }
+
 
     int size()
     {
@@ -307,9 +348,18 @@ void AddressTableModel::updateEntry(const QString& address,
     const QString& purpose,
     int status)
 {
-    // Update address book model from GIANT core
+    // Update address book model from Giant core
     priv->updateEntry(address, label, isMine, purpose, status);
 }
+
+
+void AddressTableModel::updateEntry(const QString &pubCoin, const QString &isUsed, int status)
+{
+    // Update stealth address book model from Bitcoin core
+    priv->updateEntry(pubCoin, isUsed, status);
+}
+
+
 
 QString AddressTableModel::addRow(const QString& type, const QString& label, const QString& address)
 {
@@ -335,7 +385,7 @@ QString AddressTableModel::addRow(const QString& type, const QString& label, con
         // Generate a new address to associate with given label
         CPubKey newKey;
         if (!wallet->GetKeyFromPool(newKey)) {
-            WalletModel::UnlockContext ctx(walletModel->requestUnlock(true));
+            WalletModel::UnlockContext ctx(walletModel->requestUnlock(AskPassphraseDialog::Context::Unlock_Full, true));
             if (!ctx.isValid()) {
                 // Unlock wallet failed or was cancelled
                 editStatus = WALLET_UNLOCK_FAILURE;

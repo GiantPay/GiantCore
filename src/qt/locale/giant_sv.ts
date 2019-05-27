@@ -1,6 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.0">
+<TS language="sv" version="2.1">
 <context>
     <name>AddressBookPage</name>
+    <message>
+        <source>Right-click to edit address or label</source>
+        <translation>Höger klicka för att redigera adress eller etikett</translation>
+    </message>
     <message>
         <source>Create a new address</source>
         <translation>Skapa en ny adress</translation>
@@ -11,7 +15,7 @@
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Kopiera den valda adressen till systemurklippet</translation>
+        <translation>Kopiera den markerade adressen till systemets urklipp</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
@@ -27,7 +31,7 @@
     </message>
     <message>
         <source>Export the data in the current tab to a file</source>
-        <translation>Exportera datan från fliken till en fil</translation>
+        <translation>Exportera data in den nuvarande fliken till en fil</translation>
     </message>
     <message>
         <source>&amp;Export</source>
@@ -35,43 +39,43 @@
     </message>
     <message>
         <source>C&amp;lose</source>
-        <translation>S&amp;täng</translation>
+        <translation>Stäng</translation>
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>Välj en adress att skicka mynt till</translation>
+        <translation>Välj adress att skicka mynt till</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>Välj adressen att motta mynt från</translation>
+        <translation>Välj adress att ta emot mynt med</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
-        <translation>V&amp;älj</translation>
+        <translation>Välj</translation>
     </message>
     <message>
         <source>Sending addresses</source>
-        <translation>Avsändaradresser</translation>
+        <translation>Skicka adresser</translation>
     </message>
     <message>
         <source>Receiving addresses</source>
-        <translation>Mottagaradresser</translation>
+        <translation>Mottagar adresser</translation>
     </message>
     <message>
         <source>These are your GIANT addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>De här är dina GIANT-adresser för att skicka betalningar. Kontrollera alltid mängden och mottagaradressen innan du skickar mynt.</translation>
+        <translation>Det här är dina GIANT adresser för att skicka betalningar. Kontrollera alltid summan och mottagaradressen före du sänder mynt.</translation>
     </message>
     <message>
         <source>These are your GIANT addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>De här är dina GIANT-adresser för betalningsmottagningar. Det rekommenderas att använda en ny mottagaradress för varje transaktion.</translation>
+        <translation>Det här är dina GIANT adresser för att ta emot betalningar. Det är rekomenderat att använda en ny mottagaradress för varje transaktion.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
-        <translation>&amp;Kopiera adress</translation>
+        <translation>&amp;Kopiera Adress</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
-        <translation>Kopiera &amp;etikett</translation>
+        <translation>Kopiera &amp; Ettiket</translation>
     </message>
     <message>
         <source>&amp;Edit</source>
@@ -79,7 +83,7 @@
     </message>
     <message>
         <source>Export Address List</source>
-        <translation>Exportera adresslistan</translation>
+        <translation>Exportera Adress Lista</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
@@ -87,9 +91,13 @@
     </message>
     <message>
         <source>Exporting Failed</source>
-        <translation>Exporteringen misslyckades</translation>
+        <translation>Exportering Misslyckades</translation>
     </message>
-    </context>
+    <message>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Det uppstod ett fel när vi försökte spara adresslistan till %1. Var snäll och försök på nytt.</translation>
+    </message>
+</context>
 <context>
     <name>AddressTableModel</name>
     <message>
@@ -109,11 +117,11 @@
     <name>AskPassphraseDialog</name>
     <message>
         <source>Passphrase Dialog</source>
-        <translation>Lösenfrasdialog</translation>
+        <translation>Lösenfras Dialog</translation>
     </message>
     <message>
         <source>Enter passphrase</source>
-        <translation>Ange lösenfras</translation>
+        <translation>Fyll i lösenfras</translation>
     </message>
     <message>
         <source>New passphrase</source>
@@ -121,35 +129,39 @@
     </message>
     <message>
         <source>Repeat new passphrase</source>
-        <translation>Upprepa ny lösenfras</translation>
+        <translation>Repetera ny lösenfras</translation>
     </message>
     <message>
         <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation>Arbetar för att inaktivera de triviala sändpengarna när OS-kontot är komprometterat. Ger ingen reell säkerhet.</translation>
+        <translation>Ser till att inaktivera obetydliga skickade pengar när OS kontot är i risk. Förser ingen riktig säkerhet.</translation>
     </message>
     <message>
-        <source>For anonymization and staking only</source>
-        <translation>Endast för anonymisering</translation>
+        <source>For anonymization, automint, and staking only</source>
+        <translation>Endast för anonymisering, automint, och staking</translation>
+    </message>
+    <message>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Skriv in den nya lösenfrasen för plånboken.&lt;br/&gt;Var vänlig använd en lösenfras bestående av &lt;b&gt;tio eller mer slumpmässiga bokstäver&lt;/b&gt;, eller &lt;b&gt;åtta eller flera ord &lt;/b&gt;.</translation>
     </message>
     <message>
         <source>Encrypt wallet</source>
-        <translation>Kryptera plånbok</translation>
+        <translation>Kryptera Plånbok</translation>
     </message>
     <message>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Denna handling kräver din plånboks lösenfras för att låsa upp plånboken.</translation>
+        <translation>Den här processen kräver din plånboks lösenfras för att låsa upp plånboken</translation>
     </message>
     <message>
         <source>Unlock wallet</source>
-        <translation>Lås upp plånbok</translation>
+        <translation>lås upp plånbok</translation>
     </message>
     <message>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>Denna handling kräver din plånboks lösenfras för att dekryptera plånboken.</translation>
+        <translation>Den här processen kräver din plånboks lösenfras för att avkryptera plånboken</translation>
     </message>
     <message>
         <source>Decrypt wallet</source>
-        <translation>Dekryptera plånbok</translation>
+        <translation>Avkryptera plånbok</translation>
     </message>
     <message>
         <source>Change passphrase</source>
@@ -161,68 +173,233 @@
     </message>
     <message>
         <source>Confirm wallet encryption</source>
-        <translation>Bekräfta plånbokskryptering</translation>
+        <translation>Bekräfta plånboks krypering</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DNET&lt;/b&gt;!</source>
-        <translation>Varning: Om du krypterar din plånbok och förlorar din lösenfras kommer du att &lt;b&gt;FÖRLORA ALLA DINA DNET&lt;/b&gt;!</translation>
+        <source>GIANT will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your GICs from being stolen by malware infecting your computer.</source>
+        <translation>GIANT kommer att stängas ner nu för att färdigställa kryperingsprocessen. Kom ihåg att kryptering av din plånbok inte kan säkerställa dina GICs från att bli stulna av skadeprogram som infekterat din dator.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Är du säker på att du vill kryptera din plånbok?</translation>
     </message>
     <message>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR GIC&lt;/b&gt;!</source>
+        <translation>Varning: om du krypterar din plånbok och tappar bort din lösenfras kommer du &lt;b&gt; FÖRLORA ALLA DINA GIC&lt;/b&gt;!</translation>
+    </message>
+    <message>
         <source>Wallet encrypted</source>
         <translation>Plånbok krypterad</translation>
     </message>
     <message>
-        <source>GIANT will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your giants from being stolen by malware infecting your computer.</source>
-        <translation>GIANT kommer nu att färdigställa krypteringsprocessen. Kom ihåg att krypteringen av din plånbok inte kan skydda dig helt och hållet från att dina GIANT stjäls av skadeprogram som har infekterat din dator.</translation>
-    </message>
-    <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>VIKTIGT: Alla tidigare säkerhetskopior du har gjort av plånboksfilen bör ersättas med den nygenererade krypterade plånboksfilen. Av säkerhetsskäl kommer tidigare säkerhetskopior av den okrypterade plånboksfilen bli oanvändbara så fort du använder den nya krypterade plånboken.</translation>
+        <translation>VIKTIGT: Alla dina tidigare säkerhetskopior du har gjort av plånboks filen bör ersättas med den nygenererade, krypterade plånboks filen. För säkerhetsskäl, tidigare säkerhetskopior av okrypterade plånboks filer kommer bli oanvändbar så fort du börjar använda den nya krypterade plånboken.</translation>
     </message>
     <message>
         <source>Wallet encryption failed</source>
-        <translation>Plånbokskrypteringen misslyckades</translation>
+        <translation>Plånboks kryptering misslyckades</translation>
     </message>
     <message>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
-        <translation>Plånbokskrypteringen misslyckades på grund av ett internt fel. Din plånbok krypterades inte.</translation>
+        <translation>Plånboks kryptering misslyckades på grund av ett internt fel. Din plånbok blev inte krypterad.</translation>
     </message>
     <message>
         <source>The supplied passphrases do not match.</source>
-        <translation>Den angivna lösenfrasen överensstämmer inte.</translation>
+        <translation>Den tillhandahållna lösenfrasen stämmer inte överens.</translation>
     </message>
     <message>
         <source>Wallet unlock failed</source>
-        <translation>Plånboksupplåsning misslyckades</translation>
+        <translation>Plånboks upplåsning misslyckades</translation>
     </message>
     <message>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>Den inmatade lösenfrasen för plånboksdekrypteringen var felaktig.</translation>
+        <translation>Den givna lösenfrasen för plånbokens avkryptering var fel.</translation>
     </message>
     <message>
         <source>Wallet decryption failed</source>
-        <translation>Plånboksdekryptering misslyckades.</translation>
+        <translation>plånboks dekryptering misslyckades</translation>
     </message>
     <message>
         <source>Wallet passphrase was successfully changed.</source>
-        <translation>Plånbokens lösenfras ändrades framgångsrikt.</translation>
+        <translation>Ändring av plånbokens lösenfras lyckades.</translation>
     </message>
     <message>
         <source>Warning: The Caps Lock key is on!</source>
-        <translation>Varning: Caps Lock är aktiverat!</translation>
+        <translation>Varning: Caps-Lock tangent är på!</translation>
+    </message>
+</context>
+<context>
+    <name>BanTableModel</name>
+    <message>
+        <source>IP/Netmask</source>
+        <translation>IP/Nätmask</translation>
+    </message>
+    <message>
+        <source>Banned Until</source>
+        <translation>Portad fram tills</translation>
+    </message>
+</context>
+<context>
+    <name>Bip38ToolDialog</name>
+    <message>
+        <source>BIP 38 Tool</source>
+        <translation>BIP 38 Verktyg</translation>
+    </message>
+    <message>
+        <source>&amp;BIP 38 Encrypt</source>
+        <translation>BIP 38 Kryptering</translation>
+    </message>
+    <message>
+        <source>Address:</source>
+        <translation>Adress:</translation>
+    </message>
+    <message>
+        <source>Enter a GIANT Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation>Fyll i en GIANT Adress som du skulle vilja cryptera med BIP 38. Skriv in en lösenfras i den mittersta lådan. Tryck kryptera för att beräkna fram den krypterade privata nyckeln.</translation>
+    </message>
+    <message>
+        <source>The GIANT address to encrypt</source>
+        <translation>GIANT adressen som ska krypteras</translation>
+    </message>
+    <message>
+        <source>Choose previously used address</source>
+        <translation>Använd den föregående använda adressen</translation>
+    </message>
+    <message>
+        <source>Alt+A</source>
+        <translation>Alt+A</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Infoga adress från urklipp</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
+    </message>
+    <message>
+        <source>Passphrase: </source>
+        <translation>Lösenfras:</translation>
+    </message>
+    <message>
+        <source>Encrypted Key:</source>
+        <translation>Krypterad Nyckel:</translation>
+    </message>
+    <message>
+        <source>Copy the current signature to the system clipboard</source>
+        <translation>Kopiera den nuvarande signaturen till systemets urklipp</translation>
+    </message>
+    <message>
+        <source>Encrypt the private key for this GIANT address</source>
+        <translation>Kryptera den privata nyckeln för denna GIANT adressen</translation>
+    </message>
+    <message>
+        <source>Reset all fields</source>
+        <translation>Återställ alla fält</translation>
+    </message>
+    <message>
+        <source>The encrypted private key</source>
+        <translation>Den krypterade privata nyckeln</translation>
+    </message>
+    <message>
+        <source>Decrypt the entered key using the passphrase</source>
+        <translation>Dekryptera den inmatade nyckeln med lösenordsfrasen</translation>
+    </message>
+    <message>
+        <source>Encrypt &amp;Key</source>
+        <translation>Kryptera &amp;Nyckel</translation>
+    </message>
+    <message>
+        <source>Clear &amp;All</source>
+        <translation>Rensa &amp;allt</translation>
+    </message>
+    <message>
+        <source>&amp;BIP 38 Decrypt</source>
+        <translation>&amp;BIP 38 Dekryptera</translation>
+    </message>
+    <message>
+        <source>Enter the BIP 38 encrypted private key. Enter the passphrase in the middle box. Click Decrypt Key to compute the private key. After the key is decrypted, clicking 'Import Address' will add this private key to the wallet.</source>
+        <translation>Ange BIP 38 krypterade privata nyckeln. Ange lösenfrasen i med mittersta boxen. Tryck på krypetra nyckel för att beräkna den privata nyckeln. Efter att nyckeln är avkrypterad, tryck på 'Importera Adress' kommer att lägga till denna privata nyckel till plånboken.</translation>
+    </message>
+    <message>
+        <source>Decrypt &amp;Key</source>
+        <translation>Dekryptera &amp;Nyckel</translation>
+    </message>
+    <message>
+        <source>Decrypted Key:</source>
+        <translation>Dekrypterad Nyckel:</translation>
+    </message>
+    <message>
+        <source>Import Address</source>
+        <translation>Importera Adress</translation>
+    </message>
+    <message>
+        <source>Click "Decrypt Key" to compute key</source>
+        <translation>Tryck "Dekryptera Nyckel" för att beräkna nyckeln</translation>
+    </message>
+    <message>
+        <source>The entered passphrase is invalid. </source>
+        <translation>Den angivna lösenfrasen är felaktig.</translation>
+    </message>
+    <message>
+        <source>Allowed: 0-9,a-z,A-Z,</source>
+        <translation>Tillåtna: 0-9,a-z.A-Z.</translation>
+    </message>
+    <message>
+        <source>The entered address is invalid.</source>
+        <translation>Den angivna adressen är felaktig.</translation>
+    </message>
+    <message>
+        <source>Please check the address and try again.</source>
+        <translation>Var vänlig kontrollera adressen och försök igen.</translation>
+    </message>
+    <message>
+        <source>The entered address does not refer to a key.</source>
+        <translation>Den angivna adressen visar inte till en nyckel.</translation>
+    </message>
+    <message>
+        <source>Wallet unlock was cancelled.</source>
+        <translation>Upplåsningen av plånboken blev avbruten.</translation>
+    </message>
+    <message>
+        <source>Private key for the entered address is not available.</source>
+        <translation>Den privata nyckel som angivits till adressen är inte tillgänglig.</translation>
+    </message>
+    <message>
+        <source>Failed to decrypt.</source>
+        <translation>Dekryptering misslyckades.</translation>
+    </message>
+    <message>
+        <source>Please check the key and passphrase and try again.</source>
+        <translation>Var vänlig och kontrollera nyckeln och lösenfrasen och försök igen.</translation>
+    </message>
+    <message>
+        <source>Data Not Valid.</source>
+        <translation>Data ogiltig.</translation>
+    </message>
+    <message>
+        <source>Please try again.</source>
+        <translation>Var vänlig försök igen.</translation>
+    </message>
+    <message>
+        <source>Please wait while key is imported</source>
+        <translation>Var god vänta medans nyckeln importeras</translation>
+    </message>
+    <message>
+        <source>Key Already Held By Wallet</source>
+        <translation>Nyckeln är redan bunden till plånboken</translation>
+    </message>
+    <message>
+        <source>Error Adding Key To Wallet</source>
+        <translation>Fel när nyckel skulle läggas till plånbok</translation>
+    </message>
+    <message>
+        <source>Successfully Added Private Key To Wallet</source>
+        <translation>privat nyckel framgångsrikt tillagd till plånbok</translation>
     </message>
 </context>
 <context>
     <name>BitcoinGUI</name>
-    <message>
-        <source>GIANT Core</source>
-        <translation>GIANT Core
-</translation>
-    </message>
     <message>
         <source>Wallet</source>
         <translation>Plånbok</translation>
@@ -237,23 +414,15 @@
     </message>
     <message>
         <source>Show general overview of wallet</source>
-        <translation>Visa allmän plånboksöversikt</translation>
+        <translation>Visa generell översikt av plånbok</translation>
     </message>
     <message>
         <source>&amp;Send</source>
         <translation>&amp;Skicka</translation>
     </message>
     <message>
-        <source>Send coins to a GIANT address</source>
-        <translation>Skicka mynt till en GIANT-adress</translation>
-    </message>
-    <message>
         <source>&amp;Receive</source>
-        <translation>&amp;Motta</translation>
-    </message>
-    <message>
-        <source>Request payments (generates QR codes and giant: URIs)</source>
-        <translation>Begär betalningar (genererar QR-koder och GIANT:-URI:s)</translation>
+        <translation>&amp;Mottaga</translation>
     </message>
     <message>
         <source>&amp;Transactions</source>
@@ -261,19 +430,19 @@
     </message>
     <message>
         <source>Browse transaction history</source>
-        <translation>Bläddra i transaktionshistoriken</translation>
+        <translation>Bläddra i transaktions historiken</translation>
+    </message>
+    <message>
+        <source>Privacy Actions for zGIC</source>
+        <translation>Integritets funktioner för zGIC</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
-        <translation>A&amp;vsluta</translation>
+        <translation>gå ur</translation>
     </message>
     <message>
         <source>Quit application</source>
         <translation>Avsluta applikationen</translation>
-    </message>
-    <message>
-        <source>&amp;About GIANT Core</source>
-        <translation>&amp;Om GIANT Core</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -288,68 +457,56 @@
         <translation>&amp;Alternativ...</translation>
     </message>
     <message>
-        <source>Modify configuration options for GIANT</source>
-        <translation>Anpassa konfigurationsalternatv för GIANT</translation>
-    </message>
-    <message>
         <source>&amp;Show / Hide</source>
-        <translation>&amp;Visa/göm</translation>
+        <translation>&amp;Visa / Dölj</translation>
     </message>
     <message>
         <source>Show or hide the main Window</source>
-        <translation>Visa eller göm huvudfönstret</translation>
+        <translation>Visa eller Dölj huvudfönstret</translation>
     </message>
     <message>
         <source>&amp;Encrypt Wallet...</source>
-        <translation>&amp;Kryptera plånbok...</translation>
+        <translation>&amp;Kryptera Plånbok...</translation>
     </message>
     <message>
         <source>Encrypt the private keys that belong to your wallet</source>
-        <translation>Kryptera de privata nycklarna vilka tillhör din plånbok</translation>
+        <translation>Kryptera privata nycklar som tillhör din plånbok</translation>
     </message>
     <message>
         <source>&amp;Backup Wallet...</source>
-        <translation>&amp;Säkerhetskopiera plånbok...</translation>
+        <translation>&amp;Säkerhetskopiera Plånbok...</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
-        <translation>Säkerhetskopiera plånboken till en annan plats</translation>
+        <translation>Säkerhetskopiera din plånbok till en annan plats</translation>
     </message>
     <message>
         <source>&amp;Change Passphrase...</source>
-        <translation>&amp;Ändra lösenfras...</translation>
+        <translation>Ändra lösenfras</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
-        <translation>Ändra lösenfrasen som används för plånbokskryptering</translation>
+        <translation>Ändra lösenfrasen som används för kryptering av plånbok</translation>
     </message>
     <message>
         <source>&amp;Unlock Wallet...</source>
-        <translation>&amp;Lås upp plånbok...</translation>
+        <translation>lås upp plånbok</translation>
     </message>
     <message>
         <source>Unlock wallet</source>
-        <translation>Lås upp plånbok</translation>
+        <translation>lås upp plånbok</translation>
     </message>
     <message>
         <source>&amp;Lock Wallet</source>
-        <translation>&amp;Lås plånbok</translation>
+        <translation>lås plånbok</translation>
     </message>
     <message>
         <source>Sign &amp;message...</source>
-        <translation>Signera &amp;meddelande...</translation>
-    </message>
-    <message>
-        <source>Sign messages with your GIANT addresses to prove you own them</source>
-        <translation>Signera meddelanden med dina GIANT-adresser för att bevisa att du äger dem</translation>
+        <translation>signera &amp;meddelande...</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
-        <translation>&amp;Bekräfta meddelande...</translation>
-    </message>
-    <message>
-        <source>Verify messages to ensure they were signed with specified GIANT addresses</source>
-        <translation>Bekräfta meddelanden för att garantera att de signerades med de angivna GIANT-adresserna</translation>
+        <translation>&amp;Verifiera meddelande</translation>
     </message>
     <message>
         <source>&amp;Information</source>
@@ -361,83 +518,235 @@
     </message>
     <message>
         <source>&amp;Debug console</source>
-        <translation>&amp;Avsökningskonsol</translation>
+        <translation>Felsökningskonsol</translation>
     </message>
     <message>
         <source>Open debugging console</source>
-        <translation>Öppna avsökningskonsol</translation>
+        <translation>Öppna felsökningskonsol</translation>
     </message>
     <message>
         <source>&amp;Network Monitor</source>
-        <translation>&amp;Nätverksövervakare</translation>
+        <translation>&amp;Nätverks Övervakare</translation>
     </message>
     <message>
         <source>Show network monitor</source>
         <translation>Visa nätverksövervakare</translation>
     </message>
     <message>
-        <source>Open &amp;Configuration File</source>
-        <translation>Öppna &amp;Konfigurationsfil</translation>
+        <source>&amp;Peers list</source>
+        <translation>enhets lista</translation>
+    </message>
+    <message>
+        <source>Show peers info</source>
+        <translation>Visa enhetslista</translation>
+    </message>
+    <message>
+        <source>Wallet &amp;Repair</source>
+        <translation>Plånbok &amp;Reparera</translation>
+    </message>
+    <message>
+        <source>Show wallet repair options</source>
+        <translation>Visa val av reparation av plånbok</translation>
     </message>
     <message>
         <source>Open configuration file</source>
-        <translation>Öppna konfigurationsfil</translation>
+        <translation>Öppna konfigurations fil</translation>
+    </message>
+    <message>
+        <source>Show Automatic &amp;Backups</source>
+        <translation>Visa Automatiskt &amp;Säkerthetskopior</translation>
+    </message>
+    <message>
+        <source>Show automatically created wallet backups</source>
+        <translation>Visa automatiskt skapade säkerhetskopior av plånbok</translation>
     </message>
     <message>
         <source>&amp;Sending addresses...</source>
-        <translation>&amp;Avsändaradresser...</translation>
+        <translation>Sändnings adresser</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
-        <translation>Visa listan för redan använda avsändaradresser och etiketter</translation>
+        <translation>Visa listan över använda sändningsadresser och etiketter</translation>
     </message>
     <message>
         <source>&amp;Receiving addresses...</source>
-        <translation>&amp;Mottagaradresser...</translation>
+        <translation>Mottagar adresser</translation>
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
-        <translation>Visa listan för redan använda mottagaradresser och etiketter</translation>
+        <translation>Visa listan över använda mottagar adresser och etiketter</translation>
+    </message>
+    <message>
+        <source>&amp;Multisignature creation...</source>
+        <translation>&amp;Multisignaturskapande...</translation>
+    </message>
+    <message>
+        <source>Create a new multisignature address and add it to this wallet</source>
+        <translation>Skapa en ny multisignaturadress och lägg till den till denna plånbok</translation>
+    </message>
+    <message>
+        <source>&amp;Multisignature spending...</source>
+        <translation>&amp;Multisignatur spendering...</translation>
+    </message>
+    <message>
+        <source>Spend from a multisignature address</source>
+        <translation>Spendera från en multisignaturadress</translation>
+    </message>
+    <message>
+        <source>&amp;Multisignature signing...</source>
+        <translation>&amp;Multisignatur signerar...</translation>
+    </message>
+    <message>
+        <source>Sign with a multisignature address</source>
+        <translation>Signera med en multisignaturadress</translation>
     </message>
     <message>
         <source>Open &amp;URI...</source>
-        <translation>Öppna &amp;URI...</translation>
-    </message>
-    <message>
-        <source>Open a giant: URI or payment request</source>
-        <translation>Öppna en GIANT-URI eller betalningsbegäran</translation>
+        <translation>Öppna &amp; URl</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
-        <translation>&amp;Kommandoradalternativ</translation>
+        <translation>komanndo linje val</translation>
+    </message>
+    <message numerus="yes">
+        <source>Processed %n blocks of transaction history.</source>
+        <translation><numerusform>Bearbetat %n block av transaktionshistoriken.</numerusform><numerusform>Bearbetat %n block av transaktionshistoriken.</numerusform></translation>
     </message>
     <message>
-        <source>Show the GIANT Core help message to get a list with possible GIANT command-line options</source>
-        <translation>Visa GIANT Core-hjälpmeddelandet för att få en lista med möjliga GIANT-kommandoradalternativ</translation>
+        <source>Synchronizing additional data: %p%</source>
+        <translation>synchroniserar ytterligare data %p%</translation>
+    </message>
+    <message>
+        <source>%1 behind. Scanning block %2</source>
+        <translation>%1 efter. Skannar block %2</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonymization and staking only</source>
+        <translation>Plånboken är &lt;b&gt;krypterad&lt;/b&gt; och för tillfället &lt;b&gt;olåst&lt;/b&gt; för anonymisering och staking enbart</translation>
+    </message>
+    <message>
+        <source>Tor is &lt;b&gt;enabled&lt;/b&gt;: %1</source>
+        <translation>Tor är &lt;b&gt;aktiverat&lt;/b&gt;: %1</translation>
     </message>
     <message>
         <source>&amp;File</source>
-        <translation>&amp;Fil</translation>
+        <translation>Fil</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>&amp;Inställningar</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>&amp;Verktyg</translation>
+        <translation>Verktyg</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>&amp;Hjälp</translation>
+        <translation>Hjälp</translation>
     </message>
     <message>
         <source>Tabs toolbar</source>
-        <translation>Verktygsfält för tabbar</translation>
+        <translation>flik vertygsrad</translation>
+    </message>
+    <message>
+        <source>GIANT Core</source>
+        <translation>GIANT Core</translation>
+    </message>
+    <message>
+        <source>Send coins to a GIANT address</source>
+        <translation>Skicka mynt till en GIANT adress</translation>
+    </message>
+    <message>
+        <source>Request payments (generates QR codes and giant: URIs)</source>
+        <translation>Begär betalning (genererar QR kod och giant: URls)</translation>
+    </message>
+    <message>
+        <source>&amp;Privacy</source>
+        <translation>&amp;Sekretess</translation>
+    </message>
+    <message>
+        <source>&amp;Masternodes</source>
+        <translation>Masternoder</translation>
+    </message>
+    <message>
+        <source>Browse masternodes</source>
+        <translation>Utforska masternoder</translation>
+    </message>
+    <message>
+        <source>&amp;About GIANT Core</source>
+        <translation>Om GIANT Kärnan</translation>
+    </message>
+    <message>
+        <source>Show information about GIANT Core</source>
+        <translation>Visa information om GIANT Kärnan</translation>
+    </message>
+    <message>
+        <source>Modify configuration options for GIANT</source>
+        <translation>Ändra konfigurationsval för GIANT</translation>
+    </message>
+    <message>
+        <source>Sign messages with your GIANT addresses to prove you own them</source>
+        <translation>Signera meddelanden med din GIANT adress för att visa att du äger dem</translation>
+    </message>
+    <message>
+        <source>Verify messages to ensure they were signed with specified GIANT addresses</source>
+        <translation>Verifiera meddelandet för att säkerställa att de blev signerat med den specifika GIANT adressen.</translation>
+    </message>
+    <message>
+        <source>&amp;BIP38 tool</source>
+        <translation>BIP38 Verktyg</translation>
+    </message>
+    <message>
+        <source>Encrypt and decrypt private keys using a passphrase</source>
+        <translation>Kryptera och dekryptera privata nycklar genom användning av lösenfras</translation>
+    </message>
+    <message>
+        <source>&amp;MultiSend</source>
+        <translation>&amp;MultiSend</translation>
+    </message>
+    <message>
+        <source>MultiSend Settings</source>
+        <translation>MultiSend Inställningar</translation>
+    </message>
+    <message>
+        <source>Open Wallet &amp;Configuration File</source>
+        <translation>Öppna Plånbok &amp;Konfigurations Fil</translation>
+    </message>
+    <message>
+        <source>Open &amp;Masternode Configuration File</source>
+        <translation>Öppna &amp;Huvudnod Konfigurations Fil</translation>
+    </message>
+    <message>
+        <source>Open Masternode configuration file</source>
+        <translation>Öppna Huvudnodens konfigurations fil </translation>
+    </message>
+    <message>
+        <source>Open a GIANT: URI or payment request</source>
+        <translation>Öppna en GIANT: URI eller betalningsförfrågan</translation>
+    </message>
+    <message>
+        <source>&amp;Blockchain explorer</source>
+        <translation>&amp;Blockchain Utforskare</translation>
+    </message>
+    <message>
+        <source>Block explorer window</source>
+        <translation>Blockera utforskarfönstret</translation>
+    </message>
+    <message>
+        <source>Show the GIANT Core help message to get a list with possible GIANT command-line options</source>
+        <translation>Visa GIANT Core hjälp meddelande för att få en lista med möjliga GIANT kommandorad alternativ</translation>
+    </message>
+    <message>
+        <source>GIANT Core client</source>
+        <translation>GIANT kärn klient</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n active connection(s) to GIANT network</source>
+        <translation><numerusform>%n aktiva anslutning(ar) till GIANT nätverket</numerusform><numerusform>%n aktiva anslutning(ar) till GIANT nätverket</numerusform></translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
-        <translation>Synkroniserar med nätverk...</translation>
+        <translation>Synkroniserar med nätverket...</translation>
     </message>
     <message>
         <source>Importing blocks from disk...</source>
@@ -445,35 +754,47 @@
     </message>
     <message>
         <source>Reindexing blocks on disk...</source>
-        <translation>Återindexerar block på disk...</translation>
+        <translation>Omindexering av block på disk...</translation>
     </message>
     <message>
         <source>No block source available...</source>
-        <translation>Ingen tillgänglig blockkälla...</translation>
+        <translation>Ingen block källa tillgänglig...</translation>
     </message>
     <message>
         <source>Up to date</source>
         <translation>Aktuell</translation>
     </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation><numerusform>%n timmar</numerusform><numerusform>%n timmar</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation><numerusform>%n dagar</numerusform><numerusform>%n dagar</numerusform></translation>
+    </message>
+    <message numerus="yes">
+        <source>%n week(s)</source>
+        <translation><numerusform>%n veckor</numerusform><numerusform>%n veckor</numerusform></translation>
+    </message>
     <message>
         <source>%1 and %2</source>
         <translation>%1 och %2</translation>
     </message>
-    <message>
-        <source>%1 behind</source>
-        <translation>%1 bakom</translation>
+    <message numerus="yes">
+        <source>%n year(s)</source>
+        <translation><numerusform>%n år</numerusform><numerusform>%n år</numerusform></translation>
     </message>
     <message>
         <source>Catching up...</source>
-        <translation>Knappar in...</translation>
+        <translation>Inhämtar...</translation>
     </message>
     <message>
         <source>Last received block was generated %1 ago.</source>
-        <translation>Senast mottagna block genererades för %1 sedan.</translation>
+        <translation>Senaste block som togs emot genererades för %1 sen.</translation>
     </message>
     <message>
         <source>Transactions after this will not yet be visible.</source>
-        <translation>Transaktioner efter denna kommer ännu inte vara synliga.</translation>
+        <translation>Transaktioner efter detta kommer ännu inte synas.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -496,6 +817,10 @@
         <translation>Inkommande transaktion</translation>
     </message>
     <message>
+        <source>Sent MultiSend transaction</source>
+        <translation>Skickad MultiSend transaktion</translation>
+    </message>
+    <message>
         <source>Date: %1
 Amount: %2
 Type: %3
@@ -508,30 +833,89 @@ Adress: %4
 </translation>
     </message>
     <message>
-        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
-        <translation>Plånboken är &lt;b&gt;krypterad&lt;/b&gt; och för närvarande &lt;b&gt;olåst&lt;/b&gt;</translation>
+        <source>Staking is active
+ MultiSend: %1</source>
+        <translation>Staking aktivt
+MultiSend: %1</translation>
     </message>
     <message>
-        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
-        <translation>Plånboken är &lt;b&gt;krypterad&lt;/b&gt; och för närvarande &lt;b&gt;olåst&lt;/b&gt; endast för anonymisering</translation>
+        <source>Active</source>
+        <translation>Aktiv</translation>
+    </message>
+    <message>
+        <source>Not Active</source>
+        <translation>Inte aktiv</translation>
+    </message>
+    <message>
+        <source>Staking is not active
+ MultiSend: %1</source>
+        <translation>Staking inaktivt
+MultiSend: %1</translation>
+    </message>
+    <message>
+        <source>AutoMint is currently enabled and set to </source>
+        <translation>AutoMint är för tillfället aktiverat och inställt på</translation>
+    </message>
+    <message>
+        <source>AutoMint is disabled</source>
+        <translation>AutoMint är inaktiverat</translation>
+    </message>
+    <message>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
+        <translation>Plånbok är &lt;b&gt;krypterad&lt;/b&gt; och tillfälligt &lt;b&gt;olåst&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
-        <translation>Plånboken är &lt;b&gt;krypterad&lt;/b&gt; och för närvarande &lt;b&gt;låst&lt;/b&gt;</translation>
+        <translation>Plånbok är &lt;b&gt;krypterad&lt;/b&gt; och tillfälligt &lt;b&gt;låst&lt;/b&gt;</translation>
+    </message>
+    </context>
+<context>
+    <name>BlockExplorer</name>
+    <message>
+        <source>Blockchain Explorer</source>
+        <translation>Blockchain Utforskaren</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation>Tillbaka</translation>
+    </message>
+    <message>
+        <source>Forward</source>
+        <translation>Framåt</translation>
+    </message>
+    <message>
+        <source>Address / Block / Transaction</source>
+        <translation>Adress / Block / Transaktion</translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation>Sök</translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation>text etikett</translation>
+    </message>
+    <message>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (giant.conf).</source>
+        <translation>Alla transaktioner kommer inte visas. För att visa alla transaktioner behöver du sätta txindex=1 i konfigurationsfilen (giant.conf).</translation>
     </message>
 </context>
 <context>
     <name>ClientModel</name>
     <message>
+        <source>Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unknown: %5)</source>
+        <translation>Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Okänd: %5)</translation>
+    </message>
+    <message>
         <source>Network Alert</source>
-        <translation>Nätverkslarm</translation>
+        <translation>Nätverks alarm</translation>
     </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
         <source>Quantity:</source>
-        <translation>Antal:</translation>
+        <translation>Kvantitet:</translation>
     </message>
     <message>
         <source>Bytes:</source>
@@ -539,7 +923,7 @@ Adress: %4
     </message>
     <message>
         <source>Amount:</source>
-        <translation>Mängd:</translation>
+        <translation>Antal:</translation>
     </message>
     <message>
         <source>Priority:</source>
@@ -550,8 +934,16 @@ Adress: %4
         <translation>Avgift:</translation>
     </message>
     <message>
+        <source>Coin Selection</source>
+        <translation>Mynt Val</translation>
+    </message>
+    <message>
+        <source>Dust:</source>
+        <translation>Dust:</translation>
+    </message>
+    <message>
         <source>After Fee:</source>
-        <translation>Efter avgift:</translation>
+        <translation>Efter Avgift:</translation>
     </message>
     <message>
         <source>Change:</source>
@@ -562,12 +954,16 @@ Adress: %4
         <translation>(av)markera alla</translation>
     </message>
     <message>
+        <source>toggle lock state</source>
+        <translation>toggla låst läge</translation>
+    </message>
+    <message>
         <source>Tree mode</source>
-        <translation>Trädmetod</translation>
+        <translation>träd mode</translation>
     </message>
     <message>
         <source>List mode</source>
-        <translation>Listmetod</translation>
+        <translation>list mode</translation>
     </message>
     <message>
         <source>(1 locked)</source>
@@ -578,17 +974,28 @@ Adress: %4
         <translation>Mängd</translation>
     </message>
     <message>
+        <source>Received with label</source>
+        <translation>Mottag med etikett</translation>
+    </message>
+    <message>
+        <source>Received with address</source>
+        <translation>Mottag med adress</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation>Typ</translation>
+    </message>
+    <message>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
     <message>
         <source>Confirmations</source>
-        <translation>Bekräftelser
-</translation>
+        <translation>Bekräftelser</translation>
     </message>
     <message>
         <source>Confirmed</source>
-        <translation>Bekräftad</translation>
+        <translation>bekräftad</translation>
     </message>
     <message>
         <source>Priority</source>
@@ -596,7 +1003,7 @@ Adress: %4
     </message>
     <message>
         <source>Copy address</source>
-        <translation>Kopiera adress</translation>
+        <translation>Kopiera Adress</translation>
     </message>
     <message>
         <source>Copy label</source>
@@ -604,11 +1011,11 @@ Adress: %4
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>Kopiera mängd</translation>
+        <translation>Kopiera antal</translation>
     </message>
     <message>
         <source>Copy transaction ID</source>
-        <translation>Kopiera transaktions-id</translation>
+        <translation>Kopiera transaktions ID</translation>
     </message>
     <message>
         <source>Lock unspent</source>
@@ -620,7 +1027,7 @@ Adress: %4
     </message>
     <message>
         <source>Copy quantity</source>
-        <translation>Kopiera antal</translation>
+        <translation>Kopiera kvantitet</translation>
     </message>
     <message>
         <source>Copy fee</source>
@@ -636,11 +1043,19 @@ Adress: %4
     </message>
     <message>
         <source>Copy priority</source>
-        <translation>Kopiera prioritet</translation>
+        <translation>Kopierings prioritet</translation>
+    </message>
+    <message>
+        <source>Copy dust</source>
+        <translation>Kopiera dust</translation>
     </message>
     <message>
         <source>Copy change</source>
-        <translation>Kopiera växel</translation>
+        <translation>kopiera ändringar</translation>
+    </message>
+    <message>
+        <source>Please switch to "List mode" to use this function.</source>
+        <translation>Var vänlig byt till "Lista läge" för att använda denna funktion.</translation>
     </message>
     <message>
         <source>highest</source>
@@ -656,11 +1071,7 @@ Adress: %4
     </message>
     <message>
         <source>medium-high</source>
-        <translation>medelhög</translation>
-    </message>
-    <message>
-        <source>n/a</source>
-        <translation>E/t</translation>
+        <translation>medel-hög</translation>
     </message>
     <message>
         <source>medium</source>
@@ -668,7 +1079,7 @@ Adress: %4
     </message>
     <message>
         <source>low-medium</source>
-        <translation>medellåg</translation>
+        <translation>låg-medel</translation>
     </message>
     <message>
         <source>low</source>
@@ -688,7 +1099,7 @@ Adress: %4
     </message>
     <message>
         <source>none</source>
-        <translation>inga</translation>
+        <translation>ingen</translation>
     </message>
     <message>
         <source>yes</source>
@@ -700,27 +1111,31 @@ Adress: %4
     </message>
     <message>
         <source>This label turns red, if the transaction size is greater than 1000 bytes.</source>
-        <translation>Denna etikett blir röd om transaktionsstorleken är större än 1000 bytes.</translation>
+        <translation>Den här etiketten blir röd, ifall storleken på transaktionen överstiger 1000 bytes.</translation>
     </message>
     <message>
         <source>This means a fee of at least %1 per kB is required.</source>
-        <translation>Detta innebär att en avgift om åtminstone %1 krävs per kB.</translation>
+        <translation>Detta betyder att en avgift på minst %1 per kB är nödvändigt.</translation>
     </message>
     <message>
         <source>Can vary +/- 1 byte per input.</source>
-        <translation>Kan variera +/- 1 byte per indata.</translation>
+        <translation>Kan variera med +/- 1 byte per inmatning.</translation>
     </message>
     <message>
         <source>Transactions with higher priority are more likely to get included into a block.</source>
-        <translation>Transaktioner med högre prioritet är mer benägna att inkluderas i ett block.</translation>
+        <translation>Transaktioner med högre prioritet har högre sannolikhet att inkluderas i ett block.</translation>
     </message>
     <message>
         <source>This label turns red, if the priority is smaller than "medium".</source>
-        <translation>Denna etikett blir röd om prioriteten är mindre än "medel".</translation>
+        <translation>Den här etiketten blir röd, om prioriteten är lägre än "medium".</translation>
     </message>
     <message>
         <source>This label turns red, if any recipient receives an amount smaller than %1.</source>
-        <translation>Denna etikett blir röd om en mottagare mottar en mängd mindre än %1.</translation>
+        <translation>Den här etiketten blir röd, ifall någon mottagare får en mängd som är mindre än %1.</translation>
+    </message>
+    <message>
+        <source>Can vary +/- %1 ugic per input.</source>
+        <translation>Kan variera med +/- %1 ugic per inmatning.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -728,78 +1143,11 @@ Adress: %4
     </message>
     <message>
         <source>change from %1 (%2)</source>
-        <translation>växel från %1 (%2)</translation>
+        <translation>ändra från %1 (%2)</translation>
     </message>
     <message>
         <source>(change)</source>
-        <translation>(växel)</translation>
-    </message>
-</context>
-<context>
-    <name>ObfuscateConfig</name>
-    <message>
-        <source>Configure Obfuscate</source>
-        <translation>Konfigurera Obfuscate</translation>
-    </message>
-    <message>
-        <source>Basic Privacy</source>
-        <translation>Grundläggande integritet</translation>
-    </message>
-    <message>
-        <source>High Privacy</source>
-        <translation>Hög integritet</translation>
-    </message>
-    <message>
-        <source>Maximum Privacy</source>
-        <translation>Maximal integritet</translation>
-    </message>
-    <message>
-        <source>Please select a privacy level.</source>
-        <translation>Vänligen välj en integritetsnivå.</translation>
-    </message>
-    <message>
-        <source>Use 2 separate masternodes to mix funds up to 1000 DNET</source>
-        <translation>Använd 2 enskilda masternoder för att mixa medel upp till 1000 DNET</translation>
-    </message>
-    <message>
-        <source>Use 8 separate masternodes to mix funds up to 1000 DNET</source>
-        <translation>Använd 8 enskilda masternoder för att mixa medel upp till 1000 DNET.</translation>
-    </message>
-    <message>
-        <source>Use 16 separate masternodes</source>
-        <translation>Använd 16 enskilda masternoder</translation>
-    </message>
-    <message>
-        <source>This option is the quickest and will cost about ~0.025 DNET to anonymize 1000 DNET</source>
-        <translation>Detta alternativ är det snabbaste och kommer att kosta omkring ~0,025 DNET för att anonymisera 1000 DNET</translation>
-    </message>
-    <message>
-        <source>This option is moderately fast and will cost about 0.05 DNET to anonymize 1000 DNET</source>
-        <translation>Detta alternativ är relativt snabbt och kommer att kosta omkring 0,05 DNET för att anonymisera 1000 DNET</translation>
-    </message>
-    <message>
-        <source>0.1 DNET per 1000 DNET you anonymize.</source>
-        <translation>0,1 DNET per 1000 DNET du anonymiserar.</translation>
-    </message>
-    <message>
-        <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
-        <translation>Detta är det långsammaste och det säkraste alternativet. Användning av maximal anonymitet kommer att kosta</translation>
-    </message>
-    <message>
-        <source>Obfuscate Configuration</source>
-        <translation>Obfuscate-konfiguration</translation>
-    </message>
-    <message>
-        <source>Obfuscate was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening GIANT's configuration screen.</source>
-        <translation>Obfuscate ställdes framgångsrikt om till grundläggande (%1 och 2 omgångar). Du kan ändra detta när som helst genom att öppna GIANT:s konfigurationsskärm.</translation>
-    </message>
-    <message>
-        <source>Obfuscate was successfully set to high (%1 and 8 rounds). You can change this at any time by opening GIANT's configuration screen.</source>
-        <translation>Obfuscate ställdes framgångsrikt in på hög (%1 och 8 omgångar). Du kan ändra detta när som helst genom att öppna GIANT:s konfigurationsskärm.</translation>
-    </message>
-    <message>
-        <source>Obfuscate was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening GIANT's configuration screen.</source>
-        <translation>Obfuscate ställdes framgångsrikt in på maximal (%1 och 16 omgångar). Du kan ändra detta när som helst genom att öppna GIANT:s konfigurationsskärm</translation>
+        <translation>(ändra)</translation>
     </message>
 </context>
 <context>
@@ -814,7 +1162,7 @@ Adress: %4
     </message>
     <message>
         <source>The label associated with this address list entry</source>
-        <translation>Den associerade etiketten med den här adresslistans inmatning</translation>
+        <translation>Etiketten som associeras med denna adresslista</translation>
     </message>
     <message>
         <source>&amp;Address</source>
@@ -822,7 +1170,7 @@ Adress: %4
     </message>
     <message>
         <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
-        <translation>Den associerade adressen med den här adresslistans post. Detta kan endast ändras för avsändaradresser.</translation>
+        <translation>Adressen som associeras med denna adresslista. Den kan bara modifieras för skickande adresser.</translation>
     </message>
     <message>
         <source>New receiving address</source>
@@ -830,38 +1178,38 @@ Adress: %4
     </message>
     <message>
         <source>New sending address</source>
-        <translation>Ny avsändaradress</translation>
+        <translation>Ny skickande adress</translation>
     </message>
     <message>
         <source>Edit receiving address</source>
-        <translation>Redigera mottagaradress</translation>
+        <translation>Redigera mottagaradressen</translation>
     </message>
     <message>
         <source>Edit sending address</source>
-        <translation>Redigera avsändaradress</translation>
+        <translation>Redigera skickande adress</translation>
     </message>
     <message>
         <source>The entered address "%1" is not a valid GIANT address.</source>
-        <translation>Den angivna adressen "%1" är inte en giltig GIANT-adress.</translation>
+        <translation>Den inmatade adressen "%1" är ej en giltig GIANT adress.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
-        <translation>Den angivna adressen "%1" finns redan i adressboken.</translation>
+        <translation>Den inmatade adressen "%1" är redan i adressboken.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
-        <translation>Plånboken kunde inte låsas upp.</translation>
+        <translation>Kunde inte låsa upp plånbok.</translation>
     </message>
     <message>
         <source>New key generation failed.</source>
-        <translation>Nygenerering av nyckel misslyckades.</translation>
+        <translation>Generering av ny nyckel misslyckades.</translation>
     </message>
 </context>
 <context>
     <name>FreespaceChecker</name>
     <message>
         <source>A new data directory will be created.</source>
-        <translation>En ny datakatalog kommer att skapas.</translation>
+        <translation>En ny data katalog kommer skapas.</translation>
     </message>
     <message>
         <source>name</source>
@@ -869,27 +1217,49 @@ Adress: %4
     </message>
     <message>
         <source>Directory already exists. Add %1 if you intend to create a new directory here.</source>
-        <translation>Katalogen finns redan. Lägg till %1 om du tänker skapa en ny katalog här.</translation>
+        <translation>Katalogen finns redan. Lägg till %1 om vill skapa en ny katalog här.</translation>
     </message>
     <message>
         <source>Path already exists, and is not a directory.</source>
-        <translation>Sökvägen finns redan och är inte en katalog.</translation>
+        <translation>Vägen finns redan och är inte en katalog.</translation>
     </message>
     <message>
         <source>Cannot create data directory here.</source>
-        <translation>Kan inte skapa en datakatalog här.</translation>
+        <translation>Kan inte skapa data katalog här.</translation>
     </message>
 </context>
 <context>
-    <name>HelpMessageDialog</name>
+    <name>GovernancePage</name>
     <message>
-        <source>GIANT Core</source>
-        <translation>GIANT Core
-</translation>
+        <source>Form</source>
+        <translation>Formulär</translation>
     </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    </context>
+<context>
+    <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
         <translation>version</translation>
+    </message>
+    <message>
+        <source>GIANT Core</source>
+        <translation>GIANT Core</translation>
+    </message>
+    <message>
+        <source>(%1-bit)</source>
+        <translation>(%1-bit)</translation>
+    </message>
+    <message>
+        <source>About GIANT Core</source>
+        <translation>Om GIANT Kärna</translation>
+    </message>
+    <message>
+        <source>Command-line options</source>
+        <translation>Kommandoradsalternativ</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -897,31 +1267,31 @@ Adress: %4
     </message>
     <message>
         <source>command-line options</source>
-        <translation>kommandoradalternativ</translation>
+        <translation>kommandoradsalternativ</translation>
     </message>
     <message>
-        <source>UI options</source>
-        <translation>UI-alternativ</translation>
+        <source>UI Options:</source>
+        <translation>Användargränssnitts-alternativ</translation>
     </message>
     <message>
-        <source>Choose data directory on startup (default: 0)</source>
-        <translation>Välj datakatalog vid uppstart (standardvärde: 0)</translation>
+        <source>Choose data directory on startup (default: %u)</source>
+        <translation>Välj data katalog vid start (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Show splash screen on startup (default: %u)</source>
+        <translation>Visa startbild vid start (standard: %u)</translation>
     </message>
     <message>
         <source>Set language, for example "de_DE" (default: system locale)</source>
-        <translation>Ställ in språk, till exempel "de_DE" (standardvärde: system locale)</translation>
+        <translation>Ange språk, till exempel "de_DE" (standard: system)</translation>
     </message>
     <message>
         <source>Start minimized</source>
-        <translation>Starta minimerat</translation>
+        <translation>Starta i minimerat läge</translation>
     </message>
     <message>
         <source>Set SSL root certificates for payment request (default: -system-)</source>
-        <translation>Ställ in SSL-root-certifikat för betalningsbegäranden (standardvärde: -system-)</translation>
-    </message>
-    <message>
-        <source>Show splash screen on startup (default: 1)</source>
-        <translation>Visa startbilden vid uppstart (standardvärde: 1)</translation>
+        <translation>Ställ in SSL root certificates för betalningsbegäran (standard: -system-)</translation>
     </message>
 </context>
 <context>
@@ -936,25 +1306,569 @@ Adress: %4
     </message>
     <message>
         <source>As this is the first time the program is launched, you can choose where GIANT Core will store its data.</source>
-        <translation>Då detta är första gången programmet startas kan du välja var GIANT Core ska lagra sin data.</translation>
+        <translation>Eftersom detta är första gången programmet körs så kan du välja var GIANT Core ska spara sin data.</translation>
     </message>
     <message>
         <source>GIANT Core will download and store a copy of the GIANT block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>GIANT Core kommer att laddas ned och lagra en kopia av GIANT:s blockkedja. Minst %1 GB data kommer att lagras i denna katalog och den kommer att växa med tiden. Plånboken kommer också att lagras i denna katalog.</translation>
+        <translation>GIANT Kärnan kommer ladda ner och spara en kopia av GIANT block chain. Minst %1GB data kommer sparas i denna katalog och den kommer växa med tiden. Plånboken kommer också sparas i denna katalog.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
-        <translation>Använd den förvalda datakatalogen</translation>
+        <translation>Använd standard data katalogen</translation>
     </message>
     <message>
         <source>Use a custom data directory:</source>
-        <translation>Använd en anpassad datakatalog:</translation>
+        <translation>Använd en skräddarsydd data katalog</translation>
+    </message>
+    <message>
+        <source>GIANT Core</source>
+        <translation>GIANT Core</translation>
+    </message>
+    <message>
+        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <translation>Fel: Den specifierade data katalogen "%1" kan inte skapas.</translation>
     </message>
     <message>
         <source>Error</source>
         <translation>Fel</translation>
     </message>
-    </context>
+    <message>
+        <source>%1 GB of free space available</source>
+        <translation>%1 GB ledigt diskutrymme tillgängligt</translation>
+    </message>
+    <message>
+        <source>(of %1 GB needed)</source>
+        <translation>(varav %1 GB är nödvändigt)</translation>
+    </message>
+</context>
+<context>
+    <name>MasternodeList</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulär</translation>
+    </message>
+    <message>
+        <source>MASTERNODES</source>
+        <translation>HUVUDNODER</translation>
+    </message>
+    <message>
+        <source>Note: Status of your masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your node should be running but you still see "MISSING" in "Status" field.</source>
+        <translation>Observera: Dina huvudnodernas status i local plånbok kan potentiellt vara något inkorrekta. &lt;br /&gt;Vänta alltid på att plånboken ska synkronisera ytterligare data och sedan dubbelkolla med en annan nod&lt;br /&gt; om din nod skulle fortfarande köras men du ser fortfarande "FATTAS" i "Status" fältet.</translation>
+    </message>
+    <message>
+        <source>Alias</source>
+        <translation>Alias</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <translation>Adress</translation>
+    </message>
+    <message>
+        <source>Protocol</source>
+        <translation>Protokoll</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>Active</source>
+        <translation>Aktiv</translation>
+    </message>
+    <message>
+        <source>Last Seen (UTC)</source>
+        <translation>Senast Sedd (UTC)</translation>
+    </message>
+    <message>
+        <source>Pubkey</source>
+        <translation>Pubkey</translation>
+    </message>
+    <message>
+        <source>S&amp;tart alias</source>
+        <translation>Start &amp;alias</translation>
+    </message>
+    <message>
+        <source>Start &amp;all</source>
+        <translation>Start &amp;allt</translation>
+    </message>
+    <message>
+        <source>Start &amp;MISSING</source>
+        <translation>Start &amp;FATTAS</translation>
+    </message>
+    <message>
+        <source>&amp;Update status</source>
+        <translation>&amp;Uppdatera status</translation>
+    </message>
+    <message>
+        <source>Status will be updated automatically in (sec):</source>
+        <translation>Status kommer automatiskt att uppdateras om (sec):</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Start alias</source>
+        <translation>Starta alias</translation>
+    </message>
+    <message>
+        <source>Confirm masternode start</source>
+        <translation>Bekräfta huvudnod start</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to start masternode %1?</source>
+        <translation>Är du säker på att du vill starta huvudnod %1?</translation>
+    </message>
+    <message>
+        <source>Confirm all masternodes start</source>
+        <translation>Konfirmera att alla huvudnoder startar</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to start ALL masternodes?</source>
+        <translation>Är du säker på att du vill starta ALLA huvudnoder?</translation>
+    </message>
+    <message>
+        <source>Command is not available right now</source>
+        <translation>Kommandot är inte tillgängligt just nu</translation>
+    </message>
+    <message>
+        <source>You can't use this command until masternode list is synced</source>
+        <translation>Du kan inte använda detta kommando fram tills huvudnodlistan (masternode) är synkad</translation>
+    </message>
+    <message>
+        <source>Confirm missing masternodes start</source>
+        <translation>Konfirmera att försvunnen huvudnod startas</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to start MISSING masternodes?</source>
+        <translation>Är du säker på att du vill starta SAKNADE huvudnoder (masternodes) ?</translation>
+    </message>
+</context>
+<context>
+    <name>MultiSendDialog</name>
+    <message>
+        <source>MultiSend</source>
+        <translation>MultiSend</translation>
+    </message>
+    <message>
+        <source>Enter whole numbers 1 - 100</source>
+        <translation>Mata in heltal 1 - 100</translation>
+    </message>
+    <message>
+        <source>Enter % to Give (1-100)</source>
+        <translation>Slå in % för att Ge (1-100)</translation>
+    </message>
+    <message>
+        <source>Enter Address to Send to</source>
+        <translation>Mata in Adress att Skicka till</translation>
+    </message>
+    <message>
+        <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other GIANT addresses after it matures.
+To Add: enter percentage to give and GIANT address to add to the MultiSend vector.
+To Delete: Enter address to delete and press delete.
+MultiSend will not be activated unless you have clicked Activate</source>
+        <translation>MultiSend tillåter dig att automatiskt skicka upp till 100% av dina staking eller huvudnod belöningar till en lista av andra GIANT adresser efter att belöningarna har mognat.
+För att Lägga till: Ange procent att ge och GIANT adress för att lägga till i MultiSend vektorn.
+För att Ta Bort: Ange adressen som ska tas bort och tryck ta bort.
+MultiSend kommer inte aktiveras om du inte tryckt på Aktivera</translation>
+    </message>
+    <message>
+        <source>Add to MultiSend Vector</source>
+        <translation>Lägg till MultiSend Vektor</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>Lägg till</translation>
+    </message>
+    <message>
+        <source>Deactivate MultiSend</source>
+        <translation>Avaktivera MultiSend</translation>
+    </message>
+    <message>
+        <source>Deactivate</source>
+        <translation>Avaktivera</translation>
+    </message>
+    <message>
+        <source>Choose an address from the address book</source>
+        <translation>Välj en adress från adressboken</translation>
+    </message>
+    <message>
+        <source>Alt+A</source>
+        <translation>Alt+A</translation>
+    </message>
+    <message>
+        <source>Percentage of stake to send</source>
+        <translation>Procent av staking att skicka</translation>
+    </message>
+    <message>
+        <source>Percentage:</source>
+        <translation>Procent:</translation>
+    </message>
+    <message>
+        <source>Address to send portion of stake to</source>
+        <translation>Adress till att skicka del av staking till</translation>
+    </message>
+    <message>
+        <source>Address:</source>
+        <translation>Adress:</translation>
+    </message>
+    <message>
+        <source>Label:</source>
+        <translation>Etikett:</translation>
+    </message>
+    <message>
+        <source>Enter a label for this address to add it to your address book</source>
+        <translation>Mata in en etikett till denna adress för att lägga till den till din adressbok</translation>
+    </message>
+    <message>
+        <source>Delete Address From MultiSend Vector</source>
+        <translation>Ta Bort Adresser Från MultiSend Vektorn</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>Radera</translation>
+    </message>
+    <message>
+        <source>Activate MultiSend</source>
+        <translation>Aktivera MultiSend</translation>
+    </message>
+    <message>
+        <source>Activate</source>
+        <translation>Aktivera</translation>
+    </message>
+    <message>
+        <source>View MultiSend Vector</source>
+        <translation>Visa MultiSend Vektor</translation>
+    </message>
+    <message>
+        <source>View MultiSend</source>
+        <translation>Visa MultiSend</translation>
+    </message>
+    <message>
+        <source>Send For Stakes</source>
+        <translation>Skicka För Stakes</translation>
+    </message>
+    <message>
+        <source>Send For Masternode Rewards</source>
+        <translation>Skicka för masternode belöningar</translation>
+    </message>
+    <message>
+        <source>(no label)</source>
+        <translation>(Ingen etikett)</translation>
+    </message>
+    <message>
+        <source>MultiSend Active for Stakes and Masternode Rewards</source>
+        <translation>MultiSend Aktivt för Stakes och Huvudnods Belöningar</translation>
+    </message>
+    <message>
+        <source>MultiSend Active for Stakes</source>
+        <translation>MultiSend Aktiv för Stakes</translation>
+    </message>
+    <message>
+        <source>MultiSend Active for Masternode Rewards</source>
+        <translation>MultiSend Aktivt för Huvudnods Belöningar</translation>
+    </message>
+    <message>
+        <source>MultiSend Not Active</source>
+        <translation>MultiSend inte Aktivt</translation>
+    </message>
+    <message>
+        <source>The entered address: %1 is invalid.
+Please check the address and try again.</source>
+        <translation>Den angivna adressen: %1 är ej giltig.
+Var vänlig kontrollera adressen och försök igen.</translation>
+    </message>
+    <message>
+        <source>The total amount of your MultiSend vector is over 100% of your stake reward</source>
+        <translation>Den totala mängden av din MultiSend vektor är över 100% av din stake belöning</translation>
+    </message>
+    <message>
+        <source>Saved the MultiSend to memory, but failed saving properties to the database.</source>
+        <translation>Sparade MultiSend till minne, men misslyckades spara egenskaperna till databasen.</translation>
+    </message>
+    <message>
+        <source>MultiSend Vector</source>
+        <translation>MultiSend Vektor</translation>
+    </message>
+    <message>
+        <source>Removed %1</source>
+        <translation>Borttaget %1</translation>
+    </message>
+    <message>
+        <source>Could not locate address</source>
+        <translation>Kunde inte lokalisera adress</translation>
+    </message>
+    <message>
+        <source>Unable to activate MultiSend, check MultiSend vector</source>
+        <translation>Kan ej aktivera MultiSend, kontrollera MultiSend vektor</translation>
+    </message>
+    <message>
+        <source>Need to select to send on stake and/or masternode rewards</source>
+        <translation>Behöver välja att skicka på stake och/eller huvudnods belöningar</translation>
+    </message>
+    <message>
+        <source>MultiSend activated but writing settings to DB failed</source>
+        <translation>MultiSend aktiverat men misslyckades att skriva inställningar till DB</translation>
+    </message>
+    <message>
+        <source>MultiSend activated</source>
+        <translation>MultiSend aktiverat</translation>
+    </message>
+    <message>
+        <source>First Address Not Valid</source>
+        <translation>Första Adress Ej Giltig</translation>
+    </message>
+    <message>
+        <source>MultiSend deactivated but writing settings to DB failed</source>
+        <translation>MultiSend avaktiverat men misslyckades skriva inställningar till DB</translation>
+    </message>
+    <message>
+        <source>MultiSend deactivated</source>
+        <translation>MultiSend avaktiverat</translation>
+    </message>
+    <message>
+        <source>Please Enter 1 - 100 for percent.</source>
+        <translation>Var vänlig mata in 1 - 100 i procent.</translation>
+    </message>
+</context>
+<context>
+    <name>MultisigDialog</name>
+    <message>
+        <source>Multisignature Address Interactions</source>
+        <translation>Multisignatur Adress Interaktioner</translation>
+    </message>
+    <message>
+        <source>Create MultiSignature &amp;Address</source>
+        <translation>Skapa MultiSignatur &amp;Adress</translation>
+    </message>
+    <message>
+        <source>How many people must sign to verify a transaction</source>
+        <translation>Hur många måste skriva på för att verifiera en transaktion</translation>
+    </message>
+    <message>
+        <source>Enter the minimum number of signatures required to sign transactions</source>
+        <translation>Slå in den minsta nödvändiga mängden signaturer till att skriva under transaktioner</translation>
+    </message>
+    <message>
+        <source>Address Label:</source>
+        <translation>Adress Etikett:</translation>
+    </message>
+    <message>
+        <source>Add another address that could sign to verify a transaction from the multisig address.</source>
+        <translation>Lägg till en annan adress som kan skriva under för att verifiera en transaktion från multisig adressen.</translation>
+    </message>
+    <message>
+        <source>&amp;Add Address / Key</source>
+        <translation>&amp;Lägg till Adress / Nyckel</translation>
+    </message>
+    <message>
+        <source>Local addresses or public keys that can sign:</source>
+        <translation>Lokala adresser eller offentliga nycklar som kan skriva under:</translation>
+    </message>
+    <message>
+        <source>Create a new multisig address</source>
+        <translation>Skapa en ny multisig adress</translation>
+    </message>
+    <message>
+        <source>C&amp;reate</source>
+        <translation>C&amp;reate</translation>
+    </message>
+    <message>
+        <source>Status:</source>
+        <translation>Status:</translation>
+    </message>
+    <message>
+        <source>Use below to quickly import an address by its redeem. Don't forget to add a label before clicking import!
+Keep in mind, the wallet will rescan the blockchain to find transactions containing the new address.
+Please be patient after clicking import.</source>
+        <translation>Använd nedan för att snabbt importera en adress genom dess inlösning. Glöm inte att lägga till en etikett innan du trycker på importera!
+Kom ihåg att plånboken kommer scanna om the blockchain för att hitta transaktioner som innehåller den nya adressen.
+Var god vänta efter att du trycker på importera.</translation>
+    </message>
+    <message>
+        <source>&amp;Import Redeem</source>
+        <translation>&amp;Importera Inlösning</translation>
+    </message>
+    <message>
+        <source>&amp;Create MultiSignature Tx</source>
+        <translation>&amp;Skapa MultiSignatur Tx</translation>
+    </message>
+    <message>
+        <source>Inputs:</source>
+        <translation>Inmatningar:</translation>
+    </message>
+    <message>
+        <source>Coin Control</source>
+        <translation>Mynt Kontroll</translation>
+    </message>
+    <message>
+        <source>Quantity Selected:</source>
+        <translation>Vald Kvantitet:</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Amount:</source>
+        <translation>Antal:</translation>
+    </message>
+    <message>
+        <source>Add an input to fund the outputs</source>
+        <translation>Lägg till en inmatning för att få outputs</translation>
+    </message>
+    <message>
+        <source>Add a Raw Input</source>
+        <translation>Lägg till en "rå" Inmatning</translation>
+    </message>
+    <message>
+        <source>Address / Amount:</source>
+        <translation>Adress / Mängd:</translation>
+    </message>
+    <message>
+        <source>Add destinations to send GIC to</source>
+        <translation>Lägg till destination att skicka GIC till</translation>
+    </message>
+    <message>
+        <source>Add &amp;Destination</source>
+        <translation>Lägg till &amp;Destination</translation>
+    </message>
+    <message>
+        <source>Create a transaction object using the given inputs to the given outputs</source>
+        <translation>Skapa ett transaktionsobjekt genom att använda de givna inmatningarna till de givna utmatningarna</translation>
+    </message>
+    <message>
+        <source>Cr&amp;eate</source>
+        <translation>Cr&amp;eate</translation>
+    </message>
+    <message>
+        <source>&amp;Sign MultiSignature Tx</source>
+        <translation>&amp;Skriv under MultiSignatur Tx</translation>
+    </message>
+    <message>
+        <source>Transaction Hex:</source>
+        <translation>Transaktions Hex:</translation>
+    </message>
+    <message>
+        <source>Sign the transaction from this wallet or from provided private keys</source>
+        <translation>Skriv under från denna plånbok eller från försedd privat nyckel</translation>
+    </message>
+    <message>
+        <source>S&amp;ign</source>
+        <translation>S&amp;ignera</translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DISABLED until transaction has been signed enough times.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;IINAKTIVERAD tills transaktion har blivit signerad tillräckligt många gånger.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Co&amp;mmit</source>
+        <translation>Co&amp;mmit</translation>
+    </message>
+    <message>
+        <source>Add private keys to sign the transaction with</source>
+        <translation>Lägg till privata nycklar att skriva under transaktionen med</translation>
+    </message>
+    <message>
+        <source>Add Private &amp;Key</source>
+        <translation>Lägg till Privat &amp;Nyckel</translation>
+    </message>
+    <message>
+        <source>Sign with only private keys (Not Recommened)</source>
+        <translation>Signera endast med privata nycklar (Inte Rekomenderat)</translation>
+    </message>
+    <message>
+        <source>Invalid Tx Hash.</source>
+        <translation>Ogiltig Tx Hash.</translation>
+    </message>
+    <message>
+        <source>Vout position must be positive.</source>
+        <translation>Vout position måste vara positiv.</translation>
+    </message>
+    <message>
+        <source>Maximum possible addresses reached. (15)</source>
+        <translation>Högst antal möjliga adresser nådda. (15)</translation>
+    </message>
+    <message>
+        <source>Vout Position: </source>
+        <translation>Vout Position:</translation>
+    </message>
+    <message>
+        <source>Amount: </source>
+        <translation>Mängd:</translation>
+    </message>
+    <message>
+        <source>Maximum (15)</source>
+        <translation>Max antal (15)</translation>
+    </message>
+</context>
+<context>
+    <name>ObfuscationConfig</name>
+    <message>
+        <source>Configure Obfuscation</source>
+        <translation>Konfigurera Fördunkling</translation>
+    </message>
+    <message>
+        <source>Basic Privacy</source>
+        <translation>Grundläggande sekretess</translation>
+    </message>
+    <message>
+        <source>High Privacy</source>
+        <translation>Hög Sekretess</translation>
+    </message>
+    <message>
+        <source>Maximum Privacy</source>
+        <translation>Maximal Sekretess</translation>
+    </message>
+    <message>
+        <source>Please select a privacy level.</source>
+        <translation>Var vänlig och välj en sekretess nivå.</translation>
+    </message>
+    <message>
+        <source>Use 2 separate masternodes to mix funds up to 10000 GIC</source>
+        <translation>Använd 2 separata huvudnoder för att blanda tillgångar upp till 10000 GIC</translation>
+    </message>
+    <message>
+        <source>Use 8 separate masternodes to mix funds up to 10000 GIC</source>
+        <translation>Använd 8 separata huvudnoderför att blanda tillgångar upp till 10000 GIC</translation>
+    </message>
+    <message>
+        <source>Use 16 separate masternodes</source>
+        <translation>Använd 16 separata huvudnoder</translation>
+    </message>
+    <message>
+        <source>This option is the quickest and will cost about ~0.025 GIC to anonymize 10000 GIC</source>
+        <translation>Det här alternativet är det snabbaste och kommer kostar ungefär ~0.025 GIC för att anonymisera 10000 GIC</translation>
+    </message>
+    <message>
+        <source>This option is moderately fast and will cost about 0.05 GIC to anonymize 10000 GIC</source>
+        <translation>Det här alternativet är måttligt snabb och kommer kostar ungefär 0.05 GIC för att anonymisera 10000 GIC</translation>
+    </message>
+    <message>
+        <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
+        <translation>Det här är det långsammaste och säkraste alternativet. Använda maximal anonymitet kommer kosta</translation>
+    </message>
+    <message>
+        <source>0.1 GIC per 10000 GIC you anonymize.</source>
+        <translation>0.1 GIC per 10000 GIC du anonymiserar.</translation>
+    </message>
+    <message>
+        <source>Obfuscation Configuration</source>
+        <translation>Fördunkling Konfiguration</translation>
+    </message>
+    <message>
+        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening GIANT's configuration screen.</source>
+        <translation>Fördunkling sattes framgångsrikt till grundläggande (%1 och 2 rundor). Du kan ändra det här när du vill genom att öppna GIANT's konfigurationsskärm.</translation>
+    </message>
+    <message>
+        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening GIANT's configuration screen.</source>
+        <translation>Fördunkling sattes framgångsrikt till hög (%1 och 8 rundor). Du kan ändra det här när du vill genom att öppna GIANT's konfigurationsskärm.</translation>
+    </message>
+    <message>
+        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening GIANT's configuration screen.</source>
+        <translation>Fördunkling sattes framgångsrikt till maximal (%1 och 16 rundor). Du kan ändra det här när du vill genom att öppna GIANT's konfigurationsskärm.</translation>
+    </message>
+</context>
 <context>
     <name>OpenURIDialog</name>
     <message>
@@ -963,7 +1877,7 @@ Adress: %4
     </message>
     <message>
         <source>Open payment request from URI or file</source>
-        <translation>Öppna betalningsbegäran från URI eller fil</translation>
+        <translation>Öppna betalningsförfrågan från URI eller fil</translation>
     </message>
     <message>
         <source>URI:</source>
@@ -971,11 +1885,11 @@ Adress: %4
     </message>
     <message>
         <source>Select payment request file</source>
-        <translation>Välj betalningsbegäranfil</translation>
+        <translation>Välj fil med betalningsförfågan</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
-        <translation>Välj en betalningsbegäranfil att öppna</translation>
+        <translation>Välj betalningsförfråganfil till att öppna</translation>
     </message>
 </context>
 <context>
@@ -986,19 +1900,11 @@ Adress: %4
     </message>
     <message>
         <source>&amp;Main</source>
-        <translation>&amp;Huvud</translation>
-    </message>
-    <message>
-        <source>Automatically start GIANT after logging in to the system.</source>
-        <translation>Starta GIANT automatiskt efter systeminloggning.</translation>
-    </message>
-    <message>
-        <source>&amp;Start GIANT on system login</source>
-        <translation>&amp;Starta GIANT vid systeminloggning</translation>
+        <translation>&amp;Main</translation>
     </message>
     <message>
         <source>Size of &amp;database cache</source>
-        <translation>Storlek på &amp;databascache</translation>
+        <translation>Storlek på &amp;databasbuffert</translation>
     </message>
     <message>
         <source>MB</source>
@@ -1006,67 +1912,129 @@ Adress: %4
     </message>
     <message>
         <source>Number of script &amp;verification threads</source>
-        <translation>Antal skript&amp;bekräftelsestrådar</translation>
+        <translation>Antal script &amp;verifications trådar</translation>
     </message>
     <message>
         <source>(0 = auto, &lt;0 = leave that many cores free)</source>
-        <translation>(0 = auto, &lt;0 = lämna så många kärnor lediga)</translation>
-    </message>
-    <message>
-        <source>Obfuscate rounds to use</source>
-        <translation>Obfuscate-omgångar att använda</translation>
-    </message>
-    <message>
-        <source>This amount acts as a threshold to turn off Obfuscate once it's reached.</source>
-        <translation>Denna mängd fungerar som en tröskel att stänga av Obfuscate då det har uppnåtts.</translation>
-    </message>
-    <message>
-        <source>Amount of GIANT to keep anonymized</source>
-        <translation>Mängd GIANT att bibehålla anonymiserade</translation>
+        <translation>(0 = auto, &lt;0 = lämna så många "kärnor" fria)</translation>
     </message>
     <message>
         <source>W&amp;allet</source>
-        <translation>P&amp;lånbok</translation>
+        <translation>W&amp;allet</translation>
+    </message>
+    <message>
+        <source>If you disable the spending of unconfirmed change, the change from a transaction&lt;br/&gt;cannot be used until that transaction has at least one confirmation.&lt;br/&gt;This also affects how your balance is computed.</source>
+        <translation>Om du avaktiverar spenderandet av okonfirmerad växel så kommer växeln från en transaktion &lt;br/&gt;ej kunna användas föräns transaktionen har minst en bekräftelse. &lt;br/&gt; Detta påverkar även hur ditt saldo beräknas.</translation>
+    </message>
+    <message>
+        <source>Automatically open the GIANT client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Öppna automatiskt GIANT klient porten på denna router. Detta funkar endast om din router stödjer UPnP och är påslaget.</translation>
+    </message>
+    <message>
+        <source>Accept connections from outside</source>
+        <translation>Acceptera anslutningar utifrån</translation>
+    </message>
+    <message>
+        <source>Allow incoming connections</source>
+        <translation>Tillåt inkommande anslutningar</translation>
+    </message>
+    <message>
+        <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
+        <translation>&amp;Koppla upp genom SOCKS5 proxy (standard proxy):</translation>
     </message>
     <message>
         <source>Expert</source>
         <translation>Expert</translation>
     </message>
     <message>
+        <source>Automatically start GIANT after logging in to the system.</source>
+        <translation>Starta GIANT automatiskt efter inloggning på systemet.</translation>
+    </message>
+    <message>
+        <source>&amp;Start GIANT on system login</source>
+        <translation>&amp;Starta GIANT vid systeminloggning</translation>
+    </message>
+    <message>
         <source>Whether to show coin control features or not.</source>
-        <translation>Om myntkontrollfunktioner ska visas eller inte</translation>
+        <translation>Huruvida mynt kontroll funktioner ska visas eller inte.</translation>
     </message>
     <message>
         <source>Enable coin &amp;control features</source>
-        <translation>Aktivera mynt&amp;kontrollfunktioner</translation>
+        <translation>Tillåt mynt &amp;kontroll funktioner</translation>
+    </message>
+    <message>
+        <source>Show additional tab listing all your masternodes in first sub-tab&lt;br/&gt;and all masternodes on the network in second sub-tab.</source>
+        <translation>Visa ytterligare en flik som visar alla dina huvudnoder i sin första sub-flik&lt;br/&gt;och alla huvudnoder på nätverket i en andra sub-flik.</translation>
+    </message>
+    <message>
+        <source>Show Masternodes Tab</source>
+        <translation>Visa Huvudnoder Flik</translation>
     </message>
     <message>
         <source>&amp;Spend unconfirmed change</source>
-        <translation>&amp;Spendera obekräftad växel</translation>
+        <translation>&amp;Spendera ej bekräftad växel</translation>
     </message>
     <message>
         <source>&amp;Network</source>
         <translation>&amp;Nätverk</translation>
     </message>
     <message>
-        <source>Automatically open the GIANT client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Öppna GIANT:s klientport automatiskt på routern. Detta fungerar bara om din router stöder UPnP och är aktiverad.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting GIANT.</source>
+        <translation>Användargränssnittets språk kan väljas här. Denna inställning börjar gälla efter att man startat om GIANT.</translation>
+    </message>
+    <message>
+        <source>Language missing or translation incomplete? Help contributing translations here:
+https://giantpay.network/translations</source>
+        <translation>Fattas språk eller är översättningen ofullständig? Hjälp till att bidra med översättning här:
+https://giantpay.network/translations</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
-        <translation>Kartlägg port med hjälp av &amp;UPnP</translation>
+        <translation>Kartlägg port med &amp;UPnP</translation>
+    </message>
+    <message>
+        <source>Enable automatic minting of GIC units to zGIC</source>
+        <translation>Tillåt automatisk prägling med GIC enheter till zGIC</translation>
+    </message>
+    <message>
+        <source>Enable zGIC Automint</source>
+        <translation>Tillåt zGIC Autoprägling</translation>
+    </message>
+    <message>
+        <source>Percentage of incoming GIC which get automatically converted to zGIC via Zerocoin Protocol (min: 10%)</source>
+        <translation>Procent av inkommande GIC som automatiskt konverteras till zGIC via Zerocoin Protokollet (min: 10%)</translation>
+    </message>
+    <message>
+        <source>Percentage of autominted zGIC</source>
+        <translation>Procent av autopräglade zGIC</translation>
+    </message>
+    <message>
+        <source>Wait with automatic conversion to Zerocoin until enough GIC for this denomination is available</source>
+        <translation>Vänta med automatisk omvandling till Zerocoin tills tillräckligt många GIC för denna valör är tillgängliga</translation>
+    </message>
+    <message>
+        <source>Preferred Automint zGIC Denomination</source>
+        <translation>Preferens på zGIC valör i autoprägling</translation>
+    </message>
+    <message>
+        <source>Stake split threshold:</source>
+        <translation>Staking delnings tröskel:</translation>
+    </message>
+    <message>
+        <source>Connect to the GIANT network through a SOCKS5 proxy.</source>
+        <translation>Anslut till GIANT nätverket via en SOCKS5 proxy.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
-        <translation>Proxy-&amp;IP: </translation>
+        <translation>Proxy &amp;IP:</translation>
     </message>
     <message>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
-        <translation>Proxyns IP-adress (t.ex. IPv4: 127.0.0.1 / IPv6: ::1)</translation>
+        <translation>Proxyns IP adress (t.ex. IPv4: 127.0.0.1 / IPv6: ::1)</translation>
     </message>
     <message>
         <source>&amp;Port:</source>
-        <translation>&amp;Port: </translation>
+        <translation>&amp;Port:</translation>
     </message>
     <message>
         <source>Port of the proxy (e.g. 9050)</source>
@@ -1074,69 +2042,79 @@ Adress: %4
     </message>
     <message>
         <source>&amp;Window</source>
-        <translation>&amp;Fönster</translation>
+        <translation>&amp;Window</translation>
     </message>
     <message>
         <source>Show only a tray icon after minimizing the window.</source>
-        <translation>Visa endast en systemfältikon vid fönsterminimering.</translation>
+        <translation>När fönstret minimeras visa endast en icon.</translation>
     </message>
     <message>
         <source>&amp;Minimize to the tray instead of the taskbar</source>
-        <translation>&amp;Minimera till systemfältet istället för till aktivitetsfältet</translation>
+        <translation>&amp;Minimera till "tray" istället för aktivitetsfältet</translation>
     </message>
     <message>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation>Minimera applikationen istället för att stänga ner den när fönstret stängs. När detta alternativ är aktiverat kommer applikationen endast att stängas efter att man väljer Avsluta i menyn.</translation>
+        <translation>Minimera istället för att stänga ner applikationen när fönstret stängs. När denna inställning är tillåten kan applikationen endast stängas ner av att välja Avsluta i menyn.</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>
-        <translation>M&amp;inimera vid stängning</translation>
+        <translation>M&amp;inimera på stäng</translation>
     </message>
     <message>
         <source>&amp;Display</source>
-        <translation>&amp;Visa</translation>
+        <translation>&amp;Display</translation>
     </message>
     <message>
         <source>User Interface &amp;language:</source>
-        <translation>Användargränssnitt&amp;språk: </translation>
+        <translation>Användargränssnitt och &amp;språk:</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting GIANT.</source>
-        <translation>Användargränssnittspråket kan ställas in här. Denna inställning träder i kraft efter att GIANT startats om.</translation>
-    </message>
-    <message>
-        <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/giant-crypto/giant-wallet-translations/</source>
-        <translation>Fattas språk eller är det en ofullständig översättning? Hjälp till att bidra med översättningar här:
-https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
+        <source>User Interface Theme:</source>
+        <translation>Användargränssnitts Tema:</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
-        <translation>&amp;Enhet att visa mängder i: </translation>
+        <translation>&amp;Enhet att visa mängd i:</translation>
     </message>
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Välj standardindelningenheten som ska visas i gränssnittet och när mynt skickas.</translation>
+        <translation>Välj standardindelningsenheten att visa i gränssnittet och när mynt skickas.</translation>
+    </message>
+    <message>
+        <source>Decimal digits</source>
+        <translation>Decimal platser</translation>
+    </message>
+    <message>
+        <source>Hide empty balances</source>
+        <translation>Dölj tomma saldon</translation>
+    </message>
+    <message>
+        <source>Hide orphan stakes in transaction lists</source>
+        <translation>Göm föräldralösa stakes i transaktionslistan</translation>
+    </message>
+    <message>
+        <source>Hide orphan stakes</source>
+        <translation>Göm föräldralösa stakes</translation>
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>Tredjeparts-URL:er (t.ex. en blockutforskare) som finns i transaktionstabben som ett menyval i sammanhanget. %s i URL:en ersätts med transaktionshashen. Flera URL:er är avskilda med det vertikala strecket: |.</translation>
+        <translation>Tredjeparts URLs (t.ex. en blockutforskare) som visar sig i transaktionsfliken som objekt i innehållsmeny. %s i URLen ersätts med transaktionshash. Flera URLs separeras med vertical stång |.</translation>
     </message>
     <message>
         <source>Third party transaction URLs</source>
-        <translation>Tredjeparttransaktion-URL:er</translation>
+        <translation>Tredjeparts transaktion URLs</translation>
     </message>
     <message>
         <source>Active command-line options that override above options:</source>
-        <translation>Aktiva kommandoradalternativ som åsidosätter alternativen ovan:</translation>
+        <translation>Aktiva commandorad val som överskrider valen över:</translation>
     </message>
     <message>
         <source>Reset all client options to default.</source>
-        <translation>Återställ alla klientinställningar till standardvärden.</translation>
+        <translation>Starta om alla klient alternativ till standard.</translation>
     </message>
     <message>
         <source>&amp;Reset Options</source>
-        <translation>&amp;Återställ Alternativ</translation>
+        <translation>&amp;Återställnings Inställningar</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -1144,11 +2122,15 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation>&amp;Avbryt</translation>
+        <translation>&amp;ta bort</translation>
+    </message>
+    <message>
+        <source>Any</source>
+        <translation>Vilken som helst</translation>
     </message>
     <message>
         <source>default</source>
-        <translation>standardvärde</translation>
+        <translation>standard</translation>
     </message>
     <message>
         <source>none</source>
@@ -1156,23 +2138,31 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Confirm options reset</source>
-        <translation>Bekräfta alternativåterställning</translation>
+        <translation>Bekräfta omstart av alternativ</translation>
     </message>
     <message>
         <source>Client restart required to activate changes.</source>
-        <translation>Klientomstart krävs för att aktivera ändringar.</translation>
+        <translation>Omstart av applikationen krävs för att aktivera ändringarna.</translation>
     </message>
     <message>
         <source>Client will be shutdown, do you want to proceed?</source>
-        <translation>Klienten kommer att stängas ned, vill du fortsätta?</translation>
+        <translation>Applikationen kommer stängas av, vill du fortsätta.</translation>
     </message>
     <message>
         <source>This change would require a client restart.</source>
-        <translation>Denna ändring kommer att kräva en klientomstart.</translation>
+        <translation>Denna ändring kommer kräva att applikationen startas om.</translation>
     </message>
     <message>
         <source>The supplied proxy address is invalid.</source>
         <translation>Den angivna proxyadressen är ogiltig.</translation>
+    </message>
+    <message>
+        <source>The supplied proxy port is invalid.</source>
+        <translation>Den angivna proxy porten är ogiltig.</translation>
+    </message>
+    <message>
+        <source>The supplied proxy settings are invalid.</source>
+        <translation>De angivna proxy inställningarna ör ogiltiga.</translation>
     </message>
 </context>
 <context>
@@ -1182,24 +2172,28 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
         <translation>Formulär</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the GIANT network after a connection is established, but this process has not completed yet.</source>
-        <translation>Den visade informationen kan vara utdaterad. Din plånbok synkroniseras automatiskt med GIANT-nätverket efter att en anslutning har etablerats men denna process har ännu inte slutförts.</translation>
-    </message>
-    <message>
         <source>Available:</source>
-        <translation>Tillgängligt:</translation>
+        <translation>Tillgänglig:</translation>
     </message>
     <message>
         <source>Your current spendable balance</source>
-        <translation>Ditt nuvarande spenderbara saldo</translation>
+        <translation>Ditt nuvarande förbrukningsbara saldo</translation>
+    </message>
+    <message>
+        <source>Total Balance, including all unavailable coins.</source>
+        <translation>Totalt saldo, inkluderar alla otillgängliga mynt.</translation>
+    </message>
+    <message>
+        <source>GIC Balance</source>
+        <translation>GIC Saldo</translation>
     </message>
     <message>
         <source>Pending:</source>
-        <translation>Pågående:</translation>
+        <translation>I avvaktan på:</translation>
     </message>
     <message>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
-        <translation>Totala antalet transaktioner som ännu inte har bekräftats och som ännu inte räknas med i spenderbart saldo.</translation>
+        <translation>Totala transaktioner som fortfarande behöver bekräftas och som inte ännu  ingår i det förbrukningsbara saldot</translation>
     </message>
     <message>
         <source>Immature:</source>
@@ -1207,172 +2201,208 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Staked or masternode rewards that has not yet matured</source>
-        <translation>Det utvunna saldot som ännu inte har mognat</translation>
+        <translation>Staking eller masternodes belöning som ännu inte mognat</translation>
+    </message>
+    <message>
+        <source>Current locked balance in watch-only addresses</source>
+        <translation>Nuvarande låst saldo endast i "watch only" adresser</translation>
+    </message>
+    <message>
+        <source>Your current GIANT balance, unconfirmed and immature transactions included</source>
+        <translation>Ditt nuvarande GIANT saldo, obekräftade och omogna transaktioner är inkluderade</translation>
+    </message>
+    <message>
+        <source>zGIC Balance</source>
+        <translation>zGIC Saldo</translation>
+    </message>
+    <message>
+        <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
+These zGIC are spendable.</source>
+        <translation>Mogna: över 20 bekräftelser och över 1 prägling av samma valör efter den blev myntad.
+Dessa zGIC kan spenderas.</translation>
+    </message>
+    <message>
+        <source>Unconfirmed: less than 20 confirmations
+Immature: confirmed, but less than 1 mint of the same denomination after it was minted</source>
+        <translation>Obekräftade: Under 20 bekräftelser
+Omogna: bekräftade men under 1 myntning av samma valör efter den blev präglad</translation>
+    </message>
+    <message>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the GIANT network after a connection is established, but this process has not completed yet.</source>
+        <translation>nformationen kan vara föråldrad. Din plånbok synkroniserar automatiskt med GIANT nätverket efter att en anslutning är etablerad, men denna process har inte blivit klar än.</translation>
+    </message>
+    <message>
+        <source>OVERVIEW</source>
+        <translation>ÖVERBLICK</translation>
+    </message>
+    <message>
+        <source>Combined Balance (including unconfirmed and immature coins)</source>
+        <translation>Kombinerat Saldo (inkluderar obekräftade och omogna mynt)</translation>
+    </message>
+    <message>
+        <source>Combined Balance</source>
+        <translation>Kombinerat Saldo</translation>
+    </message>
+    <message>
+        <source>Unconfirmed transactions to watch-only addresses</source>
+        <translation>Obekräftade transaktioner till "watch only" adresser</translation>
+    </message>
+    <message>
+        <source>Staked or masternode rewards in watch-only addresses that has not yet matured</source>
+        <translation>Staking eller masternode belöningar i "watch only" adresser som ännu inte har mognat</translation>
     </message>
     <message>
         <source>Total:</source>
         <translation>Totalt:</translation>
     </message>
     <message>
-        <source>Your current total balance</source>
-        <translation>Ditt totalsaldo för närvarande</translation>
+        <source>Current total balance in watch-only addresses</source>
+        <translation>Nuvarande totalt saldo i "watch only" adresser</translation>
     </message>
     <message>
-        <source>Status:</source>
-        <translation>Status:</translation>
+        <source>Watch-only:</source>
+        <translation>"Watch only":</translation>
     </message>
     <message>
-        <source>Enabled/Disabled</source>
-        <translation>Aktiverad/inaktiverad</translation>
+        <source>Your current balance in watch-only addresses</source>
+        <translation>Ditt nuvarande saldo i "watch only" adresser</translation>
     </message>
     <message>
-        <source>Completion:</source>
-        <translation>Förlopp:</translation>
+        <source>Spendable:</source>
+        <translation>Spenderbar:</translation>
     </message>
     <message>
-        <source>Obfuscate Balance:</source>
-        <translation>Obfuscate-medel:</translation>
+        <source>Locked GIC or Masternode collaterals. These are excluded from zGIC minting.</source>
+        <translation>Låsta GIC eller masternode som säkerhet. Dessa är uteslutna från zGIC minting.</translation>
     </message>
     <message>
-        <source>Amount and Rounds:</source>
-        <translation>Mängd och omgångar:</translation>
+        <source>Locked:</source>
+        <translation>Låsta:</translation>
     </message>
     <message>
-        <source>0 DNET / 0 Rounds</source>
-        <translation>0 DNET/0 omgångar</translation>
+        <source>Unconfirmed:</source>
+        <translation>Obekräftade:</translation>
     </message>
     <message>
-        <source>Submitted Denom:</source>
-        <translation>Inmatad denom:</translation>
+        <source>Your current zGIC balance, unconfirmed and immature zGIC included.</source>
+        <translation>Ditt nuvarande zGIC saldo, obekräftade och omogna zGIC inräknade.</translation>
     </message>
     <message>
-        <source>n/a</source>
-        <translation>E/t</translation>
-    </message>
-    <message>
-        <source>Obfuscate</source>
-        <translation>Obfuscate</translation>
-    </message>
-    <message>
-        <source>Start/Stop Mixing</source>
-        <translation>Starta/stoppa mixning</translation>
-    </message>
-    <message>
-        <source>(Last Message)</source>
-        <translation>(Senaste meddelande)</translation>
-    </message>
-    <message>
-        <source>Try to manually submit a Obfuscate request.</source>
-        <translation>Försök att lämna in en Obfuscate-begäran manuellt.</translation>
-    </message>
-    <message>
-        <source>Try Mix</source>
-        <translation>Försök att mixa</translation>
-    </message>
-    <message>
-        <source>Reset the current status of Obfuscate (can interrupt Obfuscate if it's in the process of Mixing, which can cost you money!)</source>
-        <translation>Återställ den nuvarande Obfuscate-statusen (kan störa Obfuscate om den håller på att mixa vilket kan kosta dig pengar!)</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Återställ</translation>
+        <source>Recent transactions</source>
+        <translation>Senaste transaktioner</translation>
     </message>
     <message>
         <source>out of sync</source>
         <translation>osynkroniserad</translation>
     </message>
     <message>
-        <source>Disabled</source>
-        <translation>Inaktiverad</translation>
-    </message>
-    <message>
-        <source>Start Obfuscate Mixing</source>
-        <translation>Påbörja Obfuscate-mixning</translation>
-    </message>
-    <message>
-        <source>Stop Obfuscate Mixing</source>
-        <translation>Stoppa Obfuscate-mixning</translation>
-    </message>
-    <message>
-        <source>No inputs detected</source>
-        <translation>Inga inmatningar hittades</translation>
-    </message>
-    <message>
-        <source>Enabled</source>
-        <translation>Aktiverad</translation>
-    </message>
-    <message>
-        <source>Last Obfuscate message:
+        <source>Current percentage of zGIC.
+If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
-        <translation>Senaste Obfuscate-meddelande:
-
-
-
-
+        <translation>Nuvarande procent zGIC.
+Om AutoMint är tillåten så kommer denna procent att vara som den konfigurerade AutoMint procenten (standard = 10%).
 </translation>
     </message>
     <message>
-        <source>N/A</source>
-        <translation>E/t</translation>
+        <source>AutoMint is currently enabled and set to </source>
+        <translation>AutoMint är för tillfället aktiverat och inställt på</translation>
     </message>
     <message>
-        <source>Obfuscate was successfully reset.</source>
-        <translation>Obfuscate återställdes framgångsrikt.</translation>
+        <source>To disable AutoMint add 'enablezeromint=0' in giant.conf.</source>
+        <translation>För att inaktivera AutoMint, lägg till 'enablezeromint=0' i giant.conf.</translation>
     </message>
     <message>
-        <source>Obfuscate requires at least %1 to use.</source>
-        <translation>Obfuscate kräver åtminstone %1 att använda.</translation>
-    </message>
-    <message>
-        <source>Wallet is locked and user declined to unlock. Disabling Obfuscate.</source>
-        <translation>Plånboken är låst och användaren avböjde upplåsning. Inaktiverar Obfuscate.</translation>
+        <source>AutoMint is currently disabled.
+To enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in giant.conf</source>
+        <translation>AutoMint är för närvarande inaktiverat.
+För att aktivera AutoMint ändra 'enablezeromint=0' till 'enablezeromint=1' i giant.conf</translation>
     </message>
 </context>
 <context>
     <name>PaymentServer</name>
     <message>
         <source>Payment request error</source>
-        <translation>Fel vid betalningsbegäran</translation>
-    </message>
-    <message>
-        <source>Cannot start giant: click-to-pay handler</source>
-        <translation>Kan inte starta giant: klicka-för-att-betala hanterare</translation>
+        <translation>Betalningsförfrågan felaktighet</translation>
     </message>
     <message>
         <source>URI handling</source>
-        <translation>URI-hantering</translation>
+        <translation>URI hantering</translation>
     </message>
     <message>
         <source>Payment request fetch URL is invalid: %1</source>
-        <translation>Betalningsbegäran för att hämta-URL är ogiltig: %1</translation>
+        <translation>Betalningsförfrågan hämta URL är ogiltig: %1</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
-        <translation>Hantering av betalningsbegäranfil</translation>
+        <translation>Betalningsförfrågan filhantering</translation>
+    </message>
+    <message>
+        <source>Invalid payment address %1</source>
+        <translation>Ogiltig betalningsadress %1</translation>
+    </message>
+    <message>
+        <source>Cannot start giant: click-to-pay handler</source>
+        <translation>Kan ej starta giant: klicka-för-att-betala hanterare</translation>
+    </message>
+    <message>
+        <source>URI cannot be parsed! This can be caused by an invalid GIANT address or malformed URI parameters.</source>
+        <translation>URI kunde ej analyseras! Detta kan orsakas av en ogiltig GIANT adress eller felproducerade URI parametrar.</translation>
+    </message>
+    <message>
+        <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
+        <translation>Betalningsförfrågan fil kan ej läsas! Detta kan orsakas av en ogiltig betalsningsförfrågan fil.</translation>
+    </message>
+    <message>
+        <source>Payment request rejected</source>
+        <translation>Betalningsförfrågan nekad</translation>
+    </message>
+    <message>
+        <source>Payment request network doesn't match client network.</source>
+        <translation>Betalningsförfrågan nätverk stämmer inte överens med klient nätverk.</translation>
+    </message>
+    <message>
+        <source>Payment request has expired.</source>
+        <translation>Betalningsförfrågan har gått ut.</translation>
+    </message>
+    <message>
+        <source>Payment request is not initialized.</source>
+        <translation>Betalningsförfrågan är inte initialiserad.</translation>
     </message>
     <message>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
-        <translation>Obekräftade betalningsbegäranden till anpassade betalningsskript stöds inte.</translation>
+        <translation>Obekräftade betalningsförfrågningar till skräddarsydda betalningsskript stöds ej.</translation>
     </message>
     <message>
         <source>Requested payment amount of %1 is too small (considered dust).</source>
-        <translation>Den begärda betalningsmängden om %1 är för smått (anses vara damm).</translation>
+        <translation>Betalningsförfrågans mängd på %1 är för liten (anses vara damm).</translation>
     </message>
     <message>
         <source>Refund from %1</source>
         <translation>Återbetalning från %1</translation>
     </message>
     <message>
+        <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
+        <translation>Betalningsförfrågan %1 är för stor (%2 bytes, tillåten %3 bytes).</translation>
+    </message>
+    <message>
+        <source>Payment request DoS protection</source>
+        <translation>Betalningsförfrågan DoS skydd</translation>
+    </message>
+    <message>
         <source>Error communicating with %1: %2</source>
         <translation>Kommunikationsfel med %1: %2</translation>
     </message>
     <message>
+        <source>Payment request cannot be parsed!</source>
+        <translation>Betalningsförfrågan kan ej analyseras!</translation>
+    </message>
+    <message>
         <source>Bad response from server %1</source>
-        <translation>Dålig respons från server %1</translation>
+        <translation>Dåligt svar från server %1</translation>
     </message>
     <message>
         <source>Network request error</source>
-        <translation>Fel vid närverksbegäran</translation>
+        <translation>Fel på nätverksförfrågan</translation>
     </message>
     <message>
         <source>Payment acknowledged</source>
@@ -1381,9 +2411,710 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
 </context>
 <context>
     <name>PeerTableModel</name>
+    <message>
+        <source>Address/Hostname</source>
+        <translation>Adress/Värdnamn</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Version</translation>
+    </message>
+    <message>
+        <source>Ping Time</source>
+        <translation>Ping Tid</translation>
+    </message>
+</context>
+<context>
+    <name>PrivacyDialog</name>
+    <message>
+        <source>Zerocoin Actions:</source>
+        <translation>Zerocoin Handlingar:</translation>
+    </message>
+    <message>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the GIANT network after a connection is established, but this process has not completed yet.</source>
+        <translation>nformationen kan vara föråldrad. Din plånbok synkroniserar automatiskt med GIANT nätverket efter att en anslutning är etablerad, men denna process har inte blivit klar än.</translation>
+    </message>
+    <message>
+        <source>Mint Zerocoin</source>
+        <translation>Prägla Zerocoin</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>zGIC</source>
+        <translation>zGIC</translation>
+    </message>
+    <message>
+        <source>Available for minting are coins which are confirmed and not locked or Masternode collaterals.</source>
+        <translation>Tillgänglig att prägla med mynt som är bekräftade och ej låsta eller som är en masternod säkerhet.</translation>
+    </message>
+    <message>
+        <source>Available for Minting:</source>
+        <translation>Tillgängligt att prägla:</translation>
+    </message>
+    <message>
+        <source>0.000 000 00 GIC</source>
+        <translation>0.000 000 00 GIC</translation>
+    </message>
+    <message>
+        <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
+        <translation>Starta om Zerocoin Wallet DB. Raderar transaktioner som ej kom med i blockchain.</translation>
+    </message>
+    <message>
+        <source>Reset</source>
+        <translation>Starta om</translation>
+    </message>
+    <message>
+        <source>Coin Control...</source>
+        <translation>Mynt Kontroll</translation>
+    </message>
+    <message>
+        <source>Quantity:</source>
+        <translation>Kvantitet:</translation>
+    </message>
+    <message>
+        <source>Amount:</source>
+        <translation>Antal:</translation>
+    </message>
+    <message>
+        <source>Rescan the complete blockchain for  Zerocoin mints and their meta-data.</source>
+        <translation>Skanna om hela blockchain för att hitta Zerocoin präglingar och deras meta-data.</translation>
+    </message>
+    <message>
+        <source>ReScan</source>
+        <translation>Skanna om</translation>
+    </message>
+    <message>
+        <source>Status and/or Mesages from the last Mint Action.</source>
+        <translation>Status och/eller Meddelande från den senaste präglingen.</translation>
+    </message>
+    <message>
+        <source>PRIVACY</source>
+        <translation>SEKRETESS</translation>
+    </message>
+    <message>
+        <source>Enter an amount of GIC to convert to zGIC</source>
+        <translation>Mata in en mängd GIC att konvertera till zGIC</translation>
+    </message>
+    <message>
+        <source>zGIC Control</source>
+        <translation>zGIC Kontroll</translation>
+    </message>
+    <message>
+        <source>zGIC Selected:</source>
+        <translation>Valda zGIC:</translation>
+    </message>
+    <message>
+        <source>Quantity Selected:</source>
+        <translation>Vald Kvantitet:</translation>
+    </message>
+    <message>
+        <source>Spend Zerocoin. Without 'Pay To:' address creates payments to yourself.</source>
+        <translation>Spendera Zerocoin. Utan 'Betala Till:' adress skapar betalningar till dig själv.</translation>
+    </message>
+    <message>
+        <source>Spend Zerocoin</source>
+        <translation>Spendera Zerocoin</translation>
+    </message>
+    <message>
+        <source>Available (mature and spendable) zGIC for spending</source>
+        <translation>Tillgängliga (mogna och spenderbara) zGIC att spendera</translation>
+    </message>
+    <message>
+        <source>Available Balance:</source>
+        <translation>Tillgängligt Saldo:</translation>
+    </message>
+    <message>
+        <source>Available (mature and spendable) zGIC for spending
+
+zGIC are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+        <translation>Tillgängliga (mogna och spenderbara) zGIC att spendera
+
+zGIC är mogna när de har över 20 bekräftelser OCH över 2 präglingar av samma valör efter de är myntade.</translation>
+    </message>
+    <message>
+        <source>0 zGIC</source>
+        <translation>0 zGIC</translation>
+    </message>
+    <message>
+        <source>Pay &amp;To:</source>
+        <translation>Betala &amp;Till:</translation>
+    </message>
+    <message>
+        <source>The GIANT address to send the payment to. Creates local payment to yourself when empty.</source>
+        <translation>GIANT adress att skicka betalningen till. Skapar betalning till dig själv när den är tom.</translation>
+    </message>
+    <message>
+        <source>Choose previously used address</source>
+        <translation>Använd den föregående använda adressen</translation>
+    </message>
+    <message>
+        <source>Alt+A</source>
+        <translation>Alt+A</translation>
+    </message>
+    <message>
+        <source>Paste address from clipboard</source>
+        <translation>Infoga adress från urklipp</translation>
+    </message>
+    <message>
+        <source>Alt+P</source>
+        <translation>Alt+P</translation>
+    </message>
+    <message>
+        <source>&amp;Label:</source>
+        <translation>&amp;Etikett:</translation>
+    </message>
+    <message>
+        <source>Enter a label for this address to add it to the list of used addresses</source>
+        <translation>Mata in en etikett till denna adress för att lägga till den till listan med använda adresser</translation>
+    </message>
+    <message>
+        <source>A&amp;mount:</source>
+        <translation>&amp;Mängd:</translation>
+    </message>
+    <message>
+        <source>Convert Change to Zerocoin (might cost additional fees)</source>
+        <translation>Konvertera växel till Zerocoin (extra avgifter kan tillkomma)</translation>
+    </message>
+    <message>
+        <source>If checked, the wallet tries to minimize the returning change instead of minimizing the number of spent denominations.</source>
+        <translation>Om markerad, försöker plånboken minimera mängden växel istället för att minimera mängden spenderade valörer.</translation>
+    </message>
+    <message>
+        <source>Minimize Change</source>
+        <translation>Minimera Växel</translation>
+    </message>
+    <message>
+        <source>Information about the available Zerocoin funds.</source>
+        <translation>Information angående de tillgängliga Zerocoin tillgångar.</translation>
+    </message>
+    <message>
+        <source>Zerocoin Stats:</source>
+        <translation>Zerocoin Stats:</translation>
+    </message>
+    <message>
+        <source>Total Balance including unconfirmed and immature zGIC</source>
+        <translation>Totalt Saldo, obekräftade och omogna zGIC inkluderade</translation>
+    </message>
+    <message>
+        <source>Total Zerocoin  Balance:</source>
+        <translation>Totalt Zerocoinsaldo:</translation>
+    </message>
+    <message>
+        <source>Denominations with value 1:</source>
+        <translation>Valörer med värde 1:</translation>
+    </message>
+    <message>
+        <source>Denom. with value 1:</source>
+        <translation>Valörer med värde 1:</translation>
+    </message>
+    <message>
+        <source>Unconfirmed: less than 20 confirmations
+Immature: confirmed, but less than 1 mint of the same denomination after it was minted</source>
+        <translation>Obekräftade: Under 20 bekräftelser
+Omogna: bekräftade men under 1 myntning av samma valör efter den blev präglad</translation>
+    </message>
+    <message>
+        <source>Show the current status of automatic zGIC minting.
+
+To change the status (restart required):
+- enable: add 'enablezeromint=1' to giant.conf
+- disable: add 'enablezeromint=0' to giant.conf
+
+To change the percentage (no restart required):
+- menu Settings-&gt;Options-&gt;Percentage of autominted zGIC
+
+</source>
+        <translation>Visa den nuvarande statusen av automatisk zGIC minting.
+
+För att ändra statusen (omstart krävs):
+-aktivera: lägg till 'enablezeromint=1' i giant.conf
+-inaktivera: lägg till 'enablezeromint=0' i giant.conf
+
+För att ändra procenten (ingen omstart krävs):
+-meny Inställningar-&gt;Alternativ-&gt;Procent på autominted zGIC
+
+</translation>
+    </message>
+    <message>
+        <source>AutoMint Status</source>
+        <translation>AutoPräglings Status</translation>
+    </message>
+    <message>
+        <source>Global Supply:</source>
+        <translation>Global Tillgång:</translation>
+    </message>
+    <message>
+        <source>Denom. 1:</source>
+        <translation>Valör 1:</translation>
+    </message>
+    <message>
+        <source>Denom. 5:</source>
+        <translation>Valör 5:</translation>
+    </message>
+    <message>
+        <source>Denom. 10:</source>
+        <translation>Valör 10:</translation>
+    </message>
+    <message>
+        <source>Denom. 50:</source>
+        <translation>Valör 50:</translation>
+    </message>
+    <message>
+        <source>Denom. 100:</source>
+        <translation>Valör 100:</translation>
+    </message>
+    <message>
+        <source>Denom. 500:</source>
+        <translation>Valör 500:</translation>
+    </message>
+    <message>
+        <source>Denom. 1000:</source>
+        <translation>Valör 1000:</translation>
+    </message>
+    <message>
+        <source>Denom. 5000:</source>
+        <translation>Valör 5000:</translation>
+    </message>
+    <message>
+        <source>0 x</source>
+        <translation>0 x</translation>
+    </message>
+    <message>
+        <source>Show zGIC denominations list</source>
+        <translation>Visa zGIC valör lista</translation>
+    </message>
+    <message>
+        <source>Show Denominations</source>
+        <translation>Visa Valörer</translation>
+    </message>
+    <message>
+        <source>Denominations with value 5:</source>
+        <translation>Valörer med värde 5:</translation>
+    </message>
+    <message>
+        <source>Denom. with value 5:</source>
+        <translation>Valörer med värde 5:</translation>
+    </message>
+    <message>
+        <source>Denominations with value 10:</source>
+        <translation>Valörer med värde 10:</translation>
+    </message>
+    <message>
+        <source>Denom. with value 10:</source>
+        <translation>Valörer med värde 10:</translation>
+    </message>
+    <message>
+        <source>Denominations with value 50:</source>
+        <translation>Valörer med värde 50:</translation>
+    </message>
+    <message>
+        <source>Denom. with value 50:</source>
+        <translation>Valörer med värde 50:</translation>
+    </message>
+    <message>
+        <source>Denominations with value 100:</source>
+        <translation>Valörer med värde 100:</translation>
+    </message>
+    <message>
+        <source>Denom. with value 100:</source>
+        <translation>Valörer med värde 100:</translation>
+    </message>
+    <message>
+        <source>Denominations with value 500:</source>
+        <translation>Valörer med värde 500:</translation>
+    </message>
+    <message>
+        <source>Denom. with value 500:</source>
+        <translation>Valörer med värde 500:</translation>
+    </message>
+    <message>
+        <source>Denominations with value 1000:</source>
+        <translation>Valörer med värde 1000:</translation>
+    </message>
+    <message>
+        <source>Denom. with value 1000:</source>
+        <translation>Valörer med värde 1000:</translation>
+    </message>
+    <message>
+        <source>Denominations with value 5000:</source>
+        <translation>Valörer med värde 5000:</translation>
+    </message>
+    <message>
+        <source>Denom. with value 5000:</source>
+        <translation>Valörer med värde 5000:</translation>
+    </message>
+    <message>
+        <source>Hide Denominations</source>
+        <translation>Göm Valörer</translation>
+    </message>
+    <message>
+        <source>Priority:</source>
+        <translation>Prioritet:</translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation>text etikett</translation>
+    </message>
+    <message>
+        <source>Fee:</source>
+        <translation>Avgift:</translation>
+    </message>
+    <message>
+        <source>Dust:</source>
+        <translation>Dust:</translation>
+    </message>
+    <message>
+        <source>no</source>
+        <translation>nej</translation>
+    </message>
+    <message>
+        <source>Bytes:</source>
+        <translation>Bytes:</translation>
+    </message>
+    <message>
+        <source>Insufficient funds!</source>
+        <translation>Otillräckliga medel !</translation>
+    </message>
+    <message>
+        <source>Coins automatically selected</source>
+        <translation>Mynt automatiskt valda</translation>
+    </message>
+    <message>
+        <source>medium</source>
+        <translation>medel</translation>
+    </message>
+    <message>
+        <source>Coin Control Features</source>
+        <translation>Mynt Kontroll Funktioner</translation>
+    </message>
+    <message>
+        <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
+        <translation>Om detta är aktiverat, men växeladressen är tom eller ogiltig så kommer växeln att skickas till en nybildad adress.</translation>
+    </message>
+    <message>
+        <source>Custom change address</source>
+        <translation>Skräddarsydd växel adress</translation>
+    </message>
+    <message>
+        <source>Amount After Fee:</source>
+        <translation>Mängd Efter Avgift:</translation>
+    </message>
+    <message>
+        <source>Change:</source>
+        <translation>Växel:</translation>
+    </message>
+    <message>
+        <source>out of sync</source>
+        <translation>osynkroniserad</translation>
+    </message>
+    <message>
+        <source>Mint Status: Okay</source>
+        <translation>Myntnings Status: Okej</translation>
+    </message>
+    <message>
+        <source>Copy quantity</source>
+        <translation>Kopiera kvantitet</translation>
+    </message>
+    <message>
+        <source>Copy amount</source>
+        <translation>Kopiera antal</translation>
+    </message>
+    <message>
+        <source>Starting ResetMintZerocoin: rescanning complete blockchain, this will need up to 30 minutes depending on your hardware.
+Please be patient...</source>
+        <translation>Startar ResetMintZerocoin: skannar om hela blockchain, detta kan ta upp till 30 minuter beroende på din hårdvara.
+Ha lite tålamod...</translation>
+    </message>
+    <message>
+        <source>) needed.
+Maximum allowed: </source>
+        <translation>) behövda.
+Högsta tillåtna:</translation>
+    </message>
+    <message>
+        <source>zGIC Spend #: </source>
+        <translation>zGIC spendering #:</translation>
+    </message>
+    <message>
+        <source>zGIC Mint</source>
+        <translation>zGIC Prägling</translation>
+    </message>
+    <message>
+        <source> &lt;b&gt;enabled&lt;/b&gt;.</source>
+        <translation>&lt;b&gt;aktiverad&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source> &lt;b&gt;disabled&lt;/b&gt;.</source>
+        <translation>&lt;b&gt;inaktiverad&lt;/b&gt;.</translation>
+    </message>
+    <message>
+        <source> Configured target percentage: &lt;b&gt;</source>
+        <translation>Konfigurerat procent mål: &lt;b&gt;</translation>
+    </message>
+    <message>
+        <source>zGIC is currently disabled due to maintenance.</source>
+        <translation>zGIC är för nuvarande inaktiverat p.g.a. underhåll.</translation>
+    </message>
+    <message>
+        <source>zGIC is currently undergoing maintenance.</source>
+        <translation>zGIC genomgår för tillfället underhåll.</translation>
+    </message>
+    <message>
+        <source>Denom. with value &lt;b&gt;1&lt;/b&gt;:</source>
+        <translation>Valör med värde &lt;b&gt;1&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. with value &lt;b&gt;5&lt;/b&gt;:</source>
+        <translation>Valör med värde &lt;b&gt;5&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. with value &lt;b&gt;10&lt;/b&gt;:</source>
+        <translation>Valör med värde &lt;b&gt;10&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. with value &lt;b&gt;50&lt;/b&gt;:</source>
+        <translation>Valör med värde &lt;b&gt;50&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. with value &lt;b&gt;100&lt;/b&gt;:</source>
+        <translation>Valör med värde &lt;b&gt;100&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. with value &lt;b&gt;500&lt;/b&gt;:</source>
+        <translation>Valör med värde &lt;b&gt;500&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. with value &lt;b&gt;1000&lt;/b&gt;:</source>
+        <translation>Valör med värde &lt;b&gt;1000&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. with value &lt;b&gt;5000&lt;/b&gt;:</source>
+        <translation>Valör med värde &lt;b&gt;5000&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>AutoMint Status:</source>
+        <translation>AutoMyntnings Status:</translation>
+    </message>
+    <message>
+        <source>Denom. &lt;b&gt;1&lt;/b&gt;:</source>
+        <translation>Valör &lt;b&gt;1&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. &lt;b&gt;5&lt;/b&gt;:</source>
+        <translation>Valör &lt;b&gt;5&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. &lt;b&gt;10&lt;/b&gt;:</source>
+        <translation>Valör &lt;b&gt;10&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. &lt;b&gt;50&lt;/b&gt;:</source>
+        <translation>Valör &lt;b&gt;50&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. &lt;b&gt;100&lt;/b&gt;:</source>
+        <translation>Valör &lt;b&gt;100&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. &lt;b&gt;500&lt;/b&gt;:</source>
+        <translation>Valör &lt;b&gt;500&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. &lt;b&gt;1000&lt;/b&gt;:</source>
+        <translation>Valör &lt;b&gt;1000&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Denom. &lt;b&gt;5000&lt;/b&gt;:</source>
+        <translation>Valör &lt;b&gt;5000&lt;/b&gt;:</translation>
+    </message>
+    <message>
+        <source>Error: Your wallet is locked. Please enter the wallet passphrase first.</source>
+        <translation>Fel: Din plånbok är låst. Var vänlig och mata in plånbokens lösenfras först.</translation>
+    </message>
+    <message>
+        <source>Message: Enter an amount &gt; 0.</source>
+        <translation>Message: Mata in en mängd &gt; 0.</translation>
+    </message>
+    <message>
+        <source>Minting </source>
+        <translation>Myntade</translation>
+    </message>
+    <message>
+        <source>Successfully minted </source>
+        <translation>Framgångsrikt Myntade</translation>
+    </message>
+    <message>
+        <source> zGIC in </source>
+        <translation>zGIC i</translation>
+    </message>
+    <message>
+        <source> sec. Used denominations:
+</source>
+        <translation>sek. Använda valörer:
+</translation>
+    </message>
+    <message>
+        <source>Duration: </source>
+        <translation>Varaktighet:</translation>
+    </message>
+    <message>
+        <source> sec.
+</source>
+        <translation>sec.
+</translation>
+    </message>
+    <message>
+        <source>Starting ResetSpentZerocoin: </source>
+        <translation>Startar ResetSpentZerocoin:</translation>
+    </message>
+    <message>
+        <source>No 'Pay To' address provided, creating local payment</source>
+        <translation>Ingen 'Betala Till' adress inmatad, skapar lokal betalning</translation>
+    </message>
+    <message>
+        <source>Invalid GIANT Address</source>
+        <translation>Ogiltig GIANT Adress</translation>
+    </message>
+    <message>
+        <source>Invalid Send Amount</source>
+        <translation>Ogiltig Mängd att Skicka</translation>
+    </message>
+    <message>
+        <source>Confirm additional Fees</source>
+        <translation>Bekräfta Tilläggsavgifter</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to send?&lt;br /&gt;&lt;br /&gt;</source>
+        <translation>Är du säker på att du vill skicka?&lt;br /&gt;&lt;br /&gt;</translation>
+    </message>
+    <message>
+        <source> to address </source>
+        <translation>till adress</translation>
+    </message>
+    <message>
+        <source> to a newly generated (unused and therefore anonymous) local address &lt;br /&gt;</source>
+        <translation>till en nygjord (oanvänd och därför anonym) lokal adress&lt;br /&gt;</translation>
+    </message>
+    <message>
+        <source>Confirm send coins</source>
+        <translation>Bekräfta att skicka mynt</translation>
+    </message>
+    <message>
+        <source>Failed to fetch mint associated with serial hash</source>
+        <translation>Misslyckades med att hämta myntning associerat med serie hashen</translation>
+    </message>
+    <message>
+        <source>Too much inputs (</source>
+        <translation>För många input (</translation>
+    </message>
+    <message>
+        <source>
+Either mint higher denominations (so fewer inputs are needed) or reduce the amount to spend.</source>
+        <translation>
+Minta antingen högre valörer (så att färre inputs behövs) eller spendera mindre.</translation>
+    </message>
+    <message>
+        <source>Spend Zerocoin failed with status = </source>
+        <translation>Spendering av Zerocoin misslyckades med status =</translation>
+    </message>
+    <message numerus="yes">
+        <source>PrivacyDialog</source>
+        <comment>Enter an amount of GIC to convert to zGIC</comment>
+        <translation><numerusform>SekretessDialog</numerusform><numerusform>SekretessDialog</numerusform></translation>
+    </message>
+    <message>
+        <source>denomination: </source>
+        <translation>valör:</translation>
+    </message>
+    <message>
+        <source>serial: </source>
+        <translation>serie:</translation>
+    </message>
+    <message>
+        <source>Spend is 1 of : </source>
+        <translation>Spendering är 1 av :</translation>
+    </message>
+    <message>
+        <source>value out: </source>
+        <translation>utgångsvärde:</translation>
+    </message>
+    <message>
+        <source>address: </source>
+        <translation>adress:</translation>
+    </message>
+    <message>
+        <source>Sending successful, return code: </source>
+        <translation>Sändning lyckat, returkod:</translation>
+    </message>
+    <message>
+        <source>txid: </source>
+        <translation>txid:</translation>
+    </message>
+    <message>
+        <source>fee: </source>
+        <translation>avgift:</translation>
+    </message>
+</context>
+<context>
+    <name>ProposalFrame</name>
     </context>
 <context>
     <name>QObject</name>
+    <message>
+        <source>Amount</source>
+        <translation>Mängd</translation>
+    </message>
+    <message>
+        <source>Enter a GIANT address (e.g. %1)</source>
+        <translation>Mata in en GIANT adress (e.g. %1)</translation>
+    </message>
+    <message>
+        <source>%1 d</source>
+        <translation>%1 d</translation>
+    </message>
+    <message>
+        <source>%1 h</source>
+        <translation>%1 t</translation>
+    </message>
+    <message>
+        <source>%1 m</source>
+        <translation>%1 m</translation>
+    </message>
+    <message>
+        <source>%1 s</source>
+        <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>NETWORK</source>
+        <translation>NÄTVERK</translation>
+    </message>
+    <message>
+        <source>BLOOM</source>
+        <translation>"BLOOM"</translation>
+    </message>
+    <message>
+        <source>UNKNOWN</source>
+        <translation>OKÄND</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Inget</translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation>N/A</translation>
+    </message>
+    <message>
+        <source>%1 ms</source>
+        <translation>%1 ms</translation>
+    </message>
+    <message>
+        <source>GIANT Core</source>
+        <translation>GIANT Core</translation>
+    </message>
     </context>
 <context>
     <name>QRImageWidget</name>
@@ -1397,11 +3128,11 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Save QR Code</source>
-        <translation>Spara QR-kod</translation>
+        <translation>Spara QR Kod</translation>
     </message>
     <message>
         <source>PNG Image (*.png)</source>
-        <translation>PNG-bild (*.png)</translation>
+        <translation>PNG Bild (*.png)</translation>
     </message>
 </context>
 <context>
@@ -1424,19 +3155,15 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Client name</source>
-        <translation>Klientnamn</translation>
+        <translation>Klient namn</translation>
     </message>
     <message>
         <source>N/A</source>
-        <translation>E/t</translation>
+        <translation>N/A</translation>
     </message>
     <message>
         <source>Number of connections</source>
         <translation>Antal anslutningar</translation>
-    </message>
-    <message>
-        <source>Open the GIANT debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Öppna GIANTs avsökningsloggfil från den nuvarande datakatalogen. Detta kan ta ett par sekunder för stora loggfiler.</translation>
     </message>
     <message>
         <source>&amp;Open</source>
@@ -1444,7 +3171,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Startup time</source>
-        <translation>Uppstarttid</translation>
+        <translation>Starttid</translation>
     </message>
     <message>
         <source>Network</source>
@@ -1452,39 +3179,51 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Last block time</source>
-        <translation>Senaste blocktid</translation>
+        <translation>Tid för senaste block</translation>
     </message>
     <message>
         <source>Debug log file</source>
-        <translation>Avsökningsloggfil</translation>
+        <translation>Felsökningslogg</translation>
     </message>
     <message>
         <source>Using OpenSSL version</source>
-        <translation>Använder OpenSSL-version</translation>
+        <translation>Använder OpenSSL version</translation>
     </message>
     <message>
         <source>Build date</source>
-        <translation>Kompileringsdatum</translation>
+        <translation>Byggdatum</translation>
     </message>
     <message>
         <source>Current number of blocks</source>
-        <translation>Nuvarande antal block</translation>
+        <translation>Nuvarande mängd block</translation>
     </message>
     <message>
         <source>Client version</source>
-        <translation>Klientversion</translation>
+        <translation>Klient version</translation>
+    </message>
+    <message>
+        <source>Using BerkeleyDB version</source>
+        <translation>Använder BerkeleyDB version</translation>
     </message>
     <message>
         <source>Block chain</source>
-        <translation>Blockkedja</translation>
+        <translation>Blockchain</translation>
+    </message>
+    <message>
+        <source>Open the GIANT debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Öppna GIANT felsökningslogg från den nuvarande data katalogen. Detta kan ta några sekunder för stora logg filer.</translation>
+    </message>
+    <message>
+        <source>Number of Masternodes</source>
+        <translation>Antal Huvudnoder "masternodes"</translation>
     </message>
     <message>
         <source>&amp;Console</source>
-        <translation>&amp;Konsol</translation>
+        <translation>&amp;Konsoll</translation>
     </message>
     <message>
         <source>Clear console</source>
-        <translation>Rensa konsollen</translation>
+        <translation>Rensa konsol</translation>
     </message>
     <message>
         <source>&amp;Network Traffic</source>
@@ -1496,7 +3235,187 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Totals</source>
-        <translation>Sammanlagt</translation>
+        <translation>Totalt</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Mottaget</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Skickat</translation>
+    </message>
+    <message>
+        <source>&amp;Peers</source>
+        <translation>&amp;Peers</translation>
+    </message>
+    <message>
+        <source>Banned peers</source>
+        <translation>Förbjudna kamrater</translation>
+    </message>
+    <message>
+        <source>Select a peer to view detailed information.</source>
+        <translation>Välj en person för att visa detaljerad information.</translation>
+    </message>
+    <message>
+        <source>Whitelisted</source>
+        <translation>Vitlistad</translation>
+    </message>
+    <message>
+        <source>Direction</source>
+        <translation>Riktning</translation>
+    </message>
+    <message>
+        <source>Protocol</source>
+        <translation>Protokoll</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Version</translation>
+    </message>
+    <message>
+        <source>Services</source>
+        <translation>Tjänster</translation>
+    </message>
+    <message>
+        <source>Ban Score</source>
+        <translation>"Ban" Poäng</translation>
+    </message>
+    <message>
+        <source>Connection Time</source>
+        <translation>Anslutningstid</translation>
+    </message>
+    <message>
+        <source>Last Send</source>
+        <translation>Senast skickad</translation>
+    </message>
+    <message>
+        <source>Last Receive</source>
+        <translation>Senast mottagen</translation>
+    </message>
+    <message>
+        <source>Bytes Sent</source>
+        <translation>Bytes Skickat</translation>
+    </message>
+    <message>
+        <source>Bytes Received</source>
+        <translation>Mottagna Bytes</translation>
+    </message>
+    <message>
+        <source>Ping Time</source>
+        <translation>Ping Tid</translation>
+    </message>
+    <message>
+        <source>&amp;Wallet Repair</source>
+        <translation>&amp;Plånboks Reparation</translation>
+    </message>
+    <message>
+        <source>Delete local Blockchain Folders</source>
+        <translation>Radera lokala Blockchain Mappar</translation>
+    </message>
+    <message>
+        <source>Wallet In Use:</source>
+        <translation>Plånbok Används:</translation>
+    </message>
+    <message>
+        <source>Starting Block</source>
+        <translation>Startblock</translation>
+    </message>
+    <message>
+        <source>Synced Headers</source>
+        <translation>Synkroniserade Rubriker</translation>
+    </message>
+    <message>
+        <source>Synced Blocks</source>
+        <translation>Synkroniserade Block</translation>
+    </message>
+    <message>
+        <source>The duration of a currently outstanding ping.</source>
+        <translation>Varaktigheten på ett nuvarande utomstående ping.</translation>
+    </message>
+    <message>
+        <source>Ping Wait</source>
+        <translation>Ping Vänta</translation>
+    </message>
+    <message>
+        <source>Time Offset</source>
+        <translation>Tidsförskjutning</translation>
+    </message>
+    <message>
+        <source>Custom Backup Path:</source>
+        <translation>Vanlig Backup Sökväg:</translation>
+    </message>
+    <message>
+        <source>Custom zGIC Backup Path:</source>
+        <translation>Vanlig zGIC Backup Sökväg:</translation>
+    </message>
+    <message>
+        <source>Custom Backups Threshold:</source>
+        <translation>Vanlig Backup Tröskel:</translation>
+    </message>
+    <message>
+        <source>Salvage wallet</source>
+        <translation>Spara plånboken</translation>
+    </message>
+    <message>
+        <source>Attempt to recover private keys from a corrupt wallet.dat.</source>
+        <translation>Försök återställa privata nycklar från en korrupt wallet.dat.</translation>
+    </message>
+    <message>
+        <source>Rescan blockchain files</source>
+        <translation>Skanna om blockchain filer</translation>
+    </message>
+    <message>
+        <source>Rescan the block chain for missing wallet transactions.</source>
+        <translation>Skanna om blockchain efter de saknade plånboks transaktionerna.</translation>
+    </message>
+    <message>
+        <source>Recover transactions 1</source>
+        <translation>Hämta åter transaktion 1</translation>
+    </message>
+    <message>
+        <source>Recover transactions from blockchain (keep meta-data, e.g. account owner).</source>
+        <translation>Återvinn transaktioner från blockchain (behåll meta-data, t.ex. kontoägare).</translation>
+    </message>
+    <message>
+        <source>Recover transactions 2</source>
+        <translation>Hämta åter transaktion 2</translation>
+    </message>
+    <message>
+        <source>Recover transactions from blockchain (drop meta-data).</source>
+        <translation>Hämta åter transaktioner från blockchain (släpp meta-data).</translation>
+    </message>
+    <message>
+        <source>Upgrade wallet format</source>
+        <translation>Uppgradera plånboksformat</translation>
+    </message>
+    <message>
+        <source>Rebuild block chain index from current blk000??.dat files.</source>
+        <translation>Bygg om blockchain index från nuvarande blk000??.dat filer.</translation>
+    </message>
+    <message>
+        <source>-resync:</source>
+        <translation>-resync:</translation>
+    </message>
+    <message>
+        <source>Deletes all local blockchain folders so the wallet synchronizes from scratch.</source>
+        <translation>Raderar alla lokala blockchain mappar så att plånboken synkroniseras från start.</translation>
+    </message>
+    <message>
+        <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
+        <translation>Knapparna nedanför kommer starta om plånboken med ett kommandorads val att reparera plånboken, lösa problem med korrupta blockchain filer eller saknade/föråldrade transaktioner.</translation>
+    </message>
+    <message>
+        <source>Wallet repair options.</source>
+        <translation>Plånbok reparerings alternativ.</translation>
+    </message>
+    <message>
+        <source>Upgrade wallet to latest format on startup. (Note: this is NOT an update of the wallet itself!)</source>
+        <translation>Uppgradera plånbok till senaste formatet vid uppstart. (Observera: detta är inte en uppdatering av själva plånboken!)</translation>
+    </message>
+    <message>
+        <source>Rebuild index</source>
+        <translation>Bygg om index</translation>
     </message>
     <message>
         <source>In:</source>
@@ -1508,15 +3427,63 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Welcome to the GIANT RPC console.</source>
-        <translation>Välkommen till GIANTs RPC-konsol.</translation>
+        <translation>Välkommen till GIANT RPC konsol.</translation>
     </message>
     <message>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Använd upp- och ner-pilarna för att navigera i historiken och &lt;b&gt;Ctrl-L&lt;/b&gt; för att rensa skärmen.</translation>
+        <source>&amp;Disconnect Node</source>
+        <translation>&amp;stänga av nod</translation>
+    </message>
+    <message>
+        <source>Ban Node for</source>
+        <translation>förbjud Nod för att</translation>
+    </message>
+    <message>
+        <source>1 &amp;hour</source>
+        <translation>1 &amp;timme</translation>
+    </message>
+    <message>
+        <source>1 &amp;day</source>
+        <translation>1 &amp;dag</translation>
+    </message>
+    <message>
+        <source>1 &amp;week</source>
+        <translation>1 &amp;vecka</translation>
+    </message>
+    <message>
+        <source>1 &amp;year</source>
+        <translation>1 &amp;år</translation>
+    </message>
+    <message>
+        <source>This will delete your local blockchain folders and the wallet will synchronize the complete Blockchain from scratch.&lt;br /&gt;&lt;br /&gt;</source>
+        <translation>Detta kommer radera dina lokala blockchain mappar och plånboken kommer synkronisera den kompletta Blockchainen från början.&lt;br /&gt;&lt;br /&gt;</translation>
+    </message>
+    <message>
+        <source>This needs quite some time and downloads a lot of data.&lt;br /&gt;&lt;br /&gt;</source>
+        <translation>Detta behöver tid och laddar ner en massa data.&lt;br /&gt;&lt;br /&gt;</translation>
+    </message>
+    <message>
+        <source>Your transactions and funds will be visible again after the download has completed.&lt;br /&gt;&lt;br /&gt;</source>
+        <translation>Dina transaktioner och tillgångar kommer bli synliga igen efter att nedladdningen är slutförd.&lt;br /&gt;&lt;br /&gt;</translation>
+    </message>
+    <message>
+        <source>Do you want to continue?.&lt;br /&gt;</source>
+        <translation>Vill du fortsätta?.&lt;br /&gt;</translation>
+    </message>
+    <message>
+        <source>Confirm resync Blockchain</source>
+        <translation>Godkänn omsynkronisering av Blockchain</translation>
+    </message>
+    <message>
+        <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
+        <translation>Använd upp- och ner-pilarna för att navigera historiken, och %1 för att rensa skärm.</translation>
     </message>
     <message>
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Skriv &lt;b&gt;help&lt;/b&gt; för en översikt av alla tillgängliga kommandon.</translation>
+        <translation>Skriv &lt;b&gt;help&lt;/b&gt; för en överblick av tillgängliga kommandon.</translation>
+    </message>
+    <message>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
+        <translation>VARNING: Bedrägare har varit aktiva, säger åt användare att skriva kommandon här, stjäl deras innehåll i plånboken. Använd inte denna konsoll utan att fullt förstå vad ett kommando kan leda till.</translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1534,16 +3501,48 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
         <source>%1 GB</source>
         <translation>%1 GB</translation>
     </message>
-    </context>
+    <message>
+        <source>(node id: %1)</source>
+        <translation>(nod id: %1)</translation>
+    </message>
+    <message>
+        <source>via %1</source>
+        <translation>via %1</translation>
+    </message>
+    <message>
+        <source>never</source>
+        <translation>aldrig</translation>
+    </message>
+    <message>
+        <source>Inbound</source>
+        <translation>Inkommande</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>Utgående</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Nej</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Okänd</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <source>R&amp;euse an existing receiving address (not recommended)</source>
-        <translation>Åt&amp;eranvänd en befintlig mottagaradress (rekommenderas inte)</translation>
+        <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
+        <translation>Återanvänd en av de föregående använda adresserna.&lt;br&gt;Återanvända adresser har säkerhets och sekretess problem.&lt;br&gt;Använd inte detta utöver att generera om en tidigare betalningsförfrågan.</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the GIANT network.</source>
-        <translation>Ett valfritt meddelande att bifoga betalningsbegärandet vilket kommer att visas när begärandet öppnas. Observera: Meddelandet kommer inte att skickas med betalningen över GIANT-nätverket.</translation>
+        <source>R&amp;euse an existing receiving address (not recommended)</source>
+        <translation>Återanvänd en befintlig mottagande adress (inte att rekommendera)</translation>
     </message>
     <message>
         <source>&amp;Message:</source>
@@ -1551,11 +3550,35 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
-        <translation>En valfri etikett att kopplas samman med den nya mottagaradressen.</translation>
+        <translation>En valfri etikett att associera med den nya mottagaradressen.</translation>
+    </message>
+    <message>
+        <source>Your receiving address. You can copy and use it to receive coins on this wallet. A new one will be generated once it is used.</source>
+        <translation>Din mottagaradress. Du kan kopiera och använda den för att ta emot mynt på denna plånbok. En ny kommer genereras när den har använts.</translation>
+    </message>
+    <message>
+        <source>&amp;Address:</source>
+        <translation>&amp;Adress</translation>
+    </message>
+    <message>
+        <source>A&amp;mount:</source>
+        <translation>&amp;Mängd:</translation>
+    </message>
+    <message>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the GIANT network.</source>
+        <translation>Ett frivilligt meddelande att bifoga till betalningsförfrågan, som kommer visas när förfrågan öppnas. Observera: Medelandet kommer inte skickas med betalningen över GIANT nätverket.</translation>
+    </message>
+    <message>
+        <source>RECEIVE</source>
+        <translation>ERHÅLLA</translation>
+    </message>
+    <message>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the GIANT network.</source>
+        <translation>Ett frivilligt meddelande att bifoga till betalningsförfrågan, vilket kommer visas när förfrågan öppnas.&lt;br&gt;Observera: Medelandet kommer inte skickas med betalningen över GIANT nätverket.</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
-        <translation>Använd detta formulär för att begära betalningar. Alla fält är &lt;b&gt;valfria&lt;/b&gt;.</translation>
+        <translation>Använd detta formulär till betalningsförfrågningar. Alla fält är &lt;b&gt;frivilliga&lt;/b&gt;.</translation>
     </message>
     <message>
         <source>&amp;Label:</source>
@@ -1563,31 +3586,31 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
-        <translation>En valfri summa att begära. Lämna denna tom eller nollad för att inte begära en specifik summa.</translation>
-    </message>
-    <message>
-        <source>&amp;Amount:</source>
-        <translation>&amp;Mängd:</translation>
+        <translation>En frivillig mängd att anhålla om. Lämna den tom eller på noll för att inte fråga efter en specifik mängd.</translation>
     </message>
     <message>
         <source>&amp;Request payment</source>
-        <translation>&amp;Begär betalning</translation>
+        <translation>&amp;Förfråga betalning</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
-        <translation>Rensa alla formulärfälten</translation>
+        <translation>Rensa alla fält i formuläret.</translation>
     </message>
     <message>
         <source>Clear</source>
         <translation>Rensa</translation>
     </message>
     <message>
+        <source>Receiving Addresses</source>
+        <translation>Mottagar Adress</translation>
+    </message>
+    <message>
         <source>Requested payments history</source>
-        <translation>Begärd betalningshistorik</translation>
+        <translation>Förfrågade betalningshistorik</translation>
     </message>
     <message>
         <source>Show the selected request (does the same as double clicking an entry)</source>
-        <translation>Visa de valda begäranden (gör samma som vid ett dubbelklick på en inmatning)</translation>
+        <translation>Visa förfrågan (gör samma sak som att dubbelklicka)</translation>
     </message>
     <message>
         <source>Show</source>
@@ -1595,7 +3618,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Remove the selected entries from the list</source>
-        <translation>Ta bort de valda inmatningarna från listan</translation>
+        <translation>Tar bort de valda posterna från listan</translation>
     </message>
     <message>
         <source>Remove</source>
@@ -1611,14 +3634,18 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>Kopiera mängd</translation>
+        <translation>Kopiera antal</translation>
+    </message>
+    <message>
+        <source>Copy address</source>
+        <translation>Kopiera Adress</translation>
     </message>
 </context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
         <source>QR Code</source>
-        <translation>QR-kod</translation>
+        <translation>QR Kod</translation>
     </message>
     <message>
         <source>Copy &amp;URI</source>
@@ -1634,7 +3661,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Request payment to %1</source>
-        <translation>Begär betalning till %1</translation>
+        <translation>Fråga om betalning till %1</translation>
     </message>
     <message>
         <source>Payment information</source>
@@ -1662,11 +3689,11 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation>Den slutgiltiga URI:n är för lång, försök att korta ned texten för etiketten/meddelandet.</translation>
+        <translation>Resulterande URI för långt, försök att minska etikettens / meddelandets text.</translation>
     </message>
     <message>
         <source>Error encoding URI into QR Code.</source>
-        <translation>Fel vid kodning av URI till QR-kod.</translation>
+        <translation>Kunde inte omvandla URI till QR Kod.</translation>
     </message>
 </context>
 <context>
@@ -1684,12 +3711,16 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
         <translation>Meddelande</translation>
     </message>
     <message>
+        <source>Address</source>
+        <translation>Adress</translation>
+    </message>
+    <message>
         <source>Amount</source>
         <translation>Mängd</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(ingen etikett)</translation>
+        <translation>(Ingen etikett)</translation>
     </message>
     <message>
         <source>(no message)</source>
@@ -1704,27 +3735,23 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>Skicka mynt</translation>
+        <translation>Skicka Mynt</translation>
+    </message>
+    <message>
+        <source>SEND</source>
+        <translation>SKICKA</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
-        <translation>Myntkontrollfunktioner</translation>
-    </message>
-    <message>
-        <source>Inputs...</source>
-        <translation>Indatan...</translation>
-    </message>
-    <message>
-        <source>automatically selected</source>
-        <translation>automatiskt vald</translation>
+        <translation>Mynt Kontroll Funktioner</translation>
     </message>
     <message>
         <source>Insufficient funds!</source>
-        <translation>Otillräckliga medel!</translation>
+        <translation>Otillräckliga medel !</translation>
     </message>
     <message>
         <source>Quantity:</source>
-        <translation>Antal:</translation>
+        <translation>Kvantitet:</translation>
     </message>
     <message>
         <source>Bytes:</source>
@@ -1732,7 +3759,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Amount:</source>
-        <translation>Mängd:</translation>
+        <translation>Antal:</translation>
     </message>
     <message>
         <source>Priority:</source>
@@ -1747,12 +3774,16 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
         <translation>Avgift:</translation>
     </message>
     <message>
+        <source>Dust:</source>
+        <translation>Dust:</translation>
+    </message>
+    <message>
         <source>no</source>
         <translation>nej</translation>
     </message>
     <message>
         <source>After Fee:</source>
-        <translation>Efter avgift:</translation>
+        <translation>Efter Avgift:</translation>
     </message>
     <message>
         <source>Change:</source>
@@ -1760,43 +3791,143 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
-        <translation>Om denna är aktiverad men växeladressen är tom eller ogiltig kommer växeln att skickas till en nygenererad adress.</translation>
+        <translation>Om detta är aktiverat, men växeladressen är tom eller ogiltig så kommer växeln att skickas till en nybildad adress.</translation>
     </message>
     <message>
         <source>Custom change address</source>
-        <translation>Specialväxeladress</translation>
+        <translation>Skräddarsydd växel adress</translation>
+    </message>
+    <message>
+        <source>Split UTXO</source>
+        <translation>Dela upp UTXO</translation>
+    </message>
+    <message>
+        <source># of outputs</source>
+        <translation># utgångar</translation>
+    </message>
+    <message>
+        <source>UTXO Size:</source>
+        <translation>UTXO Storlek:</translation>
+    </message>
+    <message>
+        <source>0 GIC</source>
+        <translation>0 GIC</translation>
+    </message>
+    <message>
+        <source>SwiftX technology allows for near instant transactions - A flat fee of 0.01 GIC applies</source>
+        <translation>SwiftX teknologi tillåter nästan omedelbara transaktioner - En fast avgift på 0.01GIC tillkommer</translation>
+    </message>
+    <message>
+        <source>Transaction Fee:</source>
+        <translation>Transaktionsavgift:</translation>
+    </message>
+    <message>
+        <source>Choose...</source>
+        <translation>Välj...</translation>
+    </message>
+    <message>
+        <source>collapse fee-settings</source>
+        <translation>göm avgifts-inställningar</translation>
+    </message>
+    <message>
+        <source>Minimize</source>
+        <translation>Minimera</translation>
+    </message>
+    <message>
+        <source>per kilobyte</source>
+        <translation>per kilobyte</translation>
+    </message>
+    <message>
+        <source>total at least</source>
+        <translation>totalt minst</translation>
+    </message>
+    <message>
+        <source>(read the tooltip)</source>
+        <translation>(läs verktygstipset)</translation>
+    </message>
+    <message>
+        <source>Custom:</source>
+        <translation>Skräddarsy:</translation>
+    </message>
+    <message>
+        <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
+        <translation>(Smart fee inte initierad än. Detta tar vanligtvis några block...)</translation>
+    </message>
+    <message>
+        <source>SwiftX</source>
+        <translation>SwiftX</translation>
+    </message>
+    <message>
+        <source>Confirmation time:</source>
+        <translation>Bekräftelsetid:</translation>
+    </message>
+    <message>
+        <source>Open Coin Control...</source>
+        <translation>Öppna Mynt Kontroll...</translation>
+    </message>
+    <message>
+        <source>Coins automatically selected</source>
+        <translation>Mynt automatiskt valda</translation>
+    </message>
+    <message>
+        <source>If the custom fee is set to 1000 uGICs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uGICs in fee,&lt;br /&gt;while "at least" pays 1000 uGICs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Om 1000 uGICs är den valda skräddarsydda avgiften och transaktionen är bara 250 bytes så kommer "per kilobyte" bara betala 250 uGICs i avgift,&lt;br /&gt;medans "minst" betalar 1000 uGICs. För transaktioner större än en kilobyte så betalar båda per kilobyte.</translation>
+    </message>
+    <message>
+        <source>If the custom fee is set to 1000 uGICs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uGICs in fee,&lt;br /&gt;while "total at least" pays 1000 uGICs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Om 1000 uGICs är den valda skräddarsydda avgiften och transaktionen är bara 250 bytes så kommer "per kilobyte" bara betala 250 uGICs i avgift,&lt;br /&gt;medans "minst totalt" betalar 1000 uGICs. För transaktioner större än en kilobyte så betalar båda per kilobyte.</translation>
+    </message>
+    <message>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for GIANT transactions than the network can process.</source>
+        <translation>Att endast betala minimum avgift är okej så länge som transaktionsvolymen är mindre än rummet i blocken.&lt;br /&gt;Men var medveten om att detta kan sluta som en transaktion som aldrig blir bekräftad när det finns ett större behov av GIANT transaktioner än nätverket kan bearbeta.</translation>
+    </message>
+    <message>
+        <source>normal</source>
+        <translation>normal</translation>
+    </message>
+    <message>
+        <source>fast</source>
+        <translation>snabb</translation>
+    </message>
+    <message>
+        <source>Recommended</source>
+        <translation>Rekommenderad</translation>
+    </message>
+    <message>
+        <source>Send as zero-fee transaction if possible</source>
+        <translation>Skicka som noll-avgifts transaktion om möjligt</translation>
+    </message>
+    <message>
+        <source>(confirmation may take longer)</source>
+        <translation>(bekräftelse kan ta längre tid)</translation>
     </message>
     <message>
         <source>Confirm the send action</source>
-        <translation>Bekräfta sändningshandlingen</translation>
+        <translation>Bekräfta skickandet</translation>
     </message>
     <message>
         <source>S&amp;end</source>
-        <translation>S&amp;kicka</translation>
+        <translation>S&amp;icka</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
-        <translation>Rensa alla formulärfälten</translation>
+        <translation>Rensa alla fält i formuläret.</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
-        <translation>Rensa &amp;alla</translation>
+        <translation>Rensa &amp;allt</translation>
     </message>
     <message>
         <source>Send to multiple recipients at once</source>
-        <translation>Skicka till flera mottagare samtidigt</translation>
+        <translation>Skicka till flera mottagare på en gång</translation>
     </message>
     <message>
         <source>Add &amp;Recipient</source>
-        <translation>Lägg till &amp;mottagare</translation>
+        <translation>Lägg till &amp;Mottagare</translation>
     </message>
     <message>
-        <source>Obfuscate</source>
-        <translation>Obfuscate</translation>
-    </message>
-    <message>
-        <source>HyperSend</source>
-        <translation>HyperSend</translation>
+        <source>Anonymized GIC</source>
+        <translation>Anonymiserade GIC</translation>
     </message>
     <message>
         <source>Balance:</source>
@@ -1804,11 +3935,11 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Copy quantity</source>
-        <translation>Kopiera antal</translation>
+        <translation>Kopiera kvantitet</translation>
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>Kopiera mängd</translation>
+        <translation>Kopiera antal</translation>
     </message>
     <message>
         <source>Copy fee</source>
@@ -1824,31 +3955,27 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Copy priority</source>
-        <translation>Kopiera prioritet</translation>
+        <translation>Kopierings prioritet</translation>
+    </message>
+    <message>
+        <source>Copy dust</source>
+        <translation>Kopiera dust</translation>
     </message>
     <message>
         <source>Copy change</source>
-        <translation>Kopiera växel</translation>
+        <translation>kopiera ändringar</translation>
     </message>
     <message>
-        <source>using</source>
-        <translation>använder</translation>
+        <source>The split block tool does not work when sending to outside addresses. Try again.</source>
+        <translation>Split block verktyget fungerar inte när man ska skicka till adresser utanför. Försök igen.</translation>
     </message>
     <message>
-        <source>anonymous funds</source>
-        <translation>anonyma medel</translation>
+        <source>The split block tool does not work with multiple addresses. Try again.</source>
+        <translation>Split block verktyget fungerar inte med flera adresser. Försök igen.</translation>
     </message>
     <message>
-        <source>(obfuscate requires this amount to be rounded up to the nearest %1).</source>
-        <translation>(obfuscate kräver att denna mängd avrundas uppåt till närmaste %1)</translation>
-    </message>
-    <message>
-        <source>any available funds (not recommended)</source>
-        <translation>vilka tillgängliga medel som helst (rekommenderas inte)</translation>
-    </message>
-    <message>
-        <source>and HyperSend</source>
-        <translation>och HyperSend</translation>
+        <source>Warning: Invalid GIANT address</source>
+        <translation>Varning: Ogiltig GIANT adress</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -1856,23 +3983,47 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Are you sure you want to send?</source>
-        <translation>Är du säker på att du vill skicka?</translation>
+        <translation>Är du säker att du vill skicka?</translation>
     </message>
     <message>
         <source>are added as transaction fee</source>
-        <translation>läggs till som en transaktionsavgift</translation>
+        <translation>är tillagda som transaktionsavgift</translation>
+    </message>
+    <message>
+        <source>Total Amount = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</source>
+        <translation>Totala Mängd = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
-        <translation>Bekräfta myntsändning</translation>
+        <translation>Bekräfta att skicka mynt</translation>
+    </message>
+    <message>
+        <source>A fee %1 times higher than %2 per kB is considered an insanely high fee.</source>
+        <translation>En avgift %1 gånger större än %2 per kB anses vara en galet hög avgift.</translation>
+    </message>
+    <message numerus="yes">
+        <source>Estimated to begin confirmation within %n block(s).</source>
+        <translation><numerusform>Uppskattat att starta konfirmation inom %n block.</numerusform><numerusform>Uppskattat att starta konfirmation inom %n block.</numerusform></translation>
     </message>
     <message>
         <source>The recipient address is not valid, please recheck.</source>
-        <translation>Mottagaradressen är inte giltig, vänligen kontrollera igen.</translation>
+        <translation>Mottagaradressen är ej giltig, var vänlig kontrollera den.</translation>
+    </message>
+    <message>
+        <source>using SwiftX</source>
+        <translation>använder SwiftX</translation>
+    </message>
+    <message>
+        <source> split into %1 outputs using the UTXO splitter.</source>
+        <translation>dela upp i %1 utgångar med användning av UTXO fördelare.</translation>
+    </message>
+    <message>
+        <source>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</source>
+        <translation>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</translation>
     </message>
     <message>
         <source>The amount to pay must be larger than 0.</source>
-        <translation>Betalningsmängden måste vara större än 0.</translation>
+        <translation>Mängden som betalas måste överstiga 0.</translation>
     </message>
     <message>
         <source>The amount exceeds your balance.</source>
@@ -1880,27 +4031,35 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>The total exceeds your balance when the %1 transaction fee is included.</source>
-        <translation>Totalsumman överstiger ditt saldo när transaktionsavgiften %1 inkluderas.</translation>
+        <translation>Det totala överstiger ditt saldo när %1 transaktionsavgiften lägg på.</translation>
     </message>
     <message>
         <source>Duplicate address found, can only send to each address once per send operation.</source>
-        <translation>Dubblettadress hittad, kan endast skicka till en adress åt gången vid varje sändningshandling.</translation>
+        <translation>En adress har använts två gånger, kan endast skicka till en adress en gång per skickad transaktion.</translation>
     </message>
     <message>
         <source>Transaction creation failed!</source>
-        <translation>Transaktionsskapandet misslyckades!</translation>
+        <translation>Misslyckades att skapa transaktion!</translation>
     </message>
     <message>
         <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Transaktionen avslogs! Detta kan hända om några av mynten i din plånbok redan har spenderats, t.ex. om du har använt en kopia av wallet.dat och mynt spenderades i kopian men inte har markerats som spenderade här.</translation>
+        <translation>Transaktionen nekades! Detta kan hända om några mynt i din plånbok redan har spenderats, möjligen att du använt en kopia av wallet.dat och spenderade mynt från kopian men de inte blivit markerade som spenderade här.</translation>
     </message>
     <message>
         <source>Error: The wallet was unlocked only to anonymize coins.</source>
-        <translation>Fel: Plånboken låstes upp enbart för att anonymisera mynt.</translation>
+        <translation>Felmeddelande: Plånboken låstes upp endast för att anonymisera mynt.</translation>
     </message>
     <message>
-        <source>Warning: Invalid GIANT address</source>
-        <translation>Varning: Ogiltig GIANT-adress</translation>
+        <source>Error: The wallet was unlocked only to anonymize coins. Unlock canceled.</source>
+        <translation>Felmeddelande: Plånboken låstes upp endast för att anonymisera mynt. Upplåsning avbrutet.</translation>
+    </message>
+    <message>
+        <source>Pay only the minimum fee of %1</source>
+        <translation>Betala endast minsta avgift på %1</translation>
+    </message>
+    <message>
+        <source>Estimated to get 6 confirmations near instantly with &lt;b&gt;SwiftX&lt;/b&gt;!</source>
+        <translation>Upskattar att få 6 konfirmationer nästan omedelbart med &lt;b&gt;SwiftX&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -1915,15 +4074,19 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     <name>SendCoinsEntry</name>
     <message>
         <source>This is a normal payment.</source>
-        <translation>Detta är en vanlig betalning.</translation>
+        <translation>Detta är en normal betalning.</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
         <translation>Betala &amp;Till:</translation>
     </message>
     <message>
+        <source>The GIANT address to send the payment to</source>
+        <translation>GIANT adressen att skicka betalningen till</translation>
+    </message>
+    <message>
         <source>Choose previously used address</source>
-        <translation>Välj en tidigare använd adress</translation>
+        <translation>Använd den föregående använda adressen</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1931,7 +4094,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Paste address from clipboard</source>
-        <translation>Klistra in adressen från urklippet</translation>
+        <translation>Infoga adress från urklipp</translation>
     </message>
     <message>
         <source>Alt+P</source>
@@ -1939,7 +4102,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Remove this entry</source>
-        <translation>Ta bort denna inmatning</translation>
+        <translation>Ta bort den här artikeln</translation>
     </message>
     <message>
         <source>&amp;Label:</source>
@@ -1947,46 +4110,46 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>Ange en etikett för denna adress att läggas till i listan för använda adresser</translation>
+        <translation>Mata in en etikett till denna adress för att lägga till den till listan med använda adresser</translation>
     </message>
     <message>
         <source>A&amp;mount:</source>
-        <translation>M&amp;ängd:</translation>
+        <translation>&amp;Mängd:</translation>
     </message>
     <message>
         <source>Message:</source>
-        <translation>Meddelande:</translation>
+        <translation>Medelande:</translation>
     </message>
     <message>
-        <source>A message that was attached to the giant: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the GIANT network.</source>
-        <translation>Ett meddelande som bifogades till GIANT: URI vilket kommer att lagras med transaktionen så att du vet. Observera: Meddelandet kommer inte att skickas över GIANT-nätverket.</translation>
+        <source>A message that was attached to the GIANT: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the GIANT network.</source>
+        <translation>Ett medelande som var bifogat till GIANT: URI som kommer sparas med transaktionen som din referens. Lägg märke till: Detta meddelande kommer inte skickas genom GIANT nätverket.</translation>
     </message>
     <message>
         <source>This is an unverified payment request.</source>
-        <translation>Detta är en obekräftad betalningsbegäran.</translation>
+        <translation>Detta är en overifierad betalningsförfrågan.</translation>
     </message>
     <message>
         <source>Pay To:</source>
-        <translation>Betala Till:</translation>
+        <translation>Betala till:</translation>
     </message>
     <message>
         <source>Memo:</source>
-        <translation>PM:</translation>
+        <translation>Memo:</translation>
     </message>
     <message>
         <source>This is a verified payment request.</source>
-        <translation>Detta är en bekräftad betalningsbegäran.</translation>
+        <translation>Det här är en verifierad betalningsförfrågan.</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>Ange en etikett för denna adress för att lägga till den i din adressbok</translation>
+        <translation>Mata in en etikett till denna adress för att lägga till den till din adressbok</translation>
     </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
     <message>
         <source>GIANT Core is shutting down...</source>
-        <translation>GIANT Core stängs ned...</translation>
+        <translation>GIANT Core stängs ner...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
@@ -1997,7 +4160,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     <name>SignVerifyMessageDialog</name>
     <message>
         <source>Signatures - Sign / Verify a Message</source>
-        <translation>Signaturer - Signera/bekräfta ett Meddelande</translation>
+        <translation>Signaturer - Signera / Verifiera ett Meddelande</translation>
     </message>
     <message>
         <source>&amp;Sign Message</source>
@@ -2005,11 +4168,15 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Du kan signera meddelanden med dina adresser för att bevisa att du äger dem. Var försiktig med att inte skriva på någonting oklart då phishing-attacker kan försöka lura dig till att skriva över din identitet till dem. Signera endast väldetaljerade uppgifter du samtycker till.</translation>
+        <translation>Du kan signera meddelanden med din egna adress för att bevisa att du äger dem. Se upp för att signera något vagt, då phishing-attacker kan försöka lura dig att signera din identitet åt dom. Signera endast fullt detaljerade påståenden du går med på.</translation>
+    </message>
+    <message>
+        <source>The GIANT address to sign the message with</source>
+        <translation>GIANT adressen för signera meddelandet med</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
-        <translation>Välj en tidigare använd adress</translation>
+        <translation>Använd den föregående använda adressen</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2017,7 +4184,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Paste address from clipboard</source>
-        <translation>Klistra in adressen från urklippet</translation>
+        <translation>Infoga adress från urklipp</translation>
     </message>
     <message>
         <source>Alt+P</source>
@@ -2025,7 +4192,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Enter the message you want to sign here</source>
-        <translation>Skriv in meddelandet du vill signera här</translation>
+        <translation>Skriv in meddelandet du vill skriva under här</translation>
     </message>
     <message>
         <source>Signature</source>
@@ -2033,11 +4200,19 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Copy the current signature to the system clipboard</source>
-        <translation>Kopiera den nuvarande valda signaturen till systemurklippet</translation>
+        <translation>Kopiera den nuvarande signaturen till systemets urklipp</translation>
     </message>
     <message>
         <source>Sign the message to prove you own this GIANT address</source>
-        <translation>Signera meddelandet för att bevisa att du äger denna GIANT-adress</translation>
+        <translation>Signera meddelandet för att bevisa att du äger denna GIANT adress</translation>
+    </message>
+    <message>
+        <source>The GIANT address the message was signed with</source>
+        <translation>GIANT adressen meddelandet blev signerat med</translation>
+    </message>
+    <message>
+        <source>Verify the message to ensure it was signed with the specified GIANT address</source>
+        <translation>Verifiera meddelandet för att säkerställa att de blev signerat med den specifika GIANT adressen.</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2045,63 +4220,59 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
-        <translation>Återställ alla fält för signaturmeddelanden</translation>
+        <translation>Återställ alla signatur meddelande fält</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
-        <translation>Rensa &amp;alla</translation>
+        <translation>Rensa &amp;allt</translation>
     </message>
     <message>
         <source>&amp;Verify Message</source>
-        <translation>&amp;Bekräfta Meddelande</translation>
+        <translation>&amp;Verifiera Meddelande</translation>
     </message>
     <message>
         <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
-        <translation>Skriv in signeringsadressen, meddelandet, (försäkra dig om att du kopierar linjeavbrott, mellanslag, flikar med mera) och signera nedtill för att verifiera meddelandet. Var försiktig med att inte läsa in mer i signaturen än vad som finns i det signerade meddelandet för att undvika att bli lurad av en mellanhandattack.</translation>
-    </message>
-    <message>
-        <source>Verify the message to ensure it was signed with the specified GIANT address</source>
-        <translation>Bekräfta meddelandet för att försäkra dig om att den signerades med den angivna GIANT-adressen</translation>
+        <translation>Skriv in den signerande adressen, meddelande (var säker på att du kopierar radbrytningar, mellanslag, tabs, etc. exakt) och signera under för att verifiera meddelandet. Var försiktig med att inte läsa in mer i signaturen än själva signerade meddelandet, för att undvika att bli lurad av en "man i mitten" attack.</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
-        <translation>Bekräfta &amp;Meddelande</translation>
+        <translation>Verifiera &amp;Meddelande</translation>
     </message>
     <message>
         <source>Reset all verify message fields</source>
-        <translation>Återställ alla fält för bekräftelsemeddelanden</translation>
+        <translation>Återställ alla verifierande fält</translation>
     </message>
     <message>
         <source>Click "Sign Message" to generate signature</source>
-        <translation>Klicka på "Signera Meddelande" för att generera en signatur</translation>
+        <translation>Klicka på "Signera Meddelande" för att generera signatur</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
-        <translation>Den angivna adressen är ogiltig.</translation>
+        <translation>Den angivna adressen är felaktig.</translation>
     </message>
     <message>
         <source>Please check the address and try again.</source>
-        <translation>Vänligen kontrollera adressen och försök igen.</translation>
+        <translation>Var vänlig kontrollera adressen och försök igen.</translation>
     </message>
     <message>
         <source>The entered address does not refer to a key.</source>
-        <translation>Den angivna adressen refererar inte till en nyckel.</translation>
+        <translation>Den angivna adressen visar inte till en nyckel.</translation>
     </message>
     <message>
         <source>Wallet unlock was cancelled.</source>
-        <translation>Plånboksupplåsningen avbröts.</translation>
+        <translation>Upplåsningen av plånboken blev avbruten.</translation>
     </message>
     <message>
         <source>Private key for the entered address is not available.</source>
-        <translation>Privatnyckeln för den inmatade adressen är inte tillgänglig.</translation>
+        <translation>Den privata nyckel som angivits till adressen är inte tillgänglig.</translation>
     </message>
     <message>
         <source>Message signing failed.</source>
-        <translation>Meddelandesignering misslyckades.</translation>
+        <translation>Meddelande signering misslyckades.</translation>
     </message>
     <message>
         <source>Message signed.</source>
-        <translation>Meddelandet signerades.</translation>
+        <translation>Meddelande signerat.</translation>
     </message>
     <message>
         <source>The signature could not be decoded.</source>
@@ -2109,27 +4280,26 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Please check the signature and try again.</source>
-        <translation>Vänligen kontrollera signaturen och försök igen.</translation>
+        <translation>Var vänlig och kontrollera signaturen och försök igen.</translation>
     </message>
     <message>
         <source>The signature did not match the message digest.</source>
-        <translation>Signaturen överensstämde inte med meddelandesammandraget.</translation>
+        <translation>Signaturen matchade inte meddelande smältandet.</translation>
     </message>
     <message>
         <source>Message verification failed.</source>
-        <translation>Meddelandebekräftelsen misslyckades.</translation>
+        <translation>Meddelande verifiering misslyckades.</translation>
     </message>
     <message>
         <source>Message verified.</source>
-        <translation>Meddelandet bekräftades.</translation>
+        <translation>Medelande verifierat.</translation>
     </message>
 </context>
 <context>
     <name>SplashScreen</name>
     <message>
         <source>GIANT Core</source>
-        <translation>GIANT Core
-</translation>
+        <translation>GIANT Core</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -2137,11 +4307,15 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core-utvecklarna</translation>
+        <translation>Bitcoin Core utvecklarna</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core utvecklarna</translation>
     </message>
     <message>
         <source>The GIANT Core developers</source>
-        <translation>GIANT Core-utvecklarna</translation>
+        <translation>GIANT Core utvecklarna</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -2157,25 +4331,17 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
 </context>
 <context>
     <name>TransactionDesc</name>
+    <message numerus="yes">
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Öppna för %n fler block</numerusform><numerusform>Öppna för %n fler block</numerusform></translation>
+    </message>
     <message>
         <source>Open until %1</source>
-        <translation>Öppen till %1</translation>
+        <translation>Öppna tills %1</translation>
     </message>
     <message>
         <source>conflicted</source>
-        <translation>konflikterad</translation>
-    </message>
-    <message>
-        <source>%1/offline (verified via HyperSend)</source>
-        <translation>%1/offline (bekräftad genom HyperSend)</translation>
-    </message>
-    <message>
-        <source>%1/confirmed (verified via HyperSend)</source>
-        <translation>%1/bekräftad (bekräftad genom HyperSend)</translation>
-    </message>
-    <message>
-        <source>%1 confirmations (verified via HyperSend)</source>
-        <translation>%1/bekräftelser (bekräftad genom HyperSend)</translation>
+        <translation>hamnade i konflikt</translation>
     </message>
     <message>
         <source>%1/offline</source>
@@ -2190,24 +4356,36 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
         <translation>%1 bekräftelser</translation>
     </message>
     <message>
-        <source>%1/offline (HyperSend verification in progress - %2 of %3 signatures)</source>
-        <translation>%1/offline (HyperSend-bekräftelse under behandling - %2 av %3 signaturer)</translation>
+        <source>%1/offline (verified via SwiftX)</source>
+        <translation>%1/offline (verifierade via SwiftX)</translation>
     </message>
     <message>
-        <source>%1/confirmed (HyperSend verification in progress - %2 of %3 signatures )</source>
-        <translation>%1/bekräftad (HyperSend-bekräftelse under behandling - %2 av %3 signaturer)</translation>
+        <source>%1/confirmed (verified via SwiftX)</source>
+        <translation>%1/bekräftade (verifierade via SwiftX)</translation>
     </message>
     <message>
-        <source>%1 confirmations (HyperSend verification in progress - %2 of %3 signatures)</source>
-        <translation>%1 bekräftelser (HyperSend-bekräftelse under behandling - %2 av %3 signaturer)</translation>
+        <source>%1 confirmations (verified via SwiftX)</source>
+        <translation>%1 bekräftelser (verifierade via SwiftX)</translation>
     </message>
     <message>
-        <source>%1/offline (HyperSend verification failed)</source>
-        <translation>%1/offline (HyperSend-bekräftelse misslyckades)</translation>
+        <source>%1/offline (SwiftX verification in progress - %2 of %3 signatures)</source>
+        <translation>%1/offline (SwiftX verifikation arbetar på det - %2 av %3 signaturer)</translation>
     </message>
     <message>
-        <source>%1/confirmed (HyperSend verification failed)</source>
-        <translation>%1/bekräftad (HyperSend-bekräftelse misslyckades)</translation>
+        <source>%1/confirmed (SwiftX verification in progress - %2 of %3 signatures )</source>
+        <translation>%1/bekräftade (SwiftX verifikation arbetar på det - %2 av %3 signaturer)</translation>
+    </message>
+    <message>
+        <source>%1 confirmations (SwiftX verification in progress - %2 of %3 signatures)</source>
+        <translation>%1 bekräftelser (SwiftX verifikation arbetar på det - %2 av %3 signaturer)</translation>
+    </message>
+    <message>
+        <source>%1/offline (SwiftX verification failed)</source>
+        <translation>%1/offline (SwiftX verifikation misslyckades)</translation>
+    </message>
+    <message>
+        <source>%1/confirmed (SwiftX verification failed)</source>
+        <translation>%1/bekräftade (SwiftX verifikation misslyckades)</translation>
     </message>
     <message>
         <source>Status</source>
@@ -2215,7 +4393,11 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>, has not been successfully broadcast yet</source>
-        <translation>,har ännu inte framgångsrikt utsänts.</translation>
+        <translation>, har ännu inte lyckats sändas ut</translation>
+    </message>
+    <message numerus="yes">
+        <source>, broadcast through %n node(s)</source>
+        <translation><numerusform>, sänder via %n nod</numerusform><numerusform>, sänder via %n noder</numerusform></translation>
     </message>
     <message>
         <source>Date</source>
@@ -2246,28 +4428,44 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
         <translation>egen adress</translation>
     </message>
     <message>
+        <source>watch-only</source>
+        <translation>se-endast</translation>
+    </message>
+    <message>
         <source>label</source>
-        <translation>etikett</translation>
+        <translation>Etikett</translation>
     </message>
     <message>
         <source>Credit</source>
         <translation>Kredit</translation>
     </message>
+    <message numerus="yes">
+        <source>matures in %n more block(s)</source>
+        <translation><numerusform>mognar om %n fler block</numerusform><numerusform>mognar om %n fler block</numerusform></translation>
+    </message>
     <message>
         <source>not accepted</source>
-        <translation>inte accepterad</translation>
+        <translation>Inte Accepterad</translation>
     </message>
     <message>
         <source>Debit</source>
-        <translation>Debet</translation>
+        <translation>Debit</translation>
+    </message>
+    <message>
+        <source>Total debit</source>
+        <translation>Total debit</translation>
+    </message>
+    <message>
+        <source>Total credit</source>
+        <translation>Total kredit</translation>
     </message>
     <message>
         <source>Transaction fee</source>
-        <translation>Transaktionsavgift</translation>
+        <translation>Transaktions avgift</translation>
     </message>
     <message>
         <source>Net amount</source>
-        <translation>Nettomängd</translation>
+        <translation>Nettobelopp</translation>
     </message>
     <message>
         <source>Message</source>
@@ -2279,7 +4477,11 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Transaction ID</source>
-        <translation>Transaktions-ID</translation>
+        <translation>Transaktions ID</translation>
+    </message>
+    <message>
+        <source>Output index</source>
+        <translation>Utgångsindex</translation>
     </message>
     <message>
         <source>Merchant</source>
@@ -2287,11 +4489,11 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Genererade mynt måste vänta %1 block innan de kan användas. När du genererade detta block utsändes det till nätverket för att läggas till i blockkedjan. Om blocket inte kommer in i kedjan kommer dess tillstånd att ändras till "ej accepterad" och kommer inte att kunna spenderas. Detta kan ibland hända om en annan nod genererar ett block inom ett par sekunder från ditt.</translation>
+        <translation>Genererade mynt måste mogna %1 block innan de kan spenderas. När du genererar detta block, sänds den ut till nätverket för att läggas till i block chain. Om den misslyckas att komma med i blockchain så kommer dess status att ändras till "ej accepterad" och kommer ej kunna spenderas. Detta kan ibland hända om en annan nod genererar ett block inom några sekunder av ditt.</translation>
     </message>
     <message>
         <source>Debug information</source>
-        <translation>Avsökningsinformation</translation>
+        <translation>Felsökningsinformation</translation>
     </message>
     <message>
         <source>Transaction</source>
@@ -2299,7 +4501,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Inputs</source>
-        <translation>Indatan</translation>
+        <translation>Input</translation>
     </message>
     <message>
         <source>Amount</source>
@@ -2322,7 +4524,7 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>This pane shows a detailed description of the transaction</source>
-        <translation>Den här panelen visar en detaljerad transaktionsbeskrivning</translation>
+        <translation>Denna panel visar en detaljerad beskrivning av transaktionerna</translation>
     </message>
 </context>
 <context>
@@ -2339,9 +4541,13 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
         <source>Address</source>
         <translation>Adress</translation>
     </message>
+    <message numerus="yes">
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Öppna för %n fler block</numerusform><numerusform>Öppna för %n fler block</numerusform></translation>
+    </message>
     <message>
         <source>Open until %1</source>
-        <translation>Öppen till %1</translation>
+        <translation>Öppna tills %1</translation>
     </message>
     <message>
         <source>Offline</source>
@@ -2349,11 +4555,11 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Unconfirmed</source>
-        <translation>Obekräftad</translation>
+        <translation>obekräftad</translation>
     </message>
     <message>
         <source>Confirming (%1 of %2 recommended confirmations)</source>
-        <translation>Bekräftar (%1 of %2 rekommenderade bekräftelser)</translation>
+        <translation>Bekräftar (%1 av %2 rekomenderade bekräftelser)</translation>
     </message>
     <message>
         <source>Confirmed (%1 confirmations)</source>
@@ -2361,35 +4567,91 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Conflicted</source>
-        <translation>Konflikterad</translation>
+        <translation>I konflikt</translation>
     </message>
     <message>
         <source>Immature (%1 confirmations, will be available after %2)</source>
-        <translation>Omogen (%1 bekräftelser, kommer att bli tillgänglig efter %2)</translation>
+        <translation>Omogna (%1 bekräftelser, kommer bli tillgängliga efter %2)</translation>
     </message>
     <message>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation>Det här blocket togs inte emot av några andra noder och kommer troligtvis inte att accepteras!</translation>
-    </message>
-    <message>
-        <source>Generated but not accepted</source>
-        <translation>Genererad men inte accepterad</translation>
+        <translation>Detta block togs inte emot av någon annan nod och kommer förmodligen inte accepteras!</translation>
     </message>
     <message>
         <source>Received with</source>
-        <translation>Mottagen med</translation>
+        <translation>Mottaget med</translation>
+    </message>
+    <message>
+        <source>Masternode Reward</source>
+        <translation>Masternode Belöning</translation>
     </message>
     <message>
         <source>Received from</source>
-        <translation>Mottagen från</translation>
+        <translation>Mottaget från</translation>
     </message>
     <message>
-        <source>Received via Obfuscate</source>
-        <translation>Mottagen genom Obfuscate</translation>
+        <source>Received via Obfuscation</source>
+        <translation>Mottaget via Fördunkling</translation>
+    </message>
+    <message>
+        <source>GIC Stake</source>
+        <translation>GIC staking</translation>
+    </message>
+    <message>
+        <source>zGIC Stake</source>
+        <translation>zGIC Staking</translation>
+    </message>
+    <message>
+        <source>Obfuscation Denominate</source>
+        <translation>Fördunkling Betecknat</translation>
+    </message>
+    <message>
+        <source>Obfuscation Collateral Payment</source>
+        <translation>Fördunkling Kollateral Betalning</translation>
+    </message>
+    <message>
+        <source>Obfuscation Make Collateral Inputs</source>
+        <translation>Fördunkling Gör Kollateral Inmatning</translation>
+    </message>
+    <message>
+        <source>Obfuscation Create Denominations</source>
+        <translation>Obfuscation Skapa tecken</translation>
+    </message>
+    <message>
+        <source>Converted GIC to zGIC</source>
+        <translation>Konvertera GIC till zGIC</translation>
+    </message>
+    <message>
+        <source>Spent zGIC</source>
+        <translation>Spendera zGIC</translation>
+    </message>
+    <message>
+        <source>Received GIC from zGIC</source>
+        <translation>Mottog GIC från zGIC</translation>
+    </message>
+    <message>
+        <source>Minted Change as zGIC from zGIC Spend</source>
+        <translation>Myntad Växel som zGIC från zGIC Spendering</translation>
+    </message>
+    <message>
+        <source>Converted zGIC to GIC</source>
+        <translation>Konverterad zGIC till GIC</translation>
+    </message>
+    <message>
+        <source>Anonymous (zGIC Transaction)</source>
+        <translation>Anonym (zGIC Transaktion)</translation>
+    </message>
+    <message>
+        <source>Anonymous (zGIC Stake)</source>
+        <translation>Anonym (zGIC Stake)</translation>
     </message>
     <message>
         <source>Sent to</source>
-        <translation>Skickad till</translation>
+        <translation>Skicka till</translation>
+    </message>
+    <message>
+        <source>Orphan Block - Generated but not accepted. This does not impact your holdings.</source>
+        <translation>Föräldralöst Block - Genererat men ej accepterat. Detta påverkar inte ditt innehav.</translation>
     </message>
     <message>
         <source>Payment to yourself</source>
@@ -2397,58 +4659,50 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Mined</source>
-        <translation>Utvunnen</translation>
-    </message>
-    <message>
-        <source>Obfuscate Denominate</source>
-        <translation>Obfuscate-denomination</translation>
-    </message>
-    <message>
-        <source>Obfuscate Collateral Payment</source>
-        <translation>Darskends-säkerhetsbetalning</translation>
-    </message>
-    <message>
-        <source>Obfuscate Make Collateral Inputs</source>
-        <translation>Obfuscate-skapa säkerhetsinmatningar</translation>
-    </message>
-    <message>
-        <source>Obfuscate Create Denominations</source>
-        <translation>Obfuscate-skapa denominationer</translation>
+        <translation>Mined</translation>
     </message>
     <message>
         <source>Obfuscated</source>
-        <translation>Obfuscated-(skickat)</translation>
+        <translation>Fördunklade</translation>
+    </message>
+    <message>
+        <source>watch-only</source>
+        <translation>se-endast</translation>
     </message>
     <message>
         <source>(n/a)</source>
-        <translation>(e/t)</translation>
+        <translation>(n/a)</translation>
     </message>
     <message>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
-        <translation>Transaktionsstatus. Håll muspekaren över detta fält för att se bekräftelseantal.</translation>
+        <translation>Transaktionsstatus. håll musen över detta fält för att visa antal bekräftelser.</translation>
     </message>
     <message>
         <source>Date and time that the transaction was received.</source>
-        <translation>Datum och tid då transaktionen mottogs.</translation>
+        <translation>Tid och datum som transaktionen togs emot.</translation>
     </message>
     <message>
         <source>Type of transaction.</source>
-        <translation>Transaktionstyp.</translation>
+        <translation>Typ av transaktion.</translation>
+    </message>
+    <message>
+        <source>Whether or not a watch-only address is involved in this transaction.</source>
+        <translation>Om en "watch only" adress är involverad i denna transaktion.</translation>
     </message>
     <message>
         <source>Destination address of transaction.</source>
-        <translation>Transaktionens destinationsadress.</translation>
+        <translation>Transaktionens Destinationsadress.</translation>
     </message>
     <message>
         <source>Amount removed from or added to balance.</source>
-        <translation>Mängd draget eller tillagt till saldot.</translation>
+        <translation>Mängd borttagen från eller tillagd till saldo.</translation>
     </message>
 </context>
 <context>
     <name>TransactionView</name>
     <message>
         <source>All</source>
-        <translation>Alla</translation>
+        <translation>All</translation>
     </message>
     <message>
         <source>Today</source>
@@ -2472,59 +4726,63 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Range...</source>
-        <translation>Period...</translation>
+        <translation>Räckvid...</translation>
+    </message>
+    <message>
+        <source>Most Common</source>
+        <translation>Vanligast</translation>
     </message>
     <message>
         <source>Received with</source>
-        <translation>Mottagen med</translation>
+        <translation>Mottaget med</translation>
     </message>
     <message>
         <source>Sent to</source>
-        <translation>Skickad till</translation>
-    </message>
-    <message>
-        <source>Obfuscated</source>
-        <translation>Obfuscated-(skickat)</translation>
-    </message>
-    <message>
-        <source>Obfuscate Make Collateral Inputs</source>
-        <translation>Obfuscate-skapa säkerhetsinmatningar</translation>
-    </message>
-    <message>
-        <source>Obfuscate Create Denominations</source>
-        <translation>Obfuscate-skapa denominationer</translation>
-    </message>
-    <message>
-        <source>Obfuscate Denominate</source>
-        <translation>Obfuscate-denomination</translation>
-    </message>
-    <message>
-        <source>Obfuscate Collateral Payment</source>
-        <translation>Darskends-säkerhetsbetalning</translation>
+        <translation>Skicka till</translation>
     </message>
     <message>
         <source>To yourself</source>
-        <translation>Till dig själv</translation>
+        <translation>Dig själv</translation>
     </message>
     <message>
         <source>Mined</source>
-        <translation>Utvunnen</translation>
+        <translation>Mined</translation>
+    </message>
+    <message>
+        <source>Minted</source>
+        <translation>Mintad</translation>
+    </message>
+    <message>
+        <source>Masternode Reward</source>
+        <translation>Masternode Belöning</translation>
+    </message>
+    <message>
+        <source>Zerocoin Mint</source>
+        <translation>Zerocoin Mint</translation>
+    </message>
+    <message>
+        <source>Zerocoin Spend</source>
+        <translation>Zerocoin Spendera</translation>
+    </message>
+    <message>
+        <source>Zerocoin Spend to Self</source>
+        <translation>Zerocoin Spendera till Själv</translation>
     </message>
     <message>
         <source>Other</source>
-        <translation>Andra</translation>
+        <translation>Annan</translation>
     </message>
     <message>
         <source>Enter address or label to search</source>
-        <translation>Skriv in en adress eller etikett för att söka</translation>
+        <translation>Mata in adress eller etikett att söka</translation>
     </message>
     <message>
         <source>Min amount</source>
-        <translation>Minsta mängd</translation>
+        <translation>Min. mängd</translation>
     </message>
     <message>
         <source>Copy address</source>
-        <translation>Kopiera adress</translation>
+        <translation>Kopiera Adress</translation>
     </message>
     <message>
         <source>Copy label</source>
@@ -2532,11 +4790,11 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>Kopiera mängd</translation>
+        <translation>Kopiera antal</translation>
     </message>
     <message>
         <source>Copy transaction ID</source>
-        <translation>Kopiera transaktions-ID</translation>
+        <translation>Kopiera transaktions ID</translation>
     </message>
     <message>
         <source>Edit label</source>
@@ -2544,19 +4802,27 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Show transaction details</source>
-        <translation>Visa transaktionsdetaljer</translation>
+        <translation>Visa Transaktionsdetaljer</translation>
+    </message>
+    <message>
+        <source>Hide orphan stakes</source>
+        <translation>Göm föräldralösa stakes</translation>
     </message>
     <message>
         <source>Export Transaction History</source>
-        <translation>Exportera Transaktionshistoriken</translation>
+        <translation>Exportera Transaktionshistorik</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
-        <translation>Kommaseparerad fil (*. csv)</translation>
+        <translation>Kommaseparerad fil (*.csv)</translation>
     </message>
     <message>
         <source>Confirmed</source>
-        <translation>Bekräftad</translation>
+        <translation>bekräftad</translation>
+    </message>
+    <message>
+        <source>Watch-only</source>
+        <translation>Se-bara</translation>
     </message>
     <message>
         <source>Date</source>
@@ -2580,23 +4846,31 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Exporting Failed</source>
-        <translation>Exporteringen misslyckades</translation>
+        <translation>Exportering Misslyckades</translation>
     </message>
     <message>
         <source>There was an error trying to save the transaction history to %1.</source>
-        <translation>Det inträffade ett fel vid försöket med att spara transaktionshistoriken till %1.</translation>
+        <translation>Det uppstod ett fel med att försöka spara transaktionshistoriken till %1.</translation>
     </message>
     <message>
         <source>Exporting Successful</source>
-        <translation>Exporteringen lyckades</translation>
+        <translation>Exportering Lyckat</translation>
+    </message>
+    <message>
+        <source>Received GIC from zGIC</source>
+        <translation>Mottog GIC från zGIC</translation>
+    </message>
+    <message>
+        <source>Zerocoin Spend, Change in zGIC</source>
+        <translation>Zerocoin spendera, Växel i zGIC</translation>
     </message>
     <message>
         <source>The transaction history was successfully saved to %1.</source>
-        <translation>Transaktionshistoriken sparades framgångsrikt till %1.</translation>
+        <translation>Transaktionhistoriken lyckades sparas till %1.</translation>
     </message>
     <message>
         <source>Range:</source>
-        <translation>Period:</translation>
+        <translation>Räckvid:</translation>
     </message>
     <message>
         <source>to</source>
@@ -2605,261 +4879,548 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
-    </context>
+    <message>
+        <source>Unit to show amounts in. Click to select another unit.</source>
+        <translation>Enhet att visa mängd i. Klicka för att välja en annan enhet.</translation>
+    </message>
+</context>
 <context>
     <name>WalletFrame</name>
     <message>
         <source>No wallet has been loaded.</source>
-        <translation>Ingen plånbok har fyllts på.</translation>
+        <translation>Ingen plånbok har laddats.</translation>
     </message>
 </context>
 <context>
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation>Skicka mynt</translation>
+        <translation>Skicka Mynt</translation>
     </message>
-    </context>
+    <message>
+        <source>SwiftX doesn't support sending values that high yet. Transactions are currently limited to %1 GIC.</source>
+        <translation>wiftX stödjer inte att skicka så höga värden än. Transaktioner är för nuvarande begränsade till %1 GIC.</translation>
+    </message>
+</context>
 <context>
     <name>WalletView</name>
+    <message>
+        <source>HISTORY</source>
+        <translation>HISTORIK</translation>
+    </message>
     <message>
         <source>&amp;Export</source>
         <translation>&amp;Exportera</translation>
     </message>
     <message>
         <source>Export the data in the current tab to a file</source>
-        <translation>Exportera datan i den nuvarande fliken till en fil</translation>
+        <translation>Exportera data in den nuvarande fliken till en fil</translation>
+    </message>
+    <message>
+        <source>Selected amount:</source>
+        <translation>Vald mängd:</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
-        <translation>Säkerhetskopiera Plånbok</translation>
+        <translation>Gör en backup på plånboken</translation>
     </message>
     <message>
         <source>Wallet Data (*.dat)</source>
         <translation>Plånboksdata (*.dat)</translation>
     </message>
-    <message>
-        <source>Backup Failed</source>
-        <translation>Säkerhetskopieringen misslyckades</translation>
-    </message>
-    <message>
-        <source>There was an error trying to save the wallet data to %1.</source>
-        <translation>Det inträffade ett fel vid försöket att spara plånboksdatan till %1.</translation>
-    </message>
-    <message>
-        <source>Backup Successful</source>
-        <translation>Säkerhetskopiering lyckades</translation>
-    </message>
-    <message>
-        <source>The wallet data was successfully saved to %1.</source>
-        <translation>Plånbokens data sparades utan problem till %1.</translation>
-    </message>
 </context>
+<context>
+    <name>ZGICControlDialog</name>
+    <message>
+        <source>Select zGIC to Spend</source>
+        <translation>Välj zGIC att Spendera</translation>
+    </message>
+    <message>
+        <source>Quantity</source>
+        <translation>Mängd</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>zGIC</source>
+        <translation>zGIC</translation>
+    </message>
+    <message>
+        <source>Select/Deselect All</source>
+        <translation>Markera/Avmarkera alla</translation>
+    </message>
+    </context>
 <context>
     <name>giant-core</name>
     <message>
+        <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
+        <translation>(1 = behåll tx meta data t.ex. kontoägare och information om betalningsförfråga, 2 = släpp tx meta data)</translation>
+    </message>
+    <message>
+        <source>Allow JSON-RPC connections from specified source. Valid for &lt;ip&gt; are a single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times</source>
+        <translation>Tillåt JSON-RPC anslutningar från specifierad källa. Giltig till &lt;ip&gt; är en singel IP (t.ex. 1.2.3.4), ett nätverk/nätmask (t.ex. 1.2.3.4/255.255.255.0) eller ett nätverk/CIDR (t.ex. 1.2.3.4/24). Detta alternativ kan specifieras flera gånger</translation>
+    </message>
+    <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
-        <translation>Sammanbind till fastställd adress och avlyssna alltid den. Använd [host]:port-notation för IPv6</translation>
+        <translation>Bind till given adress och lyssna alltid på den. Använd [värd]:port notation för IPv6</translation>
+    </message>
+    <message>
+        <source>Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6</source>
+        <translation>Bind till angiven adress och vitlista peers att ansluta till den. Använd [värd]:port notation för IPv6</translation>
+    </message>
+    <message>
+        <source>Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6. This option can be specified multiple times (default: bind to all interfaces)</source>
+        <translation>Bind till given adress att lyssna efter JSON-RPC anslutningar. Använd [värd]:port notation för IPv6. Detta alternativ kan specifieras flera gånger (standard: bind till alla gränssnitt)</translation>
+    </message>
+    <message>
+        <source>Calculated accumulator checkpoint is not what is recorded by block index</source>
+        <translation>Beräknade ackumulator kontrollstation är inte vad som sparats av block index</translation>
     </message>
     <message>
         <source>Cannot obtain a lock on data directory %s. GIANT Core is probably already running.</source>
-        <translation>Kan inte erhålla ett lås på datakatalog %s. GIANT Core körs förmodligen redan.</translation>
+        <translation>Kan ej låsa in på data katalog %s. GIANT Kärna körs förmodligen redan.</translation>
     </message>
     <message>
-        <source>Obfuscate uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation>Obfuscate använder exakta denominationsmängder för att skicka medel, du kanske måste anonymisera fler mynt.</translation>
+        <source>Change automatic finalized budget voting behavior. mode=auto: Vote for only exact finalized budget match to my generated budget. (string, default: auto)</source>
+        <translation>Växel automatiskt slutgiltig budget beteende. läge=auto: Rösta endast för exakt slutförd budget matchning till min genererade budget. (sträng, standard: auto)</translation>
+    </message>
+    <message>
+        <source>Continuously rate-limit free transactions to &lt;n&gt;*1000 bytes per minute (default:%u)</source>
+        <translation>Kontinuerligt takt-begränsad fria transaktioner to &lt;n&gt;*1000 bytes per minut (standard:%u)</translation>
+    </message>
+    <message>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <translation>Skapa nya filer med systemets standard tillstånd, istället för umask 077 (endast effektgivande med inaktiverade plånboksfunktioner)</translation>
+    </message>
+    <message>
+        <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
+        <translation>Radera alla plånbokstransaktioner och återhämta endast de delar av blockchain genom -rescan vid uppstart</translation>
+    </message>
+    <message>
+        <source>Delete all zerocoin spends and mints that have been recorded to the blockchain database and reindex them (0-1, default: %u)</source>
+        <translation>Radera alla zerocoin spenderingar och mints som har blivit nedskrivna  till blockchain databasen och placera om de i indexet (0-1, default: %u)</translation>
+    </message>
+    <message>
+        <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
+        <translation>Distribuerad under MIT mjukvarulicensen, se medföljande fil COPYING eller &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</translation>
+    </message>
+    <message>
+        <source>Enable automatic wallet backups triggered after each zGIC minting (0-1, default: %u)</source>
+        <translation>Aktivera automatisk plånboksbackup efter varje zGIC minting (0-1, standard: %u)</translation>
+    </message>
+    <message>
+        <source>Enable or disable staking functionality for GIC inputs (0-1, default: %u)</source>
+        <translation>Aktivera eller avaktivera staking funktionalitet för GIC inmatningar (0-1, standard: %u)</translation>
+    </message>
+    <message>
+        <source>Enable or disable staking functionality for zGIC inputs (0-1, default: %u)</source>
+        <translation>Aktivera eller avaktivera staking funktionalitet för zGIC inmatningar (0-1, standard: %u)</translation>
+    </message>
+    <message>
+        <source>Enable spork administration functionality with the appropriate private key.</source>
+        <translation>Tillåt spork administration funktion med den lämpliga privata nyckeln.</translation>
     </message>
     <message>
         <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation>Gå in i regressionstestläget, vilken använder en särskild kedja i vilken block kan lösas direkt.</translation>
+        <translation>Gå in i regressions testläge, som använder en speciell chain som block kan lösas omedelbart.</translation>
     </message>
     <message>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
-        <translation>Fel: Lyssnande på inkommande anslutningar misslyckades (avlyssna återkommande fel %s)</translation>
+        <translation>Felmeddelande: Lystnande efter inkommande anslutningar misslyckades (listen återgav fel %s)</translation>
+    </message>
+    <message>
+        <source>Error: The transaction is larger than the maximum allowed transaction size!</source>
+        <translation>Felmeddelande: Transaktionen är större än maximala tillåtna transaktions storleken!</translation>
+    </message>
+    <message>
+        <source>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <translation>Felmeddelande: Ohanterbart argument -socks hittad. Ställa in SOCKS version är inte möjligt längre, endast SOCKS5 proxies stöds.</translation>
     </message>
     <message>
         <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation>Exekvera kommandot när ett viktigt larm mottas eller vi ser en jättelång förgrening (%s i cmd ersätts av ett meddelande)</translation>
+        <translation>Exekvera kommando när en relevant varning tas emot eller när vi ser en jättelång fork (%s i cmd byts ut mot meddelande)</translation>
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>Exekvera kommandot när en plånbokstransaktion ändras (%s i cmd ersätts av TxID) </translation>
+        <translation>Exekvera kommando när en plånbok transaktion ändras (%s i cmd är utbytt mot TxID)</translation>
     </message>
     <message>
         <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>Exekvera kommandot när det bästa blocket ändras (%s i cmd ersätts av blockhash)</translation>
+        <translation>Exekvera kommando när den bästa block ändras (%s i cmd är utbytt mot block hash)</translation>
+    </message>
+    <message>
+        <source>Fees (in GIC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Avgifter (i GIC/Kb) mindre än detta anses vara noll avgift i vidarebefodring (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Fees (in GIC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Avgifter (i GIC/Kb) mindre än detta anses vara noll avgift i transaktionsskapelse (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
+        <translation>Spola databasaktivitet från minnes pool till disk log varje &lt;n&gt;megabytes (default: %u)</translation>
+    </message>
+    <message>
+        <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
+        <translation>Obekräftade betecknade utmatningar hittade, kommer vänta tills de bekräftar för att fortsätta.</translation>
+    </message>
+    <message>
+        <source>If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)</source>
+        <translation>Om paytxfee inte är satt, inkludera tillräcklig avgift för att transaktionen ska börja bekräfta i genomsnitt inom n block (standard: %u)</translation>
     </message>
     <message>
         <source>In this mode -genproclimit controls how many blocks are generated immediately.</source>
-        <translation>I detta läge kontrollerar -genproclimit hur många block som genereras omedelbart.</translation>
+        <translation>I detta läge -genproclimit kontrolleras hur många block som genereras omedelbart.</translation>
     </message>
     <message>
-        <source>HyperSend requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
-        <translation>HyperSend kräver indatan med åtminstone 6 bekräftelser. Du kanske måste vänta ett par minuter och försöka igen.</translation>
+        <source>Insufficient or insufficient confirmed funds, you might need to wait a few minutes and try again.</source>
+        <translation>Otillräckliga eller otillräckligt bekräftade pengar, du kan behöva vänta några minuter och försöka igen.</translation>
     </message>
     <message>
-        <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
-        <translation>Namnge för att skapa en url för en KeePass-inmatning som lagrar plånbokslösenfrasen.</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Ogiltig mängd -maxtxfee=&lt;amount&gt;: '%s' (måste vara minst minrelay avgift av %s för att förhindra att transaktioner fastnar)</translation>
+    </message>
+    <message>
+        <source>Keep the specified amount available for spending at all times (default: 0)</source>
+        <translation>Håll den specifierade mängden tillgänglig till att spenderas vid alla tillfällen (standard: 0)</translation>
+    </message>
+    <message>
+        <source>Log transaction priority and fee per kB when mining blocks (default: %u)</source>
+        <translation>Log transaktion prioritet och avgift per kB närmining block (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)</source>
+        <translation>Behåll en full transaktionsindex, använd av getrawtransaction rpc call (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
+        <translation>Maximal datastorlek i databärar transaktioner ändrar vi väg och mine (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Maximum total fees to use in a single wallet transaction, setting too low may abort large transactions (default: %s)</source>
+        <translation>Maximala fullständiga avgifter att använda i en ensam plånbokstransaktion, om satt för låg så kanske stora transaktioner avbryts (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
+        <translation>Antal sekunder att hindra peers som beter sig illa från att återansluta (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Obfuscation uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
+        <translation>Obfuscation använder exakta denominerade mängder för att skicka medel, du kan helt enkelt behöva anonymisera några fler mynt.</translation>
+    </message>
+    <message>
+        <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
+        <translation>Utmata felsökningsinformation (standard: %u, tillgodose &lt;category&gt; är frivilligt)</translation>
     </message>
     <message>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
-        <translation>Förfrågan till peer-adresser via DNS-lookup, om det är brist på adresser (standardvärde:1 unless -connect)</translation>
+        <translation>Fråga efter peer adresser via DNS lookup, om få adresser (standard: 1 om inte -connect)</translation>
+    </message>
+    <message>
+        <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
+        <translation>Slumpa kreditiv för varje proxy anslutning. Detta tillåter Tor stream isolation (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Require high priority for relaying free or low-fee transactions (default:%u)</source>
+        <translation>Kräver hög prioritet för att lägga om gratis eller låg-avgifts transaktionsväg (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Send trace/debug info to console instead of debug.log file (default: %u)</source>
+        <translation>Skicka spåra/felsöknings information till konsoll istället för debug.log fil (standard: %u)</translation>
     </message>
     <message>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
-        <translation>Ställ in en maximal storlek för högprioriterade/lågavgiftstransaktioner i byte (standard: %d)</translation>
+        <translation>Sätt maximala storlek för hög-prioritet/låg-avgift transaktioner i bytes (standard: %d)</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
-        <translation>Ställ in antalet skriptbekräftelsetrådar till (%u till %d, 0 = auto, &lt;0 = lämna så många kärnor fria, standard: %d)</translation>
+        <translation>Sätt mängden scripbekräftelse trådar (%u till %d, 0 = auto, &lt;0 = lämna så många kärnor fria, standard: %d)</translation>
     </message>
     <message>
-        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>Detta är en förhandsutgiven testkompilering - använd på egen risk - använd inte för utvinning eller handlarapplikationer.</translation>
+        <source>Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)</source>
+        <translation>Sätt mängden trådar åt mynt generering om aktiverad (-1 = alla kärnor, standard: %d)</translation>
+    </message>
+    <message>
+        <source>Show N confirmations for a successfully locked transaction (0-9999, default: %u)</source>
+        <translation>Visa N bekräftelser för en lyckad låst transaktion (0-9999, standard: %u)</translation>
+    </message>
+    <message>
+        <source>Support filtering of blocks and transaction with bloom filters (default: %u)</source>
+        <translation>Stödjer filtrering av block och transaktioner med blomm filter (standard: %u)</translation>
+    </message>
+    <message>
+        <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit &lt;https://www.openssl.org/&gt; and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
+        <translation>Denna produkt inkluderar mjukvara utvecklad av OpenSSL Projektet för användning i OpenSSL Toolkit &lt;https://www.openssl.org/&gt; och kryptografisk mjukvara skriven av Eric Young och UPnP mjukvara skriven av Thomas Bernard.</translation>
+    </message>
+    <message>
+        <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
+        <translation>Totala längden av nätverks verisionens sträng (%i) överskrider maximala längd (%i). Minska mängden eller storleken av uakommentarer.</translation>
     </message>
     <message>
         <source>Unable to bind to %s on this computer. GIANT Core is probably already running.</source>
-        <translation>Det går inte att binda till %s till denna dator. GIANT Core körs förmodligen redan.</translation>
+        <translation>Kan inte binda till %s på denna dator. GIANT Core körs förmodligen redan.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscate denominated funds for this transaction.</source>
-        <translation>Kunde inte hitta tillräckliga Obfuscate-denominationsmedel för denna transaktion.</translation>
+        <source>Unable to locate enough Obfuscation denominated funds for this transaction.</source>
+        <translation>Kan ej lokalisera tillräckligt Fördunklingsdenominationerade pengar för denna transaktion.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscate non-denominated funds for this transaction that are not equal 1000 DNET.</source>
-        <translation>Kunde inte hitta tillräckliga Obfuscate-icke-denominationsmedel för denna transaktion som inte är likvärdiga 1000 DNET.</translation>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 GIC.</source>
+        <translation>Kan ej lokalisera tillräckligt Fördunkling icke-denominationerade pengar för denna transaktion som inte är 10000 GIC.</translation>
+    </message>
+    <message>
+        <source>Unable to locate enough funds for this transaction that are not equal 10000 GIC.</source>
+        <translation>Kan inte hitta tillräckligt med pengar för denna transaktion som inte är 10000 GIC.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
+        <translation>Använd separera SOCKS5 proxy för att nå peers via Tor hidden services (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Warning: -maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
+        <translation>Varning: -maxtxfee är sätt väldigt högt! Avgifter såhär stora kan betalas med en ensam transaktion.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>Varning: -paytxfee är väldigt högt satt! Detta är transaktionsavgiften du kommer att få betala om du skickar en transaktion.</translation>
+        <translation>Varning: -maxtxfee är sätt väldigt högt! Detta är transaktionsavgiften du kommer betala om du skickar en transaktion.</translation>
+    </message>
+    <message>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong GIANT Core will not work properly.</source>
+        <translation>Varning: Var vänlig kontrollera att din dators tid och datum är korrekt! Om din klocka är fel så kommer GIANT Core inte att fungera korrekt.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>Varning: Nätverket verkar inte hålla med helt och hållet! Några utvinnare verkar uppleva problem.</translation>
+        <translation>Varning: Nätverket verkar inte fullständigt hålla med! Några miners verkar uppleva problem.</translation>
     </message>
     <message>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>Varning: Vi verkar inte överensstämma med våra peers! Du kanske måste uppgradera eller så måste andra noder uppgradera.</translation>
+        <translation>Varning: Vi verkar inte fullständigt hålla med våra peers! Du kan behöva uppgradera, eller andra noder kan behöva uppgraderas.</translation>
     </message>
     <message>
         <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Varning: Fel vid läsning av wallet.dat! Alla nycklar lästes korrekt men transaktionsdatan eller adressbokposterna kanske saknas eller är felaktiga.</translation>
+        <translation>Varning: fel intäffade när wallet.dat skulle läsas! Alla nycklar lästes korrekt, men transaktionsdata eller adress bokinmatningar kan fattas eller vara fel.</translation>
     </message>
     <message>
         <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Varning: wallet.dat är korrumperad, data räddad! Den ursprungliga wallet.dat är sparad som wallet.{timestamp}.bak i %s; om ditt saldo eller transaktioner är felaktiga kanske du måste återställa från en säkerhetskopia.</translation>
+        <translation>Varning: wallet.dat korrupt, data bärgat! Original wallet.dat sparad som wallet.{timestamp}.bak i %s; om ditt saldo eller transaktioner är fel borde du återställa från en backup.</translation>
+    </message>
+    <message>
+        <source>Whitelist peers connecting from the given netmask or IP address. Can be specified multiple times.</source>
+        <translation>Vitlista peers som ansuter från den angivna nätmasken eller IP adressen. Kan specifieras flera gånger.</translation>
+    </message>
+    <message>
+        <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
+        <translation>Vitlistade peers kan ej DoS bannas och deras transaktioner är alltid vidarebofordrade, även om dom redan är i mempool, användbart t.ex. för en gateway</translation>
     </message>
     <message>
         <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
-        <translation>Du måste specificera en masternodepriv-nyckel i konfigurationen. Vänligen se dokumentationen för hjälp.</translation>
+        <translation>Du måste specifiera en masternodeprivkey i konfigurationen. Var vänlig se dokumentationen för hjälp.</translation>
+    </message>
+    <message>
+        <source>(40444 could be used only on mainnet)</source>
+        <translation>(40444 kunde endast användas på mainnet)</translation>
+    </message>
+    <message>
+        <source>(default: %s)</source>
+        <translation>(standard: %s)</translation>
     </message>
     <message>
         <source>(default: 1)</source>
-        <translation>(standardvärde: 1)</translation>
+        <translation>(standard: 1)</translation>
+    </message>
+    <message>
+        <source>(must be 40444 for mainnet)</source>
+        <translation>(måste vara 40444 för mainnet)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>
-        <translation>Acceptera kommandorad och JSON-RPC-kommandon</translation>
+        <translation>Acceptera kommandolinje och JSON-RPC kommandon</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Acceptera anslutningar utifrån (standardvärde: 1 om ingen -proxy eller -connect)</translation>
+        <translation>Acceptera anslutningar utifrån (standard: 1 om ingen -proxy eller -connect)</translation>
+    </message>
+    <message>
+        <source>Accept public REST requests (default: %u)</source>
+        <translation>Acceptera offentlig REST förfrågningar (standard: %u)</translation>
     </message>
     <message>
         <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Lägg till en nod att ansluta till och försök att hålla anslutningen öppen</translation>
+        <translation>Lägg till en nod för att ansluta till och försöka att hålla anslutningen öppen</translation>
     </message>
     <message>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
-        <translation>Tillåt DNS-lookup för -addnode, -seednode och -connect</translation>
+        <translation>Tillåt DNS lookups för -addnode, -seednode och -connect</translation>
     </message>
     <message>
         <source>Already have that input.</source>
-        <translation>Har redan den indatan.</translation>
+        <translation>Har redan den inmatningen.</translation>
+    </message>
+    <message>
+        <source>Always query for peer addresses via DNS lookup (default: %u)</source>
+        <translation>Fråga alltid efter peer adresser via DNS lookup (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Append comment to the user agent string</source>
+        <translation>Bifoga kommentar till användaragent strängen</translation>
     </message>
     <message>
         <source>Attempt to recover private keys from a corrupt wallet.dat</source>
-        <translation>Försök att återskapa privatnycklar från en korrumperad wallet.dat</translation>
+        <translation>Försök återfå privata nycklar från en korrupt wallet.dat</translation>
+    </message>
+    <message>
+        <source>Automatically create Tor hidden service (default: %d)</source>
+        <translation>Skapa automatiskt Tor hidden service (standard: %d)</translation>
     </message>
     <message>
         <source>Block creation options:</source>
-        <translation>Blockskapandealternativ:</translation>
+        <translation>Block skapande alternative:</translation>
+    </message>
+    <message>
+        <source>Calculating missing accumulators...</source>
+        <translation>Beräknar fattandes ackumulatorer...</translation>
     </message>
     <message>
         <source>Can't denominate: no compatible inputs left.</source>
-        <translation>Kan inte denominera: Inga kompatibla indatan kvar.</translation>
+        <translation>Kan ej kalla: inga kompatibla inmatningar kvar.</translation>
+    </message>
+    <message>
+        <source>Can't find random Masternode.</source>
+        <translation>Kan ej hitta slumpmässig Huvudnod.</translation>
+    </message>
+    <message>
+        <source>Can't mix while sync in progress.</source>
+        <translation>Kan ej blanda när synkronisering håller på.</translation>
     </message>
     <message>
         <source>Cannot downgrade wallet</source>
-        <translation>Kan inte nedgradera plånboken</translation>
+        <translation>Kan ej nergradera plånbok</translation>
     </message>
     <message>
         <source>Cannot resolve -bind address: '%s'</source>
-        <translation>Kan inte lösa -bind address: '%s'</translation>
+        <translation>Kan ej lösa -bind adress: '%s'</translation>
     </message>
     <message>
         <source>Cannot resolve -externalip address: '%s'</source>
-        <translation>Kan inte lösa -externalip address: '%s'</translation>
+        <translation>Kan ej lösa -externalip adress: '%s'</translation>
+    </message>
+    <message>
+        <source>Cannot resolve -whitebind address: '%s'</source>
+        <translation>Kan ej lösa -whitebind adress: '%s'</translation>
     </message>
     <message>
         <source>Cannot write default address</source>
-        <translation>Kan inte skriva standardadress</translation>
+        <translation>Kan ej skriva standard adress</translation>
     </message>
     <message>
         <source>Collateral not valid.</source>
-        <translation>Säkerhetsåtgärd ej giltig.</translation>
+        <translation>Kollateral ej giltig.</translation>
     </message>
     <message>
         <source>Connect only to the specified node(s)</source>
-        <translation>Anslut endast till specifik(a) nod(er)</translation>
+        <translation>Anslut endast till de specifierade nod(erna)</translation>
+    </message>
+    <message>
+        <source>Connect through SOCKS5 proxy</source>
+        <translation>Anslut genom SOCKS5 proxy</translation>
     </message>
     <message>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
-        <translation>Anslut till en nod för att återfå peer-adresser och koppla från</translation>
+        <translation>Anslut till en not för att hämta upp peer adresser, och koppla ifrån</translation>
     </message>
     <message>
         <source>Connection options:</source>
         <translation>Anslutningsalternativ:</translation>
     </message>
     <message>
-        <source>Corrupted block database detected</source>
-        <translation>Korrumperad blockdatabas upptäcktes</translation>
+        <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
+        <translation>Copyright (C) 2009-%i The Bitcoin Core Developers</translation>
     </message>
     <message>
-        <source>Obfuscate options:</source>
-        <translation>Obfuscate-alternativ:</translation>
+        <source>Copyright (C) 2014-%i The Dash Core Developers</source>
+        <translation>Copyright (C) 2014-%i The Dash Core Developers</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
+        <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2018-%i The GIANT Core Developers</source>
+        <translation>Copyright (C) 2018-%i The GIANT Core Developers</translation>
+    </message>
+    <message>
+        <source>Corrupted block database detected</source>
+        <translation>Korrupterad blockdatabas upptäckt</translation>
+    </message>
+    <message>
+        <source>Could not parse masternode.conf</source>
+        <translation>Kunde ej tolka masternode.conf</translation>
     </message>
     <message>
         <source>Debugging/Testing options:</source>
-        <translation>Avsöknings-/testalternativ:</translation>
+        <translation>Felsökning/Test alternativ:</translation>
+    </message>
+    <message>
+        <source>Delete blockchain folders and resync from scratch</source>
+        <translation>Radera blockchainmappar och synka om från början</translation>
+    </message>
+    <message>
+        <source>Disable OS notifications for incoming transactions (default: %u)</source>
+        <translation>Inaktivera OS notifikationer för inkommande transaktioner (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Disable safemode, override a real safe mode event (default: %u)</source>
+        <translation>Avaktivera säkert läge, köröver en riktig säkert läge händelse (standard: %u)</translation>
     </message>
     <message>
         <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
-        <translation>Upptäck din egen IP-adress (standardvärde: 1 vid avlyssning och no -externalip)</translation>
+        <translation>Upptäck egen IP adress (standard: 1 när lyssnar och ingen -externalip)</translation>
     </message>
     <message>
         <source>Do not load the wallet and disable wallet RPC calls</source>
-        <translation>Ladda inte plånboken och inaktivera plånboks-RPC-anrop</translation>
+        <translation>Ladda inte plånboken och avaktivera plånbok RPC kallning</translation>
     </message>
     <message>
         <source>Do you want to rebuild the block database now?</source>
-        <translation>Vill du återuppbygga blockdatabasen nu?</translation>
+        <translation>Vill du bygga om block databasen nu?</translation>
     </message>
     <message>
         <source>Done loading</source>
-        <translation>Laddning färdig</translation>
+        <translation>Färdigladdat</translation>
+    </message>
+    <message>
+        <source>Enable automatic Zerocoin minting (0-1, default: %u)</source>
+        <translation>Aktivera automatisk Zerocoin minting (0-1, standard: %u)</translation>
+    </message>
+    <message>
+        <source>Enable publish hash transaction (locked via SwiftX) in &lt;address&gt;</source>
+        <translation>Aktivera publicera hash transaktion (låst via SwiftX) i &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish raw transaction (locked via SwiftX) in &lt;address&gt;</source>
+        <translation>Aktivera publicera rå transaktion (låst via SwiftX) i &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable the client to act as a masternode (0-1, default: %u)</source>
+        <translation>Tillåt klinten att bete sig som en huvudnod (0-1, standard: %u)</translation>
     </message>
     <message>
         <source>Entries are full.</source>
-        <translation>Inmatningarna är fyllda.</translation>
+        <translation>Poster är fulla.</translation>
+    </message>
+    <message>
+        <source>Error connecting to Masternode.</source>
+        <translation>Fel vid anslutning till Huvudnoder.</translation>
     </message>
     <message>
         <source>Error initializing block database</source>
-        <translation>Fel vid initialisering av blockadatabas</translation>
+        <translation>Fel vid initialisering av blockdatabas</translation>
     </message>
     <message>
         <source>Error initializing wallet database environment %s!</source>
-        <translation>Fel vid initialisering av plånbokdatabasmiljö %s!</translation>
+        <translation>Fel initialisering av plånboksdatabas miljö %s!</translation>
     </message>
     <message>
         <source>Error loading block database</source>
@@ -2871,51 +5432,103 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Error loading wallet.dat: Wallet corrupted</source>
-        <translation>Fel vid laddning av wallet.dat: Plånboken är korrumperad</translation>
+        <translation>Fel vid laddning av wallet.dat: Plånbok korrupterad</translation>
+    </message>
+    <message>
+        <source>Error loading wallet.dat: Wallet requires newer version of GIANT Core</source>
+        <translation>Fel vid laddning av wallet.dat: Plånbok  kräver nyare GIANT Kärna version</translation>
     </message>
     <message>
         <source>Error opening block database</source>
-        <translation>Fel vid öppnande av blockdatabas</translation>
+        <translation>Fel vid öppning av block databas</translation>
     </message>
     <message>
         <source>Error reading from database, shutting down.</source>
-        <translation>Fel vid läsning från databas, stänger ned.</translation>
+        <translation>Fel vid läsning från databas, stänger ner.</translation>
     </message>
     <message>
         <source>Error recovering public key.</source>
-        <translation>Fel vid återhämtning av publik nyckel.</translation>
+        <translation>Fel vid återhämtning av offentlig nyckel.</translation>
+    </message>
+    <message>
+        <source>Error writing zerocoinDB to disk</source>
+        <translation>Fel vid skrivning av zerocoinDB till disk</translation>
     </message>
     <message>
         <source>Error</source>
         <translation>Fel</translation>
     </message>
     <message>
+        <source>Error: A fatal internal error occured, see debug.log for details</source>
+        <translation>Fel: Ett fatalt internt fel inträffade, se debug.log för detaljer</translation>
+    </message>
+    <message>
+        <source>Error: Can't select current denominated inputs</source>
+        <translation>Fel: Kan ej välja nuvarande benämnda inmatningar</translation>
+    </message>
+    <message>
         <source>Error: Disk space is low!</source>
-        <translation>Fel: Diskutrymmet är lågt!</translation>
+        <translation>Fel: Diskutrymme lågt!</translation>
+    </message>
+    <message>
+        <source>Error: Unsupported argument -tor found, use -onion.</source>
+        <translation>Fel: Argument som ej stöds, -tor, hittat, använd -onion.</translation>
     </message>
     <message>
         <source>Error: Wallet locked, unable to create transaction!</source>
-        <translation>Fel: Plånbok låst, kan inte skapa en transaktion!</translation>
+        <translation>Fel: Plånbok låst, kan ej genomföra transaktion!</translation>
     </message>
     <message>
-        <source>Error: You already have pending entries in the Obfuscate pool</source>
-        <translation>Fel: Du har redan väntande inmatningar i Obfuscate-poolen</translation>
+        <source>Error: You already have pending entries in the Obfuscation pool</source>
+        <translation>Fel: Du har redan avvaktande poster i Fördunklingspoolen</translation>
+    </message>
+    <message>
+        <source>Failed to calculate accumulator checkpoint</source>
+        <translation>Misslyckades att beräkna ackumulator kontrollstation</translation>
     </message>
     <message>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>Kunde inte avlyssna någon port. Använd -listen=0 om du vill detta.</translation>
+        <translation>Misslyckades att lyssna på någon port. Använd -listen=0 om du vill detta.</translation>
+    </message>
+    <message>
+        <source>Failed to parse host:port string</source>
+        <translation>Misslyckades ta ut satsdelarna i host:port sträng</translation>
     </message>
     <message>
         <source>Failed to read block</source>
-        <translation>Kunde inte läsa block</translation>
+        <translation>Misslyckades läsa block</translation>
+    </message>
+    <message>
+        <source>Fee (in GIC/kB) to add to transactions you send (default: %s)</source>
+        <translation>Avgift (i GIC/kB) för att lägga till transaktioner you skicka (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Finalizing transaction.</source>
+        <translation>Slutgiltiggör transaktion.</translation>
+    </message>
+    <message>
+        <source>Force safe mode (default: %u)</source>
+        <translation>Tvinga säkert läga (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Found enough users, signing ( waiting %s )</source>
+        <translation>Hittat tillräckligt många användare, signerar (väntar %s)</translation>
+    </message>
+    <message>
+        <source>Found enough users, signing ...</source>
+        <translation>Hittade tillräckligt många användare, signerar ...</translation>
+    </message>
+    <message>
+        <source>Generate coins (default: %u)</source>
+        <translation>Generera mynt (standard: %u)</translation>
+    </message>
+    <message>
+        <source>How many blocks to check at startup (default: %u, 0 = all)</source>
+        <translation>Hur  många block som kollas vid start (standard: %u, 0 = alla)</translation>
     </message>
     <message>
         <source>If &lt;category&gt; is not supplied, output all debugging information.</source>
-        <translation>Om &lt;category&gt; inte finns, lägg ut all avsökningsinformation.</translation>
-    </message>
-    <message>
-        <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
-        <translation>Hittade obekräftade denominationsutdatan, kommer att vänta tills de bekräftar att fortsätta.</translation>
+        <translation>Om &lt;category&gt; inte ges, mata ut all felsökningsinformation.</translation>
     </message>
     <message>
         <source>Importing...</source>
@@ -2923,19 +5536,23 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Imports blocks from external blk000??.dat file</source>
-        <translation>Importerar block från den externa blok000??.dat-fil-en</translation>
+        <translation>Importera block från externt blk000??.dat fil</translation>
+    </message>
+    <message>
+        <source>Include IP addresses in debug output (default: %u)</source>
+        <translation>Inkludera IP adress i felsökningens utmatning (standard: %u)</translation>
     </message>
     <message>
         <source>Incompatible mode.</source>
-        <translation>Inkompatibelt läge.</translation>
+        <translation>Okompatibel sätt.</translation>
     </message>
     <message>
         <source>Incompatible version.</source>
-        <translation>Inkompatibel version.</translation>
+        <translation>Okompatibel version.</translation>
     </message>
     <message>
         <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
-        <translation>Felaktig eller så hittades inget Genesis-block. Fel datadir för nätverket?</translation>
+        <translation>Ogiltig eller ingen tillblivelse block hittat. Fel datadir för nätverk?</translation>
     </message>
     <message>
         <source>Information</source>
@@ -2943,67 +5560,259 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Initialization sanity check failed. GIANT Core is shutting down.</source>
-        <translation>Initialiseringstillståndkontroll misslyckades. GIANT Core stängs ned.</translation>
+        <translation>Initierings renlighetscheck misslyckades. GIANT Kärna stängs ner.</translation>
     </message>
     <message>
         <source>Input is not valid.</source>
-        <translation>Indata är inte giltig.</translation>
+        <translation>inmatning är inte giltig.</translation>
     </message>
     <message>
-        <source>HyperSend options:</source>
-        <translation>HyperSend-alternativ:</translation>
+        <source>Insufficient funds</source>
+        <translation>Otillräckliga pengar</translation>
     </message>
     <message>
         <source>Insufficient funds.</source>
-        <translation>Otillräckliga medel!</translation>
+        <translation>Otillräckliga pengar.</translation>
     </message>
     <message>
-        <source>Invalid -onion address: '%s'</source>
-        <translation>Ogiltig -onion-adress: '%s'</translation>
+        <source>Invalid -onion address or hostname: '%s'</source>
+        <translation>Ogiltig -onion adress eller värdnamn: '%s'</translation>
     </message>
     <message>
-        <source>Invalid -proxy address: '%s'</source>
-        <translation>Ogiltig -proxy-adress: '%s'</translation>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s'</source>
+        <translation>Ogiltig mängd -maxtxfee=&lt;amount&gt;: '%s'</translation>
     </message>
     <message>
         <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ogiltig mängd för -minrelaytxfee=&lt;amount&gt;: '%s'</translation>
+        <translation>Ogiltig mängd -minrelaytxfee=&lt;amount&gt;: '%s'</translation>
     </message>
     <message>
         <source>Invalid amount for -mintxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ogiltig mängd för -mintxfee=&lt;amount&gt;: '%s'</translation>
+        <translation>Ogiltig mäng -mintxfee=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
+        <translation>Ogiltig mäng -paytxfee=&lt;amount&gt;: '%s' (måste vara minst %s)</translation>
     </message>
     <message>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ogiltig mängd för -paytxfee=&lt;amount&gt;: '%s'</translation>
+        <translation>Ogiltig mäng -paytxfee=&lt;amount&gt;: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -reservebalance=&lt;amount&gt;</source>
+        <translation>Ogiltig mäng -reservebalance=&lt;amount&gt;</translation>
+    </message>
+    <message>
+        <source>Invalid amount</source>
+        <translation>Ogiltig mängd</translation>
     </message>
     <message>
         <source>Invalid masternodeprivkey. Please see documenation.</source>
-        <translation>Ogiltig masternodepriv-nyckel. Vänligen se dokumentationen.</translation>
+        <translation>ogiltig masternodeprivkey. Var vänlig se dokumentation.</translation>
+    </message>
+    <message>
+        <source>Invalid netmask specified in -whitelist: '%s'</source>
+        <translation>Ogiltig nätmask spefifierad i -whitelist: '%s'</translation>
+    </message>
+    <message>
+        <source>Invalid port detected in masternode.conf</source>
+        <translation>Ogiltig port upptäckt i masternode.conf</translation>
     </message>
     <message>
         <source>Invalid private key.</source>
-        <translation>Ogiltig privatnyckel.</translation>
+        <translation>Fel privat nyckel.</translation>
     </message>
     <message>
         <source>Invalid script detected.</source>
-        <translation>Ogiltigt skript hittades.</translation>
+        <translation>Ogiltigt script upptäckt.</translation>
     </message>
     <message>
-        <source>KeePassHttp id for the established association</source>
-        <translation>KeePassHttp-id för den etablerade kopplingen</translation>
+        <source>Percentage of automatically minted Zerocoin  (1-100, default: %u)</source>
+        <translation>Procent automatiskt mintad Zerocoin (1-100, default: %u)</translation>
     </message>
     <message>
-        <source>KeePassHttp key for AES encrypted communication with KeePass</source>
-        <translation>KeePassHttp-nyckel för AES-krypterad kommunikation med KeePass</translation>
+        <source>Reindex the GIC and zGIC money supply statistics</source>
+        <translation>Indexera GIC och zGIC pengarna tillgång statistik på nytt</translation>
+    </message>
+    <message>
+        <source>Reindexing zerocoin database...</source>
+        <translation>Indexera zerocoin databas på nytt...</translation>
+    </message>
+    <message>
+        <source>Reindexing zerocoin failed</source>
+        <translation>Indexera zerocoin på nytt misslyckades</translation>
+    </message>
+    <message>
+        <source>Selected coins value is less than payment target</source>
+        <translation>Valda mynts värde är under betalningsmål</translation>
+    </message>
+    <message>
+        <source>SwiftX options:</source>
+        <translation>SwiftX alternativ:</translation>
+    </message>
+    <message>
+        <source>This is a pre-release test build - use at your own risk - do not use for staking or merchant applications!</source>
+        <translation>Det här är en för-släppt test byggnad - använd på din egna risk - använd inte för staking eller handel applikationer!</translation>
+    </message>
+    <message>
+        <source> mints deleted
+</source>
+        <translation>mints raderade
+</translation>
+    </message>
+    <message>
+        <source> mints updated, </source>
+        <translation>mints updaterade,</translation>
+    </message>
+    <message>
+        <source> unconfirmed transactions removed
+</source>
+        <translation>obekräftade transaktioner borttagna
+</translation>
+    </message>
+    <message>
+        <source>Disable all GIANT specific functionality (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, default: %u)</source>
+        <translation>Avaktivera all GIANT funktionalitet (Huvudnoder, Zerocoin, SwiftX, Budgeting) (0-1, standard: %u)</translation>
+    </message>
+    <message>
+        <source>Enable SwiftX, show confirmations for locked transactions (bool, default: %s)</source>
+        <translation>Tillåt SwiftX, visa bekräftelser för låsta transaktioner (bool, default: %s)</translation>
+    </message>
+    <message>
+        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
+        <translation>Fel: Transaktionen nekades! Detta kan hända om några mynt i din plånbok redan har spenderats, möjligen att du använt en kopia av wallet.dat och spenderade mynt från kopian men de inte blivit markerade som spenderade här.</translation>
+    </message>
+    <message>
+        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
+        <translation>Fel: Denna transaktion kräver enatransaktionsavgift på minst %s på grund av dess mängd, komplexitet, eller användning av nyligen mottagna pengar!</translation>
+    </message>
+    <message>
+        <source>Error: Unsupported argument -checklevel found. Checklevel must be level 4.</source>
+        <translation>Fel: Argument som ej stöds hittat, -checklevel. Checklevel måste vara 4.</translation>
+    </message>
+    <message>
+        <source>Execute command when the best block changes and its size is over (%s in cmd is replaced by block hash, %d with the block size)</source>
+        <translation>Exekvera kommando när den bästa block ändras och dess storlek är över (%s i cmd är utbytt mot block hash, %d med blockstorleken)</translation>
+    </message>
+    <message>
+        <source>Failed to find coin set amongst held coins with less than maxNumber of Spends</source>
+        <translation>Misslyckades hitta mynt set bland hållandes mynt med mindre än maxNumber av Spenderingar</translation>
+    </message>
+    <message>
+        <source>In rare cases, a spend with 7 coins exceeds our maximum allowable transaction size, please retry spend using 6 or less coins</source>
+        <translation>I sällsynta fall, en spendering med 7 mynt överstiger våran maximala tillåtna transaktionsstorlek, var vänlig försök spendera 6 elr färre mynt</translation>
+    </message>
+    <message>
+        <source>Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)</source>
+        <translation>Valör aatt föredra för automatiskt mintad Zerocoin (1/5/10/50/100/500/1000/5000), 0 för ingen preface. standard: %u)</translation>
+    </message>
+    <message>
+        <source>Specify custom backup path to add a copy of any automatic zGIC backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
+        <translation>Specifiera skräddarsydd backup väg att lägga till en kopia av alla automatisk zGIC backup. Om satt som dir, varje backup genererar en tidsstämplad fil. Om satt som fil, skriver över den filen vid varje backup. Om backupvägen också är satt, 4 backups kommer hända</translation>
+    </message>
+    <message>
+        <source>Specify custom backup path to add a copy of any wallet backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup.</source>
+        <translation>Specifiera skräddarsydd backup väg att lägga till en kopia av vilken plånbok backup som helst. Om satt som dir, varje backup genererar en tidsstämplad fil. Om satt som fil, skriver över den filen vid varje backup.</translation>
+    </message>
+    <message>
+        <source>SwiftX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
+        <translation>SwiftX kräver inmatningar med minst 6 bekräftelser, du kan behöva vänta några minuter och försöka igen.</translation>
+    </message>
+    <message>
+        <source>&lt;category&gt; can be:</source>
+        <translation>&lt;category&gt; kan vara:</translation>
+    </message>
+    <message>
+        <source>Attempt to force blockchain corruption recovery</source>
+        <translation>Försök tvinga återhämtning av korrupt blockchain</translation>
+    </message>
+    <message>
+        <source>CoinSpend: Accumulator witness does not verify</source>
+        <translation>CoinSend: Ackumulator vittnesmål verifierar inte</translation>
+    </message>
+    <message>
+        <source>Display the stake modifier calculations in the debug.log file.</source>
+        <translation>Visar stake modifierar beräkningar i debug.log fil.</translation>
+    </message>
+    <message>
+        <source>Display verbose coin stake messages in the debug.log file.</source>
+        <translation>Visa omständig mynt stake meddelande i debug.log filen.</translation>
+    </message>
+    <message>
+        <source>Enable publish hash block in &lt;address&gt;</source>
+        <translation>Aktivera publicera hash block i &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish hash transaction in &lt;address&gt;</source>
+        <translation>Aktivera publicera hash transaktion i &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish raw block in &lt;address&gt;</source>
+        <translation>Aktivera publicera rå block i &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish raw transaction in &lt;address&gt;</source>
+        <translation>Aktivera publicera rå transaktion i &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable staking functionality (0-1, default: %u)</source>
+        <translation>Aktivera staking funktionalitet (0-1, standard: %u)</translation>
+    </message>
+    <message>
+        <source>Error: A fatal internal error occurred, see debug.log for details</source>
+        <translation>Fel: Ett fatalt internt fel hände, se debug.log för detaljer</translation>
+    </message>
+    <message>
+        <source>Error: No valid utxo!</source>
+        <translation>Fel: Ingen giltig utxo!</translation>
+    </message>
+    <message>
+        <source>Failed to create mint</source>
+        <translation>Misslyckades skapa mint</translation>
+    </message>
+    <message>
+        <source>Failed to find Zerocoins in wallet.dat</source>
+        <translation>Misslyckades hitta Zerocoins i wallet.dat</translation>
+    </message>
+    <message>
+        <source>Failed to select a zerocoin</source>
+        <translation>Misslyckades välja en zerocoin</translation>
+    </message>
+    <message>
+        <source>Failed to wipe zerocoinDB</source>
+        <translation>Misslyckades torka zerocoinDB</translation>
+    </message>
+    <message>
+        <source>Failed to write coin serial number into wallet</source>
+        <translation>Misslyckades skriva mynt serienummer i plånbok</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
-        <translation>Bibehåll som mest &lt;n&gt; icke-anslutningsbara transaktioner i minnet (standardvärde: %u)</translation>
+        <translation>Behåll som mest &lt;n&gt; oanslutningsbara transaktioner i minne (standard: %u)</translation>
     </message>
     <message>
-        <source>Last Obfuscate was too recent.</source>
-        <translation>Senaste Obfuscate gjordes för inte alltför länge sedan.</translation>
+        <source>Last Obfuscation was too recent.</source>
+        <translation>Senaste obfuscation var för ny.</translation>
+    </message>
+    <message>
+        <source>Last successful Obfuscation action was too recent.</source>
+        <translation>Den senaste framgångsrika Obfuscation-åtgärden var för ny.</translation>
+    </message>
+    <message>
+        <source>Limit size of signature cache to &lt;n&gt; entries (default: %u)</source>
+        <translation>Begränsa storlek av signatur cache till &lt;n&gt; poster (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Line: %d</source>
+        <translation>Linje: %d</translation>
+    </message>
+    <message>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: %u or testnet: %u)</source>
+        <translation>Lystna efter JSON-RPC anslutningar på &lt;port&gt; (standard: %u eller testnet: %u)</translation>
+    </message>
+    <message>
+        <source>Listen for connections on &lt;port&gt; (default: %u or testnet: %u)</source>
+        <translation>Lystna efter anslutningar på &lt;port&gt;(default: %u or testnet: %u) </translation>
     </message>
     <message>
         <source>Loading addresses...</source>
@@ -3011,223 +5820,567 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Loading block index...</source>
-        <translation>Laddar blockindex...</translation>
+        <translation>Laddar block index...</translation>
+    </message>
+    <message>
+        <source>Loading budget cache...</source>
+        <translation> budget cache...</translation>
+    </message>
+    <message>
+        <source>Loading masternode cache...</source>
+        <translation>Laddar huvudnod cache...</translation>
+    </message>
+    <message>
+        <source>Loading masternode payment cache...</source>
+        <translation>Laddar huvudnod betalnings cache...</translation>
+    </message>
+    <message>
+        <source>Loading sporks...</source>
+        <translation>Laddar sporks...</translation>
     </message>
     <message>
         <source>Loading wallet... (%3.2f %%)</source>
-        <translation>Laddar plånbok... (%3.2f %%)</translation>
+        <translation>Laddar plånbok... (%3.2f%%)</translation>
     </message>
     <message>
         <source>Loading wallet...</source>
         <translation>Laddar plånbok...</translation>
     </message>
     <message>
+        <source>Location of the auth cookie (default: data dir)</source>
+        <translation>Lokation av auth cookie (standard: data dir)</translation>
+    </message>
+    <message>
+        <source>Lock is already in place.</source>
+        <translation>Lås är redan på plats.</translation>
+    </message>
+    <message>
+        <source>Lock masternodes from masternode configuration file (default: %u)</source>
+        <translation>Lås huvudnoder från huvudnod konfigurations fil (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Lookup(): Invalid -proxy address or hostname: '%s'</source>
+        <translation>Lookup(): Ogiltig -proxy adress eller värdnamn: '%s'</translation>
+    </message>
+    <message>
+        <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
+        <translation>Behåll som mest &lt;n&gt; anslutningar till peers (standard: %u)</translation>
+    </message>
+    <message>
         <source>Masternode options:</source>
-        <translation>Masternode-alternativ:</translation>
+        <translation>Masternod val:</translation>
     </message>
     <message>
         <source>Masternode queue is full.</source>
-        <translation>Masternode-kön är uppfylld.</translation>
+        <translation>Masternodens kö är full.</translation>
     </message>
     <message>
         <source>Masternode:</source>
-        <translation>Masternode:</translation>
+        <translation>Masternod:</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>Maximala mottagna per-anslutning buffer, &lt;n&gt;*1000 bytes (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>Maximala skicka per-anslutning buffer, &lt;n&gt;*1000 bytes (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Mint did not make it into blockchain</source>
+        <translation>Mint kom inte med i blockchain</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
-        <translation>Indatatransaktionsinformation fattas.</translation>
+        <translation>Inmatad transaktions information fattas.</translation>
+    </message>
+    <message>
+        <source>Mixing in progress...</source>
+        <translation>Blandning pågår...</translation>
+    </message>
+    <message>
+        <source>Need address because change is not exact</source>
+        <translation>Adress behövs för att växel ej är exakt</translation>
+    </message>
+    <message>
+        <source>Need to specify a port with -whitebind: '%s'</source>
+        <translation>Port behöver specifieras med -whitebind: '%s'</translation>
+    </message>
+    <message>
+        <source>No Masternodes detected.</source>
+        <translation>Inga Huvudnoder upptäckta.</translation>
+    </message>
+    <message>
+        <source>No compatible Masternode found.</source>
+        <translation>Inga kompatibla Huvudnoder hittade.</translation>
     </message>
     <message>
         <source>No funds detected in need of denominating.</source>
-        <translation>Inga medel hittades som är i behov denominering.</translation>
+        <translation>Inga pengar o behov av benämnelse upptäckta.</translation>
     </message>
     <message>
         <source>No matching denominations found for mixing.</source>
-        <translation>Inga matchande denominationer hittades för mixning.</translation>
+        <translation>Inga matchande valörer hittade till blandning.</translation>
+    </message>
+    <message>
+        <source>Node relay options:</source>
+        <translation>Nod relä val:</translation>
     </message>
     <message>
         <source>Non-standard public key detected.</source>
-        <translation>Icke-standard publik nyckel hittades.</translation>
+        <translation>Ej-standard offentlig nyckel upptäckt.</translation>
     </message>
     <message>
         <source>Not compatible with existing transactions.</source>
-        <translation>Inte kompatibel med nuvarande transaktioner.</translation>
+        <translation>Ej kompatibel med existerande transaktioner.</translation>
     </message>
     <message>
         <source>Not enough file descriptors available.</source>
-        <translation>Inte tillräckligt många tillgängliga fildeskriptorer.</translation>
+        <translation>Ej tillräckliga fil deskriptorer tillgängliga.</translation>
+    </message>
+    <message>
+        <source>Not in the Masternode list.</source>
+        <translation>Inte i Huvudnod listan.</translation>
+    </message>
+    <message>
+        <source>Number of automatic wallet backups (default: 10)</source>
+        <translation>Antal automatiska plånboks backups (standard: 10)</translation>
+    </message>
+    <message>
+        <source>Number of custom location backups to retain (default: %d)</source>
+        <translation>Antal skräddarsydda platser för backup att behålla (standard: %d)</translation>
+    </message>
+    <message>
+        <source>Obfuscation is idle.</source>
+        <translation>Fördunkling är overksam.</translation>
+    </message>
+    <message>
+        <source>Obfuscation request complete:</source>
+        <translation>Fördunkling förfrågan avslutad:</translation>
+    </message>
+    <message>
+        <source>Obfuscation request incomplete:</source>
+        <translation>Fördunkling förfrågan ej avslutad:</translation>
+    </message>
+    <message>
+        <source>Only accept block chain matching built-in checkpoints (default: %u)</source>
+        <translation>Acceptera endast block chain som matchar inbyggda kontrollstationer (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>Anslut endast till noder i nätverk &lt;net&gt; (ipv4, ipv6 eller onion)</translation>
     </message>
     <message>
         <source>Options:</source>
-        <translation>Alternativ:</translation>
+        <translation>Val:</translation>
     </message>
     <message>
         <source>Password for JSON-RPC connections</source>
-        <translation>Lösenord för JSON-RPC-anslutningar</translation>
+        <translation>Lösenord för JSON-RPC anslutningar</translation>
     </message>
     <message>
-        <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>RPC SSL-alternativ: (Se Bitcoin Wiki för SSL-inställningsinstruktioner)</translation>
+        <source>isValid(): Invalid -proxy address or hostname: '%s'</source>
+        <translation>isValid(): Ogiltig -proxy adress eller värdnamn: '%s'</translation>
+    </message>
+    <message>
+        <source>Preparing for resync...</source>
+        <translation>Förbereder för omsynkronisering...</translation>
+    </message>
+    <message>
+        <source>Prepend debug output with timestamp (default: %u)</source>
+        <translation>Addera till början felsöknings utmatning med tidsstämpel (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Print version and exit</source>
+        <translation>Skriv ut version och stäng</translation>
     </message>
     <message>
         <source>RPC server options:</source>
-        <translation>RPC-serveralternativ:</translation>
+        <translation>RPC server alternativ:</translation>
     </message>
     <message>
         <source>Randomly drop 1 of every &lt;n&gt; network messages</source>
-        <translation>Släpp 1 av varje &lt;n&gt; nätverksmeddelande slumpmässigt</translation>
+        <translation>Slumpmässig släpp 1 för varje &lt;n&gt; nätverksmeddelanden</translation>
     </message>
     <message>
         <source>Randomly fuzz 1 of every &lt;n&gt; network messages</source>
-        <translation>Ludda 1 av varje &lt;n&gt; nätverksmeddelande slumpmässigt</translation>
+        <translation>Slumpmässigt brusa 1 för varje &lt;n&gt; nätverksmeddelanden</translation>
     </message>
     <message>
         <source>Rebuild block chain index from current blk000??.dat files</source>
-        <translation>Återuppbygg blockkedjeindexet från den aktuella blk000??.dat-filen</translation>
+        <translation>Bygg om block chain index från nuvarande blk000??.dat filer</translation>
+    </message>
+    <message>
+        <source>Receive and display P2P network alerts (default: %u)</source>
+        <translation>Motta och visa P2P nätverk varningar (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Reindex the accumulator database</source>
+        <translation>Indexera om ackumulator databasen</translation>
+    </message>
+    <message>
+        <source>Relay and mine data carrier transactions (default: %u)</source>
+        <translation>Lägg om och utvinn data bärar transaktioner (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Relay non-P2SH multisig (default: %u)</source>
+        <translation>Lägg om icke-P2SH multisig (standard: %u)</translation>
     </message>
     <message>
         <source>Rescan the block chain for missing wallet transactions</source>
-        <translation>Omskanna blockkedjan efter försvunna plånbokstransaktioner</translation>
+        <translation>Skanna om block chain för transaktioner som fattas</translation>
     </message>
     <message>
         <source>Rescanning...</source>
-        <translation>Omskannar...</translation>
+        <translation>Skannar om...</translation>
+    </message>
+    <message>
+        <source>ResetMintZerocoin finished: </source>
+        <translation>ResetMintZerocoin färdig:</translation>
+    </message>
+    <message>
+        <source>ResetSpentZerocoin finished: </source>
+        <translation>ResetSpentZerocoin färdigt:</translation>
+    </message>
+    <message>
+        <source>Run a thread to flush wallet periodically (default: %u)</source>
+        <translation>Kör en tråd för att spola plånbok periodvis (standard: %u)</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
-        <translation>Kör i bakgrunden som daemon och acceptera kommandon</translation>
+        <translation>Kör i bakgrunden som en daemon och acceptera kommandon</translation>
+    </message>
+    <message>
+        <source>Send transactions as zero-fee transactions if possible (default: %u)</source>
+        <translation>Skicka transaktioner som avgiftsfria transaktioner om möjligt (standard: %u)</translation>
     </message>
     <message>
         <source>Session not complete!</source>
-        <translation>Sessionen är inte fullständig!</translation>
+        <translation>Sessionen är inte klar</translation>
+    </message>
+    <message>
+        <source>Session timed out.</source>
+        <translation>Sessionens tidsgräns överskriden</translation>
     </message>
     <message>
         <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
-        <translation>Ställ in databascachens storlek i megabytes (%d till %d, standardvärde: %d)</translation>
+        <translation>Ställ in databas cache storlek i megabytes (%d till %d, standard: %d)</translation>
+    </message>
+    <message>
+        <source>Set external address:port to get to this masternode (example: %s)</source>
+        <translation>Ställ in externa adress:port för att komma åt denna huvudnod (exempel: %s)</translation>
+    </message>
+    <message>
+        <source>Set key pool size to &lt;n&gt; (default: %u)</source>
+        <translation>Ställ in nyckel pool storlek till &lt;n&gt; (standard: %u) </translation>
     </message>
     <message>
         <source>Set maximum block size in bytes (default: %d)</source>
-        <translation>Ställ in maximal blockstorlek i bytes (standardvärde: %d)</translation>
+        <translation>Ställ in maximala blockstorlek i bytes (standard: %d) </translation>
+    </message>
+    <message>
+        <source>Set minimum block size in bytes (default: %u)</source>
+        <translation>Ställ in minimum blockstorlek i bytes (standard: %u) </translation>
+    </message>
+    <message>
+        <source>Set the Maximum reorg depth (default: %u)</source>
+        <translation>Ställ in maximala reorg djup (standard: %u) </translation>
     </message>
     <message>
         <source>Set the masternode private key</source>
-        <translation>Ställ in masternodprivatnyckeln</translation>
+        <translation>Ställ in privata huvudnods nyckeln</translation>
+    </message>
+    <message>
+        <source>Set the number of threads to service RPC calls (default: %d)</source>
+        <translation>Ställ in antalet trådar att behandla RPC calls (default: %d)</translation>
+    </message>
+    <message>
+        <source>Sets the DB_PRIVATE flag in the wallet db environment (default: %u)</source>
+        <translation>Ställer in DB_PRIVATE flaggan i plånbokens db miljö (standard: %u) </translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>
-        <translation>Visa alla avsökningsalternativ (usage: --help -help-debug)</translation>
+        <translation>Visa alla felsöknings alternativ (användning: --help -help-debug)</translation>
     </message>
     <message>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
-        <translation>Förminska debug.log-filen vid klientuppstart (standardvärde 1 vid ingen -debug)</translation>
+        <translation>Minska debug.log fil vid klient start (standard: 1 när ingen -debug)</translation>
     </message>
     <message>
         <source>Signing failed.</source>
         <translation>Signering misslyckades.</translation>
     </message>
     <message>
+        <source>Signing timed out.</source>
+        <translation>Signeringens tidsgräns överskriden</translation>
+    </message>
+    <message>
         <source>Signing transaction failed</source>
-        <translation>Transaktionssigneringen misslyckades</translation>
+        <translation>Signering av transaktion misslyckades</translation>
+    </message>
+    <message>
+        <source>Specify configuration file (default: %s)</source>
+        <translation>Specifiera konfigurationsfil (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Specify connection timeout in milliseconds (minimum: 1, default: %d)</source>
+        <translation>Specifiera anslutnings timeout i millisekunder (minimum: 1, standard: %d)</translation>
     </message>
     <message>
         <source>Specify data directory</source>
-        <translation>Specificera datakatalog</translation>
+        <translation>Specificera data katalog</translation>
+    </message>
+    <message>
+        <source>Specify masternode configuration file (default: %s)</source>
+        <translation>Specifiera huvudnod konfigurationsfil (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Specify pid file (default: %s)</source>
+        <translation>Specifiera pid fil (standard: %s)</translation>
     </message>
     <message>
         <source>Specify wallet file (within data directory)</source>
-        <translation>Specificera plånboksfil (inom datakatologen)</translation>
+        <translation>Specifiera plånboksfil (inom data katalog)</translation>
     </message>
     <message>
         <source>Specify your own public address</source>
-        <translation>Specificera din egen publika adress</translation>
+        <translation>Specifiera din egna offentliga adress</translation>
+    </message>
+    <message>
+        <source>Spend Valid</source>
+        <translation>Spendering Giltig</translation>
+    </message>
+    <message>
+        <source>Spend unconfirmed change when sending transactions (default: %u)</source>
+        <translation>Spendera obekräftad växel när transaktioner skickas (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Staking options:</source>
+        <translation>Staking alternativ:</translation>
+    </message>
+    <message>
+        <source>Stop running after importing blocks from disk (default: %u)</source>
+        <translation>Sluta kör efter block har importerats från disk (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Submitted following entries to masternode: %u / %d</source>
+        <translation>Skickade in följande poster till huvudnod: %u / %d</translation>
+    </message>
+    <message>
+        <source>Submitted to masternode, waiting for more entries ( %u / %d ) %s</source>
+        <translation>Inskickat till huvudnod, väntar på fler poster ( %u / %d ) %s</translation>
+    </message>
+    <message>
+        <source>Submitted to masternode, waiting in queue %s</source>
+        <translation>Inskickat till huvudnod, väntar i kö %s</translation>
+    </message>
+    <message>
+        <source>Synchronization failed</source>
+        <translation>Synchronisering misslyckad</translation>
+    </message>
+    <message>
+        <source>Synchronization finished</source>
+        <translation>Synkronisering klar</translation>
+    </message>
+    <message>
+        <source>Synchronization pending...</source>
+        <translation>Synchronisering väntar</translation>
+    </message>
+    <message>
+        <source>Synchronizing budgets...</source>
+        <translation>Synchroniserar budgetar</translation>
+    </message>
+    <message>
+        <source>Synchronizing masternode winners...</source>
+        <translation>Synkroniserar huvudnod vinnarna...</translation>
+    </message>
+    <message>
+        <source>Synchronizing masternodes...</source>
+        <translation>Synchroniserar masternoder</translation>
+    </message>
+    <message>
+        <source>Synchronizing sporks...</source>
+        <translation>Synkroniserar sporks...</translation>
+    </message>
+    <message>
+        <source>Syncing zGIC wallet...</source>
+        <translation>Synkroniserar zGIC plånbok...</translation>
+    </message>
+    <message>
+        <source>The coin spend has been used</source>
+        <translation>Mynt spenderingen har redan använts</translation>
+    </message>
+    <message>
+        <source>The transaction did not verify</source>
+        <translation>Transaktionen verifierades inte</translation>
     </message>
     <message>
         <source>This help message</source>
-        <translation>Detta hjälpmeddelande</translation>
+        <translation>Detta hjälpmedelande</translation>
+    </message>
+    <message>
+        <source>This is experimental software.</source>
+        <translation>Detta är experimentiell mjukvara</translation>
     </message>
     <message>
         <source>This is intended for regression testing tools and app development.</source>
-        <translation>Detta är ämnat för regressionstestverktyg och apputveckling.</translation>
+        <translation>Det här är menat för regression testverktyg och app utveckling.</translation>
+    </message>
+    <message>
+        <source>This is not a Masternode.</source>
+        <translation>Dehär är ingen Masternod</translation>
+    </message>
+    <message>
+        <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
+        <translation>Tröskel för att koppla från peers som beteer sig illa (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Too many spends needed</source>
+        <translation>För många spenderingar behövda</translation>
+    </message>
+    <message>
+        <source>Tor control port password (default: empty)</source>
+        <translation>Tor kontroll port lösenord (standard: tom)</translation>
+    </message>
+    <message>
+        <source>Tor control port to use if onion listening enabled (default: %s)</source>
+        <translation>Tor kontroll port att använda om onion lystning är aktiverad (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Transaction Created</source>
+        <translation>Transaktion Skapad</translation>
+    </message>
+    <message>
+        <source>Transaction Mint Started</source>
+        <translation>Transaktion Mint Startad</translation>
     </message>
     <message>
         <source>Transaction amount too small</source>
-        <translation>Transaktionsmängden är för liten</translation>
+        <translation>Transaktionens antal för litet</translation>
     </message>
     <message>
         <source>Transaction amounts must be positive</source>
-        <translation>Transaktionsmängder måste vara positiva</translation>
+        <translation>Transaktionens värde måste vara possitivt</translation>
     </message>
     <message>
         <source>Transaction created successfully.</source>
-        <translation>Transaktionen skapades utan problem.</translation>
+        <translation>Transaktion skapad framgångsrikt</translation>
     </message>
     <message>
         <source>Transaction fees are too high.</source>
-        <translation>Transaktionsavgifter är för höga.</translation>
+        <translation>Transaktionsavgifter är för stora.</translation>
     </message>
     <message>
         <source>Transaction not valid.</source>
-        <translation>Transaktionen är inte giltig.</translation>
+        <translation>Transaktionen inte giltig.</translation>
+    </message>
+    <message>
+        <source>Transaction too large for fee policy</source>
+        <translation>Transaktionen för stor för avgifts policy</translation>
     </message>
     <message>
         <source>Transaction too large</source>
-        <translation>Transaktionen är för stor</translation>
+        <translation>Transaktion för stor</translation>
+    </message>
+    <message>
+        <source>Transmitting final transaction.</source>
+        <translation>Sänder ut slutgiltig transaktion.</translation>
+    </message>
+    <message>
+        <source>Try to spend with a higher security level to include more coins</source>
+        <translation>Försök att spendera med en högre säkerhetsnivå för att inkludera fler mynt</translation>
+    </message>
+    <message>
+        <source>Trying to spend an already spent serial #, try again.</source>
+        <translation>Försöker spendera en redan spendera serie #, försök igen.</translation>
     </message>
     <message>
         <source>Unable to bind to %s on this computer (bind returned error %s)</source>
-        <translation>Kan inte binda %s till denna dator (bindande återgav ett fel %s)</translation>
+        <translation>Kan ej binda till %s på denna dator (bind återgav fel %s)</translation>
+    </message>
+    <message>
+        <source>Unable to find transaction containing mint</source>
+        <translation>Kan ej hitta transaktion innehållandes mint</translation>
     </message>
     <message>
         <source>Unable to sign spork message, wrong key?</source>
-        <translation>Kan inte sporka meddelandet, fel nyckel?</translation>
+        <translation>Kan ej signera spork meddelande, fel nyckel?</translation>
+    </message>
+    <message>
+        <source>Unable to start HTTP server. See debug log for details.</source>
+        <translation>Kan ej starta HTTP server. Se felsöknings log för detaljer.</translation>
     </message>
     <message>
         <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>Okänt specificerat nätverk i -onlynet: '%s'</translation>
+        <translation>Okänt nätverk specifierat i -onlynet: '%s'</translation>
+    </message>
+    <message>
+        <source>Unknown state: id = %u</source>
+        <translation>Okänt tillstånd: id = %u</translation>
     </message>
     <message>
         <source>Upgrade wallet to latest format</source>
-        <translation>Uppgradera plånboken till det senaste formatet</translation>
+        <translation>Upgradera plånbok till senaste format</translation>
     </message>
     <message>
-        <source>Use OpenSSL (https) for JSON-RPC connections</source>
-        <translation>Använd OpenSSL (https) för JSON-RPC-anslutningar</translation>
+        <source>Use UPnP to map the listening port (default: %u)</source>
+        <translation>Använd UPnP för att kartlägga den lystnande porten (standard: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: 1 when listening)</source>
-        <translation>Använd UPnP för att kartlägga avlyssningsporten (standardvärde: 1 vid avlyssning)</translation>
+        <translation>Använd UPnP för att kartlägga den lyssnande porten (standard: 1 när lyssnar)</translation>
+    </message>
+    <message>
+        <source>Use a custom max chain reorganization depth (default: %u)</source>
+        <translation>Använd en skräddarsydd max chain reorganiserations djup (standard: %u)</translation>
     </message>
     <message>
         <source>Use the test network</source>
-        <translation>Använd testnätverket</translation>
+        <translation>Använd test nätverket</translation>
+    </message>
+    <message>
+        <source>User Agent comment (%s) contains unsafe characters.</source>
+        <translation>Användaragent kommentar (%s) innehåller osäkra tecken.</translation>
     </message>
     <message>
         <source>Username for JSON-RPC connections</source>
-        <translation>Användarnamn för JSON-RPC-anslutningar</translation>
+        <translation>Användarnamn för JSON-RPC anslutningar</translation>
     </message>
     <message>
-        <source>Value more than Obfuscate pool maximum allows.</source>
-        <translation>Värdera mer än vad Obfuscates poolmaximum tillåter.</translation>
+        <source>Value is below the smallest available denomination (= 1) of zGIC</source>
+        <translation>Värde är under den minsta tillgängliga valören (=1) av zGIC</translation>
+    </message>
+    <message>
+        <source>Value more than Obfuscation pool maximum allows.</source>
+        <translation>Värde högre än fördunklingspoolen maximalt tillåter.</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>
-        <translation>Bekräftar block...</translation>
+        <translation>Verifierar block</translation>
     </message>
     <message>
         <source>Verifying wallet...</source>
-        <translation>Bekräftar plånbok...</translation>
+        <translation>Verifierar plånbok</translation>
     </message>
     <message>
         <source>Wallet %s resides outside data directory %s</source>
-        <translation>Plånboken %s återfinns utanför datakatalogen %s</translation>
+        <translation>Plånbok %s finns utanför data katalog %s</translation>
     </message>
     <message>
         <source>Wallet is locked.</source>
         <translation>Plånboken är låst.</translation>
     </message>
     <message>
+        <source>Wallet needed to be rewritten: restart GIANT Core to complete</source>
+        <translation>Plånbok behöver skrivas om: starta om GIANT Kärna för att göra klart</translation>
+    </message>
+    <message>
         <source>Wallet options:</source>
-        <translation>Plånboksalternativ:</translation>
+        <translation>Plånboks val:</translation>
+    </message>
+    <message>
+        <source>Wallet window title</source>
+        <translation>Plånboksfönster tittle</translation>
     </message>
     <message>
         <source>Warning</source>
@@ -3235,23 +6388,55 @@ https://www.transifex.com/giant-crypto/giant-wallet-translations/</translation>
     </message>
     <message>
         <source>Warning: This version is obsolete, upgrade required!</source>
-        <translation>Varning: Versionen är förlegad, uppgradering krävs!</translation>
+        <translation>Varning: Denna version är föråldrad, upgradering krävs!</translation>
+    </message>
+    <message>
+        <source>Warning: Unsupported argument -benchmark ignored, use -debug=bench.</source>
+        <translation>Varning: Argument -benchmark stödjes ej, ignoreras. Använd -debug=bench.</translation>
+    </message>
+    <message>
+        <source>Warning: Unsupported argument -debugnet ignored, use -debug=net.</source>
+        <translation>Varning: Argument -debugnet stödjes ej, ignoreras. Använd -debug=net.</translation>
+    </message>
+    <message>
+        <source>Will retry...</source>
+        <translation>Kommer försöka igen...</translation>
+    </message>
+    <message>
+        <source>You don't have enough Zerocoins in your wallet</source>
+        <translation>Du har inte tillräckligt med Zerocoins i din plånbok</translation>
     </message>
     <message>
         <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>Du måste återuppbygga databasen med -reindex för att ändra -txindex</translation>
+        <translation>Du behöver bygga om databasen genom att använda -reindex för att ändra -txindex</translation>
+    </message>
+    <message>
+        <source>Your entries added successfully.</source>
+        <translation>Dina poster lyckades läggas till.</translation>
+    </message>
+    <message>
+        <source>Your transaction was accepted into the pool!</source>
+        <translation>Din transaktion accepterades in i poolen!</translation>
     </message>
     <message>
         <source>Zapping all transactions from wallet...</source>
-        <translation>Zappar alla transaktioner från plånboken...</translation>
+        <translation>Zapping alla transaktioner från plånboken ...</translation>
+    </message>
+    <message>
+        <source>ZeroMQ notification options:</source>
+        <translation>ZeroMQ-anmälningsalternativ:</translation>
+    </message>
+    <message>
+        <source>Zerocoin options:</source>
+        <translation>Zerocoin alternativ:</translation>
     </message>
     <message>
         <source>on startup</source>
-        <translation>vid uppstart</translation>
+        <translation>Vid uppstart</translation>
     </message>
     <message>
         <source>wallet.dat corrupt, salvage failed</source>
-        <translation>wallet.dat är korrumperad, räddning misslyckades</translation>
+        <translation>wallet.dat korrupt, räddning misslyckades</translation>
     </message>
 </context>
 </TS>

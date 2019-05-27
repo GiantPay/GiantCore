@@ -138,7 +138,7 @@ Finalized budget
 Get paid
 ------------------------
 
-When block `1000000` is reached you'll receive a payment for `1200` GIANT.
+When block `1000000` is reached you'll receive a payment for `1200` GIC.
 
 
 RPC Commands

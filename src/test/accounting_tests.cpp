@@ -1,13 +1,14 @@
 // Copyright (c) 2012-2014 The Bitcoin Core developers
+// Copyright (c) 2018 The PIVX developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "wallet.h"
-#include "walletdb.h"
+#include "wallet/wallet.h"
+#include "wallet/walletdb.h"
 
 #include <stdint.h>
 
-#include <boost/foreach.hpp>
 #include <boost/test/unit_test.hpp>
 
 extern CWallet* pwalletMain;
@@ -22,7 +23,7 @@ GetResults(CWalletDB& walletdb, std::map<CAmount, CAccountingEntry>& results)
     results.clear();
     BOOST_CHECK(walletdb.ReorderTransactions(pwalletMain) == DB_LOAD_OK);
     walletdb.ListAccountCreditDebit("", aes);
-    BOOST_FOREACH(CAccountingEntry& ae, aes)
+    for (CAccountingEntry& ae : aes)
     {
         results[ae.nOrderPos] = ae;
     }
@@ -43,7 +44,7 @@ BOOST_AUTO_TEST_CASE(acc_orderupgrade)
     ae.nTime = 1333333333;
     ae.strOtherAccount = "b";
     ae.strComment = "";
-    walletdb.WriteAccountingEntry(ae);
+    pwalletMain->AddAccountingEntry(ae, walletdb);
 
     wtx.mapValue["comment"] = "z";
     pwalletMain->AddToWallet(wtx);
@@ -53,7 +54,7 @@ BOOST_AUTO_TEST_CASE(acc_orderupgrade)
 
     ae.nTime = 1333333336;
     ae.strOtherAccount = "c";
-    walletdb.WriteAccountingEntry(ae);
+    pwalletMain->AddAccountingEntry(ae, walletdb);
 
     GetResults(walletdb, results);
 
@@ -69,7 +70,7 @@ BOOST_AUTO_TEST_CASE(acc_orderupgrade)
     ae.nTime = 1333333330;
     ae.strOtherAccount = "d";
     ae.nOrderPos = pwalletMain->IncOrderPosNext();
-    walletdb.WriteAccountingEntry(ae);
+    pwalletMain->AddAccountingEntry(ae, walletdb);
 
     GetResults(walletdb, results);
 
@@ -119,7 +120,7 @@ BOOST_AUTO_TEST_CASE(acc_orderupgrade)
     ae.nTime = 1333333334;
     ae.strOtherAccount = "e";
     ae.nOrderPos = -1;
-    walletdb.WriteAccountingEntry(ae);
+    pwalletMain->AddAccountingEntry(ae, walletdb);
 
     GetResults(walletdb, results);
 

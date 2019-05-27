@@ -17,7 +17,7 @@
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash and PIVX Core Developers, 2017-@COPYRIGHT_YEAR@ The ALQO Core developers, @COPYRIGHT_YEAR@ The GIANT Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The PIVX Core developers, 2018-@COPYRIGHT_YEAR@ The GIANT Core developers</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -30,9 +30,15 @@
 
   <key>CFBundleExecutable</key>
   <string>GIANT-Qt</string>
+  
+  <key>CFBundleName</key>
+  <string>GIANT-Qt</string>
+
+  <key>LSHasLocalizedDisplayName</key>
+  <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>io.giant.GIANT-Qt</string>
+  <string>network.giantpay.Giant-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -40,7 +46,7 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.giant.GIANTPayment</string>
+      <string>network.giantpay.GiantPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>giant</string>
@@ -52,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.giant.paymentrequest</string>
+      <string>network.giantpay.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>GIANT payment request</string>
+      <string>Giant payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -78,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.giant.paymentrequest</string>
+        <string>network.giantpay.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

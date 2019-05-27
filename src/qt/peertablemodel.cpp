@@ -1,4 +1,6 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2017-2018 The PIVX developers
+// Copyright (c) 2018-2019 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -58,13 +60,13 @@ public:
                 return;
             }
             cachedNodeStats.clear();
-#if QT_VERSION >= 0x040700
+
             cachedNodeStats.reserve(vNodes.size());
-#endif
-            BOOST_FOREACH (CNode* pnode, vNodes) {
+            foreach (CNode* pnode, vNodes) {
                 CNodeCombinedStats stats;
                 stats.nodeStateStats.nMisbehavior = 0;
                 stats.nodeStateStats.nSyncHeight = -1;
+                stats.nodeStateStats.nCommonHeight = -1;
                 stats.fNodeStateStatsAvailable = false;
                 pnode->copyStats(stats.nodeStats);
                 cachedNodeStats.append(stats);
@@ -75,7 +77,7 @@ public:
         {
             TRY_LOCK(cs_main, lockMain);
             if (lockMain) {
-                BOOST_FOREACH (CNodeCombinedStats& stats, cachedNodeStats)
+                for (CNodeCombinedStats& stats : cachedNodeStats)
                     stats.fNodeStateStatsAvailable = GetNodeStateStats(stats.nodeStats.nodeid, stats.nodeStateStats);
             }
         }
@@ -87,7 +89,7 @@ public:
         // build index map
         mapNodeRows.clear();
         int row = 0;
-        BOOST_FOREACH (CNodeCombinedStats& stats, cachedNodeStats)
+        foreach (const CNodeCombinedStats& stats, cachedNodeStats)
             mapNodeRows.insert(std::pair<NodeId, int>(stats.nodeStats.nodeid, row++));
     }
 

@@ -1,0 +1,81 @@
+policy_module(giant, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type giant_t;
+type giant_exec_t;
+init_daemon_domain(giant_t, giant_exec_t)
+
+permissive giant_t;
+
+type giant_initrc_exec_t;
+init_script_file(giant_initrc_exec_t)
+
+type giant_conf_t;
+files_type(giant_conf_t)
+
+type giant_var_lib_t;
+files_type(giant_var_lib_t)
+
+type giant_var_run_t;
+files_type(giant_var_run_t)
+
+type giant_port_t;
+corenet_port(giant_port_t)
+
+########################################
+#
+# giant local policy
+#
+allow giant_t self:process { fork };
+
+allow giant_t self:fifo_file rw_fifo_file_perms;
+allow giant_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(giant_t, giant_conf_t, giant_conf_t)
+manage_files_pattern(giant_t, giant_conf_t, giant_conf_t)
+
+manage_dirs_pattern(giant_t, giant_var_lib_t, giant_var_lib_t)
+manage_files_pattern(giant_t, giant_var_lib_t, giant_var_lib_t)
+files_var_lib_filetrans(giant_t, giant_var_lib_t, { dir file })
+
+manage_dirs_pattern(giant_t, giant_var_run_t, giant_var_run_t)
+manage_files_pattern(giant_t, giant_var_run_t, giant_var_run_t)
+
+sysnet_dns_name_resolve(giant_t)
+corenet_all_recvfrom_unlabeled(giant_t)
+
+allow giant_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(giant_t)
+corenet_tcp_sendrecv_generic_node(giant_t)
+corenet_tcp_sendrecv_all_ports(giant_t)
+corenet_tcp_bind_generic_node(giant_t)
+
+gen_require(`
+    type giant_port_t;
+')
+allow giant_t giant_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type giant_port_t;
+')
+allow giant_t giant_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(giant_t)
+
+files_read_etc_files(giant_t)
+
+miscfiles_read_localization(giant_t)
+
+sysnet_dns_name_resolve(giant_t)
+
+allow giant_t giant_exec_t:file execute_no_trans;
+allow giant_t self:process setsched;
+corecmd_exec_ls(giant_t)
+corenet_tcp_connect_http_port(giant_t)
+dev_read_urand(giant_t)
+fs_getattr_xattr_fs(giant_t)
+kernel_read_system_state(giant_t)

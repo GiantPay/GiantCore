@@ -1,0 +1,8 @@
+/usr/bin/giant-cli		--	gen_context(system_u:object_r:giant_exec_t,s0)
+/usr/sbin/giantd		--	gen_context(system_u:object_r:giant_exec_t,s0)
+/usr/lib(64)?/giant/giant	--	gen_context(system_u:object_r:giant_exec_t,s0)
+
+/etc/giant(/.*)?		gen_context(system_u:object_r:giant_conf_t,s0)
+/var/lib/giant(/.*)?		gen_context(system_u:object_r:giant_var_lib_t,s0)
+
+(/var)?/run/giantd(/.*)?        gen_context(system_u:object_r:giant_var_run_t,s0)

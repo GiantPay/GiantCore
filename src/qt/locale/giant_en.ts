@@ -4,7 +4,7 @@
 <context>
     <name>AddressBookPage</name>
     <message>
-        <location filename="../forms/addressbookpage.ui" line="+30"/>
+        <location filename="../forms/addressbookpage.ui" line="+67"/>
         <source>Right-click to edit address or label</source>
         <translation>Right-click to edit address or label</translation>
     </message>
@@ -54,17 +54,17 @@
         <translation>C&amp;lose</translation>
     </message>
     <message>
-        <location filename="../addressbookpage.cpp" line="+46"/>
+        <location filename="../addressbookpage.cpp" line="+44"/>
         <source>Choose the address to send coins to</source>
         <translation>Choose the address to send coins to</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Choose the address to receive coins with</source>
         <translation>Choose the address to receive coins with</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+6"/>
         <source>C&amp;hoose</source>
         <translation>C&amp;hoose</translation>
     </message>
@@ -74,7 +74,7 @@
         <translation>Sending addresses</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Receiving addresses</source>
         <translation>Receiving addresses</translation>
     </message>
@@ -104,7 +104,7 @@
         <translation>&amp;Edit</translation>
     </message>
     <message>
-        <location line="+194"/>
+        <location line="+182"/>
         <source>Export Address List</source>
         <translation>Export Address List</translation>
     </message>
@@ -127,7 +127,7 @@
 <context>
     <name>AddressTableModel</name>
     <message>
-        <location filename="../addresstablemodel.cpp" line="+170"/>
+        <location filename="../addresstablemodel.cpp" line="+199"/>
         <source>Label</source>
         <translation>Label</translation>
     </message>
@@ -137,7 +137,7 @@
         <translation>Address</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+33"/>
         <source>(no label)</source>
         <translation>(no label)</translation>
     </message>
@@ -171,11 +171,11 @@
     </message>
     <message>
         <location line="+3"/>
-        <source>For anonymization and staking only</source>
-        <translation>For anonymization and staking only</translation>
+        <source>For anonymization, automint, and staking only</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../askpassphrasedialog.cpp" line="+44"/>
+        <location filename="../askpassphrasedialog.cpp" line="+48"/>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
         <translation>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</translation>
     </message>
@@ -185,7 +185,7 @@
         <translation>Encrypt wallet</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+5"/>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
         <translation>This operation needs your wallet passphrase to unlock the wallet.</translation>
     </message>
@@ -215,82 +215,95 @@
         <translation>Enter the old and new passphrase to the wallet.</translation>
     </message>
     <message>
-        <location line="+46"/>
+        <location line="+52"/>
         <source>Confirm wallet encryption</source>
         <translation>Confirm wallet encryption</translation>
     </message>
     <message>
-        <location line="+12"/>
-        <source>GIANT will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your GIANTs from being stolen by malware infecting your computer.</source>
+        <location line="+9"/>
+        <source>GIANT will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your GICs from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-11"/>
+        <location line="-8"/>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Are you sure you wish to encrypt your wallet?</translation>
     </message>
     <message>
         <location line="+0"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR GIANT&lt;/b&gt;!</source>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR GIC&lt;/b&gt;!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
-        <location line="+59"/>
+        <location line="+6"/>
+        <location line="+45"/>
         <source>Wallet encrypted</source>
         <translation>Wallet encrypted</translation>
     </message>
     <message>
-        <location line="-53"/>
+        <location line="-39"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
         <translation>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</translation>
     </message>
     <message>
-        <location line="+9"/>
         <location line="+7"/>
-        <location line="+43"/>
-        <location line="+6"/>
+        <location line="+5"/>
+        <location line="+31"/>
+        <location line="+4"/>
         <source>Wallet encryption failed</source>
         <translation>Wallet encryption failed</translation>
     </message>
     <message>
-        <location line="-55"/>
+        <location line="-39"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
         <translation>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+49"/>
+        <location line="+5"/>
+        <location line="+35"/>
         <source>The supplied passphrases do not match.</source>
         <translation>The supplied passphrases do not match.</translation>
     </message>
     <message>
-        <location line="-37"/>
+        <location line="-26"/>
         <source>Wallet unlock failed</source>
         <translation>Wallet unlock failed</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+11"/>
-        <location line="+19"/>
+        <location line="+8"/>
+        <location line="+13"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
         <translation>The passphrase entered for the wallet decryption was incorrect.</translation>
     </message>
     <message>
-        <location line="-20"/>
+        <location line="-14"/>
         <source>Wallet decryption failed</source>
         <translation>Wallet decryption failed</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+10"/>
         <source>Wallet passphrase was successfully changed.</source>
         <translation>Wallet passphrase was successfully changed.</translation>
     </message>
     <message>
-        <location line="+48"/>
+        <location line="+43"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Warning: The Caps Lock key is on!</translation>
+    </message>
+</context>
+<context>
+    <name>BanTableModel</name>
+    <message>
+        <location filename="../bantablemodel.cpp" line="+87"/>
+        <source>IP/Netmask</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>Banned Until</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -306,19 +319,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Enter a GIANT Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+18"/>
-        <location line="+362"/>
+        <location line="+30"/>
+        <location line="+400"/>
         <source>Address:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-355"/>
-        <source>The GIANT address to sign the message with</source>
+        <location line="-424"/>
+        <source>Enter a GIANT Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>The GIANT address to encrypt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -332,55 +345,68 @@
         <translation type="unfinished">Alt+A</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+7"/>
+        <location line="+220"/>
         <source>Paste address from clipboard</source>
         <translation type="unfinished">Paste address from clipboard</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="-210"/>
+        <location line="+220"/>
         <source>Alt+P</source>
         <translation type="unfinished">Alt+P</translation>
     </message>
     <message>
-        <location line="+14"/>
-        <location line="+185"/>
+        <location line="-200"/>
+        <location line="+220"/>
         <source>Passphrase: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-164"/>
-        <location line="+146"/>
+        <location line="-193"/>
+        <location line="+149"/>
         <source>Encrypted Key:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-124"/>
+        <location line="-127"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation type="unfinished">Copy the current signature to the system clipboard</translation>
     </message>
     <message>
-        <location line="+21"/>
-        <source>Sign the message to prove you own this GIANT address</source>
+        <location line="+18"/>
+        <source>Encrypt the private key for this GIANT address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+17"/>
+        <location line="+171"/>
+        <source>Reset all fields</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-72"/>
+        <source>The encrypted private key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+55"/>
+        <source>Decrypt the entered key using the passphrase</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-168"/>
         <source>Encrypt &amp;Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
-        <source>Reset all sign message fields</source>
-        <translation type="unfinished">Reset all sign message fields</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <location line="+139"/>
+        <location line="+17"/>
+        <location line="+171"/>
         <source>Clear &amp;All</source>
         <translation type="unfinished">Clear &amp;All</translation>
     </message>
     <message>
-        <location line="-80"/>
+        <location line="-112"/>
         <source>&amp;BIP 38 Decrypt</source>
         <translation type="unfinished"></translation>
     </message>
@@ -390,27 +416,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
-        <source>The GIANT address the message was signed with</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+29"/>
-        <source>Verify the message to ensure it was signed with the specified GIANT address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
+        <location line="+89"/>
         <source>Decrypt &amp;Key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
-        <source>Reset all verify message fields</source>
-        <translation type="unfinished">Reset all verify message fields</translation>
-    </message>
-    <message>
-        <location line="+63"/>
+        <location line="+77"/>
         <source>Decrypted Key:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -420,12 +431,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../bip38tooldialog.cpp" line="+32"/>
+        <location filename="../bip38tooldialog.cpp" line="+29"/>
         <source>Click &quot;Decrypt Key&quot; to compute key</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+96"/>
+        <location line="+89"/>
         <source>The entered passphrase is invalid. </source>
         <translation type="unfinished"></translation>
     </message>
@@ -435,13 +446,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>The entered address is invalid.</source>
         <translation type="unfinished">The entered address is invalid.</translation>
     </message>
     <message>
         <location line="+0"/>
-        <location line="+9"/>
+        <location line="+8"/>
         <source>Please check the address and try again.</source>
         <translation type="unfinished">Please check the address and try again.</translation>
     </message>
@@ -451,18 +462,18 @@
         <translation type="unfinished">The entered address does not refer to a key.</translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location line="+60"/>
+        <location line="+7"/>
+        <location line="+63"/>
         <source>Wallet unlock was cancelled.</source>
         <translation type="unfinished">Wallet unlock was cancelled.</translation>
     </message>
     <message>
-        <location line="-52"/>
+        <location line="-56"/>
         <source>Private key for the entered address is not available.</source>
         <translation type="unfinished">Private key for the entered address is not available.</translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+39"/>
         <source>Failed to decrypt.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -472,7 +483,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+26"/>
         <source>Data Not Valid.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -487,12 +498,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+8"/>
         <source>Key Already Held By Wallet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+8"/>
         <source>Error Adding Key To Wallet</source>
         <translation type="unfinished"></translation>
     </message>
@@ -505,7 +516,7 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="+127"/>
+        <location filename="../bitcoingui.cpp" line="+123"/>
         <source>Wallet</source>
         <translation>Wallet</translation>
     </message>
@@ -515,7 +526,7 @@
         <translation>Node</translation>
     </message>
     <message>
-        <location line="+165"/>
+        <location line="+174"/>
         <source>&amp;Overview</source>
         <translation>&amp;Overview</translation>
     </message>
@@ -545,7 +556,22 @@
         <translation>Browse transaction history</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+11"/>
+        <source>Privacy Actions for zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+28"/>
+        <source>&amp;Governance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Show Proposals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
         <source>E&amp;xit</source>
         <translation>E&amp;xit</translation>
     </message>
@@ -555,13 +581,12 @@
         <translation>Quit application</translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+2"/>
+        <location line="+6"/>
         <source>About &amp;Qt</source>
         <translation>About &amp;Qt</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Show information about Qt</source>
         <translation>Show information about Qt</translation>
     </message>
@@ -686,17 +711,12 @@
         <translation>Show wallet repair options</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Open &amp;Configuration File</source>
-        <translation>Open &amp;Configuration File</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Open configuration file</source>
         <translation>Open configuration file</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Show Automatic &amp;Backups</source>
         <translation>Show Automatic &amp;Backups</translation>
     </message>
@@ -727,16 +747,46 @@
     </message>
     <message>
         <location line="+2"/>
+        <source>&amp;Multisignature creation...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Create a new multisignature address and add it to this wallet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>&amp;Multisignature spending...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Spend from a multisignature address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>&amp;Multisignature signing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Sign with a multisignature address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Open &amp;URI...</source>
         <translation>Open &amp;URI...</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+5"/>
         <source>&amp;Command-line options</source>
         <translation>&amp;Command-line options</translation>
     </message>
     <message numerus="yes">
-        <location line="+431"/>
+        <location line="+490"/>
         <source>Processed %n blocks of transaction history.</source>
         <translation>
             <numerusform>Processed %n block of transaction history.</numerusform>
@@ -749,38 +799,53 @@
         <translation>Synchronizing additional data: %p%</translation>
     </message>
     <message>
-        <location line="-423"/>
+        <location line="+27"/>
+        <source>%1 behind. Scanning block %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+242"/>
+        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonymization and staking only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <source>Tor is &lt;b&gt;enabled&lt;/b&gt;: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-779"/>
         <source>&amp;File</source>
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+17"/>
         <source>&amp;Settings</source>
         <translation>&amp;Settings</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+13"/>
         <source>&amp;Tools</source>
         <translation>&amp;Tools</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+13"/>
         <source>&amp;Help</source>
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+10"/>
         <source>Tabs toolbar</source>
         <translation>Tabs toolbar</translation>
     </message>
     <message>
-        <location line="-413"/>
-        <location line="+853"/>
+        <location line="-448"/>
+        <location line="+938"/>
         <source>GIANT Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-665"/>
+        <location line="-742"/>
         <source>Send coins to a GIANT address</source>
         <translation type="unfinished"></translation>
     </message>
@@ -790,7 +855,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+21"/>
+        <source>&amp;Privacy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+15"/>
         <source>&amp;Masternodes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -800,7 +870,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+29"/>
+        <location line="+43"/>
         <source>&amp;About GIANT Core</source>
         <translation type="unfinished"></translation>
     </message>
@@ -810,7 +880,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+6"/>
         <source>Modify configuration options for GIANT</source>
         <translation type="unfinished"></translation>
     </message>
@@ -845,18 +915,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
-        <source>Open a GIANT: URI or payment request</source>
+        <location line="+13"/>
+        <source>Open Wallet &amp;Configuration File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>&amp;Trading window</source>
+        <source>Open &amp;Masternode Configuration File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Bittrex trading window</source>
+        <source>Open Masternode configuration file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>Open a GIANT: URI or payment request</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -875,17 +950,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+65"/>
-        <source>&amp;Trade</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+147"/>
+        <location line="+234"/>
         <source>GIANT Core client</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location line="+182"/>
+        <location line="+219"/>
         <source>%n active connection(s) to GIANT network</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -913,12 +983,12 @@
         <translation>No block source available...</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="+16"/>
         <source>Up to date</source>
         <translation>Up to date</translation>
     </message>
     <message numerus="yes">
-        <location line="+43"/>
+        <location line="+41"/>
         <source>%n hour(s)</source>
         <translation>
             <numerusform>%n hour</numerusform>
@@ -926,7 +996,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location line="+4"/>
+        <location line="+2"/>
         <source>%n day(s)</source>
         <translation>
             <numerusform>%n day</numerusform>
@@ -934,8 +1004,8 @@
         </translation>
     </message>
     <message numerus="yes">
+        <location line="+2"/>
         <location line="+4"/>
-        <location line="+6"/>
         <source>%n week(s)</source>
         <translation>
             <numerusform>%n week</numerusform>
@@ -956,12 +1026,7 @@
         </translation>
     </message>
     <message>
-        <location line="+4"/>
-        <source>%1 behind</source>
-        <translation>%1 behind</translation>
-    </message>
-    <message>
-        <location line="+5"/>
+        <location line="+9"/>
         <source>Catching up...</source>
         <translation>Catching up...</translation>
     </message>
@@ -976,7 +1041,7 @@
         <translation>Transactions after this will not yet be visible.</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+26"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
@@ -991,7 +1056,7 @@
         <translation>Information</translation>
     </message>
     <message>
-        <location line="+74"/>
+        <location line="+69"/>
         <source>Sent transaction</source>
         <translation>Sent transaction</translation>
     </message>
@@ -1019,7 +1084,7 @@ Address: %4
 </translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+54"/>
         <source>Staking is active
  MultiSend: %1</source>
         <translation type="unfinished"></translation>
@@ -1043,19 +1108,29 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+12"/>
+        <source>AutoMint is currently enabled and set to </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>AutoMint is disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization and staking only</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+10"/>
+        <location line="+20"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <location filename="../giant.cpp" line="+478"/>
+        <source>A fatal error occurred. GIANT can no longer continue safely and will quit.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1066,7 +1141,17 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+55"/>
+        <location line="+18"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Forward</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
         <source>Address / Block / Transaction</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1081,7 +1166,7 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../blockexplorer.cpp" line="+498"/>
+        <location filename="../blockexplorer.cpp" line="+480"/>
         <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (giant.conf).</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1089,12 +1174,12 @@ Address: %4
 <context>
     <name>ClientModel</name>
     <message>
-        <location filename="../clientmodel.cpp" line="+74"/>
-        <source>Total: %1 (OBF compatible: %2 / Enabled: %3)</source>
-        <translation>Total: %1 (OBF compatible: %2 / Enabled: %3)</translation>
+        <location filename="../clientmodel.cpp" line="+81"/>
+        <source>Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unknown: %5)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+107"/>
+        <location line="+101"/>
         <source>Network Alert</source>
         <translation>Network Alert</translation>
     </message>
@@ -1188,8 +1273,8 @@ Address: %4
     </message>
     <message>
         <location line="+5"/>
-        <source>MIX Rounds</source>
-        <translation type="unfinished"></translation>
+        <source>Type</source>
+        <translation type="unfinished">Type</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1212,7 +1297,7 @@ Address: %4
         <translation>Priority</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="+51"/>
+        <location filename="../coincontroldialog.cpp" line="+60"/>
         <source>Copy address</source>
         <translation>Copy address</translation>
     </message>
@@ -1278,83 +1363,68 @@ Address: %4
         <translation>Copy change</translation>
     </message>
     <message>
-        <location line="+162"/>
+        <location line="+147"/>
         <source>Please switch to &quot;List mode&quot; to use this function.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+204"/>
-        <source>Non-anonymized input selected. &lt;b&gt;Darksend will be disabled.&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you still want to use Darksend, please deselect all non-nonymized inputs first and then check Darksend checkbox again.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+32"/>
+        <location line="+216"/>
         <source>highest</source>
         <translation>highest</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>higher</source>
         <translation>higher</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>high</source>
         <translation>high</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>medium-high</source>
         <translation>medium-high</translation>
     </message>
     <message>
-        <location line="+216"/>
-        <source>Can vary +/- %1 duff(s) per input.</source>
-        <translation>Can vary +/- %1 duff(s) per input.</translation>
-    </message>
-    <message>
-        <location line="+132"/>
-        <source>n/a</source>
-        <translation>n/a</translation>
-    </message>
-    <message>
         <location filename="../forms/coincontroldialog.ui" line="-334"/>
-        <location filename="../coincontroldialog.cpp" line="-347"/>
+        <location filename="../coincontroldialog.cpp" line="+2"/>
         <source>medium</source>
         <translation>medium</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="+1"/>
+        <location filename="../coincontroldialog.cpp" line="+2"/>
         <source>low-medium</source>
         <translation>low-medium</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>low</source>
         <translation>low</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>lower</source>
         <translation>lower</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>lowest</source>
         <translation>lowest</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+9"/>
         <source>(%1 locked)</source>
         <translation>(%1 locked)</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+62"/>
         <source>none</source>
         <translation>none</translation>
     </message>
     <message>
-        <location line="+141"/>
+        <location line="+126"/>
         <source>yes</source>
         <translation>yes</translation>
     </message>
@@ -1365,7 +1435,7 @@ Address: %4
         <translation>no</translation>
     </message>
     <message>
-        <location filename="../coincontroldialog.cpp" line="+16"/>
+        <location filename="../coincontroldialog.cpp" line="+15"/>
         <source>This label turns red, if the transaction size is greater than 1000 bytes.</source>
         <translation>This label turns red, if the transaction size is greater than 1000 bytes.</translation>
     </message>
@@ -1396,13 +1466,18 @@ Address: %4
         <translation>This label turns red, if any recipient receives an amount smaller than %1.</translation>
     </message>
     <message>
-        <location line="+55"/>
-        <location line="+65"/>
+        <location line="+8"/>
+        <source>Can vary +/- %1 ugic per input.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+46"/>
+        <location line="+81"/>
         <source>(no label)</source>
         <translation>(no label)</translation>
     </message>
     <message>
-        <location line="-7"/>
+        <location line="-5"/>
         <source>change from %1 (%2)</source>
         <translation>change from %1 (%2)</translation>
     </message>
@@ -1440,7 +1515,7 @@ Address: %4
         <translation>The address associated with this address list entry. This can only be modified for sending addresses.</translation>
     </message>
     <message>
-        <location filename="../editaddressdialog.cpp" line="+30"/>
+        <location filename="../editaddressdialog.cpp" line="+28"/>
         <source>New receiving address</source>
         <translation>New receiving address</translation>
     </message>
@@ -1460,7 +1535,7 @@ Address: %4
         <translation>Edit sending address</translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+67"/>
         <source>The entered address &quot;%1&quot; is not a valid GIANT address.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1488,7 +1563,7 @@ Address: %4
         <translation>A new data directory will be created.</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+19"/>
         <source>name</source>
         <translation>name</translation>
     </message>
@@ -1503,15 +1578,73 @@ Address: %4
         <translation>Path already exists, and is not a directory.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+6"/>
         <source>Cannot create data directory here.</source>
         <translation>Cannot create data directory here.</translation>
     </message>
 </context>
 <context>
+    <name>GovernancePage</name>
+    <message>
+        <location filename="../forms/governancepage.ui" line="+14"/>
+        <source>Form</source>
+        <translation type="unfinished">Form</translation>
+    </message>
+    <message>
+        <location line="+59"/>
+        <source>GOVERNANCE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+168"/>
+        <source>Update Proposals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+33"/>
+        <source>Next super block:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-63"/>
+        <source>Blocks to next super block:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Days to budget payout (estimate):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Allotted budget:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Budget left:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Masternodes count:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HelpMessageDialog</name>
     <message>
-        <location filename="../utilitydialog.cpp" line="+33"/>
+        <location filename="../utilitydialog.cpp" line="+37"/>
         <source>version</source>
         <translation>version</translation>
     </message>
@@ -1527,12 +1660,12 @@ Address: %4
         <translation>(%1-bit)</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>About GIANT Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+20"/>
         <source>Command-line options</source>
         <translation>Command-line options</translation>
     </message>
@@ -1547,17 +1680,22 @@ Address: %4
         <translation>command-line options</translation>
     </message>
     <message>
+        <location line="+8"/>
+        <source>UI Options:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Choose data directory on startup (default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+4"/>
-        <source>UI options</source>
-        <translation>UI options</translation>
+        <source>Show splash screen on startup (default: %u)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Choose data directory on startup (default: 0)</source>
-        <translation>Choose data directory on startup (default: 0)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="-3"/>
         <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
         <translation>Set language, for example &quot;de_DE&quot; (default: system locale)</translation>
     </message>
@@ -1570,11 +1708,6 @@ Address: %4
         <location line="+1"/>
         <source>Set SSL root certificates for payment request (default: -system-)</source>
         <translation>Set SSL root certificates for payment request (default: -system-)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Show splash screen on startup (default: 1)</source>
-        <translation>Show splash screen on startup (default: 1)</translation>
     </message>
 </context>
 <context>
@@ -1610,7 +1743,7 @@ Address: %4
         <translation>Use a custom data directory:</translation>
     </message>
     <message>
-        <location filename="../intro.cpp" line="+82"/>
+        <location filename="../intro.cpp" line="+77"/>
         <source>GIANT Core</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1625,12 +1758,12 @@ Address: %4
         <translation>Error</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+8"/>
         <source>%1 GB of free space available</source>
         <translation>%1 GB of free space available</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+2"/>
         <source>(of %1 GB needed)</source>
         <translation>(of %1 GB needed)</translation>
     </message>
@@ -1643,58 +1776,52 @@ Address: %4
         <translation type="unfinished">Form</translation>
     </message>
     <message>
-        <location line="+40"/>
-        <source>My Masternodes</source>
+        <location line="+59"/>
+        <source>MASTERNODES</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+101"/>
         <source>Note: Status of your masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your node should be running but you still see &quot;MISSING&quot; in &quot;Status&quot; field.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+71"/>
         <source>Alias</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
-        <location line="+123"/>
         <source>Address</source>
         <translation type="unfinished">Address</translation>
     </message>
     <message>
-        <location line="-118"/>
-        <location line="+123"/>
+        <location line="+5"/>
         <source>Protocol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-118"/>
-        <location line="+123"/>
+        <location line="+5"/>
         <source>Status</source>
         <translation type="unfinished">Status</translation>
     </message>
     <message>
-        <location line="-118"/>
-        <location line="+123"/>
+        <location line="+5"/>
         <source>Active</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-118"/>
-        <location line="+123"/>
+        <location line="+5"/>
         <source>Last Seen (UTC)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-118"/>
-        <location line="+123"/>
+        <location line="+5"/>
         <source>Pubkey</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-110"/>
+        <location line="+13"/>
         <source>S&amp;tart alias</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1720,28 +1847,7 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <location line="+122"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-97"/>
-        <source>All Masternodes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+63"/>
-        <source>Filter List:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>Filter masternode list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+20"/>
-        <source>Node Count:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1750,7 +1856,7 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+257"/>
+        <location line="+189"/>
         <source>Confirm masternode start</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1770,7 +1876,7 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+23"/>
         <source>Command is not available right now</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1798,7 +1904,7 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+96"/>
         <source>Enter whole numbers 1 - 100</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1808,12 +1914,12 @@ Address: %4
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+30"/>
         <source>Enter Address to Send to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-106"/>
         <source>MultiSend allows you to automatically send up to 100% of your stake or masternode reward to a list of other GIANT addresses after it matures.
 To Add: enter percentage to give and GIANT address to add to the MultiSend vector.
 To Delete: Enter address to delete and press delete.
@@ -1821,7 +1927,7 @@ MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+38"/>
+        <location line="+207"/>
         <source>Add to MultiSend Vector</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1831,7 +1937,7 @@ MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+34"/>
         <source>Deactivate MultiSend</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1841,7 +1947,7 @@ MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="-128"/>
         <source>Choose an address from the address book</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1851,7 +1957,7 @@ MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished">Alt+A</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-66"/>
         <source>Percentage of stake to send</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1861,7 +1967,7 @@ MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+27"/>
         <source>Address to send portion of stake to</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1871,7 +1977,17 @@ MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+52"/>
+        <source>Label:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Enter a label for this address to add it to your address book</source>
+        <translation type="unfinished">Enter a label for this address to add it to your address book</translation>
+    </message>
+    <message>
+        <location line="+65"/>
         <source>Delete Address From MultiSend Vector</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1881,7 +1997,7 @@ MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+11"/>
         <source>Activate MultiSend</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1891,7 +2007,7 @@ MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-47"/>
         <source>View MultiSend Vector</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1901,7 +2017,7 @@ MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-154"/>
         <source>Send For Stakes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1911,51 +2027,320 @@ MultiSend will not be activated unless you have clicked Activate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../multisenddialog.cpp" line="+99"/>
-        <source>The entered address:
-</source>
-        <translation type="unfinished"></translation>
+        <location filename="../multisenddialog.cpp" line="+64"/>
+        <source>(no label)</source>
+        <translation type="unfinished">(no label)</translation>
     </message>
     <message>
-        <location line="+0"/>
-        <source> is invalid.
-Please check the address and try again.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+12"/>
-        <source>The total amount of your MultiSend vector is over 100% of your stake reward
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+8"/>
-        <source>Please Enter 1 - 100 for percent.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+21"/>
-        <source>MultiSend Vector
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+24"/>
-        <source>Removed </source>
+        <location line="+11"/>
+        <source>MultiSend Active for Stakes and Masternode Rewards</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Could not locate address
-</source>
+        <source>MultiSend Active for Stakes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>MultiSend Active for Masternode Rewards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>MultiSend Not Active</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>The entered address: %1 is invalid.
+Please check the address and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>The total amount of your MultiSend vector is over 100% of your stake reward</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+40"/>
+        <source>Saved the MultiSend to memory, but failed saving properties to the database.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>MultiSend Vector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Removed %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Could not locate address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Unable to activate MultiSend, check MultiSend vector</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Need to select to send on stake and/or masternode rewards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>MultiSend activated but writing settings to DB failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>MultiSend activated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>First Address Not Valid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>MultiSend deactivated but writing settings to DB failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>MultiSend deactivated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-97"/>
+        <source>Please Enter 1 - 100 for percent.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>DarksendConfig</name>
+    <name>MultisigDialog</name>
     <message>
-        <location filename="../forms/Darksendconfig.ui" line="+14"/>
-        <source>Configure Darksend</source>
+        <location filename="../forms/multisigdialog.ui" line="+20"/>
+        <source>Multisignature Address Interactions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>Create MultiSignature &amp;Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>How many people must sign to verify a transaction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Enter the minimum number of signatures required to sign transactions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Address Label:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Add another address that could sign to verify a transaction from the multisig address.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>&amp;Add Address / Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Local addresses or public keys that can sign:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+71"/>
+        <source>Create a new multisig address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>C&amp;reate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <location line="+345"/>
+        <location line="+179"/>
+        <source>Status:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-487"/>
+        <source>Use below to quickly import an address by its redeem. Don&apos;t forget to add a label before clicking import!
+Keep in mind, the wallet will rescan the blockchain to find transactions containing the new address.
+Please be patient after clicking import.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>&amp;Import Redeem</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+24"/>
+        <source>&amp;Create MultiSignature Tx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>Inputs:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Coin Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Quantity Selected:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <location line="+14"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-7"/>
+        <source>Amount:</source>
+        <translation type="unfinished">Amount:</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Add an input to fund the outputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Add a Raw Input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+56"/>
+        <source>Address / Amount:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Add destinations to send GIC to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Add &amp;Destination</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+81"/>
+        <source>Create a transaction object using the given inputs to the given outputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Cr&amp;eate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+76"/>
+        <source>&amp;Sign MultiSignature Tx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Transaction Hex:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+34"/>
+        <source>Sign the transaction from this wallet or from provided private keys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>S&amp;ign</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DISABLED until transaction has been signed enough times.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Co&amp;mmit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Add private keys to sign the transaction with</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Add Private &amp;Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Sign with only private keys (Not Recommened)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../multisigdialog.cpp" line="+299"/>
+        <source>Invalid Tx Hash.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>Vout position must be positive.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+535"/>
+        <source>Maximum possible addresses reached. (15)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+110"/>
+        <source>Vout Position: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+57"/>
+        <source>Amount: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Maximum (15)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ObfuscationConfig</name>
+    <message>
+        <location filename="../forms/obfuscationconfig.ui" line="+14"/>
+        <source>Configure Obfuscation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1980,12 +2365,12 @@ Please check the address and try again.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 2 separate masternodes to mix funds up to 10000 GIANT</source>
+        <source>Use 2 separate masternodes to mix funds up to 10000 GIC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>Use 8 separate masternodes to mix funds up to 10000 GIANT</source>
+        <source>Use 8 separate masternodes to mix funds up to 10000 GIC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1995,12 +2380,12 @@ Please check the address and try again.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>This option is the quickest and will cost about ~0.025 GIANT to anonymize 10000 GIANT</source>
+        <source>This option is the quickest and will cost about ~0.025 GIC to anonymize 10000 GIC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+13"/>
-        <source>This option is moderately fast and will cost about 0.05 GIANT to anonymize 10000 GIANT</source>
+        <source>This option is moderately fast and will cost about 0.05 GIC to anonymize 10000 GIC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2010,29 +2395,29 @@ Please check the address and try again.</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>0.1 GIANT per 10000 GIANT you anonymize.</source>
+        <source>0.1 GIC per 10000 GIC you anonymize.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Darksendconfig.cpp" line="+43"/>
-        <location line="+15"/>
-        <location line="+15"/>
-        <source>Darksend Configuration</source>
+        <location filename="../obfuscationconfig.cpp" line="+47"/>
+        <location line="+14"/>
+        <location line="+14"/>
+        <source>Obfuscation Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-29"/>
-        <source>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening GIANT&apos;s configuration screen.</source>
+        <location line="-27"/>
+        <source>Obfuscation was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening GIANT&apos;s configuration screen.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
-        <source>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening GIANT&apos;s configuration screen.</source>
+        <location line="+14"/>
+        <source>Obfuscation was successfully set to high (%1 and 8 rounds). You can change this at any time by opening GIANT&apos;s configuration screen.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+15"/>
-        <source>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening GIANT&apos;s configuration screen.</source>
+        <location line="+14"/>
+        <source>Obfuscation was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening GIANT&apos;s configuration screen.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2059,7 +2444,7 @@ Please check the address and try again.</source>
         <translation>Select payment request file</translation>
     </message>
     <message>
-        <location filename="../openuridialog.cpp" line="+49"/>
+        <location filename="../openuridialog.cpp" line="+45"/>
         <source>Select payment request file to open</source>
         <translation>Select payment request file to open</translation>
     </message>
@@ -2097,12 +2482,12 @@ Please check the address and try again.</source>
         <translation>(0 = auto, &lt;0 = leave that many cores free)</translation>
     </message>
     <message>
-        <location line="+105"/>
+        <location line="+132"/>
         <source>W&amp;allet</source>
         <translation>W&amp;allet</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+53"/>
         <source>If you disable the spending of unconfirmed change, the change from a transaction&lt;br/&gt;cannot be used until that transaction has at least one confirmation.&lt;br/&gt;This also affects how your balance is computed.</source>
         <translation>If you disable the spending of unconfirmed change, the change from a transaction&lt;br/&gt;cannot be used until that transaction has at least one confirmation.&lt;br/&gt;This also affects how your balance is computed.</translation>
     </message>
@@ -2132,7 +2517,7 @@ Please check the address and try again.</source>
         <translation>Expert</translation>
     </message>
     <message>
-        <location line="-179"/>
+        <location line="-227"/>
         <source>Automatically start GIANT after logging in to the system.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2142,27 +2527,7 @@ Please check the address and try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+102"/>
-        <source>This setting determines the amount of individual masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>This setting determines the amount of individual masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Darksend rounds to use</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+24"/>
-        <source>This amount acts as a threshold to turn off Darksend once it&apos;s reached.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+15"/>
-        <source>Amount of GIANT to keep anonymized</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+38"/>
+        <location line="+230"/>
         <source>Whether to show coin control features or not.</source>
         <translation>Whether to show coin control features or not.</translation>
     </message>
@@ -2199,7 +2564,7 @@ Please check the address and try again.</source>
     <message>
         <location line="+21"/>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/giant-project/giant-project-translations</source>
+https://giantpay.network/translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2208,7 +2573,53 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Map port using &amp;UPnP</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="-184"/>
+        <source>Enable automatic minting of GIC units to zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Enable zGIC Automint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Enable automatic zGIC minting from specific addresses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Enable Automint Addresses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
+        <source>Percentage of incoming GIC which get automatically converted to zGIC via Zerocoin Protocol (min: 10%)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Percentage of autominted zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <location line="+16"/>
+        <source>Wait with automatic conversion to Zerocoin until enough GIC for this denomination is available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-13"/>
+        <source>Preferred Automint zGIC Denomination</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+37"/>
+        <source>Stake split threshold:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+98"/>
         <source>Connect to the GIANT network through a SOCKS5 proxy.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2289,6 +2700,22 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+14"/>
+        <location line="+6"/>
+        <source>Hide empty balances</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Hide orphan stakes in transaction lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Hide orphan stakes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+24"/>
         <location line="+13"/>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
         <translation>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</translation>
@@ -2324,40 +2751,55 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>&amp;Cancel</translation>
     </message>
     <message>
-        <location filename="../optionsdialog.cpp" line="+100"/>
+        <location filename="../optionsdialog.cpp" line="+89"/>
+        <source>Any</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
         <source>default</source>
         <translation>default</translation>
     </message>
     <message>
-        <location line="+60"/>
+        <location line="+46"/>
         <source>none</source>
         <translation>none</translation>
     </message>
     <message>
-        <location line="+89"/>
+        <location line="+98"/>
         <source>Confirm options reset</source>
         <translation>Confirm options reset</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+31"/>
+        <location line="+30"/>
         <source>Client restart required to activate changes.</source>
         <translation>Client restart required to activate changes.</translation>
     </message>
     <message>
-        <location line="-31"/>
+        <location line="-30"/>
         <source>Client will be shutdown, do you want to proceed?</source>
         <translation>Client will be shutdown, do you want to proceed?</translation>
     </message>
     <message>
-        <location line="+35"/>
+        <location line="+32"/>
         <source>This change would require a client restart.</source>
         <translation>This change would require a client restart.</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+28"/>
         <source>The supplied proxy address is invalid.</source>
         <translation>The supplied proxy address is invalid.</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>The supplied proxy port is invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+8"/>
+        <source>The supplied proxy settings are invalid.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2368,74 +2810,126 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Form</translation>
     </message>
     <message>
-        <location line="+302"/>
+        <location line="+297"/>
+        <location line="+192"/>
+        <location line="+403"/>
         <source>Available:</source>
         <translation>Available:</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-579"/>
+        <location line="+192"/>
         <source>Your current spendable balance</source>
         <translation>Your current spendable balance</translation>
     </message>
     <message>
-        <location line="+41"/>
+        <location line="-160"/>
+        <source>Total Balance, including all unavailable coins.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+71"/>
+        <source>GIC Balance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+130"/>
         <source>Pending:</source>
         <translation>Pending:</translation>
     </message>
     <message>
-        <location line="-236"/>
+        <location line="+16"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
         <translation>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</translation>
     </message>
     <message>
-        <location line="+112"/>
+        <location line="+41"/>
+        <location line="+351"/>
         <source>Immature:</source>
         <translation>Immature:</translation>
     </message>
     <message>
-        <location line="-29"/>
+        <location line="-335"/>
         <source>Staked or masternode rewards that has not yet matured</source>
         <translation>Staked or masternode rewards that has not yet matured</translation>
     </message>
     <message>
-        <location line="-163"/>
-        <source>Balances</source>
-        <translation>Balances</translation>
+        <location line="+85"/>
+        <source>Current locked balance in watch-only addresses</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <location line="+1015"/>
-        <location line="+93"/>
+        <location line="+16"/>
+        <location line="+19"/>
+        <source>Your current GIANT balance, unconfirmed and immature transactions included</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+96"/>
+        <source>zGIC Balance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+53"/>
+        <location line="+17"/>
+        <source>Mature: more than 20 confirmation and more than 1 mint of the same denomination after it was minted.
+These zGIC are spendable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <location line="+17"/>
+        <location line="+14"/>
+        <location line="+17"/>
+        <source>Unconfirmed: less than 20 confirmations
+Immature: confirmed, but less than 1 mint of the same denomination after it was minted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-725"/>
+        <location line="+852"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the GIANT network after a connection is established, but this process has not completed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-1063"/>
+        <location line="-999"/>
+        <source>OVERVIEW</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+134"/>
+        <source>Combined Balance (including unconfirmed and immature coins)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Combined Balance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+355"/>
         <source>Unconfirmed transactions to watch-only addresses</source>
         <translation>Unconfirmed transactions to watch-only addresses</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+57"/>
         <source>Staked or masternode rewards in watch-only addresses that has not yet matured</source>
         <translation>Staked or masternode rewards in watch-only addresses that has not yet matured</translation>
     </message>
     <message>
-        <location line="+42"/>
+        <location line="-315"/>
+        <location line="+394"/>
+        <location line="+261"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
     <message>
-        <location line="+61"/>
-        <source>Your current total balance</source>
-        <translation>Your current total balance</translation>
-    </message>
-    <message>
-        <location line="+25"/>
+        <location line="-220"/>
         <source>Current total balance in watch-only addresses</source>
         <translation>Current total balance in watch-only addresses</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="-285"/>
         <source>Watch-only:</source>
         <translation>Watch-only:</translation>
     </message>
@@ -2445,291 +2939,140 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Your current balance in watch-only addresses</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="-61"/>
         <source>Spendable:</source>
         <translation>Spendable:</translation>
     </message>
     <message>
-        <location line="+51"/>
-        <source>Status:</source>
-        <translation>Status:</translation>
-    </message>
-    <message>
-        <location line="+27"/>
-        <source>Darksend Balance:</source>
+        <location line="+191"/>
+        <location line="+19"/>
+        <source>Locked GIC or Masternode collaterals. These are excluded from zGIC minting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+27"/>
-        <source>0 GIANT / 0 Rounds</source>
+        <location line="-16"/>
+        <source>Locked:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+24"/>
-        <source>Enabled/Disabled</source>
-        <translation>Enabled/Disabled</translation>
-    </message>
-    <message>
-        <location line="+516"/>
-        <source>Try to manually submit a Darksend request.</source>
+        <location line="+260"/>
+        <source>Unconfirmed:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+22"/>
-        <source>Reset the current status of Darksend (can interrupt Darksend if it&apos;s in the process of Mixing, which can cost you money!)</source>
+        <location line="+58"/>
+        <location line="+19"/>
+        <source>Your current zGIC balance, unconfirmed and immature zGIC included.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+28"/>
-        <location filename="../overviewpage.cpp" line="+492"/>
-        <location line="+10"/>
-        <location line="+10"/>
-        <location line="+14"/>
-        <source>Darksend</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-637"/>
-        <source>Completion:</source>
-        <translation>Completion:</translation>
-    </message>
-    <message>
-        <location line="+40"/>
-        <source>Amount and Rounds:</source>
-        <translation>Amount and Rounds:</translation>
-    </message>
-    <message>
-        <location line="+14"/>
-        <source>Submitted Denom:</source>
-        <translation>Submitted Denom:</translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>n/a</source>
-        <translation>n/a</translation>
-    </message>
-    <message>
-        <location line="+663"/>
+        <location line="+84"/>
         <source>Recent transactions</source>
         <translation>Recent transactions</translation>
     </message>
     <message>
-        <location line="-197"/>
-        <source>Start/Stop Mixing</source>
-        <translation>Start/Stop Mixing</translation>
-    </message>
-    <message>
-        <location line="-469"/>
-        <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</translation>
-    </message>
-    <message>
-        <location line="+501"/>
-        <source>(Last Message)</source>
-        <translation>(Last Message)</translation>
-    </message>
-    <message>
-        <location line="+28"/>
-        <source>Try Mix</source>
-        <translation>Try Mix</translation>
-    </message>
-    <message>
-        <location line="+25"/>
-        <source>Reset</source>
-        <translation>Reset</translation>
-    </message>
-    <message>
-        <location filename="../overviewpage.cpp" line="-385"/>
-        <location line="+1"/>
+        <location filename="../overviewpage.cpp" line="+132"/>
         <location line="+1"/>
         <source>out of sync</source>
         <translation>out of sync</translation>
     </message>
     <message>
-        <location line="+6"/>
-        <location line="+1"/>
-        <location line="+1"/>
-        <location line="+296"/>
-        <source>Disabled</source>
-        <translation>Disabled</translation>
-    </message>
-    <message>
-        <location line="-115"/>
-        <location line="+6"/>
-        <source>No inputs detected</source>
-        <translation>No inputs detected</translation>
-    </message>
-    <message numerus="yes">
-        <location line="-2"/>
-        <location line="+35"/>
-        <location line="+10"/>
-        <source>%n Rounds</source>
-        <translation>
-            <numerusform>%n Round</numerusform>
-            <numerusform>%n Rounds</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location line="-7"/>
-        <source>Not enough compatible inputs to anonymize &lt;span style=&apos;color:red;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style=&apos;color:red;&apos;&gt;%2&lt;/span&gt; instead</source>
-        <translation>Not enough compatible inputs to anonymize &lt;span style=&apos;color:red;&apos;&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style=&apos;color:red;&apos;&gt;%2&lt;/span&gt; instead</translation>
-    </message>
-    <message>
-        <location line="+46"/>
-        <source>Overall progress</source>
-        <translation>Overall progress</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Denominated</source>
-        <translation>Denominated</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Anonymized</source>
-        <translation>Anonymized</translation>
-    </message>
-    <message numerus="yes">
-        <location line="+1"/>
-        <source>Denominated inputs have %5 of %n rounds on average</source>
-        <translation>
-            <numerusform>Denominated inputs have %5 of %n rounds on average</numerusform>
-            <numerusform>Denominated inputs have %5 of %n rounds on average</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location line="+43"/>
-        <source>Last Darksend message:
+        <location line="+111"/>
+        <source>Current percentage of zGIC.
+If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+26"/>
-        <source>Darksend was successfully reset.</source>
+        <location line="+4"/>
+        <source>AutoMint is currently enabled and set to </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>If you don&apos;t want to see internal Darksend fees/transactions select &quot;Most Common&quot; as Type on the &quot;Transactions&quot; tab.</source>
+        <location line="+1"/>
+        <source>To disable AutoMint add &apos;enablezeromint=0&apos; in giant.conf.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+10"/>
-        <source>Darksend requires at least %1 to use.</source>
+        <location line="+3"/>
+        <source>AutoMint is currently disabled.
+To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1&apos; in giant.conf</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+14"/>
-        <source>Wallet is locked and user declined to unlock. Disabling Darksend.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-159"/>
-        <source>Found enough compatible inputs to anonymize %1</source>
-        <translation>Found enough compatible inputs to anonymize %1</translation>
-    </message>
-    <message>
-        <location line="-213"/>
-        <location line="+294"/>
-        <location line="+91"/>
-        <source>Start Darksend</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-383"/>
-        <location line="+386"/>
-        <source>Stop Darksend</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-121"/>
-        <source>Mixed</source>
-        <translation>Mixed</translation>
-    </message>
-    <message>
-        <location line="+40"/>
-        <source>Enabled</source>
-        <translation>Enabled</translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>N/A</source>
-        <translation>N/A</translation>
     </message>
 </context>
 <context>
     <name>PaymentServer</name>
     <message>
-        <location filename="../paymentserver.cpp" line="+319"/>
-        <location line="+226"/>
-        <location line="+34"/>
-        <location line="+109"/>
+        <location filename="../paymentserver.cpp" line="+291"/>
+        <location line="+205"/>
+        <location line="+33"/>
+        <location line="+104"/>
+        <location line="+12"/>
         <location line="+14"/>
-        <location line="+18"/>
         <source>Payment request error</source>
         <translation>Payment request error</translation>
     </message>
     <message>
-        <location line="-296"/>
-        <location line="+14"/>
-        <location line="+7"/>
+        <location line="-275"/>
+        <location line="+12"/>
+        <location line="+5"/>
         <source>URI handling</source>
         <translation>URI handling</translation>
     </message>
     <message>
-        <location line="-20"/>
+        <location line="-16"/>
         <source>Payment request fetch URL is invalid: %1</source>
         <translation>Payment request fetch URL is invalid: %1</translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+29"/>
         <source>Payment request file handling</source>
         <translation>Payment request file handling</translation>
     </message>
     <message>
-        <location line="-21"/>
+        <location line="-18"/>
         <source>Invalid payment address %1</source>
         <translation>Invalid payment address %1</translation>
     </message>
     <message>
-        <location line="-118"/>
-        <source>Cannot start giant: click-to-pay handler</source>
+        <location line="-104"/>
+        <source>Cannot start GIANT: click-to-pay handler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+110"/>
         <source>URI cannot be parsed! This can be caused by an invalid GIANT address or malformed URI parameters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+14"/>
+        <location line="+13"/>
         <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
         <translation>Payment request file cannot be read! This can be caused by an invalid payment request file.</translation>
     </message>
     <message>
-        <location line="+69"/>
-        <location line="+9"/>
-        <location line="+32"/>
+        <location line="+67"/>
+        <location line="+8"/>
+        <location line="+30"/>
         <source>Payment request rejected</source>
         <translation>Payment request rejected</translation>
     </message>
     <message>
-        <location line="-41"/>
+        <location line="-38"/>
         <source>Payment request network doesn&apos;t match client network.</source>
         <translation>Payment request network doesn&apos;t match client network.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+8"/>
         <source>Payment request has expired.</source>
         <translation>Payment request has expired.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+6"/>
         <source>Payment request is not initialized.</source>
         <translation>Payment request is not initialized.</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+25"/>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
         <translation>Unverified payment requests to custom payment scripts are unsupported.</translation>
     </message>
@@ -2739,12 +3082,12 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Requested payment amount of %1 is too small (considered dust).</translation>
     </message>
     <message>
-        <location line="+50"/>
+        <location line="+48"/>
         <source>Refund from %1</source>
         <translation>Refund from %1</translation>
     </message>
     <message>
-        <location line="+43"/>
+        <location line="+40"/>
         <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
         <translation>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</translation>
     </message>
@@ -2759,17 +3102,17 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Error communicating with %1: %2</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+18"/>
         <source>Payment request cannot be parsed!</source>
         <translation>Payment request cannot be parsed!</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+9"/>
         <source>Bad response from server %1</source>
         <translation>Bad response from server %1</translation>
     </message>
     <message>
-        <location line="+22"/>
+        <location line="+20"/>
         <source>Network request error</source>
         <translation>Network request error</translation>
     </message>
@@ -2782,7 +3125,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
 <context>
     <name>PeerTableModel</name>
     <message>
-        <location filename="../peertablemodel.cpp" line="+118"/>
+        <location filename="../peertablemodel.cpp" line="+114"/>
         <source>Address/Hostname</source>
         <translation>Address/Hostname</translation>
     </message>
@@ -2798,19 +3141,935 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
 </context>
 <context>
+    <name>PrivacyDialog</name>
+    <message>
+        <location filename="../forms/privacydialog.ui" line="+184"/>
+        <source>Zerocoin Actions:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the GIANT network after a connection is established, but this process has not completed yet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+190"/>
+        <location filename="../privacydialog.cpp" line="+163"/>
+        <location line="+112"/>
+        <source>Mint Zerocoin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <location line="+351"/>
+        <location line="+30"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-371"/>
+        <location line="+600"/>
+        <source>zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-593"/>
+        <source>Available for minting are coins which are confirmed and not locked or Masternode collaterals.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Available for Minting:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+19"/>
+        <source>0.000&#x2009;000&#x2009;00 GIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Reset</source>
+        <translation type="unfinished">Reset</translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Coin Control...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+36"/>
+        <source>Quantity:</source>
+        <translation type="unfinished">Quantity:</translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Amount:</source>
+        <translation type="unfinished">Amount:</translation>
+    </message>
+    <message>
+        <location line="+91"/>
+        <source>Rescan the complete blockchain for  Zerocoin mints and their meta-data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>ReScan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>Status and/or Mesages from the last Mint Action.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-600"/>
+        <source>PRIVACY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+308"/>
+        <location line="+52"/>
+        <source>Enter an amount of GIC to convert to zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+301"/>
+        <source>zGIC Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>zGIC Selected:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+30"/>
+        <source>Quantity Selected:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+37"/>
+        <location filename="../privacydialog.cpp" line="+542"/>
+        <source>Spend Zerocoin. Without &apos;Pay To:&apos; address creates payments to yourself.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <location filename="../privacydialog.cpp" line="-493"/>
+        <location line="+4"/>
+        <location line="+12"/>
+        <location line="+106"/>
+        <location line="+4"/>
+        <source>Spend Zerocoin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Available (mature and spendable) zGIC for spending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Available Balance:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Available (mature and spendable) zGIC for spending
+
+zGIC are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-548"/>
+        <location line="+49"/>
+        <location line="+504"/>
+        <location line="+370"/>
+        <location line="+544"/>
+        <location line="+31"/>
+        <location line="+31"/>
+        <location line="+31"/>
+        <location line="+31"/>
+        <location line="+31"/>
+        <location line="+31"/>
+        <location line="+31"/>
+        <location line="+31"/>
+        <source>0 zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-1126"/>
+        <source>Pay &amp;To:</source>
+        <translation type="unfinished">Pay &amp;To:</translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>The GIANT address to send the payment to. Creates local payment to yourself when empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Choose previously used address</source>
+        <translation type="unfinished">Choose previously used address</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Alt+A</source>
+        <translation type="unfinished">Alt+A</translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Paste address from clipboard</source>
+        <translation type="unfinished">Paste address from clipboard</translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Alt+P</source>
+        <translation type="unfinished">Alt+P</translation>
+    </message>
+    <message>
+        <location line="+15"/>
+        <source>&amp;Label:</source>
+        <translation type="unfinished">&amp;Label:</translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>Enter a label for this address to add it to the list of used addresses</source>
+        <translation type="unfinished">Enter a label for this address to add it to the list of used addresses</translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>A&amp;mount:</source>
+        <translation type="unfinished">A&amp;mount:</translation>
+    </message>
+    <message>
+        <location line="+63"/>
+        <source>Convert Change to Zerocoin (might cost additional fees)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>If checked, the wallet tries to minimize the returning change instead of minimizing the number of spent denominations.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Minimize Change</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+47"/>
+        <source>Information about the available Zerocoin funds.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Zerocoin Stats:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-842"/>
+        <location line="+25"/>
+        <location line="+885"/>
+        <location line="+38"/>
+        <source>Total Balance including unconfirmed and immature zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-945"/>
+        <location line="+910"/>
+        <source>Total Zerocoin  Balance:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>Denominations with value 1:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Denom. with value 1:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <source>Unconfirmed: less than 20 confirmations
+Immature: confirmed, but less than 1 mint of the same denomination after it was minted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+40"/>
+        <source>Show the current status of automatic zGIC minting.
+
+To change the status (restart required):
+- enable: add &apos;enablezeromint=1&apos; to giant.conf
+- disable: add &apos;enablezeromint=0&apos; to giant.conf
+
+To change the percentage (no restart required):
+- menu Settings-&gt;Options-&gt;Percentage of autominted zGIC
+
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>AutoMint Status</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-1359"/>
+        <location line="+1408"/>
+        <source>Global Supply:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+37"/>
+        <source>Denom. 1:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Denom. 5:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Denom. 10:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Denom. 50:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Denom. 100:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Denom. 500:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Denom. 1000:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+31"/>
+        <source>Denom. 5000:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-722"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <location line="+53"/>
+        <source>0 x</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-1273"/>
+        <source>Show zGIC denominations list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Show Denominations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+916"/>
+        <source>Denominations with value 5:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Denom. with value 5:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Denominations with value 10:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Denom. with value 10:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Denominations with value 50:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Denom. with value 50:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Denominations with value 100:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Denom. with value 100:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Denominations with value 500:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Denom. with value 500:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Denominations with value 1000:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Denom. with value 1000:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Denominations with value 5000:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Denom. with value 5000:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+443"/>
+        <source>Hide Denominations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+147"/>
+        <source>Priority:</source>
+        <translation type="unfinished">Priority:</translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <source>Fee:</source>
+        <translation type="unfinished">Fee:</translation>
+    </message>
+    <message>
+        <location line="+38"/>
+        <source>Dust:</source>
+        <translation type="unfinished">Dust:</translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>no</source>
+        <translation type="unfinished">no</translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Bytes:</source>
+        <translation type="unfinished">Bytes:</translation>
+    </message>
+    <message>
+        <location line="+54"/>
+        <source>Insufficient funds!</source>
+        <translation type="unfinished">Insufficient funds!</translation>
+    </message>
+    <message>
+        <location line="+75"/>
+        <location filename="../privacydialog.cpp" line="-408"/>
+        <location line="+1"/>
+        <location line="+515"/>
+        <location line="+1"/>
+        <source>Coins automatically selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+56"/>
+        <source>medium</source>
+        <translation type="unfinished">medium</translation>
+    </message>
+    <message>
+        <location line="+80"/>
+        <source>Coin Control Features</source>
+        <translation type="unfinished">Coin Control Features</translation>
+    </message>
+    <message>
+        <location line="+72"/>
+        <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
+        <translation type="unfinished">If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Custom change address</source>
+        <translation type="unfinished">Custom change address</translation>
+    </message>
+    <message>
+        <location line="+83"/>
+        <source>Amount After Fee:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+40"/>
+        <source>Change:</source>
+        <translation type="unfinished">Change:</translation>
+    </message>
+    <message>
+        <location filename="../privacydialog.cpp" line="-515"/>
+        <source>out of sync</source>
+        <translation type="unfinished">out of sync</translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <location line="+120"/>
+        <source>Mint Status: Okay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-114"/>
+        <source>Copy quantity</source>
+        <translation type="unfinished">Copy quantity</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy amount</source>
+        <translation type="unfinished">Copy amount</translation>
+    </message>
+    <message>
+        <location line="+183"/>
+        <source>Starting ResetMintZerocoin: rescanning complete blockchain, this will need up to 30 minutes depending on your hardware.
+Please be patient...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+204"/>
+        <source>) needed.
+Maximum allowed: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+34"/>
+        <source>zGIC Spend #: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>zGIC Mint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+293"/>
+        <source> &lt;b&gt;enabled&lt;/b&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source> &lt;b&gt;disabled&lt;/b&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source> Configured target percentage: &lt;b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <location line="+4"/>
+        <source>zGIC is currently disabled due to maintenance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-645"/>
+        <location line="+112"/>
+        <source>zGIC is currently undergoing maintenance.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-212"/>
+        <source>Denom. with value &lt;b&gt;1&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. with value &lt;b&gt;5&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. with value &lt;b&gt;10&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. with value &lt;b&gt;50&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. with value &lt;b&gt;100&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. with value &lt;b&gt;500&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. with value &lt;b&gt;1000&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. with value &lt;b&gt;5000&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <location line="+710"/>
+        <source>AutoMint Status:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-707"/>
+        <source>Denom. &lt;b&gt;1&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. &lt;b&gt;5&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. &lt;b&gt;10&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. &lt;b&gt;50&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. &lt;b&gt;100&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. &lt;b&gt;500&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. &lt;b&gt;1000&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Denom. &lt;b&gt;5000&lt;/b&gt;:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+94"/>
+        <source>Error: Your wallet is locked. Please enter the wallet passphrase first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Message: Enter an amount &gt; 0.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Minting </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>Successfully minted </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source> zGIC in </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source> sec. Used denominations:
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+35"/>
+        <location line="+15"/>
+        <location line="+239"/>
+        <source>Duration: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-254"/>
+        <location line="+15"/>
+        <location line="+239"/>
+        <source> sec.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-244"/>
+        <source>Starting ResetSpentZerocoin: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+68"/>
+        <source>No &apos;Pay To&apos; address provided, creating local payment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Invalid GIANT Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Invalid Send Amount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+22"/>
+        <source>Confirm additional Fees</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+21"/>
+        <source>Are you sure you want to send?&lt;br /&gt;&lt;br /&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source> to address </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source> to a newly generated (unused and therefore anonymous) local address &lt;br /&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Confirm send coins</source>
+        <translation type="unfinished">Confirm send coins</translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Failed to fetch mint associated with serial hash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+26"/>
+        <source>Too much inputs (</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>
+Either mint higher denominations (so fewer inputs are needed) or reduce the amount to spend.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <location line="+4"/>
+        <source>Spend Zerocoin failed with status = </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location line="+362"/>
+        <source>PrivacyDialog</source>
+        <comment>Enter an amount of GIC to convert to zGIC</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location line="-334"/>
+        <source>denomination: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-73"/>
+        <source>Spending Zerocoin.
+Computationally expensive, might need several minutes depending on your hardware.
+Please be patient...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+74"/>
+        <source>serial: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Spend is 1 of : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>value out: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>address: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Sending successful, return code: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>txid: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>fee: </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ProposalFrame</name>
+    <message>
+        <location filename="../proposalframe.cpp" line="+92"/>
+        <source>Open proposal page in browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source> remaining payment(s).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Yes:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Abstain:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>No:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+42"/>
+        <source>A proposal URL can be used for phishing, scams and computer viruses. Open this link only if you trust the following URL.
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Open link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+50"/>
+        <source>Wallet Locked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+0"/>
+        <source>You must unlock your wallet to vote.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Do you want to vote %1 on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>using all your masternodes?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Proposal Hash:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Proposal URL:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Confirm Vote</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+64"/>
+        <source>Vote Results</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
-        <location filename="../bitcoinunits.cpp" line="+244"/>
+        <location filename="../bitcoinunits.cpp" line="+252"/>
         <source>Amount</source>
         <translation>Amount</translation>
     </message>
     <message>
-        <location filename="../guiutil.cpp" line="+113"/>
+        <location filename="../guiutil.cpp" line="+105"/>
         <source>Enter a GIANT address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+778"/>
+        <location line="+773"/>
         <source>%1 d</source>
         <translation>%1 d</translation>
     </message>
@@ -2826,13 +4085,24 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+2"/>
+        <location line="+43"/>
         <source>%1 s</source>
         <translation>%1 s</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="-28"/>
         <source>NETWORK</source>
         <translation>NETWORK</translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>BLOOM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>ZK_BLOOM</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2854,11 +4124,44 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <source>%1 ms</source>
         <translation>%1 ms</translation>
     </message>
+    <message>
+        <location filename="../giant.cpp" line="+75"/>
+        <location line="+7"/>
+        <location line="+13"/>
+        <location line="+19"/>
+        <source>GIANT Core</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-38"/>
+        <source>Error: Specified data directory &quot;%1&quot; does not exist.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <source>Error: Invalid combination of -regtest and -testnet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Error reading masternode configuration file: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+40"/>
+        <source>GIANT Core didn&apos;t yet exit safely...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QRImageWidget</name>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+36"/>
+        <location filename="../receiverequestdialog.cpp" line="+33"/>
         <source>&amp;Save Image...</source>
         <translation>&amp;Save Image...</translation>
     </message>
@@ -2868,7 +4171,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>&amp;Copy Image</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+31"/>
         <source>Save QR Code</source>
         <translation>Save QR Code</translation>
     </message>
@@ -2891,33 +4194,33 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>&amp;Information</translation>
     </message>
     <message>
-        <location line="+51"/>
+        <location line="+15"/>
         <source>General</source>
         <translation>General</translation>
     </message>
     <message>
-        <location line="+204"/>
+        <location line="+164"/>
         <source>Name</source>
         <translation>Name</translation>
     </message>
     <message>
-        <location line="-197"/>
+        <location line="-157"/>
         <source>Client name</source>
         <translation>Client name</translation>
     </message>
     <message>
-        <location line="-36"/>
         <location line="+10"/>
-        <location line="+36"/>
-        <location line="+30"/>
         <location line="+23"/>
-        <location line="+23"/>
-        <location line="+62"/>
-        <location line="+23"/>
-        <location line="+36"/>
+        <location line="+26"/>
         <location line="+26"/>
         <location line="+23"/>
-        <location line="+425"/>
+        <location line="+23"/>
+        <location line="+36"/>
+        <location line="+23"/>
+        <location line="+23"/>
+        <location line="+36"/>
+        <location line="+23"/>
+        <location line="+522"/>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
@@ -2930,81 +4233,89 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <location line="+23"/>
         <location line="+23"/>
         <location line="+23"/>
+        <location line="+23"/>
+        <location line="+23"/>
+        <location line="+26"/>
+        <location line="+23"/>
+        <location line="+78"/>
+        <location line="+26"/>
+        <location line="+29"/>
+        <location line="+29"/>
         <source>N/A</source>
         <translation>N/A</translation>
     </message>
     <message>
-        <location line="-927"/>
+        <location line="-1147"/>
         <source>Number of connections</source>
         <translation>Number of connections</translation>
     </message>
     <message>
-        <location line="+79"/>
+        <location line="+134"/>
         <source>&amp;Open</source>
         <translation>&amp;Open</translation>
     </message>
     <message>
-        <location line="-56"/>
+        <location line="-193"/>
         <source>Startup time</source>
         <translation>Startup time</translation>
     </message>
     <message>
-        <location line="+137"/>
+        <location line="+29"/>
         <source>Network</source>
         <translation>Network</translation>
     </message>
     <message>
-        <location line="-91"/>
+        <location line="+112"/>
         <source>Last block time</source>
         <translation>Last block time</translation>
     </message>
     <message>
-        <location line="+26"/>
+        <location line="+42"/>
         <source>Debug log file</source>
         <translation>Debug log file</translation>
     </message>
     <message>
-        <location line="+95"/>
+        <location line="-258"/>
         <source>Using OpenSSL version</source>
         <translation>Using OpenSSL version</translation>
     </message>
     <message>
-        <location line="-197"/>
+        <location line="+52"/>
         <source>Build date</source>
         <translation>Build date</translation>
     </message>
     <message>
-        <location line="+53"/>
+        <location line="+141"/>
         <source>Current number of blocks</source>
         <translation>Current number of blocks</translation>
     </message>
     <message>
-        <location line="+85"/>
+        <location line="-216"/>
         <source>Client version</source>
         <translation>Client version</translation>
     </message>
     <message>
-        <location line="+108"/>
+        <location line="+49"/>
         <source>Using BerkeleyDB version</source>
         <translation>Using BerkeleyDB version</translation>
     </message>
     <message>
-        <location line="-312"/>
+        <location line="+160"/>
         <source>Block chain</source>
         <translation>Block chain</translation>
     </message>
     <message>
-        <location line="+149"/>
+        <location line="+79"/>
         <source>Open the GIANT debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+140"/>
+        <location line="-108"/>
         <source>Number of Masternodes</source>
         <translation>Number of Masternodes</translation>
     </message>
     <message>
-        <location line="+34"/>
+        <location line="+122"/>
         <source>&amp;Console</source>
         <translation>&amp;Console</translation>
     </message>
@@ -3044,14 +4355,24 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>&amp;Peers</translation>
     </message>
     <message>
-        <location line="+41"/>
-        <location filename="../rpcconsole.cpp" line="+253"/>
-        <location line="+426"/>
+        <location line="+50"/>
+        <source>Banned peers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+59"/>
+        <location filename="../rpcconsole.cpp" line="+329"/>
+        <location line="+727"/>
         <source>Select a peer to view detailed information.</source>
         <translation>Select a peer to view detailed information.</translation>
     </message>
     <message>
         <location line="+25"/>
+        <source>Whitelisted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
         <source>Direction</source>
         <translation>Direction</translation>
     </message>
@@ -3071,17 +4392,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Services</translation>
     </message>
     <message>
-        <location line="+23"/>
-        <source>Starting Height</source>
-        <translation>Starting Height</translation>
-    </message>
-    <message>
-        <location line="+23"/>
-        <source>Sync Height</source>
-        <translation>Sync Height</translation>
-    </message>
-    <message>
-        <location line="+23"/>
+        <location line="+92"/>
         <source>Ban Score</source>
         <translation>Ban Score</translation>
     </message>
@@ -3116,69 +4427,139 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Ping Time</translation>
     </message>
     <message>
-        <location line="+40"/>
+        <location line="+89"/>
         <source>&amp;Wallet Repair</source>
         <translation>&amp;Wallet Repair</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+347"/>
+        <source>Delete local Blockchain Folders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-309"/>
+        <source>Wallet In Use:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-334"/>
+        <source>Starting Block</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Synced Headers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Synced Blocks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+184"/>
+        <source>The duration of a currently outstanding ping.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Ping Wait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>Time Offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+101"/>
+        <source>Custom Backup Path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Custom zGIC Backup Path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Custom Backups Threshold:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+48"/>
         <source>Salvage wallet</source>
         <translation>Salvage wallet</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+14"/>
+        <source>Attempt to recover private keys from a corrupt wallet.dat.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Rescan blockchain files</source>
         <translation>Rescan blockchain files</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+14"/>
+        <source>Rescan the block chain for missing wallet transactions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Recover transactions 1</source>
         <translation>Recover transactions 1</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+14"/>
+        <source>Recover transactions from blockchain (keep meta-data, e.g. account owner).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Recover transactions 2</source>
         <translation>Recover transactions 2</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+14"/>
+        <source>Recover transactions from blockchain (drop meta-data).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Upgrade wallet format</source>
         <translation>Upgrade wallet format</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+44"/>
+        <source>Rebuild block chain index from current blk000??.dat files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+23"/>
+        <source>-resync:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>Deletes all local blockchain folders so the wallet synchronizes from scratch.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-333"/>
         <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
         <translation>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</translation>
     </message>
     <message>
-        <location line="+16"/>
-        <source>-salvagewallet: Attempt to recover private keys from a corrupt wallet.dat.</source>
-        <translation>-salvagewallet: Attempt to recover private keys from a corrupt wallet.dat.</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>-rescan: Rescan the block chain for missing wallet transactions.</source>
-        <translation>-rescan: Rescan the block chain for missing wallet transactions.</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>-zapwallettxes=1: Recover transactions from blockchain (keep meta-data, e.g. account owner).</source>
-        <translation>-zapwallettxes=1: Recover transactions from blockchain (keep meta-data, e.g. account owner).</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>-zapwallettxes=2: Recover transactions from blockchain (drop meta-data).</source>
-        <translation>-zapwallettxes=2: Recover transactions from blockchain (drop meta-data).</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>-upgradewallet: Upgrade wallet to latest format on startup. (Note: this is NOT an update of the wallet itself!)</source>
-        <translation>-upgradewallet: Upgrade wallet to latest format on startup. (Note: this is NOT an update of the wallet itself!)</translation>
-    </message>
-    <message>
-        <location line="+23"/>
+        <location line="-13"/>
         <source>Wallet repair options.</source>
         <translation>Wallet repair options.</translation>
+    </message>
+    <message>
+        <location line="+286"/>
+        <source>Upgrade wallet to latest format on startup. (Note: this is NOT an update of the wallet itself!)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
@@ -3186,12 +4567,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Rebuild index</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <source>-reindex: Rebuild block chain index from current blk000??.dat files.</source>
-        <translation>-reindex: Rebuild block chain index from current blk000??.dat files.</translation>
-    </message>
-    <message>
-        <location filename="../rpcconsole.cpp" line="-203"/>
+        <location filename="../rpcconsole.cpp" line="-376"/>
         <source>In:</source>
         <translation>In:</translation>
     </message>
@@ -3201,14 +4577,77 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Out:</translation>
     </message>
     <message>
-        <location line="-35"/>
+        <location line="-39"/>
         <source>Welcome to the GIANT RPC console.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="-218"/>
+        <source>&amp;Disconnect Node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+1"/>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</translation>
+        <location line="+1"/>
+        <location line="+1"/>
+        <location line="+1"/>
+        <source>Ban Node for</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-3"/>
+        <source>1 &amp;hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>1 &amp;day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>1 &amp;week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>1 &amp;year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+46"/>
+        <source>&amp;Unban Node</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+95"/>
+        <source>This will delete your local blockchain folders and the wallet will synchronize the complete Blockchain from scratch.&lt;br /&gt;&lt;br /&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>This needs quite some time and downloads a lot of data.&lt;br /&gt;&lt;br /&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Your transactions and funds will be visible again after the download has completed.&lt;br /&gt;&lt;br /&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Do you want to continue?.&lt;br /&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Confirm resync Blockchain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+70"/>
+        <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3216,7 +4655,12 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</translation>
     </message>
     <message>
-        <location line="+139"/>
+        <location line="+2"/>
+        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+141"/>
         <source>%1 B</source>
         <translation>%1 B</translation>
     </message>
@@ -3236,7 +4680,12 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>%1 GB</translation>
     </message>
     <message>
-        <location line="+128"/>
+        <location line="+123"/>
+        <source>(node id: %1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>via %1</source>
         <translation>via %1</translation>
     </message>
@@ -3247,7 +4696,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>never</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+9"/>
         <source>Inbound</source>
         <translation>Inbound</translation>
     </message>
@@ -3257,21 +4706,26 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Outbound</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <source>Unknown</source>
-        <translation>Unknown</translation>
+        <location line="+2"/>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+2"/>
-        <location line="+1"/>
-        <source>Fetching...</source>
-        <translation>Fetching...</translation>
+        <location line="+0"/>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+12"/>
+        <location line="+6"/>
+        <source>Unknown</source>
+        <translation>Unknown</translation>
     </message>
 </context>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
-        <location filename="../forms/receivecoinsdialog.ui" line="+34"/>
+        <location filename="../forms/receivecoinsdialog.ui" line="+263"/>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
         <translation>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</translation>
     </message>
@@ -3281,28 +4735,49 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>R&amp;euse an existing receiving address (not recommended)</translation>
     </message>
     <message>
-        <location line="+17"/>
+        <location line="-30"/>
         <source>&amp;Message:</source>
         <translation>&amp;Message:</translation>
     </message>
     <message>
-        <location line="+13"/>
-        <location line="+21"/>
+        <location line="-87"/>
+        <location line="+16"/>
         <source>An optional label to associate with the new receiving address.</source>
         <translation>An optional label to associate with the new receiving address.</translation>
     </message>
     <message>
-        <location line="-37"/>
+        <location line="+7"/>
+        <location line="+25"/>
+        <source>Your receiving address. You can copy and use it to receive coins on this wallet. A new one will be generated once it is used.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-22"/>
+        <source>&amp;Address:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>A&amp;mount:</source>
+        <translation type="unfinished">A&amp;mount:</translation>
+    </message>
+    <message>
+        <location line="+26"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the GIANT network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="-175"/>
+        <source>RECEIVE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+191"/>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the GIANT network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="-107"/>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
         <translation>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</translation>
     </message>
@@ -3312,18 +4787,13 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>&amp;Label:</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+52"/>
         <location line="+22"/>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
         <translation>An optional amount to request. Leave this empty or zero to not request a specific amount.</translation>
     </message>
     <message>
-        <location line="-19"/>
-        <source>&amp;Amount:</source>
-        <translation>&amp;Amount:</translation>
-    </message>
-    <message>
-        <location line="+34"/>
+        <location line="+62"/>
         <source>&amp;Request payment</source>
         <translation>&amp;Request payment</translation>
     </message>
@@ -3338,12 +4808,17 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Clear</translation>
     </message>
     <message>
-        <location line="+75"/>
+        <location line="+27"/>
+        <source>Receiving Addresses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+55"/>
         <source>Requested payments history</source>
         <translation>Requested payments history</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+62"/>
         <source>Show the selected request (does the same as double clicking an entry)</source>
         <translation>Show the selected request (does the same as double clicking an entry)</translation>
     </message>
@@ -3363,7 +4838,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Remove</translation>
     </message>
     <message>
-        <location filename="../receivecoinsdialog.cpp" line="+39"/>
+        <location filename="../receivecoinsdialog.cpp" line="+41"/>
         <source>Copy label</source>
         <translation>Copy label</translation>
     </message>
@@ -3376,6 +4851,11 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <location line="+1"/>
         <source>Copy amount</source>
         <translation>Copy amount</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copy address</source>
+        <translation type="unfinished">Copy address</translation>
     </message>
 </context>
 <context>
@@ -3401,7 +4881,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>&amp;Save Image...</translation>
     </message>
     <message>
-        <location filename="../receiverequestdialog.cpp" line="+65"/>
+        <location filename="../receiverequestdialog.cpp" line="+63"/>
         <source>Request payment to %1</source>
         <translation>Request payment to %1</translation>
     </message>
@@ -3436,12 +4916,12 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Message</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+8"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
         <translation>Resulting URI too long, try to reduce the text for label / message.</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>Error encoding URI into QR Code.</source>
         <translation>Error encoding URI into QR Code.</translation>
     </message>
@@ -3464,22 +4944,27 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Message</translation>
     </message>
     <message>
-        <location line="+99"/>
+        <location line="+0"/>
+        <source>Address</source>
+        <translation type="unfinished">Address</translation>
+    </message>
+    <message>
+        <location line="+89"/>
         <source>Amount</source>
         <translation>Amount</translation>
     </message>
     <message>
-        <location line="-59"/>
+        <location line="-52"/>
         <source>(no label)</source>
         <translation>(no label)</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+8"/>
         <source>(no message)</source>
         <translation>(no message)</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+6"/>
         <source>(no amount)</source>
         <translation>(no amount)</translation>
     </message>
@@ -3487,31 +4972,25 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
 <context>
     <name>SendCoinsDialog</name>
     <message>
-        <location filename="../forms/sendcoinsdialog.ui" line="+14"/>
-        <location filename="../sendcoinsdialog.cpp" line="+240"/>
-        <location line="+31"/>
-        <location line="+407"/>
-        <location line="+12"/>
+        <location filename="../forms/sendcoinsdialog.ui" line="+17"/>
+        <location filename="../sendcoinsdialog.cpp" line="+234"/>
+        <location line="+25"/>
+        <location line="+413"/>
         <source>Send Coins</source>
         <translation>Send Coins</translation>
     </message>
     <message>
-        <location line="+76"/>
+        <location line="+65"/>
+        <source>SEND</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+156"/>
         <source>Coin Control Features</source>
         <translation>Coin Control Features</translation>
     </message>
     <message>
-        <location line="+20"/>
-        <source>Inputs...</source>
-        <translation>Inputs...</translation>
-    </message>
-    <message>
-        <location line="+10"/>
-        <source>automatically selected</source>
-        <translation>automatically selected</translation>
-    </message>
-    <message>
-        <location line="+19"/>
+        <location line="+70"/>
         <source>Insufficient funds!</source>
         <translation>Insufficient funds!</translation>
     </message>
@@ -3566,7 +5045,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Change:</translation>
     </message>
     <message>
-        <location line="+44"/>
+        <location line="+62"/>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
         <translation>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</translation>
     </message>
@@ -3576,12 +5055,12 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Custom change address</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+76"/>
         <source>Split UTXO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+25"/>
         <source># of outputs</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3592,11 +5071,16 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+7"/>
-        <source>0 GIANT</source>
+        <source>0 GIC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+193"/>
+        <location line="+167"/>
+        <source>SwiftX technology allows for near instant transactions - A flat fee of 0.01 GIC applies</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+176"/>
         <source>Transaction Fee:</source>
         <translation>Transaction Fee:</translation>
     </message>
@@ -3616,12 +5100,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Minimize</translation>
     </message>
     <message>
-        <location line="+579"/>
-        <source>Darksend</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-498"/>
+        <location line="+135"/>
         <source>per kilobyte</source>
         <translation>per kilobyte</translation>
     </message>
@@ -3636,28 +5115,43 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>(read the tooltip)</translation>
     </message>
     <message>
-        <location line="+228"/>
+        <location line="-82"/>
         <source>Custom:</source>
         <translation>Custom:</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="-211"/>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
         <translation>(Smart fee not initialized yet. This usually takes a few blocks...)</translation>
     </message>
     <message>
-        <location line="-148"/>
+        <location line="-101"/>
+        <source>SwiftX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
         <source>Confirmation time:</source>
         <translation>Confirmation time:</translation>
     </message>
     <message>
-        <location line="-165"/>
-        <source>If the custom fee is set to 1000 uGIANTs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uGIANTs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uGIANTs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <location line="-750"/>
+        <source>Open Coin Control...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Coins automatically selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1062"/>
+        <source>If the custom fee is set to 1000 uGICs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uGICs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uGICs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+16"/>
-        <source>If the custom fee is set to 1000 uGIANTs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uGIANTs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uGIANTs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <source>If the custom fee is set to 1000 uGICs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uGICs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uGICs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3667,22 +5161,22 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+163"/>
+        <location line="-374"/>
         <source>normal</source>
         <translation>normal</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+44"/>
         <source>fast</source>
         <translation>fast</translation>
     </message>
     <message>
-        <location line="+28"/>
+        <location line="+360"/>
         <source>Recommended</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+70"/>
+        <location line="+115"/>
         <source>Send as zero-fee transaction if possible</source>
         <translation>Send as zero-fee transaction if possible</translation>
     </message>
@@ -3692,7 +5186,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>(confirmation may take longer)</translation>
     </message>
     <message>
-        <location line="+67"/>
+        <location line="+71"/>
         <source>Confirm the send action</source>
         <translation>Confirm the send action</translation>
     </message>
@@ -3722,9 +5216,9 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Add &amp;Recipient</translation>
     </message>
     <message>
-        <location line="+57"/>
-        <source>HyperSend</source>
-        <translation>HyperSend</translation>
+        <location line="+35"/>
+        <source>Anonymized GIC</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
@@ -3732,7 +5226,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Balance:</translation>
     </message>
     <message>
-        <location filename="../sendcoinsdialog.cpp" line="-601"/>
+        <location filename="../sendcoinsdialog.cpp" line="-590"/>
         <source>Copy quantity</source>
         <translation>Copy quantity</translation>
     </message>
@@ -3772,78 +5266,55 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Copy change</translation>
     </message>
     <message>
-        <location line="+145"/>
+        <location line="+146"/>
         <source>The split block tool does not work when sending to outside addresses. Try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+25"/>
         <source>The split block tool does not work with multiple addresses. Try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+8"/>
-        <location line="+6"/>
-        <location line="+9"/>
-        <source>using</source>
-        <translation>using</translation>
-    </message>
-    <message>
-        <location line="-15"/>
-        <location line="+6"/>
-        <source>anonymous funds</source>
-        <translation>anonymous funds</translation>
-    </message>
-    <message>
-        <location line="+651"/>
+        <location line="+653"/>
         <source>Warning: Invalid GIANT address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-642"/>
-        <source>any available funds (not recommended)</source>
-        <translation>any available funds (not recommended)</translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>and HyperSend</source>
-        <translation>and HyperSend</translation>
-    </message>
-    <message>
-        <location line="+24"/>
-        <location line="+5"/>
-        <location line="+5"/>
+        <location line="-615"/>
         <location line="+4"/>
+        <location line="+4"/>
+        <location line="+3"/>
         <source>%1 to %2</source>
         <translation>%1 to %2</translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+51"/>
         <source>Are you sure you want to send?</source>
         <translation>Are you sure you want to send?</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+8"/>
         <source>are added as transaction fee</source>
         <translation>are added as transaction fee</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+18"/>
         <source>Total Amount = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</source>
         <translation>Total Amount = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+19"/>
         <source>Confirm send coins</source>
         <translation>Confirm send coins</translation>
     </message>
     <message>
-        <location line="+241"/>
+        <location line="+247"/>
         <source>A fee %1 times higher than %2 per kB is considered an insanely high fee.</source>
         <translation>A fee %1 times higher than %2 per kB is considered an insanely high fee.</translation>
     </message>
     <message numerus="yes">
-        <location line="+109"/>
+        <location line="+121"/>
         <source>Estimated to begin confirmation within %n block(s).</source>
         <translation>
             <numerusform>Estimated to begin confirmation within %n block.</numerusform>
@@ -3851,27 +5322,27 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         </translation>
     </message>
     <message>
-        <location line="-136"/>
+        <location line="-152"/>
         <source>The recipient address is not valid, please recheck.</source>
         <translation>The recipient address is not valid, please recheck.</translation>
     </message>
     <message>
-        <location line="-365"/>
-        <source>(Darksend requires this amount to be rounded up to the nearest %1).</source>
+        <location line="-346"/>
+        <source>using SwiftX</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+54"/>
+        <location line="+38"/>
         <source> split into %1 outputs using the UTXO splitter.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+94"/>
+        <location line="+89"/>
         <source>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</source>
         <translation>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</translation>
     </message>
     <message>
-        <location line="+220"/>
+        <location line="+222"/>
         <source>The amount to pay must be larger than 0.</source>
         <translation>The amount to pay must be larger than 0.</translation>
     </message>
@@ -3901,22 +5372,32 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+8"/>
         <source>Error: The wallet was unlocked only to anonymize coins.</source>
         <translation>Error: The wallet was unlocked only to anonymize coins.</translation>
     </message>
     <message>
-        <location line="+90"/>
+        <location line="+16"/>
+        <source>Error: The wallet was unlocked only to anonymize coins. Unlock canceled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+86"/>
         <source>Pay only the minimum fee of %1</source>
         <translation>Pay only the minimum fee of %1</translation>
     </message>
     <message>
-        <location line="+177"/>
+        <location line="+13"/>
+        <source>Estimated to get 6 confirmations near instantly with &lt;b&gt;SwiftX&lt;/b&gt;!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+158"/>
         <source>Warning: Unknown change address</source>
         <translation>Warning: Unknown change address</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+10"/>
         <source>(no label)</source>
         <translation>(no label)</translation>
     </message>
@@ -4015,7 +5496,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>This is a verified payment request.</translation>
     </message>
     <message>
-        <location filename="../sendcoinsentry.cpp" line="+32"/>
+        <location filename="../sendcoinsentry.cpp" line="+30"/>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Enter a label for this address to add it to your address book</translation>
     </message>
@@ -4023,7 +5504,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
 <context>
     <name>ShutdownWindow</name>
     <message>
-        <location filename="../utilitydialog.cpp" line="+43"/>
+        <location filename="../utilitydialog.cpp" line="+75"/>
         <source>GIANT Core is shutting down...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4051,24 +5532,24 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+15"/>
         <source>The GIANT address to sign the message with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+7"/>
-        <location line="+210"/>
+        <location line="+195"/>
         <source>Choose previously used address</source>
         <translation>Choose previously used address</translation>
     </message>
     <message>
-        <location line="-200"/>
-        <location line="+210"/>
+        <location line="-185"/>
+        <location line="+195"/>
         <source>Alt+A</source>
         <translation>Alt+A</translation>
     </message>
     <message>
-        <location line="-200"/>
+        <location line="-188"/>
         <source>Paste address from clipboard</source>
         <translation>Paste address from clipboard</translation>
     </message>
@@ -4078,7 +5559,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Alt+P</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+9"/>
         <source>Enter the message you want to sign here</source>
         <translation>Enter the message you want to sign here</translation>
     </message>
@@ -4088,27 +5569,27 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Signature</translation>
     </message>
     <message>
-        <location line="+27"/>
+        <location line="+24"/>
         <source>Copy the current signature to the system clipboard</source>
         <translation>Copy the current signature to the system clipboard</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+18"/>
         <source>Sign the message to prove you own this GIANT address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+106"/>
+        <location line="+103"/>
         <source>The GIANT address the message was signed with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+37"/>
+        <location line="+34"/>
         <source>Verify the message to ensure it was signed with the specified GIANT address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-140"/>
+        <location line="-134"/>
         <source>Sign &amp;Message</source>
         <translation>Sign &amp;Message</translation>
     </message>
@@ -4119,12 +5600,12 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+3"/>
-        <location line="+143"/>
+        <location line="+137"/>
         <source>Clear &amp;All</source>
         <translation>Clear &amp;All</translation>
     </message>
     <message>
-        <location line="-84"/>
+        <location line="-78"/>
         <source>&amp;Verify Message</source>
         <translation>&amp;Verify Message</translation>
     </message>
@@ -4134,7 +5615,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</translation>
     </message>
     <message>
-        <location line="+61"/>
+        <location line="+55"/>
         <source>Verify &amp;Message</source>
         <translation>Verify &amp;Message</translation>
     </message>
@@ -4144,42 +5625,42 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Reset all verify message fields</translation>
     </message>
     <message>
-        <location filename="../signverifymessagedialog.cpp" line="+31"/>
+        <location filename="../signverifymessagedialog.cpp" line="+30"/>
         <source>Click &quot;Sign Message&quot; to generate signature</source>
         <translation>Click &quot;Sign Message&quot; to generate signature</translation>
     </message>
     <message>
-        <location line="+83"/>
-        <location line="+80"/>
+        <location line="+79"/>
+        <location line="+73"/>
         <source>The entered address is invalid.</source>
         <translation>The entered address is invalid.</translation>
     </message>
     <message>
-        <location line="-80"/>
-        <location line="+8"/>
-        <location line="+72"/>
-        <location line="+8"/>
+        <location line="-73"/>
+        <location line="+7"/>
+        <location line="+66"/>
+        <location line="+7"/>
         <source>Please check the address and try again.</source>
         <translation>Please check the address and try again.</translation>
     </message>
     <message>
-        <location line="-80"/>
-        <location line="+80"/>
+        <location line="-73"/>
+        <location line="+73"/>
         <source>The entered address does not refer to a key.</source>
         <translation>The entered address does not refer to a key.</translation>
     </message>
     <message>
-        <location line="-72"/>
+        <location line="-66"/>
         <source>Wallet unlock was cancelled.</source>
         <translation>Wallet unlock was cancelled.</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>Private key for the entered address is not available.</source>
         <translation>Private key for the entered address is not available.</translation>
     </message>
     <message>
-        <location line="+12"/>
+        <location line="+11"/>
         <source>Message signing failed.</source>
         <translation>Message signing failed.</translation>
     </message>
@@ -4189,13 +5670,13 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Message signed.</translation>
     </message>
     <message>
-        <location line="+58"/>
+        <location line="+53"/>
         <source>The signature could not be decoded.</source>
         <translation>The signature could not be decoded.</translation>
     </message>
     <message>
         <location line="+0"/>
-        <location line="+13"/>
+        <location line="+12"/>
         <source>Please check the signature and try again.</source>
         <translation>Please check the signature and try again.</translation>
     </message>
@@ -4205,7 +5686,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>The signature did not match the message digest.</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+6"/>
         <source>Message verification failed.</source>
         <translation>Message verification failed.</translation>
     </message>
@@ -4218,7 +5699,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../splashscreen.cpp" line="+37"/>
+        <location filename="../splashscreen.cpp" line="+36"/>
         <source>GIANT Core</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4234,7 +5715,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>The Dash and PIVX Core Developers</source>
+        <source>The Dash Core developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4243,7 +5724,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../networkstyle.cpp" line="+19"/>
+        <location filename="../networkstyle.cpp" line="+20"/>
         <source>[testnet]</source>
         <translation>[testnet]</translation>
     </message>
@@ -4259,7 +5740,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
 <context>
     <name>TransactionDesc</name>
     <message numerus="yes">
-        <location filename="../transactiondesc.cpp" line="+34"/>
+        <location filename="../transactiondesc.cpp" line="+33"/>
         <source>Open for %n more block(s)</source>
         <translation>
             <numerusform>Open for %n more block</numerusform>
@@ -4272,7 +5753,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Open until %1</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+8"/>
         <location line="+11"/>
         <location line="+10"/>
         <location line="+12"/>
@@ -4280,22 +5761,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>conflicted</translation>
     </message>
     <message>
-        <location line="-31"/>
-        <source>%1/offline (verified via HyperSend)</source>
-        <translation>%1/offline (verified via HyperSend)</translation>
-    </message>
-    <message>
         <location line="+2"/>
-        <source>%1/confirmed (verified via HyperSend)</source>
-        <translation>%1/confirmed (verified via HyperSend)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>%1 confirmations (verified via HyperSend)</source>
-        <translation>%1 confirmations (verified via HyperSend)</translation>
-    </message>
-    <message>
-        <location line="+29"/>
         <source>%1/offline</source>
         <translation>%1/offline</translation>
     </message>
@@ -4311,37 +5777,52 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>%1 confirmations</translation>
     </message>
     <message>
-        <location line="-26"/>
-        <source>%1/offline (HyperSend verification in progress - %2 of %3 signatures)</source>
-        <translation>%1/offline (HyperSend verification in progress - %2 of %3 signatures)</translation>
+        <location line="-37"/>
+        <source>%1/offline (verified via SwiftX)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>%1/confirmed (HyperSend verification in progress - %2 of %3 signatures )</source>
-        <translation>%1/confirmed (HyperSend verification in progress - %2 of %3 signatures )</translation>
+        <source>%1/confirmed (verified via SwiftX)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>%1 confirmations (HyperSend verification in progress - %2 of %3 signatures)</source>
-        <translation>%1 confirmations (HyperSend verification in progress - %2 of %3 signatures)</translation>
+        <source>%1 confirmations (verified via SwiftX)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+7"/>
+        <source>%1/offline (SwiftX verification in progress - %2 of %3 signatures)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>%1/confirmed (SwiftX verification in progress - %2 of %3 signatures )</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>%1 confirmations (SwiftX verification in progress - %2 of %3 signatures)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+6"/>
-        <source>%1/offline (HyperSend verification failed)</source>
-        <translation>%1/offline (HyperSend verification failed)</translation>
+        <source>%1/offline (SwiftX verification failed)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>%1/confirmed (HyperSend verification failed)</source>
-        <translation>%1/confirmed (HyperSend verification failed)</translation>
+        <source>%1/confirmed (SwiftX verification failed)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+29"/>
         <source>Status</source>
         <translation>Status</translation>
     </message>
     <message>
-        <location line="+5"/>
+        <location line="+4"/>
         <source>, has not been successfully broadcast yet</source>
         <translation>, has not been successfully broadcast yet</translation>
     </message>
@@ -4359,7 +5840,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Date</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+6"/>
         <source>Source</source>
         <translation>Source</translation>
     </message>
@@ -4369,51 +5850,51 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Generated</translation>
     </message>
     <message>
-        <location line="+5"/>
-        <location line="+13"/>
-        <location line="+72"/>
+        <location line="+3"/>
+        <location line="+8"/>
+        <location line="+63"/>
         <source>From</source>
         <translation>From</translation>
     </message>
     <message>
-        <location line="-72"/>
+        <location line="-63"/>
         <source>unknown</source>
         <translation>unknown</translation>
     </message>
     <message>
         <location line="+1"/>
-        <location line="+20"/>
-        <location line="+69"/>
+        <location line="+19"/>
+        <location line="+58"/>
         <source>To</source>
         <translation>To</translation>
     </message>
     <message>
-        <location line="-87"/>
+        <location line="-75"/>
         <source>own address</source>
         <translation>own address</translation>
     </message>
     <message>
         <location line="+0"/>
-        <location line="+69"/>
+        <location line="+60"/>
         <source>watch-only</source>
         <translation>watch-only</translation>
     </message>
     <message>
-        <location line="-67"/>
+        <location line="-58"/>
         <source>label</source>
         <translation>label</translation>
     </message>
     <message>
-        <location line="+34"/>
-        <location line="+12"/>
-        <location line="+53"/>
-        <location line="+26"/>
-        <location line="+53"/>
+        <location line="+32"/>
+        <location line="+10"/>
+        <location line="+45"/>
+        <location line="+23"/>
+        <location line="+50"/>
         <source>Credit</source>
         <translation>Credit</translation>
     </message>
     <message numerus="yes">
-        <location line="-142"/>
+        <location line="-126"/>
         <source>matures in %n more block(s)</source>
         <translation>
             <numerusform>matures in %n more block</numerusform>
@@ -4426,14 +5907,14 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>not accepted</translation>
     </message>
     <message>
-        <location line="+59"/>
-        <location line="+25"/>
-        <location line="+53"/>
+        <location line="+49"/>
+        <location line="+22"/>
+        <location line="+50"/>
         <source>Debit</source>
         <translation>Debit</translation>
     </message>
     <message>
-        <location line="-68"/>
+        <location line="-63"/>
         <source>Total debit</source>
         <translation>Total debit</translation>
     </message>
@@ -4448,18 +5929,18 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Transaction fee</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+14"/>
         <source>Net amount</source>
         <translation>Net amount</translation>
     </message>
     <message>
         <location line="+6"/>
-        <location line="+9"/>
+        <location line="+10"/>
         <source>Message</source>
         <translation>Message</translation>
     </message>
     <message>
-        <location line="-7"/>
+        <location line="-8"/>
         <source>Comment</source>
         <translation>Comment</translation>
     </message>
@@ -4469,17 +5950,22 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Transaction ID</translation>
     </message>
     <message>
-        <location line="+18"/>
+        <location line="+1"/>
+        <source>Output index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
         <source>Merchant</source>
         <translation>Merchant</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+6"/>
         <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+7"/>
         <source>Debug information</source>
         <translation>Debug information</translation>
     </message>
@@ -4494,7 +5980,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Inputs</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+17"/>
         <source>Amount</source>
         <translation>Amount</translation>
     </message>
@@ -4527,7 +6013,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
 <context>
     <name>TransactionTableModel</name>
     <message>
-        <location filename="../transactiontablemodel.cpp" line="+229"/>
+        <location filename="../transactiontablemodel.cpp" line="+215"/>
         <source>Date</source>
         <translation>Date</translation>
     </message>
@@ -4542,7 +6028,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Address</translation>
     </message>
     <message numerus="yes">
-        <location line="+58"/>
+        <location line="+57"/>
         <source>Open for %n more block(s)</source>
         <translation>
             <numerusform>Open for %n more block</numerusform>
@@ -4590,12 +6076,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>This block was not received by any other nodes and will probably not be accepted!</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Generated but not accepted</source>
-        <translation>Generated but not accepted</translation>
-    </message>
-    <message>
-        <location line="+39"/>
+        <location line="+38"/>
         <source>Received with</source>
         <translation>Received with</translation>
     </message>
@@ -4611,46 +6092,91 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+2"/>
-        <source>Received via Darksend</source>
+        <source>Received via Obfuscation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>Darksend Denominate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <source>Darksend Collateral Payment</source>
+        <location line="+7"/>
+        <source>GIC Stake</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Darksend Make Collateral Inputs</source>
+        <source>zGIC Stake</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Obfuscation Denominate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Darksend Create Denominations</source>
+        <source>Obfuscation Collateral Payment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-14"/>
+        <location line="+2"/>
+        <source>Obfuscation Make Collateral Inputs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Obfuscation Create Denominations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Converted GIC to zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Spent zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Received GIC from zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Minted Change as zGIC from zGIC Spend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Converted zGIC to GIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+56"/>
+        <source>Anonymous (zGIC Transaction)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Anonymous (zGIC Stake)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-86"/>
         <source>Sent to</source>
         <translation>Sent to</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="-44"/>
+        <source>Orphan Block - Generated but not accepted. This does not impact your holdings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+46"/>
         <source>Payment to yourself</source>
         <translation>Payment to yourself</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Minted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+2"/>
+        <location line="+6"/>
         <source>Mined</source>
         <translation>Mined</translation>
     </message>
@@ -4660,17 +6186,17 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Obfuscated</translation>
     </message>
     <message>
-        <location line="+32"/>
+        <location line="+44"/>
         <source>watch-only</source>
         <translation>watch-only</translation>
     </message>
     <message>
-        <location line="+20"/>
+        <location line="+27"/>
         <source>(n/a)</source>
         <translation>(n/a)</translation>
     </message>
     <message>
-        <location line="+212"/>
+        <location line="+211"/>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
         <translation>Transaction status. Hover over this field to show number of confirmations.</translation>
     </message>
@@ -4749,37 +6275,12 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Received with</translation>
     </message>
     <message>
-        <location line="+2"/>
+        <location line="+1"/>
         <source>Sent to</source>
         <translation>Sent to</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Obfuscated</source>
-        <translation>Obfuscated</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Darksend Create Denominations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Darksend Denominate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Darksend Collateral Payment</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+11"/>
         <source>To yourself</source>
         <translation>To yourself</translation>
     </message>
@@ -4799,22 +6300,37 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location line="+2"/>
+        <source>Zerocoin Mint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Zerocoin Spend</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Zerocoin Spend to Self</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+1"/>
         <source>Other</source>
         <translation>Other</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+6"/>
         <source>Enter address or label to search</source>
         <translation>Enter address or label to search</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+4"/>
         <source>Min amount</source>
         <translation>Min amount</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+35"/>
         <source>Copy address</source>
         <translation>Copy address</translation>
     </message>
@@ -4844,7 +6360,12 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Show transaction details</translation>
     </message>
     <message>
-        <location line="+201"/>
+        <location line="+1"/>
+        <source>Hide orphan stakes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+228"/>
         <source>Export Transaction History</source>
         <translation>Export Transaction History</translation>
     </message>
@@ -4854,7 +6375,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Comma separated file (*.csv)</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+11"/>
         <source>Confirmed</source>
         <translation>Confirmed</translation>
     </message>
@@ -4889,7 +6410,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+10"/>
         <source>Exporting Failed</source>
         <translation>Exporting Failed</translation>
     </message>
@@ -4899,17 +6420,27 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>There was an error trying to save the transaction history to %1.</translation>
     </message>
     <message>
-        <location line="+4"/>
+        <location line="-4"/>
         <source>Exporting Successful</source>
         <translation>Exporting Successful</translation>
     </message>
     <message>
-        <location line="+0"/>
+        <location line="-310"/>
+        <source>Received GIC from zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Zerocoin Spend, Change in zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+307"/>
         <source>The transaction history was successfully saved to %1.</source>
         <translation>The transaction history was successfully saved to %1.</translation>
     </message>
     <message>
-        <location line="+126"/>
+        <location line="+121"/>
         <source>Range:</source>
         <translation>Range:</translation>
     </message>
@@ -4922,7 +6453,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
 <context>
     <name>UnitDisplayStatusBarControl</name>
     <message>
-        <location filename="../bitcoingui.cpp" line="+115"/>
+        <location filename="../bitcoingui.cpp" line="+120"/>
         <source>Unit to show amounts in. Click to select another unit.</source>
         <translation>Unit to show amounts in. Click to select another unit.</translation>
     </message>
@@ -4938,23 +6469,28 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
 <context>
     <name>WalletModel</name>
     <message>
-        <location filename="../walletmodel.cpp" line="+292"/>
+        <location filename="../walletmodel.cpp" line="+334"/>
         <location line="+9"/>
-        <location line="+11"/>
+        <location line="+9"/>
         <source>Send Coins</source>
         <translation>Send Coins</translation>
     </message>
     <message>
-        <location line="-20"/>
+        <location line="-18"/>
         <location line="+9"/>
-        <source>HyperSend doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 GIANT.</source>
+        <source>SwiftX doesn&apos;t support sending values that high yet. Transactions are currently limited to %1 GIC.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>WalletView</name>
     <message>
-        <location filename="../walletview.cpp" line="+52"/>
+        <location filename="../walletview.cpp" line="+64"/>
+        <source>HISTORY</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
         <source>&amp;Export</source>
         <translation>&amp;Export</translation>
     </message>
@@ -4969,7 +6505,7 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation>Selected amount:</translation>
     </message>
     <message>
-        <location line="+244"/>
+        <location line="+265"/>
         <source>Backup Wallet</source>
         <translation>Backup Wallet</translation>
     </message>
@@ -4978,31 +6514,45 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <source>Wallet Data (*.dat)</source>
         <translation>Wallet Data (*.dat)</translation>
     </message>
+</context>
+<context>
+    <name>ZGICControlDialog</name>
     <message>
-        <location line="+6"/>
-        <source>Backup Failed</source>
-        <translation>Backup Failed</translation>
+        <location filename="../forms/ZGICControlDialog.ui" line="+20"/>
+        <source>Select zGIC to Spend</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+0"/>
-        <source>There was an error trying to save the wallet data to %1.</source>
-        <translation>There was an error trying to save the wallet data to %1.</translation>
+        <location line="+28"/>
+        <source>Quantity</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+4"/>
-        <source>Backup Successful</source>
-        <translation>Backup Successful</translation>
+        <location line="+7"/>
+        <location line="+14"/>
+        <source>0</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+0"/>
-        <source>The wallet data was successfully saved to %1.</source>
-        <translation>The wallet data was successfully saved to %1.</translation>
+        <location line="-7"/>
+        <source>zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+39"/>
+        <source>Select/Deselect All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+79"/>
+        <source>Spendable?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>giant-core</name>
     <message>
-        <location filename="../giantstrings.cpp" line="+12"/>
+        <location filename="../giantstrings.cpp" line="+15"/>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
         <translation type="unfinished">(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</translation>
     </message>
@@ -5013,11 +6563,6 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+4"/>
-        <source>An error occurred while setting up the RPC address %s port %u for listening: %s</source>
-        <translation type="unfinished">An error occurred while setting up the RPC address %s port %u for listening: %s</translation>
-    </message>
-    <message>
-        <location line="+3"/>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation type="unfinished">Bind to given address and always listen on it. Use [host]:port notation for IPv6</translation>
     </message>
@@ -5033,6 +6578,11 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+4"/>
+        <source>Calculated accumulator checkpoint is not what is recorded by block index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Cannot obtain a lock on data directory %s. GIANT Core is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5058,26 +6608,41 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+3"/>
-        <source>Disable all GIANT specific functionality (Masternodes, Darksend, HyperSend, Budgeting) (0-1, default: %u)</source>
+        <source>Delete all zerocoin spends and mints that have been recorded to the blockchain database and reindex them (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
         <translation type="unfinished">Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Enable HyperSend, show confirmations for locked transactions (bool, default: %s)</source>
-        <translation type="unfinished">Enable HyperSend, show confirmations for locked transactions (bool, default: %s)</translation>
+        <location line="+5"/>
+        <source>Enable automatic Zerocoin minting from specific addresses (0-1, default: %u)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Enable use of automated Darksend for funds stored in this wallet (0-1, default: %u)</source>
+        <location line="+2"/>
+        <source>Enable automatic wallet backups triggered after each zGIC minting (0-1, default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
+        <source>Enable or disable staking functionality for GIC inputs (0-1, default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Enable or disable staking functionality for zGIC inputs (0-1, default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Enable spork administration functionality with the appropriate private key.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
         <translation type="unfinished">Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</translation>
     </message>
@@ -5088,6 +6653,11 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+2"/>
+        <source>Error: The transaction is larger than the maximum allowed transaction size!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+11"/>
         <source>Error: Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
         <translation type="unfinished">Error: Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</translation>
     </message>
@@ -5107,13 +6677,13 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation type="unfinished">Execute command when the best block changes (%s in cmd is replaced by block hash)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>Fees (in GIANT/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <location line="+8"/>
+        <source>Fees (in GIC/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Fees (in GIANT/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <source>Fees (in GIC/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5128,18 +6698,18 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+3"/>
-        <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
-        <translation type="unfinished">How thorough the block verification of -checkblocks is (0-4, default: %u)</translation>
-    </message>
-    <message>
-        <location line="+2"/>
         <source>If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)</source>
         <translation type="unfinished">If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+6"/>
         <source>In this mode -genproclimit controls how many blocks are generated immediately.</source>
         <translation type="unfinished">In this mode -genproclimit controls how many blocks are generated immediately.</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Insufficient or insufficient confirmed funds, you might need to wait a few minutes and try again.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -5148,6 +6718,11 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+3"/>
+        <source>Keep the specified amount available for spending at all times (default: 0)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Log transaction priority and fee per kB when mining blocks (default: %u)</source>
         <translation type="unfinished">Log transaction priority and fee per kB when mining blocks (default: %u)</translation>
     </message>
@@ -5158,27 +6733,32 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+3"/>
+        <source>Maximum average size of an index occurrence in the block spam filter (default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
         <translation type="unfinished">Maximum size of data in data carrier transactions we relay and mine (default: %u)</translation>
     </message>
     <message>
         <location line="+3"/>
+        <source>Maximum size of the list of indexes in the block spam filter (default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Maximum total fees to use in a single wallet transaction, setting too low may abort large transactions (default: %s)</source>
         <translation type="unfinished">Maximum total fees to use in a single wallet transaction, setting too low may abort large transactions (default: %s)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
-        <translation type="unfinished">Name to construct url for KeePass entry that stores the wallet passphrase</translation>
-    </message>
-    <message>
-        <location line="+2"/>
         <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
         <translation type="unfinished">Number of seconds to keep misbehaving peers from reconnecting (default: %u)</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Darksend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
+        <source>Obfuscation uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5187,14 +6767,14 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation type="unfinished">Output debugging information (default: %u, supplying &lt;category&gt; is optional)</translation>
     </message>
     <message>
-        <location line="+2"/>
-        <source>Provide liquidity to Darksend by infrequently mixing coins on a continual basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, low fees)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+4"/>
+        <location line="+5"/>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
         <translation type="unfinished">Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -5213,6 +6793,11 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
     </message>
     <message>
         <location line="+2"/>
+        <source>Set the number of included blocks to precompute per cycle. (minimum: %d) (maximum: %d) (default: %d)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
         <translation type="unfinished">Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</translation>
     </message>
@@ -5227,53 +6812,43 @@ https://www.transifex.com/giant-project/giant-project-translations</source>
         <translation type="unfinished">Show N confirmations for a successfully locked transaction (0-9999, default: %u)</translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>HyperSend requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
-        <translation type="unfinished">HyperSend requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</translation>
+        <location line="+12"/>
+        <source>Support filtering of blocks and transaction with bloom filters (default: %u)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
-        <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation type="unfinished">This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</translation>
+        <location line="+5"/>
+        <source>The block database contains a block which appears to be from the future. This may be due to your computer&apos;s date and time being set incorrectly. Only rebuild the block database if you are sure that your computer&apos;s date and time are correct</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+8"/>
         <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit &lt;https://www.openssl.org/&gt; and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
         <translation type="unfinished">This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit &lt;https://www.openssl.org/&gt; and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>To use giantd, or the -server option to giant-qt, you must set an rpcpassword in the configuration file:
-%s
-It is recommended you use the following random password:
-rpcuser=giantrpc
-rpcpassword=%s
-(you do not need to remember this password)
-The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permissions.
-It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.com
-</source>
+        <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+3"/>
         <source>Unable to bind to %s on this computer. GIANT Core is probably already running.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Unable to locate enough Darksend denominated funds for this transaction.</source>
+        <source>Unable to locate enough Obfuscation denominated funds for this transaction.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 10000 GIANT.</source>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 10000 GIC.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Unable to locate enough funds for this transaction that are not equal 10000 GIANT.</source>
+        <source>Unable to locate enough funds for this transaction that are not equal 10000 GIC.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5352,14 +6927,7 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>&lt;category&gt; can be:
-</source>
-        <translation type="unfinished">&lt;category&gt; can be:
-</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Accept command line and JSON-RPC commands</source>
         <translation type="unfinished">Accept command line and JSON-RPC commands</translation>
     </message>
@@ -5375,13 +6943,13 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
-        <source>Acceptable ciphers (default: %s)</source>
-        <translation type="unfinished">Acceptable ciphers (default: %s)</translation>
+        <source>Add a node to connect to and attempt to keep the connection open</source>
+        <translation type="unfinished">Add a node to connect to and attempt to keep the connection open</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation type="unfinished">Add a node to connect to and attempt to keep the connection open</translation>
+        <source>Adding Wrapped Serials supply...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5400,13 +6968,28 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Append comment to the user agent string</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Attempt to recover private keys from a corrupt wallet.dat</source>
         <translation type="unfinished">Attempt to recover private keys from a corrupt wallet.dat</translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Automatically create Tor hidden service (default: %d)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Block creation options:</source>
         <translation type="unfinished">Block creation options:</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Calculating missing accumulators...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5449,6 +7032,11 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished">Cannot write default address</translation>
     </message>
     <message>
+        <location line="+2"/>
+        <source>CoinSpend: failed check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+1"/>
         <source>Collateral not valid.</source>
         <translation type="unfinished">Collateral not valid.</translation>
@@ -5462,11 +7050,6 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <location line="+1"/>
         <source>Connect through SOCKS5 proxy</source>
         <translation type="unfinished">Connect through SOCKS5 proxy</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Connect to KeePassHttp on port &lt;port&gt; (default: %u)</source>
-        <translation type="unfinished">Connect to KeePassHttp on port &lt;port&gt; (default: %u)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5485,12 +7068,17 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2014-%i The Dash and PIVX Core Developers</source>
+        <source>Copyright (C) 2014-%i The Dash Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2015-%i The GIANT Core Developers</source>
+        <source>Copyright (C) 2015-%i The PIVX Core Developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Copyright (C) 2018-%i The GIANT Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5500,18 +7088,28 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
-        <source>Could not parse -rpcbind value %s as network address</source>
-        <translation type="unfinished">Could not parse -rpcbind value %s as network address</translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>Could not parse masternode.conf</source>
         <translation type="unfinished">Could not parse masternode.conf</translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Couldn&apos;t generate the accumulator witness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Debugging/Testing options:</source>
         <translation type="unfinished">Debugging/Testing options:</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Delete blockchain folders and resync from scratch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Disable OS notifications for incoming transactions (default: %u)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5524,7 +7122,7 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished">Discover own IP address (default: 1 when listening and no -externalip)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Do not load the wallet and disable wallet RPC calls</source>
         <translation type="unfinished">Do not load the wallet and disable wallet RPC calls</translation>
     </message>
@@ -5540,6 +7138,26 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Enable automatic Zerocoin minting (0-1, default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Enable precomputation of zGIC spends and stakes (0-1, default %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Enable publish hash transaction (locked via SwiftX) in &lt;address&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Enable publish raw transaction (locked via SwiftX) in &lt;address&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Enable the client to act as a masternode (0-1, default: %u)</source>
         <translation type="unfinished">Enable the client to act as a masternode (0-1, default: %u)</translation>
     </message>
@@ -5600,6 +7218,11 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Error writing zerocoinDB to disk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Error</source>
         <translation type="unfinished">Error</translation>
     </message>
@@ -5609,7 +7232,7 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished">Error: A fatal internal error occured, see debug.log for details</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Error: Can&apos;t select current denominated inputs</source>
         <translation type="unfinished">Error: Can&apos;t select current denominated inputs</translation>
     </message>
@@ -5619,7 +7242,7 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished">Error: Disk space is low!</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Error: Unsupported argument -tor found, use -onion.</source>
         <translation type="unfinished">Error: Unsupported argument -tor found, use -onion.</translation>
     </message>
@@ -5630,13 +7253,23 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
-        <source>Error: You already have pending entries in the Darksend pool</source>
+        <source>Error: You already have pending entries in the Obfuscation pool</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Failed to calculate accumulator checkpoint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
         <translation type="unfinished">Failed to listen on any port. Use -listen=0 if you want this.</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to parse host:port string</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5644,8 +7277,8 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished">Failed to read block</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Fee (in GIANT/kB) to add to transactions you send (default: %s)</source>
+        <location line="+4"/>
+        <source>Fee (in GIC/kB) to add to transactions you send (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5730,18 +7363,18 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Insufficient funds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Insufficient funds.</source>
         <translation type="unfinished">Insufficient funds.</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Invalid -onion address: &apos;%s&apos;</source>
-        <translation type="unfinished">Invalid -onion address: &apos;%s&apos;</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Invalid -proxy address: &apos;%s&apos;</source>
-        <translation type="unfinished">Invalid -proxy address: &apos;%s&apos;</translation>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5775,6 +7408,11 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Invalid amount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Invalid masternodeprivkey. Please see documenation.</source>
         <translation type="unfinished">Invalid masternodeprivkey. Please see documenation.</translation>
     </message>
@@ -5799,33 +7437,235 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished">Invalid script detected.</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>KeePassHttp id for the established association</source>
-        <translation type="unfinished">KeePassHttp id for the established association</translation>
+        <location line="+49"/>
+        <source>Percentage of automatically minted Zerocoin  (1-100, default: %u)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>KeePassHttp key for AES encrypted communication with KeePass</source>
-        <translation type="unfinished">KeePassHttp key for AES encrypted communication with KeePass</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Keep N GIANT anonymized (default: %u)</source>
+        <location line="+8"/>
+        <source>Recalculating GIC supply...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Recalculating minted ZGIC...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Recalculating spent ZGIC...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Reindex the GIC and zGIC money supply statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Reindexing zerocoin database...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Reindexing zerocoin failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+9"/>
+        <source>Selected coins value is less than payment target</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+32"/>
+        <source>Support the zerocoin light node protocol (default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>SwiftX options:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-281"/>
+        <source>This is a pre-release test build - use at your own risk - do not use for staking or merchant applications!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-190"/>
+        <source> mints deleted
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source> mints updated, </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source> unconfirmed transactions removed
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+38"/>
+        <source>Disable all GIANT specific functionality (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Enable SwiftX, show confirmations for locked transactions (bool, default: %s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+20"/>
+        <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Error: Unsupported argument -checklevel found. Checklevel must be level 4.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+14"/>
+        <source>Execute command when the best block changes and its size is over (%s in cmd is replaced by block hash, %d with the block size)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Failed to find coin set amongst held coins with less than maxNumber of Spends</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+17"/>
+        <source>In rare cases, a spend with 7 coins exceeds our maximum allowable transaction size, please retry spend using 6 or less coins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+37"/>
+        <source>Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+27"/>
+        <source>Specify custom backup path to add a copy of any automatic zGIC backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup. If backuppath is set as well, 4 backups will happen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Specify custom backup path to add a copy of any wallet backup. If set as dir, every backup generates a timestamped file. If set as file, will rewrite to that file every backup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>SwiftX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+66"/>
+        <source>&lt;category&gt; can be:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+10"/>
+        <source>Attempt to force blockchain corruption recovery</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+13"/>
+        <source>CoinSpend: Accumulator witness does not verify</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+18"/>
+        <source>Display the stake modifier calculations in the debug.log file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Display verbose coin stake messages in the debug.log file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+6"/>
+        <source>Enable publish hash block in &lt;address&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Enable publish hash transaction in &lt;address&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Enable publish raw block in &lt;address&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
+        <source>Enable publish raw transaction in &lt;address&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Enable staking functionality (0-1, default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+16"/>
+        <source>Error: A fatal internal error occurred, see debug.log for details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
+        <source>Error: No valid utxo!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+5"/>
+        <source>Failed to create mint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to find Zerocoins in wallet.dat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+4"/>
+        <source>Failed to select a zerocoin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to wipe zerocoinDB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Failed to write coin serial number into wallet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+33"/>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
         <translation type="unfinished">Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Last Darksend was too recent.</source>
+        <source>Last Obfuscation was too recent.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Last successful Darksend action was too recent.</source>
+        <source>Last successful Obfuscation action was too recent.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5875,6 +7715,11 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Loading sporks...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Loading wallet... (%3.2f %%)</source>
         <translation type="unfinished">Loading wallet... (%3.2f %%)</translation>
     </message>
@@ -5885,6 +7730,11 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Location of the auth cookie (default: data dir)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Lock is already in place.</source>
         <translation type="unfinished">Lock is already in place.</translation>
     </message>
@@ -5892,6 +7742,11 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <location line="+1"/>
         <source>Lock masternodes from masternode configuration file (default: %u)</source>
         <translation type="unfinished">Lock masternodes from masternode configuration file (default: %u)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Lookup(): Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5925,6 +7780,11 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Mint did not make it into blockchain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Missing input transaction information.</source>
         <translation type="unfinished">Missing input transaction information.</translation>
     </message>
@@ -5932,6 +7792,11 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <location line="+1"/>
         <source>Mixing in progress...</source>
         <translation type="unfinished">Mixing in progress...</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Need address because change is not exact</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5990,22 +7855,22 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
-        <source>Darksend is idle.</source>
+        <source>Number of custom location backups to retain (default: %d)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Darksend options:</source>
+        <source>Obfuscation is idle.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Darksend request complete:</source>
+        <source>Obfuscation request complete:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Darksend request incomplete:</source>
+        <source>Obfuscation request incomplete:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6029,24 +7894,39 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished">Password for JSON-RPC connections</translation>
     </message>
     <message>
+        <location line="+98"/>
+        <source>Use block spam filter (default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+25"/>
+        <source>could not get lock on cs_spendcache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>isValid(): Invalid -proxy address or hostname: &apos;%s&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="-122"/>
+        <source>Preparing for resync...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location line="+1"/>
         <source>Prepend debug output with timestamp (default: %u)</source>
         <translation type="unfinished">Prepend debug output with timestamp (default: %u)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation type="unfinished">RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</translation>
+        <source>Print version and exit</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
         <source>RPC server options:</source>
         <translation type="unfinished">RPC server options:</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>RPC support for HTTP persistent connections (default: %d)</source>
-        <translation type="unfinished">RPC support for HTTP persistent connections (default: %d)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6064,12 +7944,17 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished">Rebuild block chain index from current blk000??.dat files</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+4"/>
         <source>Receive and display P2P network alerts (default: %u)</source>
         <translation type="unfinished">Receive and display P2P network alerts (default: %u)</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
+        <source>Reindex the accumulator database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>Relay and mine data carrier transactions (default: %u)</source>
         <translation type="unfinished">Relay and mine data carrier transactions (default: %u)</translation>
     </message>
@@ -6090,6 +7975,16 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>ResetMintZerocoin finished: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>ResetSpentZerocoin finished: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Run a thread to flush wallet periodically (default: %u)</source>
         <translation type="unfinished">Run a thread to flush wallet periodically (default: %u)</translation>
     </message>
@@ -6099,19 +7994,9 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished">Run in the background as a daemon and accept commands</translation>
     </message>
     <message>
-        <location line="+1"/>
+        <location line="+2"/>
         <source>Send transactions as zero-fee transactions if possible (default: %u)</source>
         <translation type="unfinished">Send transactions as zero-fee transactions if possible (default: %u)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Server certificate file (default: %s)</source>
-        <translation type="unfinished">Server certificate file (default: %s)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Server private key (default: %s)</source>
-        <translation type="unfinished">Server private key (default: %s)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6147,6 +8032,11 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <location line="+1"/>
         <source>Set minimum block size in bytes (default: %u)</source>
         <translation type="unfinished">Set minimum block size in bytes (default: %u)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Set the Maximum reorg depth (default: %u)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6225,8 +8115,18 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Spend Valid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Spend unconfirmed change when sending transactions (default: %u)</source>
         <translation type="unfinished">Spend unconfirmed change when sending transactions (default: %u)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Staking options:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6249,12 +8149,7 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <translation type="unfinished">Submitted to masternode, waiting in queue %s</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>HyperSend options:</source>
-        <translation type="unfinished">HyperSend options:</translation>
-    </message>
-    <message>
-        <location line="+1"/>
+        <location line="+3"/>
         <source>Synchronization failed</source>
         <translation type="unfinished">Synchronization failed</translation>
     </message>
@@ -6290,6 +8185,21 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Syncing zGIC wallet...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The coin spend has been used</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>The transaction did not verify</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>This help message</source>
         <translation type="unfinished">This help message</translation>
     </message>
@@ -6312,6 +8222,31 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <location line="+1"/>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation type="unfinished">Threshold for disconnecting misbehaving peers (default: %u)</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Too many spends needed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Tor control port password (default: empty)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Tor control port to use if onion listening enabled (default: %s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction Created</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Transaction Mint Started</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6355,13 +8290,28 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Trying to spend an already spent serial #, try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Unable to bind to %s on this computer (bind returned error %s)</source>
         <translation type="unfinished">Unable to bind to %s on this computer (bind returned error %s)</translation>
     </message>
     <message>
         <location line="+1"/>
+        <source>Unable to find transaction containing mint</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>Unable to sign spork message, wrong key?</source>
         <translation type="unfinished">Unable to sign spork message, wrong key?</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Unable to start HTTP server. See debug log for details.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6380,21 +8330,6 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
-        <source>Use KeePass 2 integration using KeePassHttp plugin (default: %u)</source>
-        <translation type="unfinished">Use KeePass 2 integration using KeePassHttp plugin (default: %u)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Use N separate masternodes to anonymize funds  (2-8, default: %u)</source>
-        <translation type="unfinished">Use N separate masternodes to anonymize funds  (2-8, default: %u)</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Use OpenSSL (https) for JSON-RPC connections</source>
-        <translation type="unfinished">Use OpenSSL (https) for JSON-RPC connections</translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>Use UPnP to map the listening port (default: %u)</source>
         <translation type="unfinished">Use UPnP to map the listening port (default: %u)</translation>
     </message>
@@ -6405,8 +8340,18 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>Use a custom max chain reorganization depth (default: %u)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+2"/>
         <source>Use the test network</source>
         <translation type="unfinished">Use the test network</translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>User Agent comment (%s) contains unsafe characters.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6415,7 +8360,12 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
-        <source>Value more than Darksend pool maximum allows.</source>
+        <source>Value is below the smallest available denomination (= 1) of zGIC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Value more than Obfuscation pool maximum allows.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6480,6 +8430,11 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>You don&apos;t have enough Zerocoins in your wallet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
         <source>You need to rebuild the database using -reindex to change -txindex</source>
         <translation type="unfinished">You need to rebuild the database using -reindex to change -txindex</translation>
     </message>
@@ -6500,6 +8455,16 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
     </message>
     <message>
         <location line="+1"/>
+        <source>ZeroMQ notification options:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+1"/>
+        <source>Zerocoin options:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location line="+3"/>
         <source>on startup</source>
         <translation type="unfinished">on startup</translation>
     </message>
@@ -6507,257 +8472,6 @@ for example: alertnotify=echo %%s | mail -s &quot;GIANT Alert&quot; admin@foo.co
         <location line="+1"/>
         <source>wallet.dat corrupt, salvage failed</source>
         <translation type="unfinished">wallet.dat corrupt, salvage failed</translation>
-    </message>
-</context>
-<context>
-    <name>tradingDialog</name>
-    <message>
-        <location filename="../forms/tradingdialog.ui" line="+14"/>
-        <source>Bittrex API</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+28"/>
-        <source>Order Book</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+52"/>
-        <source>Bids</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>Asks</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <location line="+16"/>
-        <source>label</source>
-        <translation type="unfinished">label</translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <location line="+16"/>
-        <location line="+2380"/>
-        <location line="+13"/>
-        <location line="+51"/>
-        <location line="+51"/>
-        <location line="+32"/>
-        <location line="+32"/>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-2537"/>
-        <source>Market History</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+15"/>
-        <source>Open Orders</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+22"/>
-        <source>Advanced View</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+6"/>
-        <source>Trade history</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+15"/>
-        <source>Buy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+12"/>
-        <source>Buy GIANT</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+23"/>
-        <location line="+1155"/>
-        <source>Units</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-1108"/>
-        <location line="+1192"/>
-        <location line="+517"/>
-        <source>GIANT</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-1696"/>
-        <location line="+552"/>
-        <location line="+472"/>
-        <location line="+37"/>
-        <source>BTC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-1042"/>
-        <location line="+1147"/>
-        <source>Bid</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-1128"/>
-        <location line="+1094"/>
-        <source>Order Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-1076"/>
-        <location line="+1057"/>
-        <source>Max</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-1005"/>
-        <location line="+2231"/>
-        <source>BTC Available:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-1803"/>
-        <location line="+472"/>
-        <location line="+1812"/>
-        <location line="+19"/>
-        <location line="+38"/>
-        <source>0.00000000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-2300"/>
-        <source>Total w/ 0.25% Fee</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+472"/>
-        <source>Sell</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+177"/>
-        <source>Sell GIANT</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+26"/>
-        <location line="+1036"/>
-        <source>GIANT Available:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-608"/>
-        <source> 0.00000000 </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+41"/>
-        <source>Total w/ 0.25% Fee </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+431"/>
-        <source> 0.00000000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source> BTC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+25"/>
-        <source>Balance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+44"/>
-        <source>GIANT Balance:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+19"/>
-        <source>BTC Balance:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+51"/>
-        <source>GIANT Pending:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+64"/>
-        <source>BTC Pending:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+32"/>
-        <source>Bittrex GIANT Deposit Address:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+13"/>
-        <source>Generate GIANT Deposit Address</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+158"/>
-        <source>Update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+28"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Convert VCoin:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+47"/>
-        <source>=</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>$0.0000 / B0.00000000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+29"/>
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+31"/>
-        <source>Update API Keys</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+23"/>
-        <source>API Key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+42"/>
-        <source>Secret Key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+68"/>
-        <source>0.000000000</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tradingdialog.cpp" line="+423"/>
-        <source>Cancel Order</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

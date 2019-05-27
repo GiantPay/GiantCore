@@ -89,7 +89,7 @@ use old versions of Upstart and do not supply the start-stop-daemon uitility.
 Copy giantd.init to /etc/init.d/giantd. Test by running "service giantd start".
 
 Using this script, you can adjust the path and flags to the giantd program by
-setting the ALQOD and FLAGS environment variables in the file
+setting the GIANTD and FLAGS environment variables in the file
 /etc/sysconfig/giantd. You can also use the DAEMONOPTS environment variable here.
 
 5. Auto-respawn
