@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=GIANT Core
+Comment=GIANTP2P Cryptocurrency
+Comment[fr]=GIANT, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=GIANT, eşten eşe kriptografik sanal para birimi
+Exec=giant-qt %u
+Terminal=false
+Type=Application
+Icon=giant128
+MimeType=x-scheme-handler/giant;
+Categories=Office;Finance;
+StartupWMClass=Giant-qt

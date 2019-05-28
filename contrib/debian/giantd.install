@@ -1,0 +1,3 @@
+usr/local/bin/giantd usr/bin
+usr/local/bin/giant-cli usr/bin
+debian/examples/giant.conf etc/giant

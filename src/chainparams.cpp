@@ -135,6 +135,8 @@ public:
         nTargetTimespan = 1 * 60; // GIANT: 1 day
         nTargetSpacing = 2 * 60;  // GIANT: 2 minute
         nMaturity = 200;
+        nOldMaturity = 100;
+        nChangeMaturityHeight = 71053;
         nMasternodeCountDrift = 20;
         nMaxMoneyOut = 100000000 * COIN;
 
@@ -248,7 +250,7 @@ public:
         nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
         nRequiredAccumulation = 1;
         nDefaultSecurityLevel = 100; //full security level for accumulators
-        nZerocoinHeaderVersion = 4; //Block headers must be this version once zerocoin is active
+        nZerocoinHeaderVersion = 6; //Block headers must be this version once zerocoin is active
         nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zgic to be stakable
 
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee

@@ -1,0 +1,6 @@
+usr/local/bin/giant-qt usr/bin
+share/pixmaps/giant32.xpm usr/share/pixmaps
+share/pixmaps/giant16.xpm usr/share/pixmaps
+share/pixmaps/giant128.png usr/share/pixmaps
+debian/giant-qt.desktop usr/share/applications
+debian/giant-qt.protocol usr/share/kde4/services/
