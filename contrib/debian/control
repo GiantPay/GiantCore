@@ -1,8 +1,8 @@
 Source: giant
 Section: utils
 Priority: optional
-Maintainer: Fuzzbawls <fuzzbawls@gmail.com>
-Uploaders: Fuzzbawls <fuzzbawls@gmail.com>
+Maintainer: Filinberg Dmitry <filinberg@gmail.com>
+Uploaders: Filinberg Dmitry <filinberg@gmail.com>
 Build-Depends: debhelper,
  devscripts,
  automake,
