@@ -983,7 +983,7 @@ bool AppInit2() {
     bSpendZeroConfChange = GetBoolArg("-spendzeroconfchange", false);
     bdisableSystemnotifications = GetBoolArg("-disablesystemnotifications", false);
     fSendFreeTransactions = GetBoolArg("-sendfreetransactions", false);
-    fEnableAutoConvert = GetBoolArg("-enableautoconvertaddress", DEFAULT_AUTOCONVERTADDRESS);
+    fEnableAutoConvert = false; //GetBoolArg("-enableautoconvertaddress", DEFAULT_AUTOCONVERTADDRESS);
 
     std::string strWalletFile = GetArg("-wallet", "wallet.dat");
 #endif // ENABLE_WALLET
@@ -1478,16 +1478,16 @@ bool AppInit2() {
                 invalid_out::LoadSerials();
 
                 // Drop all information from the zerocoinDB and repopulate
-                if (GetBoolArg("-reindexzerocoin", false)) {
-                    if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
-                        uiInterface.InitMessage(_("Reindexing zerocoin database..."));
-                        std::string strError = ReindexZerocoinDB();
-                        if (strError != "") {
-                            strLoadError = strError;
-                            break;
-                        }
-                    }
-                }
+//                if (GetBoolArg("-reindexzerocoin", false)) {
+//                    if (chainActive.Height() > Params().Zerocoin_StartHeight()) {
+//                        uiInterface.InitMessage(_("Reindexing zerocoin database..."));
+//                        std::string strError = ReindexZerocoinDB();
+//                        if (strError != "") {
+//                            strLoadError = strError;
+//                            break;
+//                        }
+//                    }
+//                }
 
                 // Wrapped serials inflation check
                 bool reindexDueWrappedSerials = false;
@@ -1756,7 +1756,7 @@ bool AppInit2() {
 
         pwalletMain->InitAutoConvertAddresses();
 
-        bool fEnableZGICBackups = GetBoolArg("-backupzgic", true);
+        bool fEnableZGICBackups = false; //GetBoolArg("-backupzgic", true);
         pwalletMain->setZGICAutoBackups(fEnableZGICBackups);
 
         //Load zerocoin mint hashes to memory
@@ -1896,7 +1896,7 @@ bool AppInit2() {
         }
     }
 
-    fEnableZeromint = GetBoolArg("-enablezeromint", true);
+    fEnableZeromint = false; //GetBoolArg("-enablezeromint", true);
 
     nZeromintPercentage = GetArg("-zeromintpercentage", 10);
     if (nZeromintPercentage > 100) nZeromintPercentage = 100;
@@ -2010,7 +2010,7 @@ bool AppInit2() {
         // Run a thread to flush wallet periodically
         threadGroup.create_thread(boost::bind(&ThreadFlushWalletDB, boost::ref(pwalletMain->strWalletFile)));
 
-        if (GetBoolArg("-precompute", true)) {
+        if (GetBoolArg("-precompute", false)) {
             // Run a thread to precompute any zGIC spends
             threadGroup.create_thread(boost::bind(&ThreadPrecomputeSpends));
         }

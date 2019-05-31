@@ -117,14 +117,14 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
     vbox->addLayout(hbox_buttons);
     transactionsPage->setLayout(vbox);
 
-    privacyPage = new PrivacyDialog();
+//    privacyPage = new PrivacyDialog();
     governancePage = new GovernancePage();
     receiveCoinsPage = new ReceiveCoinsDialog();
     sendCoinsPage = new SendCoinsDialog();
 
     addWidget(overviewPage);
     addWidget(transactionsPage);
-    addWidget(privacyPage);
+//    addWidget(privacyPage);
     addWidget(governancePage);
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
@@ -200,7 +200,7 @@ void WalletView::setWalletModel(WalletModel* walletModel)
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage->setWalletModel(walletModel);
     }
-    privacyPage->setModel(walletModel);
+//    privacyPage->setModel(walletModel);
     receiveCoinsPage->setModel(walletModel);
     sendCoinsPage->setModel(walletModel);
     governancePage->setWalletModel(walletModel);
@@ -280,9 +280,9 @@ void WalletView::gotoReceiveCoinsPage()
 
 void WalletView::gotoPrivacyPage()
 {
-    setCurrentWidget(privacyPage);
+//    setCurrentWidget(privacyPage);
     // Refresh UI-elements in case coins were locked/unlocked in CoinControl
-    walletModel->emitBalanceChanged();
+//    walletModel->emitBalanceChanged();
 }
 
 void WalletView::gotoSendCoinsPage(QString addr)
@@ -347,7 +347,7 @@ bool WalletView::handlePaymentRequest(const SendCoinsRecipient& recipient)
 void WalletView::showOutOfSyncWarning(bool fShow)
 {
     overviewPage->showOutOfSyncWarning(fShow);
-    privacyPage->showOutOfSyncWarning(fShow);
+//    privacyPage->showOutOfSyncWarning(fShow);
 }
 
 void WalletView::updateEncryptionStatus()
