@@ -23,7 +23,7 @@
    <item>
     <widget class="QTabWidget" name="multisigTabWidget">
      <property name="styleSheet">
-      <string notr="true">QScrollArea{border: 1px solid #5b4c7c;}</string>
+      <string notr="true">QScrollArea{border: 1px solid #115bba;}</string>
      </property>
      <property name="currentIndex">
       <number>1</number>
@@ -593,13 +593,13 @@ Please be patient after clicking import.</string>
      <widget class="QWidget" name="signMultisigTransaction">
       <property name="styleSheet">
        <string notr="true">txScrollArea:{
-	border: 1px solid #5b4c7c;
+	border: 1px solid #115bba;
 }
 keyScrollArea:{
-	border: 1px solid #5b4c7c;
+	border: 1px solid #115bba;
 }
 txScrollArea:{
-	border: 1px solid #5b4c7c;
+	border: 1px solid #115bba;
 }</string>
       </property>
       <attribute name="title">

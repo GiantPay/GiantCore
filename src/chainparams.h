@@ -108,6 +108,7 @@ public:
 
     CBaseChainParams::Network NetworkID() const { return networkID; }
     CAmount StakeMinAmount() const { return nStakeMinAmount; }
+    int64_t MasternodeCollateralPrice() const { return nMasternodeCollateralPrice; }
 
     /** Zerocoin **/
     std::string Zerocoin_Modulus() const { return zerocoinModulus; }
@@ -186,6 +187,7 @@ protected:
     std::string strObfuscationPoolDummyAddress;
     int64_t nStartMasternodePayments;
     CAmount nStakeMinAmount;
+    int64_t nMasternodeCollateralPrice;
     std::string zerocoinModulus;
     int nMaxZerocoinSpendsPerTransaction;
     CAmount nMinZerocoinMintFee;
