@@ -1890,27 +1890,49 @@ double ConvertBitsToDouble(unsigned int nBits)
 int64_t GetBlockValue(int nHeight)
 {
     if (nHeight == 0) return 200000 * COIN;
-
+    
     int64_t nSubsidy;
-    if (nHeight <= 500) {
-        nSubsidy = 0 * COIN;
-    } else if (nHeight < 20000) {
-        nSubsidy = 10 * COIN;
-    } else if (nHeight < 40000) {
-        nSubsidy = 15 * COIN;
-    } else if (nHeight <= 262800) {
-        nSubsidy = 20 * COIN;
-    } else if (nHeight <= 525600) {
-        nSubsidy = 10 * COIN;
-    } else if (nHeight <= 788400) {
-        nSubsidy = 8 * COIN;
-    } else if (nHeight <= 1051200) {
-        nSubsidy = 6 * COIN;
-    } else if (nHeight <= 1314000) {
-        nSubsidy = 4 * COIN;
+    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
+        if (nHeight <= 500) {
+            nSubsidy = 0 * COIN;
+        } else if (nHeight <= 20000) {
+            nSubsidy = 10 * COIN;
+        } else if (nHeight <= 40000) {
+            nSubsidy = 15 * COIN;
+        } else if (nHeight <= 262800) {
+            nSubsidy = 20 * COIN;
+        } else if (nHeight <= 525600) {
+            nSubsidy = 10 * COIN;
+        } else if (nHeight <= 788400) {
+            nSubsidy = 8 * COIN;
+        } else if (nHeight <= 1051200) {
+            nSubsidy = 6 * COIN;
+        } else if (nHeight <= 1314000) {
+            nSubsidy = 4 * COIN;
+        } else {
+            nSubsidy = 2 * COIN;
+        }
     } else {
-        nSubsidy = 2 * COIN;
-    }
+        if (nHeight < 500) {
+            nSubsidy = 0 * COIN;
+        } else if (nHeight < 20000) {
+            nSubsidy = 10 * COIN;
+        } else if (nHeight < 40000) {
+            nSubsidy = 15 * COIN;
+        } else if (nHeight <= 262800) {
+            nSubsidy = 20 * COIN;
+        } else if (nHeight <= 525600) {
+            nSubsidy = 10 * COIN;
+        } else if (nHeight <= 788400) {
+            nSubsidy = 8 * COIN;
+        } else if (nHeight <= 1051200) {
+            nSubsidy = 6 * COIN;
+        } else if (nHeight <= 1314000) {
+            nSubsidy = 4 * COIN;
+        } else {
+            nSubsidy = 2 * COIN;
+        }
+    }    
     return nSubsidy;
 }
 

@@ -74,7 +74,7 @@ static const Checkpoints::CCheckpointData data = {
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
-    boost::assign::map_list_of(0, uint256("0x0000017654caad0d5ebb3bd3293b9824ea931b562fe14c6053660158988adf91"));
+    boost::assign::map_list_of(0, uint256("0x000004b8ccbf64b6aa377f73992a707ae2a7040f1fdedca8f8b14b5ab3866f89"));
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
     1530822773,
@@ -264,56 +264,56 @@ public:
     }
 };
 static CMainParams mainParams;
-
 /**
  * Testnet (v3)
  */
-class CTestNetParams : public CMainParams
-{
+class CTestNetParams : public CMainParams {
 public:
-    CTestNetParams()
-    {
+
+    CTestNetParams() {
         networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
         pchMessageStart[0] = 0x64;
         pchMessageStart[1] = 0x44;
         pchMessageStart[2] = 0x65;
         pchMessageStart[3] = 0x54;
-        vAlertPubKey = ParseHex("04e1d34432d3a5803312f33cf20686b1801835ea8efb18ad77d50b5ec1ce5ca73de65c36c082ca5c51880f8ffb5a296d8dc780f1dc02f22eba4dde1816a6a54b75");
+        vAlertPubKey = ParseHex("04e0670bd443a3991a00525c229e2501386d85ee44701023163fb87f5efdffb7774857e33d5db179d8b61b2b2c32a88b58e0c76138f50c58ae0fdc73469335ffa5");
         nDefaultPort = 55600;
-        nEnforceBlockUpgradeMajority = 4320; // 75%
-        nRejectBlockOutdatedMajority = 5472; // 95%
-        nToCheckBlockUpgradeMajority = 5760; // 4 days
+        nEnforceBlockUpgradeMajority = 51;
+        nRejectBlockOutdatedMajority = 75;
+        nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // GIANT: 1 day
-        nTargetSpacing = 2 * 60;  // GIANT: 1 minute
-        nLastPOWBlock = 262800;
+        nTargetSpacing = 2 * 60; // GIANT: 2 minute
+        nLastPOWBlock = 100;
         nMaturity = 15;
-        nMasternodeCountDrift = 4;
+        nOldMaturity = 15;
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
         nMaxMoneyOut = 100000000 * COIN;
-        nZerocoinStartHeight = 201576;
-        nZerocoinStartTime = 1501776000;
-        nBlockEnforceSerialRange = 1; //Enforce serial range starting this block
-        nBlockRecalculateAccumulators = 9908000; //Trigger a recalculation of accumulators
-        nBlockFirstFraudulent = 9891737; //First block that bad serials emerged
-        nBlockLastGoodCheckpoint = 9891730; //Last valid accumulator checkpoint
-        nBlockEnforceInvalidUTXO = 9902850; //Start enforcing the invalid UTXO's
-        nInvalidAmountFiltered = 0; //Amount of invalid coins filtered through exchanges, that should be considered valid
-        nBlockZerocoinV2 = 444020; //!> The block that zerocoin v2 becomes active
-        nEnforceNewSporkKey = 1521604800; //!> Sporks signed after Wednesday, March 21, 2018 4:00:00 AM GMT must use the new spork key
-        nRejectOldSporkKey = 1522454400; //!> Reject old spork key after Saturday, March 31, 2018 12:00:00 AM GMT
 
-        // Fake Serial Attack
-        nFakeSerialBlockheightEnd = -1;
-        nSupplyBeforeFakeSerial = 0;
-
-        //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1530822773;
-        genesis.nNonce = 3105010;
+        genesis.nTime = 1562186376;
+        genesis.nNonce = 3342583;
+        
+//        genesis.nTime = 1562186376;
+//        genesis.nBits = 0x1e0ffff0;
+//        genesis.nNonce = 0;
+//
+//        int n = 0;
+//        uint256 hashTarget = uint256("0x00000ffff0000000000000000000000000000000000000000000000000000000");
+//        while (true) {
+//            hashGenesisBlock = genesis.GetHash();
+//            if (hashGenesisBlock <= hashTarget) {
+//                std::cout << "nNonce: " << genesis.nNonce << ", hash: " + hashGenesisBlock.GetHex() << ", hashMerkleRoot: " << genesis.hashMerkleRoot.GetHex() << "\n";
+//                n++;
+//                if (n > 3) {
+//                    break;
+//                }
+//            }
+//            ++genesis.nNonce;
+//        }
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x0000017654caad0d5ebb3bd3293b9824ea931b562fe14c6053660158988adf91"));
+        assert(hashGenesisBlock == uint256("0x000004b8ccbf64b6aa377f73992a707ae2a7040f1fdedca8f8b14b5ab3866f89"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -337,28 +337,23 @@ public:
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
+        nBudgetCycleBlocks = 144;
         fMiningRequiresPeers = true;
         fAllowMinDifficultyBlocks = true;
         fDefaultConsistencyChecks = false;
-        fRequireStandard = true;
+        fRequireStandard = false;
         fMineBlocksOnDemand = false;
         fTestnetToBeDeprecatedFieldRPC = true;
 
         nPoolMaxTransactions = 2;
-        nBudgetCycleBlocks = 144;
-        strSporkKey = "049e53e687fdafd78fd42d730fad0e7ea1819396176a2cb85d7a76fa4559cdbd2c2f05330a6f5cbadb44a6c1d324f167e679e9f3e95d9d5649761a3e7f59bf4500";
-        strSporkKeyOld = "049e53e687fdafd78fd42d730fad0e7ea1819396176a2cb85d7a76fa4559cdbd2c2f05330a6f5cbadb44a6c1d324f167e679e9f3e95d9d5649761a3e7f59bf4500";
+        strSporkKey = "049125884104cb4120b3f3dd309c5009a76d093bc69780d3be968bb0813bebde9c59d3e7aeb501a2297dfa96ba46147a09fe4b36ad27eb848cd3f89c00959b947d";
+        strSporkKeyOld = "049125884104cb4120b3f3dd309c5009a76d093bc69780d3be968bb0813bebde9c59d3e7aeb501a2297dfa96ba46147a09fe4b36ad27eb848cd3f89c00959b947d";
         strObfuscationPoolDummyAddress = "";
-        nStartMasternodePayments = 1562531573;
+        nStartMasternodePayments = 1559420020;
         nStakeMinAmount = 1 * COIN;
-        nMasternodeCollateralPrice = 1000;
-        nBudget_Fee_Confirmations = 3; // Number of confirmations for the finalization fee. We have to make this very short
-                                       // here because we only have a 8 block finalization window on testnet
-
-        nProposalEstablishmentTime = 60 * 5; // Proposals must be at least 5 mns old to make it into a test budget
     }
-    const Checkpoints::CCheckpointData& Checkpoints() const
-    {
+
+    const Checkpoints::CCheckpointData& Checkpoints() const {
         return dataTestnet;
     }
 };
