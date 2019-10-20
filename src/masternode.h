@@ -125,6 +125,13 @@ public:
         MASTERNODE_POS_ERROR
     };
 
+    enum Level : int {
+        UNKNOWN = 0,
+        MASTERNODE = 1,
+        SUPERNODE = 2,
+        DEPRECATED = 3
+    };
+
     CTxIn vin;
     CService addr;
     CPubKey pubKeyCollateralAddress;
@@ -144,6 +151,20 @@ public:
     int nScanningErrorCount;
     int nLastScanningErrorBlockHeight;
     CMasternodePing lastPing;
+    CAmount nCollateralPrice;
+
+    static int GetLevel(CAmount nInValue, int nBlockHeight);
+    static int GetLevel(const CTxIn& vin, int nBlockHeight);
+    static std::string GetLevelText(int level);
+    static bool IsAppropriateTxIn(CAmount nInValue);
+    static bool IsAppropriateTxIn(const CTxIn& vin, CAmount& nNewInValue);
+
+    static int begin(int height) {
+        return Params().IsTiersMasternodeEnabled(height) ? Level::MASTERNODE : Level::DEPRECATED;
+    };
+    static int end(int height) {
+        return Params().IsTiersMasternodeEnabled(height) ? Level::SUPERNODE : Level::DEPRECATED;
+    };
 
     int64_t nLastDsee;  // temporary, do not save. Remove after migration to v12
     int64_t nLastDseep; // temporary, do not save. Remove after migration to v12
@@ -176,6 +197,7 @@ public:
         swap(first.nLastDsq, second.nLastDsq);
         swap(first.nScanningErrorCount, second.nScanningErrorCount);
         swap(first.nLastScanningErrorBlockHeight, second.nLastScanningErrorBlockHeight);
+        swap(first.nCollateralPrice, second.nCollateralPrice);
     }
 
     CMasternode& operator=(CMasternode from)
@@ -217,6 +239,7 @@ public:
         READWRITE(nLastDsq);
         READWRITE(nScanningErrorCount);
         READWRITE(nLastScanningErrorBlockHeight);
+        READWRITE(nCollateralPrice);
     }
 
     int64_t SecondsSincePayment();
@@ -255,17 +278,7 @@ public:
         return activeState == MASTERNODE_ENABLED;
     }
 
-    int GetMasternodeInputAge()
-    {
-        if (chainActive.Tip() == NULL) return 0;
-
-        if (cacheInputAge == 0) {
-            cacheInputAge = GetInputAge(vin);
-            cacheInputAgeBlock = chainActive.Tip()->nHeight;
-        }
-
-        return cacheInputAge + (chainActive.Tip()->nHeight - cacheInputAgeBlock);
-    }
+    int GetMasternodeInputAge();
 
     std::string GetStatus();
 
@@ -284,6 +297,8 @@ public:
 
     int64_t GetLastPaid();
     bool IsValidNetAddr();
+    int GetLevel();
+    std::string GetLevelText();
 };
 
 

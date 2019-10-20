@@ -138,13 +138,6 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool tx
 
     result.push_back(Pair("moneysupply",ValueFromAmount(blockindex->nMoneySupply)));
 
-    UniValue zgicObj(UniValue::VOBJ);
-    for (auto denom : libzerocoin::zerocoinDenomList) {
-        zgicObj.push_back(Pair(to_string(denom), ValueFromAmount(blockindex->mapZerocoinSupply.at(denom) * (denom*COIN))));
-    }
-    zgicObj.push_back(Pair("total", ValueFromAmount(blockindex->GetZerocoinSupply())));
-    result.push_back(Pair("zGICsupply", zgicObj));
-
     return result;
 }
 
@@ -181,18 +174,6 @@ UniValue getchecksumblock(const UniValue& params, bool fHelp)
             "  \"previousblockhash\" : \"hash\",  (string) The hash of the previous block\n"
             "  \"nextblockhash\" : \"hash\"       (string) The hash of the next block\n"
             "  \"moneysupply\" : \"supply\"       (numeric) The money supply when this block was added to the blockchain\n"
-            "  \"zGICsupply\" :\n"
-            "  {\n"
-            "     \"1\" : n,            (numeric) supply of 1 zGIC denomination\n"
-            "     \"5\" : n,            (numeric) supply of 5 zGIC denomination\n"
-            "     \"10\" : n,           (numeric) supply of 10 zGIC denomination\n"
-            "     \"50\" : n,           (numeric) supply of 50 zGIC denomination\n"
-            "     \"100\" : n,          (numeric) supply of 100 zGIC denomination\n"
-            "     \"500\" : n,          (numeric) supply of 500 zGIC denomination\n"
-            "     \"1000\" : n,         (numeric) supply of 1000 zGIC denomination\n"
-            "     \"5000\" : n,         (numeric) supply of 5000 zGIC denomination\n"
-            "     \"total\" : n,        (numeric) The total supply of all zGIC denominations\n"
-            "  }\n"
             "}\n"
 
             "\nResult (for verbose=false):\n"
@@ -572,18 +553,6 @@ UniValue getblock(const UniValue& params, bool fHelp)
             "  \"previousblockhash\" : \"hash\",  (string) The hash of the previous block\n"
             "  \"nextblockhash\" : \"hash\"       (string) The hash of the next block\n"
             "  \"moneysupply\" : \"supply\"       (numeric) The money supply when this block was added to the blockchain\n"
-            "  \"zGICsupply\" :\n"
-            "  {\n"
-            "     \"1\" : n,            (numeric) supply of 1 zGIC denomination\n"
-            "     \"5\" : n,            (numeric) supply of 5 zGIC denomination\n"
-            "     \"10\" : n,           (numeric) supply of 10 zGIC denomination\n"
-            "     \"50\" : n,           (numeric) supply of 50 zGIC denomination\n"
-            "     \"100\" : n,          (numeric) supply of 100 zGIC denomination\n"
-            "     \"500\" : n,          (numeric) supply of 500 zGIC denomination\n"
-            "     \"1000\" : n,         (numeric) supply of 1000 zGIC denomination\n"
-            "     \"5000\" : n,         (numeric) supply of 5000 zGIC denomination\n"
-            "     \"total\" : n,        (numeric) The total supply of all zGIC denominations\n"
-            "  }\n"
             "}\n"
 
             "\nResult (for verbose=false):\n"

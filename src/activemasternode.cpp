@@ -193,39 +193,6 @@ bool CActiveMasternode::SendMasternodePing(std::string& errorMessage)
         if (mnodeman.mapSeenMasternodeBroadcast.count(hash)) mnodeman.mapSeenMasternodeBroadcast[hash].lastPing = mnp;
 
         mnp.Relay();
-
-        /*
-         * IT'S SAFE TO REMOVE THIS IN FURTHER VERSIONS
-         * AFTER MIGRATION TO V12 IS DONE
-         */
-
-        if (IsSporkActive(SPORK_10_MASTERNODE_PAY_UPDATED_NODES)) return true;
-        // for migration purposes ping our node on old masternodes network too
-        std::string retErrorMessage;
-        std::vector<unsigned char> vchMasterNodeSignature;
-        int64_t masterNodeSignatureTime = GetAdjustedTime();
-
-        std::string strMessage = service.ToString() + std::to_string(masterNodeSignatureTime) + std::to_string(false);
-
-        if (!obfuScationSigner.SignMessage(strMessage, retErrorMessage, vchMasterNodeSignature, keyMasternode)) {
-            errorMessage = "dseep sign message failed: " + retErrorMessage;
-            return false;
-        }
-
-        if (!obfuScationSigner.VerifyMessage(pubKeyMasternode, vchMasterNodeSignature, strMessage, retErrorMessage)) {
-            errorMessage = "dseep verify message failed: " + retErrorMessage;
-            return false;
-        }
-
-        LogPrint("masternode", "dseep - relaying from active mn, %s \n", vin.ToString().c_str());
-        LOCK(cs_vNodes);
-        for (CNode* pnode : vNodes)
-            pnode->PushMessage("dseep", vin, vchMasterNodeSignature, masterNodeSignatureTime, false);
-
-        /*
-         * END OF "REMOVE"
-         */
-
         return true;
     } else {
         // Seems like we are trying to send a ping while the Masternode is not registered in the network
@@ -276,8 +243,8 @@ bool CActiveMasternode::CreateBroadcast(std::string strService, std::string strK
 
 bool CActiveMasternode::CreateBroadcast(CTxIn vin, CService service, CKey keyCollateralAddress, CPubKey pubKeyCollateralAddress, CKey keyMasternode, CPubKey pubKeyMasternode, std::string& errorMessage, CMasternodeBroadcast &mnb)
 {
-	// wait for reindex and/or import to finish
-	if (fImporting || fReindex) return false;
+    // wait for reindex and/or import to finish
+    if (fImporting || fReindex) return false;
 
     CMasternodePing mnp(vin);
     if (!mnp.Sign(keyMasternode, pubKeyMasternode)) {
@@ -286,6 +253,7 @@ bool CActiveMasternode::CreateBroadcast(CTxIn vin, CService service, CKey keyCol
         mnb = CMasternodeBroadcast();
         return false;
     }
+    mnodeman.mapSeenMasternodePing.insert(make_pair(mnp.GetHash(), mnp));
 
     mnb = CMasternodeBroadcast(service, vin, pubKeyCollateralAddress, pubKeyMasternode, PROTOCOL_VERSION);
     mnb.lastPing = mnp;
@@ -295,45 +263,16 @@ bool CActiveMasternode::CreateBroadcast(CTxIn vin, CService service, CKey keyCol
         mnb = CMasternodeBroadcast();
         return false;
     }
+    mnodeman.mapSeenMasternodeBroadcast.insert(make_pair(mnb.GetHash(), mnb));
+    masternodeSync.AddedMasternodeList(mnb.GetHash());
 
-    /*
-     * IT'S SAFE TO REMOVE THIS IN FURTHER VERSIONS
-     * AFTER MIGRATION TO V12 IS DONE
-     */
-
-    if (IsSporkActive(SPORK_10_MASTERNODE_PAY_UPDATED_NODES)) return true;
-    // for migration purposes inject our node in old masternodes' list too
-    std::string retErrorMessage;
-    std::vector<unsigned char> vchMasterNodeSignature;
-    int64_t masterNodeSignatureTime = GetAdjustedTime();
-    std::string donationAddress = "";
-    int donationPercantage = 0;
-
-    std::string vchPubKey(pubKeyCollateralAddress.begin(), pubKeyCollateralAddress.end());
-    std::string vchPubKey2(pubKeyMasternode.begin(), pubKeyMasternode.end());
-
-    std::string strMessage = service.ToString() + std::to_string(masterNodeSignatureTime) + vchPubKey + vchPubKey2 + std::to_string(PROTOCOL_VERSION) + donationAddress + std::to_string(donationPercantage);
-
-    if (!obfuScationSigner.SignMessage(strMessage, retErrorMessage, vchMasterNodeSignature, keyCollateralAddress)) {
-        errorMessage = "dsee sign message failed: " + retErrorMessage;
-        LogPrintf("CActiveMasternode::Register() - Error: %s\n", errorMessage.c_str());
-        return false;
+    CMasternode* pmn = mnodeman.Find(vin);
+    if (!pmn) {
+        CMasternode mn(mnb);
+        mnodeman.Add(mn);
+    } else {
+        pmn->UpdateFromNewBroadcast(mnb);
     }
-
-    if (!obfuScationSigner.VerifyMessage(pubKeyCollateralAddress, vchMasterNodeSignature, strMessage, retErrorMessage)) {
-        errorMessage = "dsee verify message failed: " + retErrorMessage;
-        LogPrintf("CActiveMasternode::Register() - Error: %s\n", errorMessage.c_str());
-        return false;
-    }
-
-    LOCK(cs_vNodes);
-    for (CNode* pnode : vNodes)
-        pnode->PushMessage("dsee", vin, service, vchMasterNodeSignature, masterNodeSignatureTime, pubKeyCollateralAddress, pubKeyMasternode, -1, -1, masterNodeSignatureTime, PROTOCOL_VERSION, donationAddress, donationPercantage);
-
-    /*
-     * END OF "REMOVE"
-     */
-
     return true;
 }
 
@@ -344,15 +283,15 @@ bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secr
 
 bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey, std::string strTxHash, std::string strOutputIndex)
 {
-	// wait for reindex and/or import to finish
-	if (fImporting || fReindex) return false;
+    // wait for reindex and/or import to finish
+    if (fImporting || fReindex) return false;
 
     // Find possible candidates
     TRY_LOCK(pwalletMain->cs_wallet, fWallet);
     if (!fWallet) return false;
 
     vector<COutput> possibleCoins = SelectCoinsMasternode();
-    COutput* selectedOutput;
+    COutput* selectedOutput = nullptr;
 
     // Find the vin
     if (!strTxHash.empty()) {
@@ -368,23 +307,34 @@ bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secr
 
         bool found = false;
         for (COutput& out : possibleCoins) {
-            if (out.tx->GetHash() == txHash && out.i == outputIndex) {
-                selectedOutput = &out;
-                found = true;
-                break;
-            }
+            if(out.tx->GetHash() != txHash || out.i != outputIndex)
+                continue;
+
+            if(!CMasternode::GetLevel(out.tx->vout[out.i].nValue, chainActive.Height()))
+                continue;
+
+            selectedOutput = &out;
+            break;
         }
+
         if (!found) {
             LogPrintf("CActiveMasternode::GetMasterNodeVin - Could not locate valid vin\n");
             return false;
         }
     } else {
-        // No output specified,  Select the first one
-        if (possibleCoins.size() > 0) {
-            selectedOutput = &possibleCoins[0];
-        } else {
+        // No output specified, Select the first one with higheset level
+        if (!possibleCoins.size()) {
             LogPrintf("CActiveMasternode::GetMasterNodeVin - Could not locate specified vin from possible list\n");
             return false;
+        }
+
+        selectedOutput = &possibleCoins[0];
+
+        auto selectedLevel = CMasternode::GetLevel(selectedOutput->tx->vout[selectedOutput->i].nValue, chainActive.Height());
+
+        for(auto& out : possibleCoins) {
+            if(CMasternode::GetLevel(out.tx->vout[out.i].nValue, chainActive.Height()) > selectedLevel)
+                selectedOutput = &out;
         }
     }
 
@@ -392,12 +342,11 @@ bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secr
     return GetVinFromOutput(*selectedOutput, vin, pubkey, secretKey);
 }
 
-
 // Extract Masternode vin information from output
 bool CActiveMasternode::GetVinFromOutput(COutput out, CTxIn& vin, CPubKey& pubkey, CKey& secretKey)
 {
-	// wait for reindex and/or import to finish
-	if (fImporting || fReindex) return false;
+    // wait for reindex and/or import to finish
+    if (fImporting || fReindex) return false;
 
     CScript pubScript;
 
@@ -437,7 +386,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
             mnTxHash.SetHex(mne.getTxHash());
 
             int nIndex;
-            if(!mne.castOutputIndex(nIndex))
+            if (!mne.castOutputIndex(nIndex))
                 continue;
 
             COutPoint outpoint = COutPoint(mnTxHash, nIndex);
@@ -457,9 +406,8 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
 
     // Filter
     for (const COutput& out : vCoins) {
-        if (out.tx->vout[out.i].nValue == Params().MasternodeCollateralPrice() * COIN) { //exactly
+        if (CMasternode::IsAppropriateTxIn(out.tx->vout[out.i].nValue))
             filteredCoins.push_back(out);
-        }
     }
     return filteredCoins;
 }

@@ -64,7 +64,12 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
         (170000, uint256("0x9144cbb966ae2207e9737a1457eb5e91dabf9089e116e246cbf36f24417f1ee5"))
         (190000, uint256("0x1da21460b75c0253842f846f58f42f1da47f060603df30e67584e7d609488ce7"))
         (210002, uint256("0x8533aa929236537e8d8bad1a8305f207abcd313b0ed18ba0ae90fdfb5780717f"))
-        (230000, uint256("0x296cfeb18fe09c1a8211c419689b881fa534e7e1b8e0daed77b459438c0a02af"));
+        (230000, uint256("0x296cfeb18fe09c1a8211c419689b881fa534e7e1b8e0daed77b459438c0a02af"))
+        (260000, uint256("0xd36427c9c53efb684bf08a84faafb2a432042cace2edf9d45db057fa3436fda3"))
+        (290001, uint256("0xd93d9bfe056f427ecb5b8dafb6dcb886e82b3a72ec998a5c7bbcf26a647d599a"))
+        (320000, uint256("0x4fe34fc6ea68d2a058578d3a00f10ebfd474e0fe5681b534aae3adaec5950cff"))
+        (338000, uint256("0x9fc8f8f1ea522506661f833f0da4a50b6759f473f450b72a29a56fa656497e0a"))
+        (361000, uint256("0x6f26b090a92a89bc38f33bd6c9f472963e9e1a0edbec57adc84f259dba8877c5"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
     1554603273, // * UNIX timestamp of last checkpoint block
@@ -236,8 +241,17 @@ public:
         strSporkKeyOld = "04cd66b21f8273bf8c6ddd2b97fe5f830271637ceb82bc6269b010fef7090aa05657b78178f3605c11abd8567dbca949012e864a5132b355dcfa4d33346eaeee1f";
         strObfuscationPoolDummyAddress = "GNEZjVTQHjff8BoWvUhGMSg9KZA7QNEwUm";
         nStartMasternodePayments = 1524781746;
-        nStakeMinAmount = 10 * COIN;
-        nMasternodeCollateralPrice = 1000;
+        nStakeMinAmount = 100 * COIN;
+        nMinStakeActivationHeight = 380000;
+
+        nDeprecatedPeriod = 700;
+        nDeprecatedCollateralPrice = 1000;
+        nMasternodeCollateralPrice = 5000;
+        nSupernodeCollateralPrice = 20000;
+        dDeprecatedRewardFactor = 0.8;
+        dMasternodeRewardFactor = 0.16;
+        dSupernodeRewardFactor = 0.64;
+        nTiersActivationHeight = 368200;
 
         /** Zerocoin */
         zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
@@ -285,35 +299,25 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // GIANT: 1 day
         nTargetSpacing = 2 * 60; // GIANT: 2 minute
-        nLastPOWBlock = 100;
-        nMaturity = 15;
-        nOldMaturity = 15;
+        nLastPOWBlock = 1000;
+        nMaturity = 10;
+        nOldMaturity = 10;
         nModifierUpdateBlock = 51197; //approx Mon, 17 Apr 2017 04:00:00 GMT
         nMaxMoneyOut = 100000000 * COIN;
+        nTiersActivationHeight = 1500;
+        nDeprecatedPeriod = 1000;
+        nDeprecatedCollateralPrice = 1000;
+        nMasternodeCollateralPrice = 5000;
+        nSupernodeCollateralPrice = 10000;
+        dDeprecatedRewardFactor = 0.8;
+        dMasternodeRewardFactor = 0.16;
+        dSupernodeRewardFactor = 0.64;
 
-        genesis.nTime = 1562186376;
-        genesis.nNonce = 3342583;
-        
-//        genesis.nTime = 1562186376;
-//        genesis.nBits = 0x1e0ffff0;
-//        genesis.nNonce = 0;
-//
-//        int n = 0;
-//        uint256 hashTarget = uint256("0x00000ffff0000000000000000000000000000000000000000000000000000000");
-//        while (true) {
-//            hashGenesisBlock = genesis.GetHash();
-//            if (hashGenesisBlock <= hashTarget) {
-//                std::cout << "nNonce: " << genesis.nNonce << ", hash: " + hashGenesisBlock.GetHex() << ", hashMerkleRoot: " << genesis.hashMerkleRoot.GetHex() << "\n";
-//                n++;
-//                if (n > 3) {
-//                    break;
-//                }
-//            }
-//            ++genesis.nNonce;
-//        }
+        genesis.nTime = 1569069261;
+        genesis.nNonce = 99949;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x000004b8ccbf64b6aa377f73992a707ae2a7040f1fdedca8f8b14b5ab3866f89"));
+        assert(hashGenesisBlock == uint256("0x00000611e70d4994c41bbed65a959ecb1b44af4fc2927594c81fda438cd72ba7"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -351,6 +355,7 @@ public:
         strObfuscationPoolDummyAddress = "";
         nStartMasternodePayments = 1559420020;
         nStakeMinAmount = 1 * COIN;
+        nMinStakeActivationHeight = 1000;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const {

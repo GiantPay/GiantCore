@@ -425,7 +425,7 @@ UniValue mnbudgetvote(const UniValue& params, bool fHelp)
         std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
         mnEntries = masternodeConfig.getEntries();
 
-        for (CMasternodeConfig::CMasternodeEntry mne : masternodeConfig.getEntries()) {
+        for (CMasternodeConfig::CMasternodeEntry mne : mnEntries) {
 
             if( strAlias != mne.getAlias()) continue;
 

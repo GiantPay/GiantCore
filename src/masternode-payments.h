@@ -30,7 +30,7 @@ void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDa
 bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight);
 std::string GetRequiredPaymentsString(int nBlockHeight);
 bool IsBlockValueValid(const CBlock& block, CAmount nExpectedValue, CAmount nMinted);
-void FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, bool fProofOfStake, bool fZGICStake);
+CAmount FillBlockPayee(CMutableTransaction& txNew, CAmount blockReward, bool fProofOfStake);
 
 void DumpMasternodePayments();
 
@@ -63,15 +63,18 @@ class CMasternodePayee
 public:
     CScript scriptPubKey;
     int nVotes;
+    int level;
 
     CMasternodePayee()
     {
+        level = CMasternode::Level::UNKNOWN;
         scriptPubKey = CScript();
         nVotes = 0;
     }
 
-    CMasternodePayee(CScript payee, int nVotesIn)
+    CMasternodePayee(int level, CScript payee, int nVotesIn)
     {
+        this->level = level;
         scriptPubKey = payee;
         nVotes = nVotesIn;
     }
@@ -83,6 +86,7 @@ public:
     {
         READWRITE(scriptPubKey);
         READWRITE(nVotes);
+        READWRITE(level);
     }
 };
 
@@ -104,45 +108,52 @@ public:
         vecPayments.clear();
     }
 
-    void AddPayee(CScript payeeIn, int nIncrement)
+    void AddPayee(int level, CScript payeeIn, int nIncrement)
     {
         LOCK(cs_vecPayments);
 
-        for (CMasternodePayee& payee : vecPayments) {
-            if (payee.scriptPubKey == payeeIn) {
-                payee.nVotes += nIncrement;
-                return;
-            }
-        }
+        auto payee = std::find_if(vecPayments.begin(), vecPayments.end(), [&payeeIn](const CMasternodePayee& p){
+            return p.scriptPubKey == payeeIn;
+        });
 
-        CMasternodePayee c(payeeIn, nIncrement);
-        vecPayments.push_back(c);
+        if(payee == vecPayments.end())
+            vecPayments.emplace_back(level, payeeIn, nIncrement);
+        else
+            payee->nVotes += nIncrement;
     }
 
-    bool GetPayee(CScript& payee)
+    bool GetPayee(int level, CScript& payee)
     {
         LOCK(cs_vecPayments);
 
-        int nVotes = -1;
-        for (CMasternodePayee& p : vecPayments) {
-            if (p.nVotes > nVotes) {
-                payee = p.scriptPubKey;
-                nVotes = p.nVotes;
-            }
-        }
+        auto payment = vecPayments.cend();
 
-        return (nVotes > -1);
+        for(auto p = vecPayments.cbegin(), e = vecPayments.cend(); p != e; ++p) {
+
+            if(p->level != level)
+                continue;
+
+            if(payment == vecPayments.cend() || p->nVotes > payment->nVotes)
+                payment = p;
+        };
+
+        if(payment == vecPayments.cend())
+            return false;
+
+        payee = payment->scriptPubKey;
+
+        return true;
     }
 
     bool HasPayeeWithVotes(CScript payee, int nVotesReq)
     {
         LOCK(cs_vecPayments);
 
-        for (CMasternodePayee& p : vecPayments) {
-            if (p.nVotes >= nVotesReq && p.scriptPubKey == payee) return true;
-        }
+        auto payment = std::find_if(vecPayments.cbegin(), vecPayments.cend(), [&](const CMasternodePayee& p){
+            return p.nVotes >= nVotesReq && p.scriptPubKey == payee;
+        });
 
-        return false;
+        return payment != vecPayments.cend();
     }
 
     bool IsTransactionValid(const CTransaction& txNew);
@@ -167,12 +178,14 @@ public:
     int nBlockHeight;
     CScript payee;
     std::vector<unsigned char> vchSig;
+    int payeeLevel;
 
     CMasternodePaymentWinner()
     {
         nBlockHeight = 0;
         vinMasternode = CTxIn();
         payee = CScript();
+        payeeLevel = CMasternode::Level::UNKNOWN;
     }
 
     CMasternodePaymentWinner(CTxIn vinIn)
@@ -180,9 +193,10 @@ public:
         nBlockHeight = 0;
         vinMasternode = vinIn;
         payee = CScript();
+        payeeLevel = CMasternode::Level::UNKNOWN;
     }
 
-    uint256 GetHash()
+    uint256 GetHash() const
     {
         CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
         ss << payee;
@@ -197,9 +211,10 @@ public:
     bool SignatureValid();
     void Relay();
 
-    void AddPayee(CScript payeeIn)
+    void AddPayee(CScript payeeIn, int level)
     {
         payee = payeeIn;
+        payeeLevel = level;
     }
 
 
@@ -219,7 +234,7 @@ public:
         std::string ret = "";
         ret += vinMasternode.ToString();
         ret += ", " + std::to_string(nBlockHeight);
-        ret += ", " + payee.ToString();
+        ret += ", " + std::to_string(payeeLevel) + ":" + payee.ToString();
         ret += ", " + std::to_string((int)vchSig.size());
         return ret;
     }
@@ -261,29 +276,16 @@ public:
     void CleanPaymentList();
     int LastPayment(CMasternode& mn);
 
-    bool GetBlockPayee(int nBlockHeight, CScript& payee);
+    bool GetBlockPayee(int nBlockHeight, int level, CScript& payee);
     bool IsTransactionValid(const CTransaction& txNew, int nBlockHeight);
-    bool IsScheduled(CMasternode& mn, int nNotBlockHeight);
+    bool IsScheduled(CMasternode& mn, int nSameLevelMNCount, int nNotBlockHeight);
 
-    bool CanVote(COutPoint outMasternode, int nBlockHeight)
-    {
-        LOCK(cs_mapMasternodePayeeVotes);
-
-        if (mapMasternodesLastVote.count(outMasternode.hash + outMasternode.n)) {
-            if (mapMasternodesLastVote[outMasternode.hash + outMasternode.n] == nBlockHeight) {
-                return false;
-            }
-        }
-
-        //record this masternode voted
-        mapMasternodesLastVote[outMasternode.hash + outMasternode.n] = nBlockHeight;
-        return true;
-    }
+    bool CanVote(const COutPoint& outMasternode, int nBlockHeight, int level);
 
     int GetMinMasternodePaymentsProto();
     void ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
     std::string GetRequiredPaymentsString(int nBlockHeight);
-    void FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake, bool fZGICStake);
+    CAmount FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake);
     std::string ToString() const;
     int GetOldestBlock();
     int GetNewestBlock();

@@ -528,12 +528,12 @@ void CBudgetManager::CheckAndRemove()
 
 }
 
-void CBudgetManager::FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, bool fProofOfStake)
+CAmount CBudgetManager::FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, bool fProofOfStake)
 {
     LOCK(cs);
 
     CBlockIndex* pindexPrev = chainActive.Tip();
-    if (!pindexPrev) return;
+    if (!pindexPrev) return 0;
 
     int nHighestCount = 0;
     CScript payee;
@@ -589,6 +589,8 @@ void CBudgetManager::FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, b
             LogPrint("mnbudget","CBudgetManager::FillBlockPayee - Budget payment to %s for %lld\n", address2.ToString(), nAmount);
         }
     }
+
+    return nAmount;
 }
 
 CFinalizedBudget* CBudgetManager::FindFinalizedBudget(uint256 nHash)

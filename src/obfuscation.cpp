@@ -1603,7 +1603,7 @@ bool CObfuscationPool::DoAutomaticDenominating(bool fDryRun)
 
         // otherwise, try one randomly
         while (i < 10) {
-            CMasternode* pmn = mnodeman.FindRandomNotInVec(vecMasternodesUsed, ActiveProtocol());
+            CMasternode* pmn = mnodeman.FindRandomNotInVec(CMasternode::Level::UNKNOWN, vecMasternodesUsed, ActiveProtocol());
             if (pmn == NULL) {
                 LogPrintf("DoAutomaticDenominating --- Can't find random masternode!\n");
                 strAutoDenomResult = _("Can't find random Masternode.");
@@ -1732,14 +1732,14 @@ bool CObfuscationPool::MakeCollateralAmounts()
 
     // try to use non-denominated and not mn-like funds
     bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChange,
-        nFeeRet, strFail, &coinControl, ONLY_NONDENOMINATED_NOT1000IFMN);
+        nFeeRet, strFail, &coinControl, ONLY_NONDENOMINATED_NOTCOLLATERALPRICEIFMN);
     if (!success) {
         // if we failed (most likeky not enough funds), try to use all coins instead -
         // MN-like funds should not be touched in any case and we can't mix denominated without collaterals anyway
         CCoinControl* coinControlNull = NULL;
         LogPrintf("MakeCollateralAmounts: ONLY_NONDENOMINATED_NOT1000IFMN Error - %s\n", strFail);
         success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChange,
-            nFeeRet, strFail, coinControlNull, ONLY_NOT1000IFMN);
+            nFeeRet, strFail, coinControlNull, ONLY_NOTCOLLATERALPRICEIFMN);
         if (!success) {
             LogPrintf("MakeCollateralAmounts: ONLY_NOT1000IFMN Error - %s\n", strFail);
             reservekeyCollateral.ReturnKey();
@@ -1819,7 +1819,7 @@ bool CObfuscationPool::CreateDenominated(CAmount nTotalValue)
 
     CCoinControl* coinControl = NULL;
     bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChange,
-        nFeeRet, strFail, coinControl, ONLY_NONDENOMINATED_NOT1000IFMN);
+        nFeeRet, strFail, coinControl, ONLY_NONDENOMINATED_NOTCOLLATERALPRICEIFMN);
     if (!success) {
         LogPrintf("CreateDenominated: Error - %s\n", strFail);
         // TODO: return reservekeyDenom here
@@ -2113,9 +2113,16 @@ bool CObfuScationSigner::IsVinAssociatedWithPubkey(CTxIn& vin, CPubKey& pubkey)
 
     CTransaction txVin;
     uint256 hash;
+    CAmount nCollateralPrice;
+    CMasternode::IsAppropriateTxIn(vin, nCollateralPrice);
+
+    LogPrintf("CObfuScationSigner::IsVinAssociatedWithPubkey : vin=%s, collateralPrice=%d\n",
+            vin.ToString(),
+            nCollateralPrice);
+
     if (GetTransaction(vin.prevout.hash, txVin, hash, true)) {
         for (CTxOut out : txVin.vout) {
-            if (out.nValue == Params().MasternodeCollateralPrice() * COIN) {
+            if (out.nValue == nCollateralPrice) {
                 if (out.scriptPubKey == payee2) return true;
             }
         }
@@ -2306,7 +2313,9 @@ void ThreadCheckObfuScationPool()
 
             // check if we should activate or ping every few minutes,
             // start right after sync is considered to be done
-            if (c % MASTERNODE_PING_SECONDS == 1) activeMasternode.ManageStatus();
+            if (c % MASTERNODE_PING_SECONDS == 1) {
+                activeMasternode.ManageStatus();
+            }
 
             if (c % 60 == 0) {
                 mnodeman.CheckAndRemove();

@@ -42,6 +42,7 @@
 
 #include "libzerocoin/CoinSpend.h"
 #include "lightzgicthread.h"
+#include "masternode.h"
 
 #include <boost/unordered_map.hpp>
 
@@ -54,6 +55,7 @@ class CInv;
 class CScriptCheck;
 class CValidationInterface;
 class CValidationState;
+class CMasternode;
 
 struct CBlockTemplate;
 struct CNodeStateStats;
@@ -240,7 +242,7 @@ bool GetTransaction(const uint256& hash, CTransaction& tx, uint256& hashBlock, b
 
 // ***TODO***
 double ConvertBitsToDouble(unsigned int nBits);
-int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount, bool isZGICStake);
+CAmount GetMasternodePayment(int level, CAmount blockValue);
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader* pblock, bool fProofOfStake);
 
 bool ActivateBestChain(CValidationState& state, CBlock* pblock = NULL, bool fAlreadyChecked = false);

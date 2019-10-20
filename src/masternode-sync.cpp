@@ -50,11 +50,13 @@ bool CMasternodeSync::IsBlockchainSynced()
     if (!lockMain) return false;
 
     CBlockIndex* pindex = chainActive.Tip();
-    if (pindex == NULL) return false;
+    if (!pindex) return false;
 
-
-    if (pindex->nTime + 60 * 60 < GetTime())
-        return false;
+    if (Params().NetworkID() == CBaseChainParams::MAIN) {
+        if (pindex->nTime + 60 * 60 < GetTime()) {
+            return false;
+        }
+    }
 
     fBlockchainSynced = true;
 
@@ -86,28 +88,26 @@ void CMasternodeSync::Reset()
 
 void CMasternodeSync::AddedMasternodeList(uint256 hash)
 {
-    if (mnodeman.mapSeenMasternodeBroadcast.count(hash)) {
-        if (mapSeenSyncMNB[hash] < MASTERNODE_SYNC_THRESHOLD) {
-            lastMasternodeList = GetTime();
-            mapSeenSyncMNB[hash]++;
-        }
-    } else {
-        lastMasternodeList = GetTime();
-        mapSeenSyncMNB.insert(make_pair(hash, 1));
+    auto mnb = mapSeenSyncMNB.emplace(hash, 1);
+    if(!mnb.second) {
+        auto& seenSyncMnb = mnb.first->second;
+        if(seenSyncMnb >= MASTERNODE_SYNC_THRESHOLD)
+            return;
+        ++seenSyncMnb;
     }
+    lastMasternodeList = GetTime();
 }
 
 void CMasternodeSync::AddedMasternodeWinner(uint256 hash)
 {
-    if (masternodePayments.mapMasternodePayeeVotes.count(hash)) {
-        if (mapSeenSyncMNW[hash] < MASTERNODE_SYNC_THRESHOLD) {
-            lastMasternodeWinner = GetTime();
-            mapSeenSyncMNW[hash]++;
-        }
-    } else {
-        lastMasternodeWinner = GetTime();
-        mapSeenSyncMNW.insert(make_pair(hash, 1));
+    auto mnb = mapSeenSyncMNW.emplace(hash, 1);
+    if(!mnb.second) {
+        auto& seenSyncMnw = mnb.first->second;
+        if(seenSyncMnw >= MASTERNODE_SYNC_THRESHOLD)
+            return;
+        ++seenSyncMnw;
     }
+    lastMasternodeWinner = GetTime();
 }
 
 void CMasternodeSync::AddedBudgetItem(uint256 hash)

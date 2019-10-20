@@ -66,18 +66,6 @@ UniValue getinfo(const UniValue& params, bool fHelp)
             "  \"difficulty\": xxxxxx,       (numeric) the current difficulty\n"
             "  \"testnet\": true|false,      (boolean) if the server is using testnet or not\n"
             "  \"moneysupply\" : \"supply\"       (numeric) The money supply when this block was added to the blockchain\n"
-            "  \"zGICsupply\" :\n"
-            "  {\n"
-            "     \"1\" : n,            (numeric) supply of 1 zGIC denomination\n"
-            "     \"5\" : n,            (numeric) supply of 5 zGIC denomination\n"
-            "     \"10\" : n,           (numeric) supply of 10 zGIC denomination\n"
-            "     \"50\" : n,           (numeric) supply of 50 zGIC denomination\n"
-            "     \"100\" : n,          (numeric) supply of 100 zGIC denomination\n"
-            "     \"500\" : n,          (numeric) supply of 500 zGIC denomination\n"
-            "     \"1000\" : n,         (numeric) supply of 1000 zGIC denomination\n"
-            "     \"5000\" : n,         (numeric) supply of 5000 zGIC denomination\n"
-            "     \"total\" : n,        (numeric) The total supply of all zGIC denominations\n"
-            "  }\n"
             "  \"keypoololdest\": xxxxxx,    (numeric) the timestamp (seconds since GMT epoch) of the oldest pre-generated key in the key pool\n"
             "  \"keypoolsize\": xxxx,        (numeric) how many new keys are pre-generated\n"
             "  \"unlocked_until\": ttt,      (numeric) the timestamp in seconds since epoch (midnight Jan 1 1970 GMT) that the wallet is unlocked for transfers, or 0 if the wallet is locked\n"
@@ -145,12 +133,6 @@ UniValue getinfo(const UniValue& params, bool fHelp)
     }
 
     obj.push_back(Pair("moneysupply",ValueFromAmount(chainActive.Tip()->nMoneySupply)));
-    UniValue zgicObj(UniValue::VOBJ);
-    for (auto denom : libzerocoin::zerocoinDenomList) {
-        zgicObj.push_back(Pair(to_string(denom), ValueFromAmount(chainActive.Tip()->mapZerocoinSupply.at(denom) * (denom*COIN))));
-    }
-    zgicObj.push_back(Pair("total", ValueFromAmount(chainActive.Tip()->GetZerocoinSupply())));
-    obj.push_back(Pair("zGICsupply", zgicObj));
 
 #ifdef ENABLE_WALLET
     if (pwalletMain) {
@@ -632,8 +614,7 @@ UniValue getstakingstatus(const UniValue& params, bool fHelp)
     else if (mapHashedBlocks.count(chainActive.Tip()->nHeight - 1) && nLastCoinStakeSearchInterval)
         nStaking = true;
     obj.push_back(Pair("staking status", nStaking));
-    obj.push_back(Pair("minamount", Params().StakeMinAmount()));
-    obj.push_back(Pair("minamountactived", IsSporkActive(SPORK_17_STAKE_MIN_AMOUNT)));
+    obj.push_back(Pair("minamount", Params().StakeMinAmount() / COIN));
 
     return obj;
 }

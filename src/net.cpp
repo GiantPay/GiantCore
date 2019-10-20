@@ -408,12 +408,12 @@ CNode* ConnectNode(CAddress addrConnect, const char* pszDest, bool obfuScationMa
     }
 
     /// debug print
-    LogPrint("net", "trying connection %s lastseen=%.1fhrs\n",
-        pszDest ? pszDest : addrConnect.ToString(),
-        pszDest ? 0.0 : (double)(GetAdjustedTime() - addrConnect.nTime) / 3600.0);
+//    LogPrint("net", "trying connection %s lastseen=%.1fhrs\n",
+//        pszDest ? pszDest : addrConnect.ToString(),
+//        pszDest ? 0.0 : (double)(GetAdjustedTime() - addrConnect.nTime) / 3600.0);
 
     // Connect
-    SOCKET hSocket = INVALID_SOCKET;;
+    SOCKET hSocket = INVALID_SOCKET;
     bool proxyConnectionFailed = false;
     if (pszDest ? ConnectSocketByName(addrConnect, hSocket, pszDest, Params().GetDefaultPort(), nConnectTimeout, &proxyConnectionFailed) :
                   ConnectSocket(addrConnect, hSocket, nConnectTimeout, &proxyConnectionFailed)) {
@@ -465,7 +465,7 @@ bool CNode::DisconnectOldProtocol(int nVersionRequired, string strLastCommand)
 {
     fDisconnect = false;
     if (nVersion < nVersionRequired) {
-        LogPrintf("%s : peer=%d using obsolete version %i; disconnecting\n", __func__, id, nVersion);
+        LogPrint("net", "%s : peer=%d using obsolete version %i; disconnecting\n", __func__, id, nVersion);
         PushMessage("reject", strLastCommand, REJECT_OBSOLETE, strprintf("Version must be %d or greater", ActiveProtocol()));
         fDisconnect = true;
     }
@@ -820,7 +820,7 @@ void SocketSendData(CNode* pnode)
                 // error
                 int nErr = WSAGetLastError();
                 if (nErr != WSAEWOULDBLOCK && nErr != WSAEMSGSIZE && nErr != WSAEINTR && nErr != WSAEINPROGRESS) {
-                    LogPrintf("socket send error %s\n", NetworkErrorString(nErr));
+                    LogPrint("net", "socket send error %s\n", NetworkErrorString(nErr));
                     pnode->CloseSocketDisconnect();
                 }
             }
@@ -972,7 +972,7 @@ void ThreadSocketHandler()
         if (nSelect == SOCKET_ERROR) {
             if (have_fds) {
                 int nErr = WSAGetLastError();
-                LogPrintf("socket select error %s\n", NetworkErrorString(nErr));
+                LogPrint("net", "socket select error %s\n", NetworkErrorString(nErr));
                 for (unsigned int i = 0; i <= hSocketMax; i++)
                     FD_SET(i, &fdsetRecv);
             }
@@ -994,7 +994,7 @@ void ThreadSocketHandler()
 
                 if (hSocket != INVALID_SOCKET)
                     if (!addr.SetSockAddr((const struct sockaddr*)&sockaddr))
-                        LogPrintf("Warning: Unknown socket family\n");
+                        LogPrint("net", "Warning: Unknown socket family\n");
 
                 bool whitelisted = hListenSocket.whitelisted || CNode::IsWhitelistedRange(addr);
                 {
@@ -1007,15 +1007,15 @@ void ThreadSocketHandler()
                 if (hSocket == INVALID_SOCKET) {
                     int nErr = WSAGetLastError();
                     if (nErr != WSAEWOULDBLOCK)
-                        LogPrintf("socket error accept failed: %s\n", NetworkErrorString(nErr));
+                        LogPrint("net", "socket error accept failed: %s\n", NetworkErrorString(nErr));
                 } else if (!IsSelectableSocket(hSocket)) {
-                    LogPrintf("connection from %s dropped: non-selectable socket\n", addr.ToString());
+                    LogPrint("net", "connection from %s dropped: non-selectable socket\n", addr.ToString());
                     CloseSocket(hSocket);
                 } else if (nInbound >= nMaxConnections - MAX_OUTBOUND_CONNECTIONS) {
                     LogPrint("net", "connection from %s dropped (full)\n", addr.ToString());
                     CloseSocket(hSocket);
                 } else if (CNode::IsBanned(addr) && !whitelisted) {
-                    LogPrintf("connection from %s dropped (banned)\n", addr.ToString());
+                    LogPrint("net", "connection from %s dropped (banned)\n", addr.ToString());
                     CloseSocket(hSocket);
                 } else {
                     CNode* pnode = new CNode(hSocket, addr, "", true);
@@ -1071,7 +1071,7 @@ void ThreadSocketHandler()
                             int nErr = WSAGetLastError();
                             if (nErr != WSAEWOULDBLOCK && nErr != WSAEMSGSIZE && nErr != WSAEINTR && nErr != WSAEINPROGRESS) {
                                 if (!pnode->fDisconnect)
-                                    LogPrintf("socket recv error %s\n", NetworkErrorString(nErr));
+                                    LogPrint("net", "socket recv error %s\n", NetworkErrorString(nErr));
                                 pnode->CloseSocketDisconnect();
                             }
                         }
@@ -1099,13 +1099,13 @@ void ThreadSocketHandler()
                     LogPrint("net", "socket no message in first 60 seconds, %d %d from %d\n", pnode->nLastRecv != 0, pnode->nLastSend != 0, pnode->id);
                     pnode->fDisconnect = true;
                 } else if (nTime - pnode->nLastSend > TIMEOUT_INTERVAL) {
-                    LogPrintf("socket sending timeout: %is\n", nTime - pnode->nLastSend);
+                    LogPrint("net", "socket sending timeout: %is\n", nTime - pnode->nLastSend);
                     pnode->fDisconnect = true;
                 } else if (nTime - pnode->nLastRecv > (pnode->nVersion > BIP0031_VERSION ? TIMEOUT_INTERVAL : 90 * 60)) {
-                    LogPrintf("socket receive timeout: %is\n", nTime - pnode->nLastRecv);
+                    LogPrint("net", "socket receive timeout: %is\n", nTime - pnode->nLastRecv);
                     pnode->fDisconnect = true;
                 } else if (pnode->nPingNonceSent && pnode->nPingUsecStart + TIMEOUT_INTERVAL * 1000000 < GetTimeMicros()) {
-                    LogPrintf("ping timeout: %fs\n", 0.000001 * (GetTimeMicros() - pnode->nPingUsecStart));
+                    LogPrint("net", "ping timeout: %fs\n", 0.000001 * (GetTimeMicros() - pnode->nPingUsecStart));
                     pnode->fDisconnect = true;
                 }
             }
@@ -1151,13 +1151,13 @@ void ThreadMapPort()
             char externalIPAddress[40];
             r = UPNP_GetExternalIPAddress(urls.controlURL, data.first.servicetype, externalIPAddress);
             if (r != UPNPCOMMAND_SUCCESS)
-                LogPrintf("UPnP: GetExternalIPAddress() returned %d\n", r);
+                LogPrint("net", "UPnP: GetExternalIPAddress() returned %d\n", r);
             else {
                 if (externalIPAddress[0]) {
-                    LogPrintf("UPnP: ExternalIPAddress = %s\n", externalIPAddress);
+                    LogPrint("net", "UPnP: ExternalIPAddress = %s\n", externalIPAddress);
                     AddLocal(CNetAddr(externalIPAddress), LOCAL_UPNP);
                 } else
-                    LogPrintf("UPnP: GetExternalIPAddress failed.\n");
+                    LogPrint("net", "UPnP: GetExternalIPAddress failed.\n");
             }
         }
 
@@ -1176,24 +1176,24 @@ void ThreadMapPort()
 #endif
 
                 if (r != UPNPCOMMAND_SUCCESS)
-                    LogPrintf("AddPortMapping(%s, %s, %s) failed with code %d (%s)\n",
+                    LogPrint("net", "AddPortMapping(%s, %s, %s) failed with code %d (%s)\n",
                         port, port, lanaddr, r, strupnperror(r));
                 else
-                    LogPrintf("UPnP Port Mapping successful.\n");
+                    LogPrint("net", "UPnP Port Mapping successful.\n");
                 ;
 
                 MilliSleep(20 * 60 * 1000); // Refresh every 20 minutes
             }
         } catch (boost::thread_interrupted) {
             r = UPNP_DeletePortMapping(urls.controlURL, data.first.servicetype, port.c_str(), "TCP", 0);
-            LogPrintf("UPNP_DeletePortMapping() returned : %d\n", r);
+            LogPrint("net", "UPNP_DeletePortMapping() returned : %d\n", r);
             freeUPNPDevlist(devlist);
             devlist = 0;
             FreeUPNPUrls(&urls);
             throw;
         }
     } else {
-        LogPrintf("No valid UPnP IGDs found\n");
+        LogPrint("net", "No valid UPnP IGDs found\n");
         freeUPNPDevlist(devlist);
         devlist = 0;
         if (r != 0)
@@ -1237,7 +1237,7 @@ void ThreadDNSAddressSeed()
 
         LOCK(cs_vNodes);
         if (vNodes.size() >= 2) {
-            LogPrintf("P2P peers available. Skipped DNS seeding.\n");
+            LogPrint("net", "P2P peers available. Skipped DNS seeding.\n");
             return;
         }
     }
@@ -1245,7 +1245,7 @@ void ThreadDNSAddressSeed()
     const vector<CDNSSeedData>& vSeeds = Params().DNSSeeds();
     int found = 0;
 
-    LogPrintf("Loading addresses from DNS seeds (could take a while)\n");
+    LogPrint("net", "Loading addresses from DNS seeds (could take a while)\n");
 
     for (const CDNSSeedData& seed : vSeeds) {
         if (HaveNameProxy()) {
@@ -1266,7 +1266,7 @@ void ThreadDNSAddressSeed()
         }
     }
 
-    LogPrintf("%d addresses found from DNS seeds\n", found);
+    LogPrint("net", "%d addresses found from DNS seeds\n", found);
 }
 
 
@@ -1336,7 +1336,7 @@ void ThreadOpenConnections()
         if (addrman.size() == 0 && (GetTime() - nStart > 60)) {
             static bool done = false;
             if (!done) {
-                LogPrintf("Adding fixed seed nodes as DNS doesn't seem to be available.\n");
+                LogPrint("net", "Adding fixed seed nodes as DNS doesn't seem to be available.\n");
                 addrman.Add(Params().FixedSeeds(), CNetAddr("127.0.0.1"));
                 done = true;
             }
@@ -1564,17 +1564,17 @@ void ThreadMessageHandler()
 void static ThreadStakeMinter()
 {
     boost::this_thread::interruption_point();
-    LogPrintf("ThreadStakeMinter started\n");
+    LogPrint("net", "ThreadStakeMinter started\n");
     CWallet* pwallet = pwalletMain;
     try {
         BitcoinMiner(pwallet, true);
         boost::this_thread::interruption_point();
     } catch (std::exception& e) {
-        LogPrintf("ThreadStakeMinter() exception \n");
+        LogPrint("net", "ThreadStakeMinter() exception \n");
     } catch (...) {
-        LogPrintf("ThreadStakeMinter() error \n");
+        LogPrint("net", "ThreadStakeMinter() error \n");
     }
-    LogPrintf("ThreadStakeMinter exiting,\n");
+    LogPrint("net", "ThreadStakeMinter exiting,\n");
 }
 #endif // ENABLE_WALLET
 
@@ -1588,7 +1588,7 @@ bool BindListenPort(const CService& addrBind, string& strError, bool fWhiteliste
     socklen_t len = sizeof(sockaddr);
     if (!addrBind.GetSockAddr((struct sockaddr*)&sockaddr, &len)) {
         strError = strprintf("Error: Bind address family for %s not supported", addrBind.ToString());
-        LogPrintf("%s\n", strError);
+        LogPrintf("net", "%s\n", strError);
         return false;
     }
 
@@ -2106,8 +2106,9 @@ CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fIn
         LogPrint("net", "Added connection peer=%d\n", id);
 
     // Be shy and don't send version until we hear
-    if (hSocket != INVALID_SOCKET && !fInbound)
+    if (hSocket != INVALID_SOCKET && !fInbound) {
         PushVersion();
+    }
 
     GetNodeSignals().InitializeNode(GetId(), this);
 }

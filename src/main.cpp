@@ -1887,31 +1887,13 @@ double ConvertBitsToDouble(unsigned int nBits)
     return dDiff;
 }
 
-int64_t GetBlockValue(int nHeight)
+CAmount GetBlockValue(int nHeight)
 {
     if (nHeight == 0) return 200000 * COIN;
     
-    int64_t nSubsidy;
+    CAmount nSubsidy;
     if (Params().NetworkID() == CBaseChainParams::TESTNET) {
-        if (nHeight <= 500) {
-            nSubsidy = 0 * COIN;
-        } else if (nHeight <= 20000) {
-            nSubsidy = 10 * COIN;
-        } else if (nHeight <= 40000) {
-            nSubsidy = 15 * COIN;
-        } else if (nHeight <= 262800) {
-            nSubsidy = 20 * COIN;
-        } else if (nHeight <= 525600) {
-            nSubsidy = 10 * COIN;
-        } else if (nHeight <= 788400) {
-            nSubsidy = 8 * COIN;
-        } else if (nHeight <= 1051200) {
-            nSubsidy = 6 * COIN;
-        } else if (nHeight <= 1314000) {
-            nSubsidy = 4 * COIN;
-        } else {
-            nSubsidy = 2 * COIN;
-        }
+        nSubsidy = 100 * COIN;
     } else {
         if (nHeight < 500) {
             nSubsidy = 0 * COIN;
@@ -1936,9 +1918,14 @@ int64_t GetBlockValue(int nHeight)
     return nSubsidy;
 }
 
-int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount, bool isZGICStake)
+CAmount GetMasternodePayment(int level, CAmount blockValue)
 {
-    return blockValue * .8;
+    switch(level) {
+        case CMasternode::Level::MASTERNODE: return blockValue * Params().MasternodeRewardFactor();
+        case CMasternode::Level::SUPERNODE: return blockValue * Params().SupernodeRewardFactor();
+        case CMasternode::Level::DEPRECATED: return blockValue * Params().DeprecatedRewardFactor();
+    }
+    return 0;
 }
 
 bool IsInitialBlockDownload()
@@ -2108,9 +2095,6 @@ bool CScriptCheck::operator()()
     return true;
 }
 
-CBitcoinAddress addressExp1("DQZzqnSR6PXxagep1byLiRg9ZurCZ5KieQ");
-CBitcoinAddress addressExp2("DTQYdnNqKuEHXyNeeYhPQGGGdqHbXYwjpj");
-
 map<COutPoint, COutPoint> mapInvalidOutPoints;
 map<CBigNum, CAmount> mapInvalidSerials;
 void AddInvalidSpendsToMap(const CBlock& block)
@@ -2205,7 +2189,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState& state, const CCoinsVi
 
             // If prev is coinbase, check that it's matured
             if (coins->IsCoinBase() || coins->IsCoinStake()) {
-                if (nSpendHeight - coins->nHeight < (coins->nHeight < Params().CHANGE_MATURITY_HEIGHT() ? Params().OLD_MATURITY() : Params().COINBASE_MATURITY()))
+                if (nSpendHeight - coins->nHeight < Params().Maturity(coins->nHeight))
                     return state.Invalid(
                         error("CheckInputs() : tried to spend coinbase at depth %d, coinstake=%d", nSpendHeight - coins->nHeight, coins->IsCoinStake()),
                         REJECT_INVALID, "bad-txns-premature-spend-of-coinbase");
@@ -2809,9 +2793,8 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     // Now that the whole chain is irreversibly beyond that time it is applied to all blocks except the
     // two in the chain that violate it. This prevents exploiting the issue against nodes in their
     // initial block download.
-    bool fEnforceBIP30 = (!pindex->phashBlock) || // Enforce on CreateNewBlock invocations which don't have a hash.
-                         !((pindex->nHeight == 91842 && pindex->GetBlockHash() == uint256("0x00000000000a4d0a398161ffc163c503763b1f4360639393e0e4c8e300e0caec")) ||
-                             (pindex->nHeight == 91880 && pindex->GetBlockHash() == uint256("0x00000000000743f190a18c5577a3c2d2a1f610ae9601ac046a38084ccb7cd721")));
+    bool fEnforceBIP30 = (!pindex->phashBlock); // Enforce on CreateNewBlock invocations which don't have a hash.
+
     if (fEnforceBIP30) {
         for (const CTransaction& tx : block.vtx) {
             const CCoins* coins = view.AccessCoins(tx.GetHash());
@@ -4072,7 +4055,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         return state.DoS(100, error("CheckBlock() : out-of-bounds SigOpCount"),
             REJECT_INVALID, "bad-blk-sigops", true);
 
-    if (IsSporkActive(SPORK_17_STAKE_MIN_AMOUNT) && block.GetBlockTime() >= GetSporkValue(SPORK_17_STAKE_MIN_AMOUNT)) {
+    if (block.IsProofOfStake() && Params().IsMinStakeEnabled(blockHeight)) {
         // Check for minimum value.
         if (block.vtx[1].vout[1].nValue < Params().StakeMinAmount())
             return state.DoS(100, error("CheckBlock() : stake under min. stake value"));
@@ -5870,10 +5853,12 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
 
     else if (pfrom->nVersion == 0) {
-        // Must have a version message before anything else
-        LOCK(cs_main);
-        Misbehaving(pfrom->GetId(), 1);
-        return false;
+        if(Params().NetworkID() == CBaseChainParams::MAIN) {
+            // Must have a version message before anything else
+            LOCK(cs_main);
+            Misbehaving(pfrom->GetId(), 1);
+            return false;
+        }
     }
 
 
@@ -6643,8 +6628,9 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 //       it was the one which was commented out
 int ActiveProtocol()
 {
-    if (IsSporkActive(SPORK_17_STAKE_MIN_AMOUNT)) {
-            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+    int height = chainActive.Height();
+    if (Params().IsTiersMasternodeEnabled(height) && Params().DeprecatedCollateralPrice(height) > 0) {
+        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
     }
 
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;

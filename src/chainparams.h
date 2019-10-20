@@ -76,9 +76,7 @@ public:
     int64_t TargetTimespan() const { return nTargetTimespan; }
     int64_t TargetSpacing() const { return nTargetSpacing; }
     int64_t Interval() const { return nTargetTimespan / nTargetSpacing; }
-    int COINBASE_MATURITY() const { return nMaturity; }
-    int OLD_MATURITY() const { return nOldMaturity; }
-    int CHANGE_MATURITY_HEIGHT() const { return nChangeMaturityHeight; }
+    int Maturity(int height) const { return height < nChangeMaturityHeight ? nOldMaturity : nMaturity; }
     CAmount MaxMoneyOut() const { return nMaxMoneyOut; }
     /** The masternode count that we will allow the see-saw reward payments to be off by */
     int MasternodeCountDrift() const { return nMasternodeCountDrift; }
@@ -108,8 +106,12 @@ public:
 
     CBaseChainParams::Network NetworkID() const { return networkID; }
     CAmount StakeMinAmount() const { return nStakeMinAmount; }
-    int64_t MasternodeCollateralPrice() const { return nMasternodeCollateralPrice; }
-
+    CAmount DeprecatedCollateralPrice(int height) const { return !IsTiersMasternodeEnabled(height - nDeprecatedPeriod) ? nDeprecatedCollateralPrice : 0; } 
+    CAmount MasternodeCollateralPrice(int height) const { return IsTiersMasternodeEnabled(height) ? nMasternodeCollateralPrice : 0; }
+    CAmount SupernodeCollateralPrice(int height) const { return IsTiersMasternodeEnabled(height) ? nSupernodeCollateralPrice : 0; }
+    double MasternodeRewardFactor() const { return dMasternodeRewardFactor; }
+    double SupernodeRewardFactor() const { return dSupernodeRewardFactor; }
+    double DeprecatedRewardFactor() const { return dDeprecatedRewardFactor; }
     /** Zerocoin **/
     std::string Zerocoin_Modulus() const { return zerocoinModulus; }
     libzerocoin::ZerocoinParams* Zerocoin_Params(bool useModulusV1) const;
@@ -138,7 +140,11 @@ public:
     CAmount GetSupplyBeforeFakeSerial() const { return nSupplyBeforeFakeSerial; }
 
     int Zerocoin_Block_Double_Accumulated() const { return nBlockDoubleAccumulated; }
-    CAmount InvalidAmountFiltered() const { return nInvalidAmountFiltered; };
+    CAmount InvalidAmountFiltered() const { return nInvalidAmountFiltered; }
+
+    int TiersActivationHeight() const { return nTiersActivationHeight; }
+    bool IsTiersMasternodeEnabled(int height) const { return height >= nTiersActivationHeight; }
+    bool IsMinStakeEnabled(int height) const { return height >= nMinStakeActivationHeight; }
 
 protected:
     CChainParams() {}
@@ -187,7 +193,13 @@ protected:
     std::string strObfuscationPoolDummyAddress;
     int64_t nStartMasternodePayments;
     CAmount nStakeMinAmount;
-    int64_t nMasternodeCollateralPrice;
+    int nDeprecatedPeriod;
+    CAmount nDeprecatedCollateralPrice;
+    CAmount nMasternodeCollateralPrice;
+    CAmount nSupernodeCollateralPrice;
+    double dDeprecatedRewardFactor;
+    double dMasternodeRewardFactor;
+    double dSupernodeRewardFactor;
     std::string zerocoinModulus;
     int nMaxZerocoinSpendsPerTransaction;
     CAmount nMinZerocoinMintFee;
@@ -213,6 +225,8 @@ protected:
     // fake serial attack
     int nFakeSerialBlockheightEnd = 0;
     CAmount nSupplyBeforeFakeSerial = 0;
+    int nTiersActivationHeight = 0;
+    int nMinStakeActivationHeight = 0;
 };
 
 /**
