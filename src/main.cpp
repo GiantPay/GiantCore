@@ -6629,7 +6629,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 int ActiveProtocol()
 {
     int height = chainActive.Height();
-    if (Params().IsTiersMasternodeEnabled(height) && Params().DeprecatedCollateralPrice(height) > 0) {
+    if (Params().IsTiersMasternodeEnabled(height) && Params().DeprecatedCollateralPrice(height) == 0) {
         return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
     }
 
