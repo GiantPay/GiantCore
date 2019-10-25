@@ -313,6 +313,7 @@ bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secr
             if(!CMasternode::GetLevel(out.tx->vout[out.i].nValue, chainActive.Height()))
                 continue;
 
+            found = true;
             selectedOutput = &out;
             break;
         }
