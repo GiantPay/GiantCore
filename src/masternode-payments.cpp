@@ -573,7 +573,7 @@ bool CMasternodePayments::CanVote(const COutPoint& outMasternode, int nBlockHeig
 
 bool CMasternodePayments::AddWinningMasternode(CMasternodePaymentWinner& winnerIn)
 {
-    LogPrintf("CMasternodePayments::AddWinningMasternode %s", winnerIn.ToString());
+    LogPrintf("CMasternodePayments::AddWinningMasternode %s\n", winnerIn.ToString());
     uint256 blockHash = 0;
     if (!GetBlockHash(blockHash, winnerIn.nBlockHeight - 100)) {
         return false;
