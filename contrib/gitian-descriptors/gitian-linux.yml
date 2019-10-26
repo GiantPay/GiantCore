@@ -1,5 +1,5 @@
 ---
-name: "giant-linux-1.4"
+name: "giant-linux-1.4.0.1"
 enable_cache: true
 suites:
 - "bionic"
