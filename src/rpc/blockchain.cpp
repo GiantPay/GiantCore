@@ -246,10 +246,10 @@ UniValue getbestblockhash(const UniValue& params, bool fHelp)
             HelpExampleCli("getbestblockhash", "") + HelpExampleRpc("getbestblockhash", ""));
 
     LOCK(cs_main);
-    if (chainActive.Tip() && chainActive.Tip()->GetBlockHash()) {
+    if (chainActive.Tip()) {
         return chainActive.Tip()->GetBlockHash().GetHex();
     } else {
-        throw JSONRPCError(RPC_METHOD_NOT_FOUND, "Wallet is not ready");
+        throw JSONRPCError(RPC_METHOD_NOT_FOUND, "Blockchain information not yet available");
     }
 }
 
