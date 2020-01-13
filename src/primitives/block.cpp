@@ -141,8 +141,3 @@ void CBlock::print() const
 {
     LogPrintf("%s", ToString());
 }
-
-bool CBlock::IsZerocoinStake() const
-{
-    return IsProofOfStake() && vtx[1].HasZerocoinSpendInputs();
-}

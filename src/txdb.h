@@ -10,7 +10,6 @@
 
 #include "leveldbwrapper.h"
 #include "main.h"
-#include "zgic/zerocoin.h"
 
 #include <map>
 #include <string>
@@ -68,33 +67,6 @@ public:
     bool WriteInt(const std::string& name, int nValue);
     bool ReadInt(const std::string& name, int& nValue);
     bool LoadBlockIndexGuts();
-};
-
-/** Zerocoin database (zerocoin/) */
-class CZerocoinDB : public CLevelDBWrapper
-{
-public:
-    CZerocoinDB(size_t nCacheSize, bool fMemory = false, bool fWipe = false);
-
-private:
-    CZerocoinDB(const CZerocoinDB&);
-    void operator=(const CZerocoinDB&);
-
-public:
-    /** Write zGIC mints to the zerocoinDB in a batch */
-    bool WriteCoinMintBatch(const std::vector<std::pair<libzerocoin::PublicCoin, uint256> >& mintInfo);
-    bool ReadCoinMint(const CBigNum& bnPubcoin, uint256& txHash);
-    bool ReadCoinMint(const uint256& hashPubcoin, uint256& hashTx);
-    /** Write zGIC spends to the zerocoinDB in a batch */
-    bool WriteCoinSpendBatch(const std::vector<std::pair<libzerocoin::CoinSpend, uint256> >& spendInfo);
-    bool ReadCoinSpend(const CBigNum& bnSerial, uint256& txHash);
-    bool ReadCoinSpend(const uint256& hashSerial, uint256 &txHash);
-    bool EraseCoinMint(const CBigNum& bnPubcoin);
-    bool EraseCoinSpend(const CBigNum& bnSerial);
-    bool WipeCoins(std::string strType);
-    bool WriteAccumulatorValue(const uint32_t& nChecksum, const CBigNum& bnValue);
-    bool ReadAccumulatorValue(const uint32_t& nChecksum, CBigNum& bnValue);
-    bool EraseAccumulatorValue(const uint32_t& nChecksum);
 };
 
 #endif // BITCOIN_TXDB_H

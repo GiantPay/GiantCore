@@ -254,16 +254,6 @@ bool CScript::StartsWithOpcode(const opcodetype opcode) const
     return (!this->empty() && this->at(0) == opcode);
 }
 
-bool CScript::IsZerocoinMint() const
-{
-    return StartsWithOpcode(OP_ZEROCOINMINT);
-}
-
-bool CScript::IsZerocoinSpend() const
-{
-    return StartsWithOpcode(OP_ZEROCOINSPEND);
-}
-
 bool CScript::IsPushOnly(const_iterator pc) const
 {
     while (pc < end())

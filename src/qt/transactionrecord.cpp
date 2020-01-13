@@ -6,13 +6,11 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "transactionrecord.h"
-
 #include "base58.h"
 #include "obfuscation.h"
 #include "swifttx.h"
 #include "timedata.h"
 #include "wallet/wallet.h"
-#include "zgicchain.h"
 
 #include <stdint.h>
 

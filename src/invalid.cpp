@@ -9,7 +9,6 @@
 
 namespace invalid_out
 {
-    std::set<CBigNum> setInvalidSerials;
     std::set<COutPoint> setInvalidOutPoints;
 
     UniValue read_json(const std::string& jsondata)
@@ -53,39 +52,9 @@ namespace invalid_out
         return true;
     }
 
-    bool LoadSerials()
-    {
-        UniValue v = read_json(LoadInvalidSerials());
-
-        if (v.empty())
-            return false;
-
-        for (unsigned int idx = 0; idx < v.size(); idx++) {
-            const UniValue &val = v[idx];
-            const UniValue &o = val.get_obj();
-
-            const UniValue &vSerial = find_value(o, "s");
-            if (!vSerial.isStr())
-                return false;
-
-            CBigNum bnSerial = 0;
-            bnSerial.SetHex(vSerial.get_str());
-            if (bnSerial == 0)
-                return false;
-            setInvalidSerials.insert(bnSerial);
-        }
-
-        return true;
-    }
-
     bool ContainsOutPoint(const COutPoint& out)
     {
         return static_cast<bool>(setInvalidOutPoints.count(out));
-    }
-
-    bool ContainsSerial(const CBigNum& bnSerial)
-    {
-        return static_cast<bool>(setInvalidSerials.count(bnSerial));
     }
 }
 

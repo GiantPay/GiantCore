@@ -26,13 +26,6 @@ BITCOIN_TEST_SUITE = \
   test/test_giant.cpp
 # test_giant binary #
 BITCOIN_TESTS =\
-  test/zerocoin_implementation_tests.cpp\
-  test/zerocoin_denomination_tests.cpp\
-  test/zerocoin_transactions_tests.cpp \
-  test/zerocoin_coinspend_tests.cpp \
-  test/benchmark_zerocoin.cpp \
-  test/tutorial_zerocoin.cpp \
-  test/libzerocoin_tests.cpp \
   test/allocator_tests.cpp \
   test/base32_tests.cpp \
   test/base58_tests.cpp \
@@ -59,7 +52,6 @@ BITCOIN_TESTS =\
   test/scheduler_tests.cpp \
   test/script_P2SH_tests.cpp \
   test/script_tests.cpp \
-  test/scriptnum_tests.cpp \
   test/serialize_tests.cpp \
   test/sighash_tests.cpp \
   test/sigopcount_tests.cpp \
