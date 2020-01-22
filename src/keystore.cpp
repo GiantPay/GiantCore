@@ -1,18 +1,18 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "keystore.h"
-
 #include "crypter.h"
 #include "key.h"
 #include "script/script.h"
 #include "script/standard.h"
 #include "util.h"
 
+#include <boost/variant/get.hpp>
 
 bool CKeyStore::GetPubKey(const CKeyID& address, CPubKey& vchPubKeyOut) const
 {
@@ -148,4 +148,14 @@ bool CBasicKeyStore::GetKey(const CKeyID& address, CKey& keyOut) const
         }
     }
     return false;
+}
+
+CKeyID GetKeyForDestination(const CKeyStore& store, const CTxDestination& dest)
+{
+    // Only supports destinations which map to single public keys, i.e. P2PKH,
+    // P2WPKH, and P2SH-P2WPKH.
+    if (auto id = boost::get<CKeyID>(&dest)) {
+        return *id;
+    }
+    return CKeyID();
 }

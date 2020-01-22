@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -23,6 +23,8 @@
 #include "guiutil.h"
 #include "qvalidatedlineedit.h"
 #include "bitcoinamountfield.h"
+
+#include <boost/variant/get.hpp>
 
 #include <QVariant>
 #include <QHBoxLayout>
@@ -475,7 +477,7 @@ bool MultisigDialog::createMultisigTransaction(vector<CTxIn> vUserIn, vector<CTx
         }
 
         //calculate fee
-        unsigned int nBytes = tx.GetSerializeSize(SER_NETWORK, PROTOCOL_VERSION);
+        unsigned int nBytes = ::GetSerializeSize(tx, PROTOCOL_VERSION);
         CAmount fee = ::minRelayTxFee.GetFee(nBytes);
 
         if(tx.vout.at(changeIndex).nValue > fee){
@@ -675,7 +677,8 @@ bool MultisigDialog::signMultisigTx(CMutableTransaction& tx, string& errorOut, Q
             //merge in any previous signatures
             txin.scriptSig = CombineSignatures(prevPubKey, tx, nIn, txin.scriptSig, oldVin[nIn].scriptSig);
 
-            if (!VerifyScript(txin.scriptSig, prevPubKey, STANDARD_SCRIPT_VERIFY_FLAGS, MutableTransactionSignatureChecker(&tx, nIn))){
+            const CAmount& amount = tx.vout[txin.prevout.n].nValue;
+            if (!VerifyScript(txin.scriptSig, prevPubKey, STANDARD_SCRIPT_VERIFY_FLAGS, MutableTransactionSignatureChecker(&tx, nIn, amount))){
                 fComplete = false;
             }
             nIn++;
@@ -707,7 +710,8 @@ bool MultisigDialog::isFullyVerified(CMutableTransaction& tx){
             //get pubkey from this input as output in last tx
             CScript prevPubKey = txVin.vout[txin.prevout.n].scriptPubKey;
 
-            if (!VerifyScript(txin.scriptSig, prevPubKey, STANDARD_SCRIPT_VERIFY_FLAGS, MutableTransactionSignatureChecker(&tx, nIn))){
+            const CAmount& amount = tx.vout[txin.prevout.n].nValue;
+            if (!VerifyScript(txin.scriptSig, prevPubKey, STANDARD_SCRIPT_VERIFY_FLAGS, MutableTransactionSignatureChecker(&tx, nIn, amount))){
                 return false;
             }
 

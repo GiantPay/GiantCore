@@ -1,17 +1,15 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "walletmodel.h"
-
 #include "addresstablemodel.h"
 #include "guiconstants.h"
 #include "recentrequeststablemodel.h"
 #include "transactiontablemodel.h"
-
 #include "base58.h"
 #include "db.h"
 #include "keystore.h"
@@ -21,6 +19,7 @@
 #include "guiinterface.h"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h" // for BackupWallet
+
 #include <stdint.h>
 
 #include <QDebug>

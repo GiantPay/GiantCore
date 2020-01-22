@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2016-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -25,7 +25,7 @@ CTxMemPoolEntry::CTxMemPoolEntry() : nFee(0), nTxSize(0), nModSize(0), nTime(0),
 
 CTxMemPoolEntry::CTxMemPoolEntry(const CTransaction& _tx, const CAmount& _nFee, int64_t _nTime, double _dPriority, unsigned int _nHeight) : tx(_tx), nFee(_nFee), nTime(_nTime), dPriority(_dPriority), nHeight(_nHeight)
 {
-    nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
+    nTxSize = ::GetSerializeSize(tx, PROTOCOL_VERSION);
 
     nModSize = tx.CalculateModifiedSize(nTxSize);
 }
@@ -578,7 +578,8 @@ void CTxMemPool::check(const CCoinsViewCache* pcoins) const
         else {
             CValidationState state;
             CTxUndo undo;
-            assert(CheckInputs(tx, state, mempoolDuplicate, false, 0, false, NULL));
+            PrecomputedTransactionData txdata(tx);
+            assert(CheckInputs(tx, state, mempoolDuplicate, false, 0, false, false, txdata, NULL));
             UpdateCoins(tx, state, mempoolDuplicate, undo, 1000000);
         }
     }
@@ -592,7 +593,8 @@ void CTxMemPool::check(const CCoinsViewCache* pcoins) const
             stepsSinceLastRemove++;
             assert(stepsSinceLastRemove < waitingOnDependants.size());
         } else {
-            assert(CheckInputs(entry->GetTx(), state, mempoolDuplicate, false, 0, false, NULL));
+            PrecomputedTransactionData txdata(entry->GetTx());
+            assert(CheckInputs(entry->GetTx(), state, mempoolDuplicate, false, 0, false, false, txdata, NULL));
             CTxUndo undo;
             UpdateCoins(entry->GetTx(), state, mempoolDuplicate, undo, 1000000);
             stepsSinceLastRemove = 0;

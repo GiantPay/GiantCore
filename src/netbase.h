@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2013 The Bitcoin developers
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -100,9 +100,9 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
+    inline void SerializationOp(Stream& s, Operation ser_action)
     {
-        READWRITE(FLATDATA(ip));
+        READWRITE(ip);
     }
 
     friend class CSubNet;
@@ -137,10 +137,10 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    inline void SerializationOp(Stream& s, Operation ser_action) {
         READWRITE(network);
-        READWRITE(FLATDATA(netmask));
-        READWRITE(FLATDATA(valid));
+        READWRITE(netmask);
+        READWRITE(valid);
     }
 };
 
@@ -178,9 +178,9 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
+    inline void SerializationOp(Stream& s, Operation ser_action)
     {
-        READWRITE(FLATDATA(ip));
+        READWRITE(ip);
         unsigned short portN = htons(port);
         READWRITE(portN);
         if (ser_action.ForRead())

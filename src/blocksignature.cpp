@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -17,8 +17,8 @@ bool SignBlockWithKey(CBlock& block, const CKey& key)
 bool GetKeyIDFromUTXO(const CTxOut& txout, CKeyID& keyID)
 {
     std::vector<valtype> vSolutions;
-    txnouttype whichType;
-    if (!Solver(txout.scriptPubKey, whichType, vSolutions))
+    txnouttype whichType = Solver(txout.scriptPubKey, vSolutions);
+    if (whichType == TX_NONSTANDARD)
         return false;
     if (whichType == TX_PUBKEY) {
         keyID = CPubKey(vSolutions[0]).GetID();
@@ -66,10 +66,10 @@ bool CheckBlockSignature(const CBlock& block)
      *  UTXO: The public key that signs must match the public key associated with the first utxo of the coinstake tx.
      */
     CPubKey pubkey;
-    txnouttype whichType;
     std::vector<valtype> vSolutions;
     const CTxOut& txout = block.vtx[1].vout[1];
-    if (!Solver(txout.scriptPubKey, whichType, vSolutions))
+    txnouttype whichType = Solver(txout.scriptPubKey, vSolutions);
+    if (whichType == TX_NONSTANDARD)
         return false;
     if (whichType == TX_PUBKEY || whichType == TX_PUBKEYHASH) {
         valtype& vchPubKey = vSolutions[0];

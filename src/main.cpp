@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -33,6 +33,7 @@
 #include "utilmoneystr.h"
 #include "validationinterface.h"
 #include "invalid.h"
+#include "script/standard.h"
 
 #include <sstream>
 #include <boost/algorithm/string/replace.hpp>
@@ -624,7 +625,7 @@ bool AddOrphanTx(const CTransaction& tx, NodeId peer)
     // have been mined or received.
     // 10,000 orphans, each of which is at most 5,000 bytes big is
     // at most 500 megabytes of orphans:
-    unsigned int sz = tx.GetSerializeSize(SER_NETWORK, CTransaction::CURRENT_VERSION);
+    unsigned int sz = ::GetSerializeSize(tx, PROTOCOL_VERSION);
     if (sz > 5000) {
         LogPrint("mempool", "ignoring large orphan tx (size: %u, hash: %s)\n", sz, hash.ToString());
         return false;
@@ -720,7 +721,7 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
     // almost as much to process as they cost the sender in fees, because
     // computing signature hashes is O(ninputs*txsize). Limiting transactions
     // to MAX_STANDARD_TX_SIZE mitigates CPU exhaustion attacks.
-    unsigned int sz = tx.GetSerializeSize(SER_NETWORK, CTransaction::CURRENT_VERSION);
+    unsigned int sz = ::GetSerializeSize(tx, PROTOCOL_VERSION);
     unsigned int nMaxSize = MAX_STANDARD_TX_SIZE;
     if (sz >= nMaxSize) {
         reason = "tx-size";
@@ -810,10 +811,10 @@ bool AreInputsStandard(const CTransaction& tx, const CCoinsViewCache& mapInputs)
         const CTxOut& prev = mapInputs.GetOutputFor(tx.vin[i]);
 
         vector<vector<unsigned char> > vSolutions;
-        txnouttype whichType;
         // get the scriptPubKey corresponding to this input:
         const CScript& prevScript = prev.scriptPubKey;
-        if (!Solver(prevScript, whichType, vSolutions))
+        txnouttype whichType = Solver(prevScript, vSolutions);
+        if (whichType == TX_NONSTANDARD)
             return false;
         int nArgsExpected = ScriptSigArgsExpected(whichType, vSolutions);
         if (nArgsExpected < 0)
@@ -834,8 +835,8 @@ bool AreInputsStandard(const CTransaction& tx, const CCoinsViewCache& mapInputs)
                 return false;
             CScript subscript(stack.back().begin(), stack.back().end());
             vector<vector<unsigned char> > vSolutions2;
-            txnouttype whichType2;
-            if (Solver(subscript, whichType2, vSolutions2)) {
+            txnouttype whichType2 = Solver(subscript, vSolutions2);
+            if (whichType2 != TX_NONSTANDARD) {
                 int tmpExpected = ScriptSigArgsExpected(whichType2, vSolutions2);
                 if (tmpExpected < 0)
                     return false;
@@ -953,7 +954,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState& state)
     // Size limits
     unsigned int nMaxSize = MAX_BLOCK_SIZE_CURRENT; // MAX_ZEROCOIN_TX_SIZE
 
-    if (::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION) > nMaxSize)
+    if (::GetSerializeSize(tx, PROTOCOL_VERSION) > nMaxSize)
         return state.DoS(100, error("CheckTransaction() : size limits failed"),
             REJECT_INVALID, "bad-txns-oversize");
 
@@ -1240,7 +1241,8 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
         int flags = STANDARD_SCRIPT_VERIFY_FLAGS;
         if (fCLTVHasMajority)
             flags |= SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY;
-        if (!CheckInputs(tx, state, view, true, flags, true)) {
+        PrecomputedTransactionData txdata(tx);
+        if (!CheckInputs(tx, state, view, true, flags, true, false, txdata)) {
             return error("AcceptToMemoryPool: : ConnectInputs failed %s", hash.ToString());
         }
 
@@ -1256,7 +1258,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
         flags = MANDATORY_SCRIPT_VERIFY_FLAGS;
         if (fCLTVHasMajority)
             flags |= SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY;
-        if (!CheckInputs(tx, state, view, true, flags, true)) {
+        if (!CheckInputs(tx, state, view, true, flags, true, false, txdata)) {
             return error("AcceptToMemoryPool: : BUG! PLEASE REPORT THIS! ConnectInputs failed against MANDATORY but not STANDARD flags %s", hash.ToString());
         }
 
@@ -1441,7 +1443,8 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState& state, const CTransact
         int flags = STANDARD_SCRIPT_VERIFY_FLAGS;
         if (fCLTVHasMajority)
             flags |= SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY;
-        if (!CheckInputs(tx, state, view, false, flags, true)) {
+        PrecomputedTransactionData txdata(tx);
+        if (!CheckInputs(tx, state, view, false, flags, true, false, txdata)) {
             return error("AcceptableInputs: : ConnectInputs failed %s", hash.ToString());
         }
 
@@ -1549,7 +1552,7 @@ bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos)
 
     // Write index header
     unsigned int nSize = fileout.GetSerializeSize(block);
-    fileout << FLATDATA(Params().MessageStart()) << nSize;
+    fileout << Params().MessageStart() << nSize;
 
     // Write block
     long fileOutPos = ftell(fileout.Get());
@@ -1816,13 +1819,18 @@ void UpdateCoins(const CTransaction& tx, CValidationState& state, CCoinsViewCach
     inputs.ModifyCoins(tx.GetHash())->FromTx(tx, nHeight);
 }
 
-bool CScriptCheck::operator()()
-{
-    const CScript& scriptSig = ptxTo->vin[nIn].scriptSig;
-    if (!VerifyScript(scriptSig, scriptPubKey, nFlags, CachingTransactionSignatureChecker(ptxTo, nIn, cacheStore), &error)) {
-        return ::error("CScriptCheck(): %s:%d VerifySignature failed: %s", ptxTo->GetHash().ToString(), nIn, ScriptErrorString(error));
+bool CScriptCheck::operator()() {
+    if (checkOutput()) {
+        // Check the sender signature inside the output, used to identify VM sender
+        CScript senderPubKey, senderSig;
+        if (!ExtractSenderData(ptxTo->vout[nOut].scriptPubKey, &senderPubKey, &senderSig))
+            return false;
+        return VerifyScript(senderSig, senderPubKey, nFlags, CachingTransactionSignatureOutputChecker(ptxTo, nOut, ptxTo->vout[nOut].nValue, cacheStore, *txdata), &error);
     }
-    return true;
+
+    // Check the input signature
+    const CScript &scriptSig = ptxTo->vin[nIn].scriptSig;
+    return VerifyScript(scriptSig, m_tx_out.scriptPubKey, nFlags, CachingTransactionSignatureChecker(ptxTo, nIn, m_tx_out.nValue, cacheStore, *txdata), &error);
 }
 
 bool ValidOutPoint(const COutPoint out, int nHeight)
@@ -1848,102 +1856,142 @@ CAmount GetInvalidUTXOValue()
     return nValue;
 }
 
-bool CheckInputs(const CTransaction& tx, CValidationState& state, const CCoinsViewCache& inputs, bool fScriptChecks, unsigned int flags, bool cacheStore, std::vector<CScriptCheck>* pvChecks)
+bool CheckInputs(const CTransaction& tx, CValidationState& state, const CCoinsViewCache& inputs, bool fScriptChecks, unsigned int flags, bool cacheStore, bool cacheFullScriptStore, PrecomputedTransactionData& txdata, std::vector<CScriptCheck>* pvChecks)
 {
-    if (!tx.IsCoinBase()) {
-        if (pvChecks)
-            pvChecks->reserve(tx.vin.size());
-
-        // This doesn't trigger the DoS code on purpose; if it did, it would make it easier
-        // for an attacker to attempt to split the network.
-        if (!inputs.HaveInputs(tx))
-            return state.Invalid(error("CheckInputs() : %s inputs unavailable", tx.GetHash().ToString()));
-
-        // While checking, GetBestBlock() refers to the parent block.
-        // This is also true for mempool checks.
-        CBlockIndex* pindexPrev = mapBlockIndex.find(inputs.GetBestBlock())->second;
-        int nSpendHeight = pindexPrev->nHeight + 1;
-        CAmount nValueIn = 0;
-        CAmount nFees = 0;
-        for (unsigned int i = 0; i < tx.vin.size(); i++) {
-            const COutPoint& prevout = tx.vin[i].prevout;
-            const CCoins* coins = inputs.AccessCoins(prevout.hash);
-            assert(coins);
-
-            // If prev is coinbase, check that it's matured
-            if (coins->IsCoinBase() || coins->IsCoinStake()) {
-                if (nSpendHeight - coins->nHeight < Params().Maturity(coins->nHeight))
-                    return state.Invalid(
-                        error("CheckInputs() : tried to spend coinbase at depth %d, coinstake=%d", nSpendHeight - coins->nHeight, coins->IsCoinStake()),
-                        REJECT_INVALID, "bad-txns-premature-spend-of-coinbase");
-            }
-
-            // Check for negative or overflow input values
-            nValueIn += coins->vout[prevout.n].nValue;
-            if (!MoneyRange(coins->vout[prevout.n].nValue) || !MoneyRange(nValueIn))
-                return state.DoS(100, error("CheckInputs() : txin values out of range"),
-                    REJECT_INVALID, "bad-txns-inputvalues-outofrange");
-        }
-
-        if (!tx.IsCoinStake()) {
-            if (nValueIn < tx.GetValueOut())
-                return state.DoS(100, error("CheckInputs() : %s value in (%s) < value out (%s)",
-                                          tx.GetHash().ToString(), FormatMoney(nValueIn), FormatMoney(tx.GetValueOut())),
-                    REJECT_INVALID, "bad-txns-in-belowout");
-
-            // Tally transaction fees
-            CAmount nTxFee = nValueIn - tx.GetValueOut();
-            if (nTxFee < 0)
-                return state.DoS(100, error("CheckInputs() : %s nTxFee < 0", tx.GetHash().ToString()),
-                    REJECT_INVALID, "bad-txns-fee-negative");
-            nFees += nTxFee;
-            if (!MoneyRange(nFees))
-                return state.DoS(100, error("CheckInputs() : nFees out of range"),
-                    REJECT_INVALID, "bad-txns-fee-outofrange");
-        }
-        // The first loop above does all the inexpensive checks.
-        // Only if ALL inputs pass do we perform expensive ECDSA signature checks.
-        // Helps prevent CPU exhaustion attacks.
-
-        // Skip ECDSA signature verification when connecting blocks
-        // before the last block chain checkpoint. This is safe because block merkle hashes are
-        // still computed and checked, and any change will be caught at the next checkpoint.
-        if (fScriptChecks) {
-            for (unsigned int i = 0; i < tx.vin.size(); i++) {
-                const COutPoint& prevout = tx.vin[i].prevout;
-                const CCoins* coins = inputs.AccessCoins(prevout.hash);
-                assert(coins);
-
-                // Verify signature
-                CScriptCheck check(*coins, tx, i, flags, cacheStore);
-                if (pvChecks) {
-                    pvChecks->push_back(CScriptCheck());
-                    check.swap(pvChecks->back());
-                } else if (!check()) {
-                    if (flags & STANDARD_NOT_MANDATORY_VERIFY_FLAGS) {
-                        // Check whether the failure was caused by a
-                        // non-mandatory script verification check, such as
-                        // non-standard DER encodings or non-null dummy
-                        // arguments; if so, don't trigger DoS protection to
-                        // avoid splitting the network between upgraded and
-                        // non-upgraded nodes.
-                        CScriptCheck check(*coins, tx, i,
-                            flags & ~STANDARD_NOT_MANDATORY_VERIFY_FLAGS, cacheStore);
-                        if (check())
-                            return state.Invalid(false, REJECT_NONSTANDARD, strprintf("non-mandatory-script-verify-flag (%s)", ScriptErrorString(check.GetScriptError())));
-                    }
-                    // Failures of other flags indicate a transaction that is
-                    // invalid in new blocks, e.g. a invalid P2SH. We DoS ban
-                    // such nodes as they are not following the protocol. That
-                    // said during an upgrade careful thought should be taken
-                    // as to the correct behavior - we may want to continue
-                    // peering with non-upgraded nodes even after a soft-fork
-                    // super-majority vote has passed.
-                    return state.DoS(100, false, REJECT_INVALID, strprintf("mandatory-script-verify-flag-failed (%s)", ScriptErrorString(check.GetScriptError())));
-                }
-            }
-        }
-    }
+    // TODO
+//    if (!tx.IsCoinBase()) {
+//        if (pvChecks)
+//            pvChecks->reserve(tx.vin.size());
+//
+//        // This doesn't trigger the DoS code on purpose; if it did, it would make it easier
+//        // for an attacker to attempt to split the network.
+//        if (!inputs.HaveInputs(tx))
+//            return state.Invalid(error("CheckInputs() : %s inputs unavailable", tx.GetHash().ToString()));
+//
+//        // While checking, GetBestBlock() refers to the parent block.
+//        // This is also true for mempool checks.
+//        CBlockIndex* pindexPrev = mapBlockIndex.find(inputs.GetBestBlock())->second;
+//        int nSpendHeight = pindexPrev->nHeight + 1;
+//        CAmount nValueIn = 0;
+//        CAmount nFees = 0;
+//        for (unsigned int i = 0; i < tx.vin.size(); i++) {
+//            const COutPoint& prevout = tx.vin[i].prevout;
+//            const CCoins* coins = inputs.AccessCoins(prevout.hash);
+//            assert(coins);
+//
+//            // If prev is coinbase, check that it's matured
+//            if (coins->IsCoinBase() || coins->IsCoinStake()) {
+//                if (nSpendHeight - coins->nHeight < Params().Maturity(coins->nHeight))
+//                    return state.Invalid(
+//                        error("CheckInputs() : tried to spend coinbase at depth %d, coinstake=%d", nSpendHeight - coins->nHeight, coins->IsCoinStake()),
+//                        REJECT_INVALID, "bad-txns-premature-spend-of-coinbase");
+//            }
+//
+//            // Check for negative or overflow input values
+//            nValueIn += coins->vout[prevout.n].nValue;
+//            if (!MoneyRange(coins->vout[prevout.n].nValue) || !MoneyRange(nValueIn))
+//                return state.DoS(100, error("CheckInputs() : txin values out of range"),
+//                    REJECT_INVALID, "bad-txns-inputvalues-outofrange");
+//        }
+//
+//        if (!tx.IsCoinStake()) {
+//            if (nValueIn < tx.GetValueOut())
+//                return state.DoS(100, error("CheckInputs() : %s value in (%s) < value out (%s)",
+//                                          tx.GetHash().ToString(), FormatMoney(nValueIn), FormatMoney(tx.GetValueOut())),
+//                    REJECT_INVALID, "bad-txns-in-belowout");
+//
+//            // Tally transaction fees
+//            CAmount nTxFee = nValueIn - tx.GetValueOut();
+//            if (nTxFee < 0)
+//                return state.DoS(100, error("CheckInputs() : %s nTxFee < 0", tx.GetHash().ToString()),
+//                    REJECT_INVALID, "bad-txns-fee-negative");
+//            nFees += nTxFee;
+//            if (!MoneyRange(nFees))
+//                return state.DoS(100, error("CheckInputs() : nFees out of range"),
+//                    REJECT_INVALID, "bad-txns-fee-outofrange");
+//        }
+//        // The first loop above does all the inexpensive checks.
+//        // Only if ALL inputs pass do we perform expensive ECDSA signature checks.
+//        // Helps prevent CPU exhaustion attacks.
+//
+//        // Skip ECDSA signature verification when connecting blocks
+//        // before the last block chain checkpoint. This is safe because block merkle hashes are
+//        // still computed and checked, and any change will be caught at the next checkpoint.
+//        if (fScriptChecks) {
+//            // TODO
+////            // First check if script executions have been cached with the same
+////            // flags. Note that this assumes that the inputs provided are
+////            // correct (ie that the transaction hash which is in tx's prevouts
+////            // properly commits to the scriptPubKey in the inputs view of that
+////            // transaction).
+////            uint256 hashCacheEntry;
+////            // We only use the first 19 bytes of nonce to avoid a second SHA
+////            // round - giving us 19 + 32 + 4 = 55 bytes (+ 8 + 1 = 64)
+////            static_assert(55 - sizeof(flags) - 32 >= 128/8, "Want at least 128 bits of nonce for script execution cache");
+////            CSHA256().Write(scriptExecutionCacheNonce.begin(), 55 - sizeof(flags) - 32).Write(tx.GetWitnessHash().begin(), 32).Write((unsigned char*)&flags, sizeof(flags)).Finalize(hashCacheEntry.begin());
+////            AssertLockHeld(cs_main); //TODO: Remove this requirement by making CuckooCache not require external locks
+////            if (scriptExecutionCache.contains(hashCacheEntry, !cacheFullScriptStore)) {
+////                return true;
+////            }
+//            
+//            for (unsigned int i = 0; i < tx.vin.size(); i++) {
+//                const COutPoint& prevout = tx.vin[i].prevout;
+//                const CCoins* coins = inputs.AccessCoins(prevout.hash);
+//                assert(coins);
+//
+//                // TODO
+//                // Verify signature
+////                CScriptCheck check(coins.vout[0], tx, i, flags, cacheStore, &txdata);
+////                if (pvChecks) {
+////                    pvChecks->push_back(CScriptCheck());
+//////                    check.swap(pvChecks->back());
+////                } else if (!check()) {
+////                    if (flags & STANDARD_NOT_MANDATORY_VERIFY_FLAGS) {
+//                        // Check whether the failure was caused by a
+//                        // non-mandatory script verification check, such as
+//                        // non-standard DER encodings or non-null dummy
+//                        // arguments; if so, don't trigger DoS protection to
+//                        // avoid splitting the network between upgraded and
+//                        // non-upgraded nodes.
+//// TODO                        
+////                        CScriptCheck check2(coin.out, tx, i,
+////                                flags & ~STANDARD_NOT_MANDATORY_VERIFY_FLAGS, cacheSigStore, &txdata);
+////                        if (check2())
+////                            return state.Invalid(false, REJECT_NONSTANDARD, strprintf("non-mandatory-script-verify-flag (%s)", ScriptErrorString(check.GetScriptError())));
+//                    }
+//                    // Failures of other flags indicate a transaction that is
+//                    // invalid in new blocks, e.g. a invalid P2SH. We DoS ban
+//                    // such nodes as they are not following the protocol. That
+//                    // said during an upgrade careful thought should be taken
+//                    // as to the correct behavior - we may want to continue
+//                    // peering with non-upgraded nodes even after a soft-fork
+//                    // super-majority vote has passed.
+////                    return state.DoS(100, false, REJECT_INVALID, strprintf("mandatory-script-verify-flag-failed (%s)", ScriptErrorString(check.GetScriptError())));
+////                }
+//            }
+//            
+//            for (unsigned int i = 0; i < tx.vout.size(); i++) {
+//                // Verify sender output signature
+//                if (tx.vout[i].scriptPubKey.HasOpSender()) {
+//                    // TODO
+////                    CScriptCheck check(tx, i, 0, cacheSigStore, &txdata);
+////                    if (pvChecks) {
+////                        pvChecks->push_back(CScriptCheck());
+////                        check.swap(pvChecks->back());
+////                    } else if (!check()) {
+////                        return state.DoS(100, false, REJECT_INVALID, strprintf("sender-output-script-verify-failed (%s)", ScriptErrorString(check.GetScriptError())));
+////                    }
+//                }
+//            }
+//
+//// TODO
+////            if (cacheFullScriptStore && !pvChecks) {
+////                // We executed all of the provided scripts, and were told to
+////                // cache the result. Do so now.
+////                scriptExecutionCache.insert(hashCacheEntry);
+////            }
+//        }
+//    }
 
     return true;
 }
@@ -2243,8 +2291,9 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
             if (fCLTVHasMajority)
                 flags |= SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY;
 
-            if (!CheckInputs(tx, state, view, fScriptChecks, flags, false, nScriptCheckThreads ? &vChecks : NULL))
-                return false;
+            // TODO
+//            if (!CheckInputs(tx, state, view, fScriptChecks, flags, false, nScriptCheckThreads ? &vChecks : NULL))
+//                return false;
             control.Add(vChecks);
         }
         nValueOut += tx.GetValueOut();
@@ -2256,7 +2305,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         UpdateCoins(tx, state, view, i == 0 ? undoDummy : blockundo.vtxundo.back(), pindex->nHeight);
 
         vPos.push_back(std::make_pair(tx.GetHash(), pos));
-        pos.nTxOffset += ::GetSerializeSize(tx, SER_DISK, CLIENT_VERSION);
+        pos.nTxOffset += ::GetSerializeSize(tx, CLIENT_VERSION);
     }
 
     // track money supply and mint amount info
@@ -2294,7 +2343,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     if (pindex->GetUndoPos().IsNull() || !pindex->IsValid(BLOCK_VALID_SCRIPTS)) {
         if (pindex->GetUndoPos().IsNull()) {
             CDiskBlockPos pos;
-            if (!FindUndoPos(state, pindex->nFile, pos, ::GetSerializeSize(blockundo, SER_DISK, CLIENT_VERSION) + 40))
+            if (!FindUndoPos(state, pindex->nFile, pos, ::GetSerializeSize(blockundo, CLIENT_VERSION) + 40))
                 return error("ConnectBlock() : FindUndoPos failed");
             if (!blockundo.WriteToDisk(pos, pindex->pprev->GetBlockHash()))
                 return state.Abort("Failed to write undo data");
@@ -2844,7 +2893,7 @@ bool ActivateBestChain(CValidationState& state, CBlock* pblock, bool fAlreadyChe
 
             unsigned size = 0;
             if (pblock)
-                size = GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION);
+                size = GetSerializeSize(*pblock, PROTOCOL_VERSION);
             // If the size is over 1 MB notify external listeners, and it is within the last 5 minutes
             if (size > MAX_BLOCK_SIZE_LEGACY && pblock->GetBlockTime() > GetAdjustedTime() - 300) {
                 uiInterface.NotifyBlockSize(static_cast<int>(size), hashNewTip);
@@ -3167,7 +3216,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
 
     // Size limits
     unsigned int nMaxBlockSize = MAX_BLOCK_SIZE_CURRENT;
-    if (block.vtx.empty() || block.vtx.size() > nMaxBlockSize || ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION) > nMaxBlockSize)
+    if (block.vtx.empty() || block.vtx.size() > nMaxBlockSize || ::GetSerializeSize(block, PROTOCOL_VERSION) > nMaxBlockSize)
         return state.DoS(100, error("CheckBlock() : size limits failed"),
             REJECT_INVALID, "bad-blk-length");
 
@@ -3634,7 +3683,7 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
 
     // Write block to history file
     try {
-        unsigned int nBlockSize = ::GetSerializeSize(block, SER_DISK, CLIENT_VERSION);
+        unsigned int nBlockSize = ::GetSerializeSize(block, CLIENT_VERSION);
         CDiskBlockPos blockPos;
         if (dbp != NULL)
             blockPos = *dbp;
@@ -3790,8 +3839,9 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
             pwalletMain->AutoCombineDust();
     }
 
-    LogPrintf("%s : ACCEPTED Block %ld in %ld milliseconds with size=%d\n", __func__, GetHeight(), GetTimeMillis() - nStartTime,
-              pblock->GetSerializeSize(SER_DISK, CLIENT_VERSION));
+    // TODO
+//    LogPrintf("%s : ACCEPTED Block %ld in %ld milliseconds with size=%d\n", __func__, GetHeight(), GetTimeMillis() - nStartTime,
+//              ::GetSerializeSize(pblock, CLIENT_VERSION));
 
     return true;
 }
@@ -4129,7 +4179,7 @@ bool InitBlockIndex()
         try {
             CBlock& block = const_cast<CBlock&>(Params().GenesisBlock());
             // Start new block file
-            unsigned int nBlockSize = ::GetSerializeSize(block, SER_DISK, CLIENT_VERSION);
+            unsigned int nBlockSize = ::GetSerializeSize(block, CLIENT_VERSION);
             CDiskBlockPos blockPos;
             CValidationState state;
             if (!FindBlockPos(state, blockPos, nBlockSize + 8, 0, block.GetBlockTime()))
@@ -4175,7 +4225,7 @@ bool LoadExternalBlockFile(FILE* fileIn, CDiskBlockPos* dbp)
                 unsigned char buf[MESSAGE_START_SIZE];
                 blkdat.FindByte(Params().MessageStart()[0]);
                 nRewind = blkdat.GetPos() + 1;
-                blkdat >> FLATDATA(buf);
+                blkdat >> buf;
                 if (memcmp(buf, Params().MessageStart(), MESSAGE_START_SIZE))
                     continue;
                 // read size
@@ -5971,7 +6021,7 @@ bool CBlockUndo::WriteToDisk(CDiskBlockPos& pos, const uint256& hashBlock)
 
     // Write index header
     unsigned int nSize = fileout.GetSerializeSize(*this);
-    fileout << FLATDATA(Params().MessageStart()) << nSize;
+    fileout << Params().MessageStart() << nSize;
 
     // Write undo data
     long fileOutPos = ftell(fileout.Get());

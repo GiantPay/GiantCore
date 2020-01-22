@@ -1,6 +1,6 @@
 // Copyright (c) 2014-2016 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -397,7 +397,7 @@ vector<COutput> CActiveMasternode::SelectCoinsMasternode()
     }
 
     // Retrieve all possible outputs
-    pwalletMain->AvailableCoins(vCoins);
+        pwalletMain->AvailableCoins(vCoins);
 
     // Lock MN coins from masternode.conf back if they where temporary unlocked
     if (!confLockedCoins.empty()) {

@@ -1,6 +1,6 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -940,8 +940,9 @@ bool CObfuscationPool::SignatureValid(const CScript& newSig, const CTxIn& newVin
     if (found >= 0) { //might have to do this one input at a time?
         int n = found;
         txNew.vin[n].scriptSig = newSig;
+        const CAmount& amount = txNew.vout[txNew.vin[n].prevout.n].nValue;
         LogPrint("obfuscation", "CObfuscationPool::SignatureValid() - Sign with sig %s\n", newSig.ToString().substr(0, 24));
-        if (!VerifyScript(txNew.vin[n].scriptSig, sigPubKey, SCRIPT_VERIFY_P2SH | SCRIPT_VERIFY_STRICTENC, MutableTransactionSignatureChecker(&txNew, n))) {
+        if (!VerifyScript(txNew.vin[n].scriptSig, sigPubKey, SCRIPT_VERIFY_P2SH | SCRIPT_VERIFY_STRICTENC, MutableTransactionSignatureChecker(&txNew, n, amount))) {
             LogPrint("obfuscation", "CObfuscationPool::SignatureValid() - Signing - Error signing input %u\n", n);
             return false;
         }

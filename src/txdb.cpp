@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2016-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -141,9 +141,9 @@ bool CCoinsViewDB::GetStats(CCoinsStats& stats) const
                 uint256 txhash;
                 ssKey >> txhash;
                 ss << txhash;
-                ss << VARINT(coins.nVersion);
+                ss << VARINT(coins.nVersion, VarIntMode::NONNEGATIVE_SIGNED);
                 ss << (coins.fCoinBase ? 'c' : 'n');
-                ss << VARINT(coins.nHeight);
+                ss << VARINT(coins.nHeight, VarIntMode::NONNEGATIVE_SIGNED);
                 stats.nTransactions++;
                 for (unsigned int i = 0; i < coins.vout.size(); i++) {
                     const CTxOut& out = coins.vout[i];
@@ -155,7 +155,7 @@ bool CCoinsViewDB::GetStats(CCoinsStats& stats) const
                     }
                 }
                 stats.nSerializedSize += 32 + slValue.size();
-                ss << VARINT(0);
+                ss << VARINT(0, VarIntMode::NONNEGATIVE_SIGNED);
             }
             pcursor->Next();
         } catch (std::exception& e) {

@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -295,19 +295,19 @@ public:
         return pn[0] | (uint64_t)pn[1] << 32;
     }
 
-    unsigned int GetSerializeSize(int nType, int nVersion) const
+    unsigned int GetSerializeSize() const
     {
         return sizeof(pn);
     }
 
     template <typename Stream>
-    void Serialize(Stream& s, int nType, int nVersion) const
+    void Serialize(Stream& s) const
     {
         s.write((char*)pn, sizeof(pn));
     }
 
     template <typename Stream>
-    void Unserialize(Stream& s, int nType, int nVersion)
+    void Unserialize(Stream& s)
     {
         s.read((char*)pn, sizeof(pn));
     }

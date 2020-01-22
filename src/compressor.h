@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,10 +11,18 @@
 #include "primitives/transaction.h"
 #include "script/script.h"
 #include "serialize.h"
+#include "span.h"
 
 class CKeyID;
 class CPubKey;
 class CScriptID;
+
+bool CompressScript(const CScript& script, std::vector<unsigned char> &out);
+unsigned int GetSpecialScriptSize(unsigned int nSize);
+bool DecompressScript(CScript& script, unsigned int nSize, const std::vector<unsigned char> &out);
+
+uint64_t CompressAmount(uint64_t nAmount);
+uint64_t DecompressAmount(uint64_t nAmount);
 
 /** Compact serializer for scripts.
  *
@@ -57,44 +65,49 @@ protected:
     bool Decompress(unsigned int nSize, const std::vector<unsigned char>& out);
 
 public:
-    CScriptCompressor(CScript& scriptIn) : script(scriptIn) {}
+    explicit CScriptCompressor(CScript& scriptIn) : script(scriptIn) {}
 
-    unsigned int GetSerializeSize(int nType, int nVersion) const
+    unsigned int GetSerializeSize() const
     {
         std::vector<unsigned char> compr;
         if (Compress(compr))
             return compr.size();
         unsigned int nSize = script.size() + nSpecialScripts;
-        return script.size() + VARINT(nSize).GetSerializeSize(nType, nVersion);
+        return script.size() + (unsigned int)::GetSerializeSize(nSize);
     }
 
     template <typename Stream>
-    void Serialize(Stream& s, int nType, int nVersion) const
+    void Serialize(Stream& s) const
     {
         std::vector<unsigned char> compr;
-        if (Compress(compr)) {
-            s << CFlatData(compr);
+        if (CompressScript(script, compr)) {
+            s << MakeSpan(compr);
             return;
         }
         unsigned int nSize = script.size() + nSpecialScripts;
         s << VARINT(nSize);
-        s << CFlatData(script);
+        s << MakeSpan(script);
     }
 
-    template <typename Stream>
-    void Unserialize(Stream& s, int nType, int nVersion)
-    {
+    template<typename Stream>
+    void Unserialize(Stream &s) {
         unsigned int nSize = 0;
         s >> VARINT(nSize);
         if (nSize < nSpecialScripts) {
-            std::vector<unsigned char> vch(GetSpecialSize(nSize), 0x00);
-            s >> REF(CFlatData(vch));
-            Decompress(nSize, vch);
+            std::vector<unsigned char> vch(GetSpecialScriptSize(nSize), 0x00);
+            s >> MakeSpan(vch);
+            DecompressScript(script, nSize, vch);
             return;
         }
         nSize -= nSpecialScripts;
-        script.resize(nSize);
-        s >> REF(CFlatData(script));
+        if (nSize > MAX_SCRIPT_SIZE) {
+            // Overly long script, replace with a short invalid one
+            script << OP_RETURN;
+            s.ignore(nSize);
+        } else {
+            script.resize(nSize);
+            s >> MakeSpan(script);
+        }
     }
 };
 
@@ -108,12 +121,12 @@ public:
     static uint64_t CompressAmount(uint64_t nAmount);
     static uint64_t DecompressAmount(uint64_t nAmount);
 
-    CTxOutCompressor(CTxOut& txoutIn) : txout(txoutIn) {}
+    explicit CTxOutCompressor(CTxOut& txoutIn) : txout(txoutIn) {}
 
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
+    inline void SerializationOp(Stream& s, Operation ser_action)
     {
         if (!ser_action.ForRead()) {
             uint64_t nVal = CompressAmount(txout.nValue);

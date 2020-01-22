@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -316,6 +316,10 @@ extern UniValue createmultisig(const UniValue& params, bool fHelp);
 extern UniValue verifymessage(const UniValue& params, bool fHelp);
 extern UniValue setmocktime(const UniValue& params, bool fHelp);
 extern UniValue getstakingstatus(const UniValue& params, bool fHelp);
+
+extern UniValue createcontract(const UniValue& params, bool fHelp); // in rpc/contract.cpp
+extern UniValue sendtocontract(const UniValue& params, bool fHelp);
+extern UniValue callcontract(const UniValue& params, bool fHelp);
 
 bool StartRPC();
 void InterruptRPC();

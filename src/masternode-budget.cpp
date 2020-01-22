@@ -1,6 +1,6 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -284,7 +284,7 @@ bool CBudgetDB::Write(const CBudgetManager& objToSave)
     // serialize, checksum data up to that point, then append checksum
     CDataStream ssObj(SER_DISK, CLIENT_VERSION);
     ssObj << strMagicMessage;                   // masternode cache file specific magic message
-    ssObj << FLATDATA(Params().MessageStart()); // network specific magic number
+    ssObj << Params().MessageStart(); // network specific magic number
     ssObj << objToSave;
     uint256 hash = Hash(ssObj.begin(), ssObj.end());
     ssObj << hash;
@@ -365,7 +365,7 @@ CBudgetDB::ReadResult CBudgetDB::Read(CBudgetManager& objToLoad, bool fDryRun)
 
 
         // de-serialize file header (network specific magic number) and ..
-        ssObj >> FLATDATA(pchMsgTmp);
+        ssObj >> pchMsgTmp;
 
         // ... verify the network matches ours
         if (memcmp(pchMsgTmp, Params().MessageStart(), sizeof(pchMsgTmp))) {

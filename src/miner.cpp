@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -255,7 +255,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             if (fMissingInputs) continue;
 
             // Priority is sum(valuein * age) / modified_txsize
-            unsigned int nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
+            unsigned int nTxSize = ::GetSerializeSize(tx, PROTOCOL_VERSION);
             dPriority = tx.ComputePriority(dPriority, nTxSize);
 
             uint256 hash = tx.GetHash();
@@ -289,7 +289,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             vecPriority.pop_back();
 
             // Size limits
-            unsigned int nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
+            unsigned int nTxSize = ::GetSerializeSize(tx, PROTOCOL_VERSION);
             if (nBlockSize + nTxSize >= nBlockMaxSize)
                 continue;
 
@@ -330,7 +330,8 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             // create only contains transactions that are valid in new blocks.
 
             CValidationState state;
-            if (!CheckInputs(tx, state, view, true, MANDATORY_SCRIPT_VERIFY_FLAGS, true))
+            PrecomputedTransactionData txdata(tx);
+            if (!CheckInputs(tx, state, view, true, MANDATORY_SCRIPT_VERIFY_FLAGS, true, false, txdata))
                 continue;
 
             CTxUndo txundo;
@@ -395,7 +396,6 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         pblock->nBits = GetNextWorkRequired(pindexPrev, pblock);
         pblock->nNonce = 0;
 
-        pblock->nAccumulatorCheckpoint = pCheckpointCache.second.second;
         pblocktemplate->vTxSigOps[0] = GetLegacySigOpCount(pblock->vtx[0]);
 
         if (fProofOfStake) {
@@ -582,7 +582,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
         }
 
         LogPrintf("Running GIANTMiner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
-            ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
+            ::GetSerializeSize(*pblock, PROTOCOL_VERSION));
 
         //
         // Search

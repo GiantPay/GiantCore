@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1979,7 +1979,7 @@ bool CAddrDB::Write(const CAddrMan& addr)
 
     // serialize addresses, checksum data up to that point, then append csum
     CDataStream ssPeers(SER_DISK, CLIENT_VERSION);
-    ssPeers << FLATDATA(Params().MessageStart());
+    ssPeers << Params().MessageStart();
     ssPeers << addr;
     uint256 hash = Hash(ssPeers.begin(), ssPeers.end());
     ssPeers << hash;
@@ -2040,7 +2040,7 @@ bool CAddrDB::Read(CAddrMan& addr)
     unsigned char pchMsgTmp[4];
     try {
         // de-serialize file header (network specific magic number) and ..
-        ssPeers >> FLATDATA(pchMsgTmp);
+        ssPeers >> pchMsgTmp;
 
         // ... verify the network matches ours
         if (memcmp(pchMsgTmp, Params().MessageStart(), sizeof(pchMsgTmp)))
@@ -2230,7 +2230,7 @@ bool CBanDB::Write(const banmap_t& banSet)
 
     // serialize banlist, checksum data up to that point, then append csum
     CDataStream ssBanlist(SER_DISK, CLIENT_VERSION);
-    ssBanlist << FLATDATA(Params().MessageStart());
+    ssBanlist << Params().MessageStart();
     ssBanlist << banSet;
     uint256 hash = Hash(ssBanlist.begin(), ssBanlist.end());
     ssBanlist << hash;
@@ -2297,7 +2297,7 @@ bool CBanDB::Read(banmap_t& banSet)
     unsigned char pchMsgTmp[4];
     try {
         // de-serialize file header (network specific magic number) and ..
-        ssBanlist >> FLATDATA(pchMsgTmp);
+        ssBanlist >> pchMsgTmp;
 
         // ... verify the network matches ours
         if (memcmp(pchMsgTmp, Params().MessageStart(), sizeof(pchMsgTmp)))

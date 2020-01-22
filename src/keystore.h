@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,6 +10,9 @@
 
 #include "key.h"
 #include "pubkey.h"
+#include "script/script.h"
+#include "script/sign.h"
+#include "script/standard.h"
 #include "sync.h"
 
 #include <boost/signals2/signal.hpp>
@@ -91,5 +94,8 @@ public:
 
 typedef std::vector<unsigned char, secure_allocator<unsigned char> > CKeyingMaterial;
 typedef std::map<CKeyID, std::pair<CPubKey, std::vector<unsigned char> > > CryptedKeyMap;
+
+/** Return the CKeyID of the key involved in a script (if there is a unique one). */
+CKeyID GetKeyForDestination(const CKeyStore& store, const CTxDestination& dest);
 
 #endif // BITCOIN_KEYSTORE_H

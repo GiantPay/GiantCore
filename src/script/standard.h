@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,6 +14,15 @@
 #include <boost/variant.hpp>
 
 #include <stdint.h>
+
+static const bool DEFAULT_ACCEPT_DATACARRIER = true;
+
+//contract executions with less gas than this are not standard
+//Make sure is always equal or greater than MINIMUM_GAS_LIMIT (which we can't reference here due to insane header dependency chains)
+static const uint64_t STANDARD_MINIMUM_GAS_LIMIT = 10000;
+//contract executions with a price cheaper than this (in satoshis) are not standard
+//TODO this needs to be controlled by DGP and needs to be propogated from consensus parameters
+static const uint64_t STANDARD_MINIMUM_GAS_PRICE = 1;
 
 class CKeyID;
 class CScript;
@@ -65,7 +74,10 @@ enum txnouttype
     TX_SCRIPTHASH,
     TX_MULTISIG,
     TX_NULL_DATA,
-    TX_ZEROCOINMINT,
+    TX_CREATE_SENDER,
+    TX_CALL_SENDER,
+    TX_CREATE,
+    TX_CALL,
 };
 
 class CNoDestination {
@@ -83,9 +95,25 @@ public:
  */
 typedef boost::variant<CNoDestination, CKeyID, CScriptID> CTxDestination;
 
+enum addresstype
+{
+    PUBKEYHASH = 1,
+    SCRIPTHASH = 2,
+    NONSTANDARD = 3
+};
+
+/** Parse a output public key for the sender public key and sender signature. */
+bool ExtractSenderData(const CScript& outputPubKey, CScript* senderPubKey, CScript* senderSig);
+
+/** Check whether a CTxDestination is a CNoDestination. */
+bool IsValidDestination(const CTxDestination& dest);
+
+/** Check whether a CTxDestination can be used as contract sender address. */
+bool IsValidContractSenderAddress(const CTxDestination& dest);
+
 const char* GetTxnOutputType(txnouttype t);
 
-bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, std::vector<std::vector<unsigned char> >& vSolutionsRet);
+txnouttype Solver(const CScript& scriptPubKey, std::vector<std::vector<unsigned char>>& vSolutionsRet, bool contractConsensus = false);
 int ScriptSigArgsExpected(txnouttype t, const std::vector<std::vector<unsigned char> >& vSolutions);
 bool IsStandard(const CScript& scriptPubKey, txnouttype& whichType);
 bool ExtractDestination(const CScript& scriptPubKey, CTxDestination& addressRet);

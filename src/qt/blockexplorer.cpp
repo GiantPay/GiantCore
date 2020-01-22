@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -235,7 +235,7 @@ std::string BlockToString(CBlockIndex* pBlock)
     std::string BlockContentCells[] =
         {
             _("Height"), itostr(pBlock->nHeight),
-            _("Size"), itostr(GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION)),
+            _("Size"), itostr(GetSerializeSize(block, PROTOCOL_VERSION)),
             _("Number of Transactions"), itostr(block.vtx.size()),
             _("Value Out"), ValueToString(OutVolume),
             _("Fees"), ValueToString(Fees),
@@ -349,7 +349,7 @@ std::string TxToString(uint256 BlockHash, const CTransaction& tx)
     std::string Labels[] =
         {
             _("In Block"), "",
-            _("Size"), itostr(GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION)),
+            _("Size"), itostr(GetSerializeSize(tx, PROTOCOL_VERSION)),
             _("Input"), tx.IsCoinBase() ? "-" : ValueToString(Input),
             _("Output"), ValueToString(Output),
             _("Fees"), tx.IsCoinBase() ? "-" : ValueToString(Input - Output),

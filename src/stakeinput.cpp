@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -36,9 +36,9 @@ CAmount CGICStake::GetValue()
 bool CGICStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
 {
     vector<valtype> vSolutions;
-    txnouttype whichType;
     CScript scriptPubKeyKernel = txFrom.vout[nPosition].scriptPubKey;
-    if (!Solver(scriptPubKeyKernel, whichType, vSolutions)) {
+    txnouttype whichType = Solver(scriptPubKeyKernel, vSolutions);
+    if (whichType == TX_NONSTANDARD) {
         LogPrintf("CreateCoinStake : failed to parse kernel\n");
         return false;
     }

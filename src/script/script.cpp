@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -152,9 +152,11 @@ const char* GetOpName(opcodetype opcode)
     case OP_NOP9                   : return "OP_NOP9";
     case OP_NOP10                  : return "OP_NOP10";
 
-    // zerocoin
-    case OP_ZEROCOINMINT           : return "OP_ZEROCOINMINT";
-    case OP_ZEROCOINSPEND          : return "OP_ZEROCOINSPEND";
+    // byte code execution
+    case OP_CREATE                 : return "OP_CREATE";
+    case OP_CALL                   : return "OP_CALL";
+    case OP_SPEND                  : return "OP_SPEND";
+    case OP_SENDER                 : return "OP_SENDER";
 
     case OP_INVALIDOPCODE          : return "OP_INVALIDOPCODE";
 
@@ -295,12 +297,35 @@ std::string CScript::ToString() const
             str += ValueString(vch);
         } else {
             str += GetOpName(opcode);
-            if (opcode == OP_ZEROCOINSPEND) {
-                //Zerocoinspend has no further op codes.
-                break;
-            }
         }
-
     }
     return str;
+}
+
+bool CScript::ReplaceParam(opcodetype findOp, int posBefore, const std::vector<unsigned char> &vchParam, CScript &scriptRet) const {
+    if (posBefore < 0)
+        return false;
+
+    // Find parameter with opcode and replace the parameter before with other value
+    bool ret = false;
+    std::vector<const_iterator> opcodes;
+    int minSize = posBefore + 1;
+    opcodetype opcode;
+    opcodes.push_back(begin());
+    for (const_iterator pc = begin(); pc != end() && GetOp(pc, opcode);) {
+        if (opcode == findOp) {
+            int size = opcodes.size();
+            if (size > minSize) {
+                int firstPart = size - 1 - posBefore;
+                int secondPart = size - posBefore;
+                scriptRet = CScript(begin(), opcodes[firstPart]) << vchParam;
+                scriptRet += CScript(opcodes[secondPart], end());
+                ret = true;
+            }
+            break;
+        }
+        opcodes.push_back(pc);
+    }
+
+    return ret;
 }

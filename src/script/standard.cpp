@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,7 +11,9 @@
 #include "script/script.h"
 #include "util.h"
 #include "utilstrencodings.h"
-
+#include "vm/vm.h"
+#include "streams.h"
+#include <boost/variant.hpp>
 
 using namespace std;
 
@@ -30,7 +32,6 @@ const char* GetTxnOutputType(txnouttype t) {
         case TX_SCRIPTHASH: return "scripthash";
         case TX_MULTISIG: return "multisig";
         case TX_NULL_DATA: return "nulldata";
-        case TX_ZEROCOINMINT: return "zerocoinmint";
     }
     return NULL;
 }
@@ -38,7 +39,11 @@ const char* GetTxnOutputType(txnouttype t) {
 /**
  * Return public keys or hashes from scriptPubKey, for 'standard' transaction types.
  */
-bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsigned char> >& vSolutionsRet) {
+txnouttype Solver(const CScript& scriptPubKey, std::vector<std::vector<unsigned char>>& vSolutionsRet, bool contractConsensus) {
+    //contractConsesus is true when evaluating if a contract tx is "standard" for consensus purposes
+    //It is false in all other cases, so to prevent a particular contract tx from being broadcast on mempool, but allowed in blocks,
+    //one should ensure that contractConsensus is false
+    
     // Templates
     static multimap<txnouttype, CScript> mTemplates;
     if (mTemplates.empty()) {
@@ -50,15 +55,27 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
 
         // Sender provides N pubkeys, receivers provides M signatures
         mTemplates.insert(make_pair(TX_MULTISIG, CScript() << OP_SMALLINTEGER << OP_PUBKEYS << OP_SMALLINTEGER << OP_CHECKMULTISIG));
+
+        // Contract creation tx with sender
+        mTemplates.insert(make_pair(TX_CREATE_SENDER, CScript() << OP_ADDRESS_TYPE << OP_ADDRESS << OP_SCRIPT_SIG << OP_SENDER << OP_VERSION << OP_GAS_LIMIT << OP_GAS_PRICE << OP_DATA << OP_CREATE));
+
+        // Call contract tx with sender
+        mTemplates.insert(make_pair(TX_CALL_SENDER, CScript() << OP_ADDRESS_TYPE << OP_ADDRESS << OP_SCRIPT_SIG << OP_SENDER << OP_VERSION << OP_GAS_LIMIT << OP_GAS_PRICE << OP_DATA << OP_PUBKEYHASH << OP_CALL));
+
+        // Contract creation tx
+        mTemplates.insert(make_pair(TX_CREATE, CScript() << OP_VERSION << OP_GAS_LIMIT << OP_GAS_PRICE << OP_DATA << OP_CREATE));
+
+        // Call contract tx
+        mTemplates.insert(make_pair(TX_CALL, CScript() << OP_VERSION << OP_GAS_LIMIT << OP_GAS_PRICE << OP_DATA << OP_PUBKEYHASH << OP_CALL));
     }
+    vSolutionsRet.clear();
 
     // Shortcut for pay-to-script-hash, which are more constrained than the other types:
     // it is always OP_HASH160 20 [20 byte hash] OP_EQUAL
     if (scriptPubKey.IsPayToScriptHash()) {
-        typeRet = TX_SCRIPTHASH;
         vector<unsigned char> hashBytes(scriptPubKey.begin() + 2, scriptPubKey.begin() + 22);
         vSolutionsRet.push_back(hashBytes);
-        return true;
+        return TX_SCRIPTHASH;
     }
 
     // Provably prunable, data-carrying output
@@ -67,18 +84,22 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
     // byte passes the IsPushOnly() test we don't care what exactly is in the
     // script.
     if (scriptPubKey.size() >= 1 && scriptPubKey[0] == OP_RETURN && scriptPubKey.IsPushOnly(scriptPubKey.begin() + 1)) {
-        typeRet = TX_NULL_DATA;
-        return true;
+        return TX_NULL_DATA;
     }
 
     // Scan templates
     const CScript& script1 = scriptPubKey;
-    for (const PAIRTYPE(txnouttype, CScript) & tplate : mTemplates) {
+    for (const std::pair<txnouttype, CScript>& tplate : mTemplates) {
         const CScript& script2 = tplate.second;
         vSolutionsRet.clear();
 
         opcodetype opcode1, opcode2;
         vector<unsigned char> vch1, vch2;
+        
+        // TODO
+        uint64_t addressType = 0;
+        VersionVM version;
+        version.rootVM = 20; //set to some invalid value
 
         // Compare
         CScript::const_iterator pc1 = script1.begin();
@@ -86,15 +107,14 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
         while (true) {
             if (pc1 == script1.end() && pc2 == script2.end()) {
                 // Found a match
-                typeRet = tplate.first;
-                if (typeRet == TX_MULTISIG) {
+                if (tplate.first == TX_MULTISIG) {
                     // Additional checks for TX_MULTISIG:
                     unsigned char m = vSolutionsRet.front()[0];
                     unsigned char n = vSolutionsRet.back()[0];
                     if (m < 1 || n < 1 || m > n || vSolutionsRet.size() - 2 != n)
-                        return false;
+                        return TX_NONSTANDARD;
                 }
-                return true;
+                return tplate.first;
             }
             if (!script1.GetOp(pc1, opcode1, vch1))
                 break;
@@ -129,7 +149,122 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
                     vSolutionsRet.push_back(valtype(1, n));
                 } else
                     break;
-            } else if (opcode1 != opcode2 || vch1 != vch2) {
+            } 
+            else if (opcode2 == OP_VERSION)
+            {
+                if(0 <= opcode1 && opcode1 <= OP_PUSHDATA4)
+                {
+                    if(vch1.empty() || vch1.size() > 4 || (vch1.back() & 0x80))
+                        return TX_NONSTANDARD;
+
+                    version = VersionVM::fromRaw(CScriptNum::vch_to_uint64(vch1));
+                    if(!(version.toRaw() == VersionVM::GetEVMDefault().toRaw() || version.toRaw() == VersionVM::GetNoExec().toRaw())){
+                        // only allow standard EVM and no-exec transactions to live in mempool
+                        return TX_NONSTANDARD;
+                    }
+                }
+            }
+            else if(opcode2 == OP_GAS_LIMIT) {
+                try {
+                    uint64_t val = CScriptNum::vch_to_uint64(vch1);
+                    if(contractConsensus) {
+                        //consensus rules (this is checked more in depth later using DGP)
+                        if (version.rootVM != 0 && val < 1) {
+                            return TX_NONSTANDARD;
+                        }
+                        if (val > MAX_BLOCK_GAS_LIMIT_DGP) {
+                            //do not allow transactions that could use more gas than is in a block
+                            return TX_NONSTANDARD;
+                        }
+                    }else{
+                        //standard mempool rules for contracts
+                        //consensus rules for contracts
+                        if (version.rootVM != 0 && val < STANDARD_MINIMUM_GAS_LIMIT) {
+                            return TX_NONSTANDARD;
+                        }
+                        if (val > DEFAULT_BLOCK_GAS_LIMIT_DGP / 2) {
+                            //don't allow transactions that use more than 1/2 block of gas to be broadcast on the mempool
+                            return TX_NONSTANDARD;
+                        }
+
+                    }
+                }
+                catch (const scriptnum_error &err) {
+                    return TX_NONSTANDARD;
+                }
+            }
+            else if(opcode2 == OP_GAS_PRICE) {
+                try {
+                    uint64_t val = CScriptNum::vch_to_uint64(vch1);
+                    if(contractConsensus) {
+                        //consensus rules (this is checked more in depth later using DGP)
+                        if (version.rootVM != 0 && val < 1) {
+                            return TX_NONSTANDARD;
+                        }
+                    }else{
+                        //standard mempool rules
+                        if (version.rootVM != 0 && val < STANDARD_MINIMUM_GAS_PRICE) {
+                            return TX_NONSTANDARD;
+                        }
+                    }
+                }
+                catch (const scriptnum_error &err) {
+                    return TX_NONSTANDARD;
+                }
+            }
+            else if(opcode2 == OP_DATA)
+            {
+                if(0 <= opcode1 && opcode1 <= OP_PUSHDATA4)
+                {
+                    if(vch1.empty())
+                        break;
+                }
+            }
+            else if(opcode2 == OP_ADDRESS_TYPE)
+            {
+                try {
+                    uint64_t val = CScriptNum::vch_to_uint64(vch1);
+                    if(val < addresstype::PUBKEYHASH || val > addresstype::NONSTANDARD)
+                        break;
+
+                    addressType = val;
+                }
+                catch (const scriptnum_error &err) {
+                    break;
+                }
+            }
+            else if(opcode2 == OP_ADDRESS)
+            {
+                // Get the destination
+                CTxDestination dest;
+                if(addressType == addresstype::PUBKEYHASH && vch1.size() == sizeof(CKeyID))
+                {
+                    dest = CKeyID(uint160(vch1));
+                }
+                else
+                    break;
+
+                // Get the public key for the destination
+                CScript senderPubKey = GetScriptForDestination(dest);
+                CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                ss << senderPubKey;
+                vSolutionsRet.push_back(std::vector<unsigned char>(ss.begin(), ss.end()));
+            }
+            else if(opcode2 == OP_SCRIPT_SIG)
+            {
+                if(0 <= opcode1 && opcode1 <= OP_PUSHDATA4)
+                {
+                    if(vch1.empty())
+                        break;
+
+                    // Check the max size of the signature script
+                    if(vch1.size() > MAX_BASE_SCRIPT_SIZE)
+                        return TX_NONSTANDARD;
+
+                    vSolutionsRet.push_back(vch1);
+                }
+            }
+            else if (opcode1 != opcode2 || vch1 != vch2) {
                 // Others must match exactly
                 break;
             }
@@ -137,15 +272,13 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
     }
 
     vSolutionsRet.clear();
-    typeRet = TX_NONSTANDARD;
-    return false;
+    return TX_NONSTANDARD;
 }
 
 int ScriptSigArgsExpected(txnouttype t, const std::vector<std::vector<unsigned char> >& vSolutions) {
     switch (t) {
         case TX_NONSTANDARD:
         case TX_NULL_DATA:
-        case TX_ZEROCOINMINT:
             return -1;
         case TX_PUBKEY:
             return 1;
@@ -163,7 +296,8 @@ int ScriptSigArgsExpected(txnouttype t, const std::vector<std::vector<unsigned c
 
 bool IsStandard(const CScript& scriptPubKey, txnouttype& whichType) {
     vector<valtype> vSolutions;
-    if (!Solver(scriptPubKey, whichType, vSolutions))
+    whichType = Solver(scriptPubKey, vSolutions);
+    if (whichType == TX_NONSTANDARD)
         return false;
 
     if (whichType == TX_MULTISIG) {
@@ -183,8 +317,8 @@ bool IsStandard(const CScript& scriptPubKey, txnouttype& whichType) {
 
 bool ExtractDestination(const CScript& scriptPubKey, CTxDestination& addressRet) {
     vector<valtype> vSolutions;
-    txnouttype whichType;
-    if (!Solver(scriptPubKey, whichType, vSolutions))
+    txnouttype whichType = Solver(scriptPubKey, vSolutions);
+    if (whichType == TX_NONSTANDARD)
         return false;
 
     if (whichType == TX_PUBKEY) {
@@ -207,11 +341,11 @@ bool ExtractDestination(const CScript& scriptPubKey, CTxDestination& addressRet)
 
 bool ExtractDestinations(const CScript& scriptPubKey, txnouttype& typeRet, vector<CTxDestination>& addressRet, int& nRequiredRet) {
     addressRet.clear();
-    typeRet = TX_NONSTANDARD;
     vector<valtype> vSolutions;
-    if (!Solver(scriptPubKey, typeRet, vSolutions))
+    typeRet = Solver(scriptPubKey, vSolutions);
+    if (typeRet == TX_NONSTANDARD) {
         return false;
-    if (typeRet == TX_NULL_DATA) {
+    } else if (typeRet == TX_NULL_DATA) {
         // This is data, not addresses
         return false;
     }
@@ -286,3 +420,46 @@ CScript GetScriptForMultisig(int nRequired, const std::vector<CPubKey>& keys) {
     script << CScript::EncodeOP_N(keys.size()) << OP_CHECKMULTISIG;
     return script;
 }
+
+bool IsValidDestination(const CTxDestination& dest) {
+    return dest.which() != 0;
+}
+
+bool IsValidContractSenderAddress(const CTxDestination &dest) {
+    const CKeyID *keyID = boost::get<CKeyID>(&dest);
+    return keyID != 0;
+}
+
+bool ExtractSenderData(const CScript &outputPubKey, CScript *senderPubKey, CScript *senderSig) {
+    if (outputPubKey.HasOpSender()) {
+        try {
+            // Solve the contract with or without contract consensus
+            std::vector<valtype> vSolutions;
+            if (TX_NONSTANDARD == Solver(outputPubKey, vSolutions, true) &&
+                    TX_NONSTANDARD == Solver(outputPubKey, vSolutions, false))
+                return false;
+
+            // Check the size of the returned data
+            if (vSolutions.size() < 2)
+                return false;
+
+            // Get the sender public key
+            if (senderPubKey) {
+                CDataStream ss(vSolutions[0], SER_NETWORK, PROTOCOL_VERSION);
+                ss >> *senderPubKey;
+            }
+
+            // Get the sender signature
+            if (senderSig) {
+                CDataStream ss(vSolutions[1], SER_NETWORK, PROTOCOL_VERSION);
+                ss >> *senderSig;
+            }
+        }        catch (...) {
+            return false;
+        }
+
+        return true;
+    }
+    return false;
+}
+

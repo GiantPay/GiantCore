@@ -101,11 +101,14 @@ BITCOIN_CORE_H = \
   primitives/block.h \
   primitives/transaction.h \
   core_io.h \
+  core_memusage.h \
+  cuckoocache.h \
   crypter.h \
   obfuscation.h \
   obfuscation-relay.h \
   wallet/db.h \
   hash.h \
+  prevector.h \
   httprpc.h \
   httpserver.h \
   init.h \
@@ -116,6 +119,7 @@ BITCOIN_CORE_H = \
   swifttx.h \
   key.h \
   keystore.h \
+  key_io.h \
   leveldbwrapper.h \
   limitedmap.h \
   main.h \
@@ -125,6 +129,7 @@ BITCOIN_CORE_H = \
   masternode-sync.h \
   masternodeman.h \
   masternodeconfig.h \
+  memusage.h \
   merkleblock.h \
   miner.h \
   mruset.h \
@@ -147,7 +152,9 @@ BITCOIN_CORE_H = \
   script/sign.h \
   script/standard.h \
   script/script_error.h \
+  vm/vm.h \
   serialize.h \
+  span.h \
   spork.h \
   sporkdb.h \
   stakeinput.h \
@@ -213,6 +220,7 @@ libbitcoin_server_a_SOURCES = \
   rpc/net.cpp \
   rpc/rawtransaction.cpp \
   rpc/server.cpp \
+  rpc/contract.cpp \
   script/sigcache.cpp \
   sporkdb.cpp \
   timedata.cpp \
@@ -313,6 +321,7 @@ libbitcoin_common_a_SOURCES = \
   invalid.cpp \
   key.cpp \
   keystore.cpp \
+  key_io.cpp \
   netbase.cpp \
   protocol.cpp \
   pubkey.cpp \
@@ -322,6 +331,7 @@ libbitcoin_common_a_SOURCES = \
   script/sign.cpp \
   script/standard.cpp \
   script/script_error.cpp \
+  vm/vm.cpp \
   spork.cpp \
   sporkdb.cpp \
   $(BITCOIN_CORE_H)

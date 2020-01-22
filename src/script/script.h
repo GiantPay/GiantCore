@@ -2,26 +2,46 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2016-2017 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITCOIN_SCRIPT_SCRIPT_H
 #define BITCOIN_SCRIPT_SCRIPT_H
 
+#include "crypto/common.h"
+#include "prevector.h"
+#include "serialize.h"
+#include "pubkey.h"
+
 #include <assert.h>
 #include <climits>
 #include <limits>
-#include "pubkey.h"
 #include <stdexcept>
 #include <stdint.h>
 #include <string.h>
 #include <string>
 #include <vector>
 
-typedef std::vector<unsigned char> valtype;
+// Maximum number of bytes pushable to the stack
+static const unsigned int MAX_SCRIPT_ELEMENT_SIZE = 128000; //(128 kb)
 
-static const unsigned int MAX_SCRIPT_ELEMENT_SIZE = 520; // bytes
+// Maximum number of non-push operations per script
+static const int MAX_OPS_PER_SCRIPT = 201;
+
+// Maximum number of public keys per multisig
+static const int MAX_PUBKEYS_PER_MULTISIG = 20;
+
+// Maximum script length in bytes
+static const int MAX_SCRIPT_SIZE = 129000; // (129 kb)
+
+// Maximum base script length in bytes
+static const int MAX_BASE_SCRIPT_SIZE = 10000;
+
+// Maximum number of values on script interpreter stack
+static const int MAX_STACK_SIZE = 1000;
+
+typedef std::vector<unsigned char> valtype;
 
 // Threshold for nLockTime: below this value it is interpreted as block number,
 // otherwise as UNIX timestamp.
@@ -169,11 +189,20 @@ enum opcodetype
     OP_NOP9 = 0xb8,
     OP_NOP10 = 0xb9,
 
-    // zerocoin
-    OP_ZEROCOINMINT = 0xc1,
-    OP_ZEROCOINSPEND = 0xc2,
+    // Execute EXT byte code.
+    OP_CREATE = 0xc1,
+    OP_CALL = 0xc2,
+    OP_SPEND = 0xc3,
+    OP_SENDER = 0xc4,
 
     // template matching params
+    OP_ADDRESS_TYPE = 0xf2,
+    OP_ADDRESS = 0xf3,
+    OP_SCRIPT_SIG = 0xf4,
+    OP_GAS_PRICE = 0xf5,
+    OP_VERSION = 0xf6,
+    OP_GAS_LIMIT = 0xf7,
+    OP_DATA = 0xf8,
     OP_SMALLINTEGER = 0xfa,
     OP_PUBKEYS = 0xfb,
     OP_PUBKEYHASH = 0xfd,
@@ -181,6 +210,8 @@ enum opcodetype
 
     OP_INVALIDOPCODE = 0xff,
 };
+
+static const int MAX_OPCODE = OP_NOP10;
 
 const char* GetOpName(opcodetype opcode);
 
@@ -258,6 +289,11 @@ public:
     inline CScriptNum& operator+=( const CScriptNum& rhs)       { return operator+=(rhs.m_value);  }
     inline CScriptNum& operator-=( const CScriptNum& rhs)       { return operator-=(rhs.m_value);  }
 
+    inline CScriptNum operator&(   const int64_t& rhs)    const { return CScriptNum(m_value & rhs);}
+    inline CScriptNum operator&(   const CScriptNum& rhs) const { return operator&(rhs.m_value);   }
+
+    inline CScriptNum& operator&=( const CScriptNum& rhs)       { return operator&=(rhs.m_value);  }
+
     inline CScriptNum operator-()                         const
     {
         assert(m_value != std::numeric_limits<int64_t>::min());
@@ -286,6 +322,12 @@ public:
         return *this;
     }
 
+    inline CScriptNum& operator&=( const int64_t& rhs)
+    {
+        m_value &= rhs;
+        return *this;
+    }
+
     int getint() const
     {
         if (m_value > std::numeric_limits<int>::max())
@@ -298,6 +340,28 @@ public:
     std::vector<unsigned char> getvch() const
     {
         return serialize(m_value);
+    }
+
+    static uint64_t vch_to_uint64(const std::vector<unsigned char>& vch)
+    {
+        if (vch.size() > 8) {
+            throw scriptnum_error("script number overflow");
+        }
+
+        if (vch.empty())
+            return 0;
+
+        uint64_t result = 0;
+        for (size_t i = 0; i != vch.size(); ++i)
+            result |= static_cast<uint64_t>(vch[i]) << 8*i;
+
+        // If the input vector's most significant byte is 0x80, remove it from
+        // the result's msb and return a negative.
+        if (vch.back() & 0x80)
+            throw scriptnum_error("Negative gas value.");
+            // return -((uint64_t)(result & ~(0x80ULL << (8 * (vch.size() - 1)))));
+
+        return result;
     }
 
     static std::vector<unsigned char> serialize(const int64_t& value)
@@ -399,6 +463,12 @@ public:
     explicit CScript(const CScriptNum& b) { operator<<(b); }
     explicit CScript(const std::vector<unsigned char>& b) { operator<<(b); }
 
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action) {
+        READWRITEAS(CScript, *this);
+    }
 
     CScript& operator<<(int64_t b) { return push_int64(b); }
 
@@ -614,6 +684,36 @@ public:
     {
         return (size() > 0 && *begin() == OP_RETURN);
     }
+
+    bool HasOpCreate() const {
+        return Find(OP_CREATE) == 1;
+    }
+
+    bool HasOpCall() const {
+        return Find(OP_CALL) == 1;
+    }
+
+    bool HasOpSpend() const {
+        return size() == 1 && *begin() == OP_SPEND;
+    }   
+
+    bool HasOpSender() const {
+        return Find(OP_SENDER) == 1;
+    }
+
+    bool UpdateSenderSig(const std::vector<unsigned char>& scriptSig, CScript& scriptRet) const {
+        return ReplaceParam(OP_SENDER, 1, scriptSig, scriptRet);
+    }
+
+    CScript WithoutSenderSig() const {
+        std::vector<unsigned char> scriptSig;
+        CScript scriptRet;
+        if (!UpdateSenderSig(scriptSig, scriptRet))
+            scriptRet = CScript(begin(), end());
+        return scriptRet;
+    }
+
+    bool ReplaceParam(opcodetype findOp, int posBefore, const std::vector<unsigned char>& vchParam, CScript& scriptRet) const;
 
     std::string ToString() const;
     void clear()

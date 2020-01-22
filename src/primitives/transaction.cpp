@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -194,7 +194,7 @@ unsigned int CTransaction::CalculateModifiedSize(unsigned int nTxSize) const
     // Providing any more cleanup incentive than making additional inputs free would
     // risk encouraging people to create junk outputs to redeem later.
     if (nTxSize == 0)
-        nTxSize = ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION);
+        nTxSize = ::GetSerializeSize(*this, PROTOCOL_VERSION);
     for (std::vector<CTxIn>::const_iterator it(vin.begin()); it != vin.end(); ++it)
     {
         unsigned int offset = 41U + std::min(110U, (unsigned int)it->scriptSig.size());
@@ -218,4 +218,59 @@ std::string CTransaction::ToString() const
     for (unsigned int i = 0; i < vout.size(); i++)
         str += "    " + vout[i].ToString() + "\n";
     return str;
+}
+
+bool CTransaction::HasCreateOrCall() const {
+    for (const CTxOut& v : vout) {
+        if (v.scriptPubKey.HasOpCreate() || v.scriptPubKey.HasOpCall()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool CTransaction::HasOpSpend() const {
+    for (const CTxIn& i : vin) {
+        if (i.scriptSig.HasOpSpend()) {
+            return true;
+        }
+    }
+    return false;
+}
+/////////////////////////////////////////////////////////////
+
+bool CTransaction::HasOpCreate() const {
+    for (const CTxOut& v : vout) {
+        if (v.scriptPubKey.HasOpCreate()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool CTransaction::HasOpCall() const {
+    for (const CTxOut& v : vout) {
+        if (v.scriptPubKey.HasOpCall()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+template <class T>
+bool hasOpSender(const T& txTo) {
+    for (const CTxOut& v : txTo.vout) {
+        if (v.scriptPubKey.HasOpSender()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool CTransaction::HasOpSender() const {
+    return hasOpSender(*this);
+}
+
+bool CMutableTransaction::HasOpSender() const {
+    return hasOpSender(*this);
 }

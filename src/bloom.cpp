@@ -1,6 +1,6 @@
 // Copyright (c) 2012-2014 The Bitcoin developers
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018-2019 The GIANT developers
+// Copyright (c) 2018-2020 The GIANT developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -185,10 +185,9 @@ bool CBloomFilter::IsRelevantAndUpdate(const CTransaction& tx)
                 if ((nFlags & BLOOM_UPDATE_MASK) == BLOOM_UPDATE_ALL)
                     insert(COutPoint(hash, i));
                 else if ((nFlags & BLOOM_UPDATE_MASK) == BLOOM_UPDATE_P2PUBKEY_ONLY) {
-                    txnouttype type;
                     vector<vector<unsigned char> > vSolutions;
-                    if (Solver(txout.scriptPubKey, type, vSolutions) &&
-                        (type == TX_PUBKEY || type == TX_MULTISIG))
+                    txnouttype type = Solver(txout.scriptPubKey, vSolutions);
+                    if (type == TX_PUBKEY || type == TX_MULTISIG)
                         insert(COutPoint(hash, i));
                 }
                 break;
