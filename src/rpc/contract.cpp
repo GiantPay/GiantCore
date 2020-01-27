@@ -3,37 +3,32 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "amount.h"
+#include "base58.h"
 #include "coincontrol.h"
 #include "core_io.h"
 #include "init.h"
 #include "key_io.h"
 #include "keystore.h"
 #include "main.h"
-#include "net.h"
 #include "primitives/transaction.h"
 #include "pubkey.h"
 #include "rpc/server.h"
-#include "script/standard.h"
 #include "script/script.h"
 #include "script/sign.h"
 #include "script/interpreter.h"
 #include "script/script_error.h"
 #include "script/standard.h"
-#include "swifttx.h"
 #include "uint256.h"
 #include "utilmoneystr.h"
 #include "vm/vm.h"
-#ifdef ENABLE_WALLET
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h"
-#endif
 
 #include <stdint.h>
-#include <functional>
 #include <boost/assign/list_of.hpp>
 #include <boost/optional.hpp>
-#include <boost/variant.hpp>
 #include <univalue.h>
+#include <functional>
 
 using namespace boost;
 using namespace boost::assign;
@@ -167,6 +162,28 @@ bool SetDefaultPayForContractAddress(CCoinControl & coinControl) {
     return coinControl.HasSelected();
 }
 
+bool GetSenderDest(const CWalletTx& tx, CTxDestination& txSenderDest) {
+    // Initialize variables
+    CScript senderPubKey;
+
+    // Get sender destination
+    if (tx.HasOpSender()) {
+        // Get destination from the outputs
+        for (CTxOut out : tx.vout) {
+            if (out.scriptPubKey.HasOpSender()) {
+                ExtractSenderData(out.scriptPubKey, &senderPubKey, 0);
+                break;
+            }
+        }
+    } else {
+        // Get destination from the inputs
+        senderPubKey = pwalletMain->mapWallet.at(tx.vin[0].prevout.hash).vout[tx.vin[0].prevout.n].scriptPubKey;
+    }
+
+    // Extract destination from script
+    return ExtractDestination(senderPubKey, txSenderDest);
+}
+
 UniValue createcontract(const UniValue& params, bool fHelp) {
     if (fHelp || params.size() != 1) // TODO
         throw runtime_error("todo createcontract help message");
@@ -189,7 +206,7 @@ UniValue createcontract(const UniValue& params, bool fHelp) {
     auto fBroadcast = GetBroadcast(contractParams);
     auto fChangeToSender = GetChangeToSender(contractParams);
 
-    CCoinControl coinControl;
+    CCoinControl coinControl = CCoinControl();
     CTxDestination signer = CNoDestination();
 
     if (fHasSender) {// Find a UTXO with sender address
@@ -223,8 +240,8 @@ UniValue createcontract(const UniValue& params, bool fHelp) {
     }
 
     EnsureWalletIsUnlocked();
-    auto nGasFee = nGasPrice * nGasLimit;
-    auto nBalance = pwalletMain->GetBalance();
+    CAmount nGasFee = nGasPrice * nGasLimit;
+    CAmount nBalance = pwalletMain->GetBalance();
 
     // Check amount
     if (nGasFee <= 0)
@@ -260,61 +277,57 @@ UniValue createcontract(const UniValue& params, bool fHelp) {
     vecSend.push_back(make_pair(scriptPubKey, 0));
     CWalletTx wtx;
 
-//    CTransactionRef tx; ONLY_NOTCOLLATERALPRICEIFMN
-    // nGasFee -> nPayFee
-//    if (!pwalletMain->CreateTransaction(vecSend, tx, reservekey, nFeeRequired, nChangePosRet, strError, coinControl, true, nGasFee, true, signSenderAddress)) {
-//        if (nFeeRequired > pwallet->GetBalance())
-//            strError = strprintf("Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!", FormatMoney(nFeeRequired));
-//        throw JSONRPCError(RPC_WALLET_ERROR, strError);
-//    }
+    if (!pwalletMain->CreateTransaction2(vecSend, wtx, reservekey, nFeeRequired, strError, &coinControl, ALL_COINS, true, nGasFee, true, &signer)) {
+        if (nFeeRequired > pwalletMain->GetBalance())
+            strError = strprintf("Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!", FormatMoney(nFeeRequired));
+        throw JSONRPCError(RPC_WALLET_ERROR, strError);
+    }
 
-    //    CTxDestination txSenderDest;
-    //    GetSenderDest(pwallet, tx, txSenderDest);
-    //
-    //    if (fHasSender && !(senderAddress == txSenderDest)) {
-    //        throw JSONRPCError(RPC_TYPE_ERROR, "Sender could not be set, transaction was not committed!");
-    //    }
-    //
-    //    UniValue result(UniValue::VOBJ);
-    //    if (fBroadcast) {
-    //        CValidationState state;
-    //        if (!pwallet->CommitTransaction(tx,{},
-    //            {
-    //            }, reservekey, g_connman.get(), state))
-    //                throw JSONRPCError(RPC_WALLET_ERROR, "Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of the wallet and coins were spent in the copy but not marked as spent here.");
-    //
-    //        std::string txId = tx->GetHash().GetHex();
-    //        result.pushKV("txid", txId);
-    //
-    //        CTxDestination txSenderAdress(txSenderDest);
-    //        CKeyID keyid = GetKeyForDestination(*pwallet, txSenderAdress);
-    //
-    //        result.pushKV("sender", EncodeDestination(txSenderAdress));
-    //        result.pushKV("hash160", HexStr(valtype(keyid.begin(), keyid.end())));
-    //
-    //        std::vector<unsigned char> SHA256TxVout(32);
-    //        std::vector<unsigned char> contractAddress(20);
-    //        std::vector<unsigned char> txIdAndVout(tx->GetHash().begin(), tx->GetHash().end());
-    //        uint32_t voutNumber = 0;
-    //        for (const CTxOut& txout : tx->vout) {
-    //            if (txout.scriptPubKey.HasOpCreate()) {
-    //                std::vector<unsigned char> voutNumberChrs;
-    //                if (voutNumberChrs.size() < sizeof (voutNumber))voutNumberChrs.resize(sizeof (voutNumber));
-    //                std::memcpy(voutNumberChrs.data(), &voutNumber, sizeof (voutNumber));
-    //                txIdAndVout.insert(txIdAndVout.end(), voutNumberChrs.begin(), voutNumberChrs.end());
-    //                break;
-    //            }
-    //            voutNumber++;
-    //        }
-    //        CSHA256().Write(txIdAndVout.data(), txIdAndVout.size()).Finalize(SHA256TxVout.data());
-    //        CRIPEMD160().Write(SHA256TxVout.data(), SHA256TxVout.size()).Finalize(contractAddress.data());
-    //        result.pushKV("address", HexStr(contractAddress));
-    //    } else {
-    //        std::string strHex = EncodeHexTx(*tx, RPCSerializationFlags());
-    //        result.pushKV("raw transaction", strHex);
-    //    }
-    //    return result;
-    return NullUniValue;
+    CTxDestination txSenderDest;
+    GetSenderDest(wtx, txSenderDest);
+
+    if (fHasSender && !(sender == txSenderDest)) {
+        throw JSONRPCError(RPC_TYPE_ERROR, "Sender could not be set, transaction was not committed!");
+    }
+
+    UniValue result(UniValue::VOBJ);
+    if (fBroadcast) {
+        if (!pwalletMain->CommitTransaction(wtx, reservekey)) {
+            throw JSONRPCError(RPC_WALLET_ERROR, "Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of the wallet and coins were spent in the copy but not marked as spent here.");
+        }
+        std::string txId = wtx.GetHash().GetHex();
+        result.pushKV("txid", txId);
+
+        CTxDestination txSenderAdress(txSenderDest);
+        CKeyID keyid = GetKeyForDestination(*pwalletMain, txSenderAdress);
+
+        result.pushKV("sender", EncodeDestination(txSenderAdress));
+        result.pushKV("hash160", HexStr(valtype(keyid.begin(), keyid.end())));
+
+        std::vector<unsigned char> SHA256TxVout(32);
+        std::vector<unsigned char> contractAddress(20);
+        std::vector<unsigned char> txIdAndVout(wtx.GetHash().begin(), wtx.GetHash().end());
+        uint32_t voutNumber = 0;
+        for (const CTxOut& txout : wtx.vout) {
+            if (txout.scriptPubKey.HasOpCreate()) {
+                std::vector<unsigned char> voutNumberChrs;
+                if (voutNumberChrs.size() < sizeof (voutNumber)) {
+                    voutNumberChrs.resize(sizeof (voutNumber));
+                }
+                std::memcpy(voutNumberChrs.data(), &voutNumber, sizeof (voutNumber));
+                txIdAndVout.insert(txIdAndVout.end(), voutNumberChrs.begin(), voutNumberChrs.end());
+                break;
+            }
+            voutNumber++;
+        }
+        CSHA256().Write(txIdAndVout.data(), txIdAndVout.size()).Finalize(SHA256TxVout.data());
+        CRIPEMD160().Write(SHA256TxVout.data(), SHA256TxVout.size()).Finalize(contractAddress.data());
+        result.pushKV("address", HexStr(contractAddress));
+    } else {
+        std::string strHex = EncodeHexTx(wtx);
+        result.pushKV("raw transaction", strHex);
+    }
+    return result;
 }
 
 UniValue sendtocontract(const UniValue& params, bool fHelp) {

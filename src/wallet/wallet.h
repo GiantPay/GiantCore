@@ -34,7 +34,6 @@
 #include <string>
 #include <utility>
 #include <vector>
-#include <boost/variant.hpp>
 
 /**
  * Settings
@@ -444,7 +443,7 @@ public:
         bool useIX = false,
         CAmount nFeePay = 0,
         bool hasSender = false,
-        const CTxDestination& signer = nullptr
+        CTxDestination* signer = nullptr
     );
     bool CreateTransaction(CScript scriptPubKey, const CAmount& nValue, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, std::string& strFailReason, const CCoinControl* coinControl = NULL, AvailableCoinsType coin_type = ALL_COINS, bool useIX = false, CAmount nFeePay = 0);
     bool CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey, std::string strCommand = "tx");

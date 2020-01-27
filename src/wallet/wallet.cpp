@@ -2781,8 +2781,7 @@ bool CWallet::CreateTransaction2(const vector<pair<CScript, CAmount> >& vecSend,
         bool useIX,
         CAmount nFeePay,
         bool hasSender,
-        const CTxDestination& signer
-        ) {
+        CTxDestination* signer) {
     if (useIX && nFeePay < CENT) nFeePay = CENT;
 
     CAmount nValue = 0;
